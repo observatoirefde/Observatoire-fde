@@ -396,24 +396,25 @@ async function demarrerObservatoire() {
         {k:'cafe',     l:'Conseillers à l\'AFE (CAFE)', short:'CAFE'},
         {k:'dep',      l:'Députés'},
         {k:'sen',      l:'Sénateurs'}]},
-      veille:{label:'Veille parlementaire', items:[
-        {k:'veille',         l:'Fil d\'actualité'},
-        {k:'veille-comptes', l:'Parlementaires et comptes', short:'Comptes'},
-        {k:'veille-couv',    l:'Couverture des sources', short:'Couverture'}]}
+      veille:{label:"Activité des parlementaires des Français de l'étranger", items:[
+        {k:'veille', l:'Réseaux sociaux'},
+        {k:'legislatif', l:'Activité législative'}]}
     };
     const ROUTE = {}; Object.entries(NAV).forEach(([r,o])=>o.items.forEach(it=>ROUTE[it.k]=Object.assign({r},it)));
-    const VIEWS_ALL = ['home','leg22','cfde','leg24','scen','dep','sim','rep-cfde','cafe','sen','veille','veille-comptes','veille-couv','soon'];
+    ROUTE['veille-comptes']={r:'veille',k:'veille-comptes',l:'Parlementaires et comptes'};
+    const VIEWS_ALL = ['home','leg22','cfde','leg24','scen','dep','sim','rep-cfde','cafe','sen','veille','veille-comptes','legislatif','soon'];
     let CUR_ROUTE = 'cfde';
     function renderSubtabs(r){
       const el=document.getElementById('subtabs');
-      el.innerHTML = `<span class="sub-label">${NAV[r].label}</span><div class="subtabs-row">`+NAV[r].items.map(it=>`<button data-v="${it.k}" class="${it.k===CUR_ROUTE?'on':''}" title="${it.l}">${it.short?`<span class="full">${it.l}</span><span class="short">${it.short}</span>`:it.l}${it.soon?' <span class="soon-dot" aria-label="à venir"></span>':''}</button>`).join('')+'</div>';
+      const activeRoute=CUR_ROUTE==='veille-comptes'?'veille':CUR_ROUTE;
+      el.innerHTML = `<span class="sub-label">${NAV[r].label}</span><div class="subtabs-row">`+NAV[r].items.map(it=>`<button data-v="${it.k}" class="${it.k===activeRoute?'on':''}" title="${it.l}">${it.short?`<span class="full">${it.l}</span><span class="short">${it.short}</span>`:it.l}${it.soon?' <span class="soon-dot" aria-label="à venir"></span>':''}</button>`).join('')+'</div>';
     }
     function showTab(v){
       if(v==='scen'){ showTab('cfde'); return; }
       const rt = ROUTE[v] || ROUTE.cfde; v = rt.k; CUR_ROUTE = v;
       updateHero(v);
       document.body.classList.toggle('is-home', v==='home');
-      document.body.classList.toggle('is-veille', rt.r==='veille');
+      document.body.classList.toggle('is-veille', rt.r==='veille'||rt.r==='legislatif');
       document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x.dataset.r===rt.r));
       renderSubtabs(rt.r);
       const show = rt.soon ? ['soon'] : [v];
@@ -427,11 +428,15 @@ async function demarrerObservatoire() {
       else if(v==='sim'){ setTimeout(()=>{ renderSim(); chartSim&&chartSim.resize(); },0); }
       else if(v==='cfde'){ renderProj(); setTimeout(()=>{ if(MAP_DIRTY||!chart) renderMap(MAP_KEEP); chart&&chart.resize(); },0); }
       else if(v==='rep-cfde'||v==='cafe'||v==='sen'){ renderDir(v); }
+      else if(v==='legislatif'){ const frame=document.getElementById('legislatifFrame'); if(!frame.getAttribute('src')) frame.src=frame.dataset.src; }
       else if(rt.r==='veille'){ if(window.VEILLE) VEILLE.render(v); }
-      else if(v==='home'){ renderHomePanel(); setTimeout(()=>{ renderMapHome(); chartHome&&chartHome.resize(); },0); }
+      else if(v==='home'){ renderHomePanel(); setTimeout(()=>{ if(!HOME_INITIALIZED){ HOME_INITIALIZED=true; setHomeMode('3d'); } renderMapHome(); chartHome&&chartHome.resize(); },0); }
     }
-    document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; const r=b.dataset.r; showTab(ROUTE[CUR_ROUTE].r===r ? CUR_ROUTE : (r==='accueil'?'home':r==='elections'?'cfde':r==='veille'?'veille':'rep-cfde'));});
+    document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; const r=b.dataset.r; showTab(ROUTE[CUR_ROUTE].r===r ? CUR_ROUTE : (r==='accueil'?'home':r==='elections'?'cfde':r==='veille'?'veille':r==='legislatif'?'legislatif':'rep-cfde'));});
     document.getElementById('subtabs').addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; showTab(b.dataset.v);});
+    document.getElementById('rsComptes').addEventListener('click',()=>showTab('veille-comptes'));
+    document.getElementById('rsRetour').addEventListener('click',()=>showTab('veille'));
+    window.addEventListener('message', e=>{const frame=document.getElementById('legislatifFrame'); if(e.source!==frame.contentWindow||e.origin!==location.origin||e.data?.type!=='fde-legislatif-height')return; const height=Number(e.data.height); if(Number.isFinite(height)&&height>=100&&height<=100000) frame.style.height=Math.ceil(height)+'px';});
     renderSubtabs('accueil');
 
 
@@ -990,7 +995,7 @@ async function demarrerObservatoire() {
     let chartHome=null, HOME_SEL=null, HOME_HOVER=null, HOME_PEOPLE='dep', HOME_RAF=0;
     const ICE = ['#83b4e5','#eea4aa','#93c9b8','#e9bc76','#c3a4e4','#7fc9d4','#f4a77b','#d5ce79','#a8ce86','#94addf','#bf9bda'];
     const ICE_SEL = '#5f86ad', ICE_HOV = '#8eaccb';
-    let HOME_MODE='2d', globe=null;
+    let HOME_MODE='2d', globe=null, HOME_INITIALIZED=false;
     const homeColor=g=>HOME_SEL===g ? ICE_SEL : HOME_HOVER===g ? ICE_HOV : ICE[g-1];
     const HOME_SMALL = () => window.matchMedia('(max-width:640px)').matches;
     function homeRegions(){
@@ -1212,7 +1217,8 @@ async function demarrerObservatoire() {
         k: RAF ? [[String(AF.length),"conseillers à l'AFE"],[String(RAF.circonscriptions.length),"circonscriptions AFE"],[String(Object.keys(RAF.commissions).length),"commissions"],[String(Object.keys(RAF.groupes).length-(RAF.groupes.NI?1:0)),"groupes"]] : []}),
       dep:()=>({t:"Députés des Français de l'étranger", p:"Onze députés élus au scrutin uninominal majoritaire à deux tours, un par circonscription législative, représentent les Français établis hors de France à l'Assemblée nationale.",
         k: DEP ? [[String(DEP.deputes.length),"députés en fonction"],[String(new Set(DEP.deputes.map(d=>d.groupe)).size),"groupes parlementaires"],[String(DEP.deputes.filter(d=>/^Suppléant/.test(d.mode)).length),"suppléants devenus députés"],(n=>[String(n),n>1?"députés élus en législative partielle":"député élu en législative partielle"])(DEP.deputes.filter(d=>d.partielle).length),[fmtDate(DEP.maj).replace(/ \d{4}$/,''),"dernière vérification"]] : []}),
-      veille:()=>VEILLE_HERO('veille'), 'veille-comptes':()=>VEILLE_HERO('veille-comptes'), 'veille-couv':()=>VEILLE_HERO('veille-couv'),
+      veille:()=>VEILLE_HERO('veille'), 'veille-comptes':()=>VEILLE_HERO('veille-comptes'),
+      legislatif:()=>({t:'Activité législative',p:"Suivez les propositions de loi portées par les parlementaires des Français de l’étranger, leur parcours législatif et les prochaines échéances connues.",k:[]}),
       sen:()=>({t:"Sénateurs des Français de l'étranger", p:"Douze sénateurs élus pour six ans au scrutin indirect par les élus des Français de l'étranger ; le Sénat est renouvelé par moitié tous les trois ans.",
         k: RSE ? [[String(SEN.length),"sénateurs"],[String(SEN.filter(x=>x.serie===2).length),"élus ou réélus en septembre 2026"],[String(new Set(SEN.map(x=>x.groupe)).size),"groupes politiques"],[String(SEN.filter(x=>x.civ==='Mme').length),"sénatrices"]] : []})
     };

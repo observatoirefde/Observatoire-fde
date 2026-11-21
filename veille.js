@@ -507,27 +507,7 @@ function chipsHTML(P, withPending){
   return `<div class="vchips">${h}</div>`;
 }
 function coverageBanner(){
-  const nAcc = PEOPLE.reduce((n,p)=>n+p.accounts.length,0);
-  const err = ACCS.filter(a=>ST[a.key].state==='erreur');
-  const loading = ACCS.some(a=>ST[a.key].state==='en cours');
-  const nb = ACCS.length, np = new Set(ACCS.map(a=>a.pid)).size;
-  const nm = [...POSTS.values()].filter(p=>p.manual).length, mnets = [...new Set(MAN.map(m=>PLATFORMS[m.reseau].label))];
-  const manual = nm ? ` · Sélection manuelle : ${plural(nm,'publication')} ${esc(mnets.join(' et '))}` : '';
-  const actifs = ACCS.filter(a=>a.actif!==false), nact = actifs.length, nparl = new Set(actifs.filter(a=>BYID[a.pid].kind!=='autre').map(a=>a.pid)).size;
-  const liste = LIST_INFO ? `<a href="${esc(safeUrl(LIST_INFO.url)||'#')}" target="_blank" rel="noopener">« ${esc(String(LIST_INFO.nom||'').trim())} »</a>` : '';
-  const vieux = MODE==='historique' && LAST_SYNC && Date.now()-new Date(LAST_SYNC) > 3*36e5;
-  const titre = MODE==='historique' ? `Collecte automatique Bluesky : liste ${liste} (${plural(nact,'compte')}, ${plural(nparl,'parlementaire')})`
-    : MODE==='direct' ? `Bluesky : lecture directe de la liste ${liste} (${plural(nact,'compte')})`
-    : nb ? `Collecte automatique : ${plural(nb,'compte')} Bluesky (${plural(np,'parlementaire')} sur ${PEOPLE.length})` : 'Aucun compte collecté automatiquement';
-  const quand = loading ? 'Chargement…'
-    : MODE==='historique' ? (LAST_SYNC ? `Dernière synchronisation : ${esc(fmtDT(LAST_SYNC))} (collecte toutes les 30 minutes)` : 'Aucune synchronisation réussie pour l’instant')
-    : MODE==='direct' ? `Historique automatique pas encore disponible${LAST_SYNC?' · lu le '+esc(fmtDT(LAST_SYNC)):''}`
-    : LAST_SYNC ? `Dernière synchronisation réussie : ${esc(fmtDT(LAST_SYNC))}` : 'Aucune synchronisation réussie pour l’instant';
-  return `<div class="vcov-main">
-      <b>${titre}${manual}</b>
-      <span>${quand}${err.length?` · <span class="badv">${plural(err.length,'source indisponible','sources indisponibles')}</span>`:''}${vieux?' · <span class="badv">collecte automatique en retard</span>':''}${LIST_ERR?` · <span class="badv">${esc(LIST_ERR)}</span>`:''}</span>
-    </div>
-    <p class="small">Ce fil n'est <b>pas exhaustif</b>. Seul Bluesky est collecté automatiquement, pour les comptes de la liste de référence. Pour LinkedIn et Instagram, seules les publications choisies par l'Observatoire sont affichées ; X, Facebook et YouTube ne sont pas collectés (accès payant ou restreint) : leurs comptes sont seulement liés. Les comptes non confirmés par une source officielle ne sont ni affichés ni collectés. <button type="button" class="lnk vlinkbtn" data-go="veille-couv">Détail de la couverture</button></p>`;
+  return `<p class="small">Ce fil n'est pas exhaustif : il regroupe les publications publiques disponibles sur les réseaux collectés et les sélections manuelles.</p>`;
 }
 function paintStatus(){
   const b = $('vCov'); if(b && CUR_VIEW==='veille') b.innerHTML = coverageBanner();
@@ -610,84 +590,20 @@ function renderDirectory(){
     return `<div class="glass depcard vcard" role="button" tabindex="0" data-k="veille" data-i="${esc(p.id)}">
       <div class="dep-top">${p.photo('dep-photo')}<div class="dep-id"><div class="dep-circ">${esc(p.role)} · ${esc(p.chamber)}</div><h4>${personName(p)}</h4><div class="small">${esc(p.place)}</div></div></div>
       <div class="small"><span class="sw" style="background:${esc(p.col)}"></span>${esc(p.groupe)}</div>
-      ${chipsHTML(p, true)}
+      ${chipsHTML(p)}
       <div class="small dep-last">${isCollected(p) ? (n?`${plural(n,'publication chargée','publications chargées')}`:'Collecte Bluesky active') : n ? `${plural(n,'publication sélectionnée','publications sélectionnées')} manuellement` : 'Aucun compte collecté automatiquement'}</div>
     </div>`;
   }).join('') || '<div class="glass notes">Aucun parlementaire ne correspond à cette recherche.</div>';
 }
 
-// --- Vue « Couverture des sources » ---
-function renderCoverage(){
-  const rows = PORDER.map(r=>{
-    const ver = PEOPLE.reduce((n,p)=>n+p.accounts.filter(a=>a.reseau===r).length,0);
-    const pend = PEOPLE.reduce((n,p)=>n+p.pending.filter(a=>a.reseau===r).length,0);
-    const col = ACCS.filter(a=>a.reseau===r);
-    const ok = col.filter(a=>ST[a.key].state==='ok').length;
-    const nm = [...POSTS.values()].filter(p=>p.manual && p.platform===r).length;
-    const mode = col.length ? `<b class="okv">Oui</b> · ${ok}/${col.length} à jour`
-      : MANUAL[r] ? `<span class="small">Sélection manuelle : ${plural(nm,'publication')}</span>` : '<span class="small">Non : lien vers le profil</span>';
-    return `<tr><td><span class="vplat p-${r}">${esc(PLATFORMS[r].label)}</span></td><td class="num">${ver}</td><td class="num">${pend}</td>
-      <td>${mode}</td><td class="small">${esc(r==='bluesky'&&MODE==='historique' ? "API publique officielle de Bluesky (AT Protocol), gratuite et sans compte. Collecte automatique toutes les 30 minutes des membres de la liste de référence ; historique conservé." : PLATFORMS[r].why)}</td></tr>`;
-  }).join('');
-  const accRows = ACCS.map(a=>{ const s=ST[a.key], p=BYID[a.pid];
-    return `<tr><td>${personName(p)}</td><td><a href="${esc(a.url)}" target="_blank" rel="noopener">@${esc(a.identifiant)}</a></td>
-      <td>${s.state==='ok'?'<span class="okv">Synchronisé</span>':s.state==='erreur'?`<span class="badv">Indisponible</span><div class="small">${esc(s.err)}</div>`:s.state==='en cours'?'En cours…':'En attente'}</td>
-      <td>${s.at?esc(fmtDT(s.at)):'—'}</td><td class="num">${s.n}</td><td class="small">${esc(a.source)}${a.verifie_le?' · vérifié le '+esc(fmtD(a.verifie_le)):''}</td></tr>`; }).join('');
-  const pend = PEOPLE.filter(p=>p.pending.length);
-  const none = PEOPLE.filter(p=>!p.accounts.length);
-  $('vCouv').innerHTML = `
-    <div class="glass vcov">${coverageBanner().replace(/<button[^>]*data-go="veille-couv"[^>]*>.*?<\/button>/,'')}</div>
-    <section><h3>Par réseau</h3>
-      <div class="glass tblx"><table><thead><tr><th>Réseau</th><th class="num">Comptes vérifiés</th><th class="num">À vérifier</th><th>Collecte automatique</th><th>Pourquoi</th></tr></thead><tbody>${rows}</tbody></table></div></section>
-    ${MODE==='comptes' ? `<section><h3>Comptes collectés</h3>
-      ${LIST_ERR?`<div class="glass notes badv">${esc(LIST_ERR)}</div>`:''}
-      <div class="glass tblx"><table><thead><tr><th>Parlementaire</th><th>Compte</th><th>État</th><th>Dernière synchronisation</th><th class="num">Publications chargées</th><th>Vérification</th></tr></thead><tbody>${accRows||'<tr><td colspan="6">Aucun compte collecté.</td></tr>'}</tbody></table></div>` : listSection()}
-      ${SEL_ERR.length||SEL_WARN.length?`<div class="glass notes" style="margin-top:10px"><b>Sélection manuelle (data/veille/selection.json) :</b><ul>${SEL_ERR.map(x=>`<li class="badv">Entrée ignorée — ${esc(x)}</li>`).join('')}${SEL_WARN.map(x=>`<li>À contrôler — ${esc(x)}</li>`).join('')}</ul></div>`:''}
-      <div class="sec-tools" style="margin-top:10px"><button type="button" class="lnk" id="vSyncNow">${MODE==='historique'?'Recharger les données':'Relancer la synchronisation'}</button><span class="small">${MODE==='historique'?"Le site affiche l'historique enregistré par la collecte automatique. Pour lancer une collecte immédiate : dépôt GitHub, onglet « Actions », « Veille Bluesky », « Run workflow ».":"Les publications sont lues en direct depuis l'API publique de Bluesky à chaque visite (mise en cache 10 minutes dans votre navigateur)."}</span></div></section>
-    <section><h3>Informations en attente de vérification</h3>
-      <div class="glass notes"><p>Ces informations ne sont ni affichées ni collectées tant qu'elles ne sont pas confirmées par une source officielle ou par la certification de la plateforme.</p>
-      <ul>${pend.map(p=>`<li>${personName(p)} : ${p.pending.map(a=>esc(PLATFORMS[a.reseau].label)+(a.reseau==='bluesky'?' (profil repéré, non confirmé)':' (adresse absente ou invalide sur la fiche officielle)')).join(', ')}</li>`).join('')}</ul>
-      ${none.length?`<p>Aucun compte public n'est mentionné sur la fiche officielle de : ${none.map(personName).join(', ')}.</p>`:''}</div></section>
-    <section><h3>Méthode et limites</h3><div class="glass notes"><ul>
-      <li><b>Sources des comptes :</b> fiches officielles de l'Assemblée nationale et du Sénat, relevées le ${esc(fmtD(REG.maj))}, et certification des plateformes.${MODE!=='comptes'?" Les comptes Bluesky suivis sont ceux de la liste de référence de l'Observatoire ; chacun est rattaché à un parlementaire par son identifiant Bluesky enregistré dans l'annuaire, ou à défaut par son nom exact (rattachement alors signalé comme à confirmer).":''}</li>
-      <li><b>Sélection manuelle (LinkedIn, Instagram) :</b> publications choisies par l'Observatoire, dont seule l'adresse est enregistrée. Elles s'affichent via l'intégration officielle du réseau, uniquement si vous cliquez, et ne sont rattachées qu'à un compte vérifié du parlementaire. Ce n'est pas un relevé complet de son activité sur ces réseaux.</li>
-      <li><b>Publications :</b> seules les publications publiques renvoyées par les API officielles sont affichées, avec un lien vers l'original. Une publication supprimée par son auteur disparaît à la synchronisation suivante. Les images restent hébergées par la plateforme d'origine.</li>
-      <li><b>Thèmes :</b> détection automatique par mots-clés (${esc(THEME_VERSION)}). Un thème signale qu'un sujet est mentionné ; il ne traduit aucune position politique. Une publication peut relever de plusieurs thèmes.</li>
-      <li><b>Historique :</b> ${MODE==='historique'?"les publications Bluesky des membres de la liste sont conservées, mois par mois, depuis leur première collecte (au moins 90 jours en arrière pour un compte ajouté). Une publication supprimée par son auteur est retirée de l'historique lors de la synchronisation suivante, si elle figure parmi ses 100 publications les plus récentes ; une publication plus ancienne n'est pas vérifiée à nouveau.":"l'observatoire ne constitue pas d'archive pour les sources lues en direct : il affiche ce que les plateformes renvoient au moment de la consultation."}</li>
-      <li><b>Données personnelles :</b> l'affichage de cette rubrique fait contacter les serveurs de Bluesky (images sur cdn.bsky.app ; public.api.bsky.app en lecture directe) et, pour l'historique, GitHub (raw.githubusercontent.com) par votre navigateur, qui leur transmet votre adresse IP. Les publications LinkedIn et Instagram ne sont chargées depuis ces réseaux qu'après un clic. Aucune donnée de visiteur n'est conservée par l'Observatoire.</li>
-    </ul></div></section>`;
-  $('vSyncNow').addEventListener('click',()=>{ syncAll(true); renderCoverage(); });
-}
-
-// Liste Bluesky de référence : membres, rattachement et journal de la collecte
-function listSection(){
-  const info = LIST_INFO||{};
-  const rows = ACCS.filter(a=>a.via==='liste').sort((a,b)=>(b.actif!==false)-(a.actif!==false) || personName(BYID[a.pid]).localeCompare(personName(BYID[b.pid]),'fr')).map(a=>{
-    const m = a.membre, st = ST[a.key], P = BYID[a.pid];
-    const ratt = P.kind==='autre' ? '<span class="badv">Non rattaché à l’annuaire</span>' : m.rattachement==='nom' ? 'Par le nom (à confirmer dans comptes.json)' : 'Par identifiant Bluesky (DID)';
-    const statut = a.actif===false ? `Retiré de la liste${m.retire_le?' le '+esc(fmtD(m.retire_le)):''} · historique conservé` : `Membre${m.ajoute_le?' depuis le '+esc(fmtD(m.ajoute_le)):''}`;
-    const etat = MODE==='direct' ? (st.state==='ok'?'<span class="okv">Lu</span>':st.state==='erreur'?`<span class="badv">Indisponible</span><div class="small">${esc(st.err)}</div>`:'—')
-      : st.state==='erreur' ? `<span class="badv">Erreur</span><div class="small">${esc(st.err)}</div>` : st.at ? `<span class="okv">Collecté</span> le ${esc(fmtDT(st.at))}` : 'En attente';
-    return `<tr><td>${personName(P)}<div class="small">${esc(P.role)}</div></td><td><a href="${esc(a.url)}" target="_blank" rel="noopener">@${esc(a.identifiant)}</a></td><td class="small">${ratt}</td><td class="small">${statut}</td><td>${etat}</td><td class="num">${st.total!=null?st.total:st.n}</td></tr>`;
-  }).join('');
-  const journal = MODE==='historique' && ETAT && ETAT.journal ? ETAT.journal.slice(0,12).map(j=>`<tr><td>${esc(fmtDT(j.date))}</td><td>${j.ok?'<span class="okv">Réussie</span>':'<span class="badv">Échec</span>'}</td><td class="num">${j.nouvelles}</td><td class="num">${j.supprimees}</td><td class="num">${j.rejetees}</td><td class="small">${[j.ajouts&&j.ajouts.length?'Ajout : '+j.ajouts.map(h=>'@'+h).join(', '):'', j.retraits&&j.retraits.length?'Retrait : '+j.retraits.map(h=>'@'+h).join(', '):'', ...(j.erreurs||[])].filter(Boolean).map(esc).join('<br>')}</td></tr>`).join('') : '';
-  return `<section><h3>Liste Bluesky de référence</h3>
-    <div class="glass notes"><p style="margin:0">Liste <a href="${esc(safeUrl(info.url)||'#')}" target="_blank" rel="noopener">« ${esc(String(info.nom||'').trim())} »</a>${info.createur?' de @'+esc(info.createur):''} · ${plural(ACCS.filter(a=>a.actif!==false).length,'membre')}.
-      ${MODE==='historique' ? `Collecte automatique toutes les 30 minutes (GitHub Actions) : ${plural(ETAT.total||0,'publication')} en historique, ${plural(Object.keys(ETAT.mois||{}).length,'mois','mois')} couverts. Dernière synchronisation réussie : ${ETAT.derniere_synchro_reussie?esc(fmtDT(ETAT.derniere_synchro_reussie)):'aucune'}${ETAT.derniere_synchro && ETAT.derniere_synchro!==ETAT.derniere_synchro_reussie?` · dernière tentative : ${esc(fmtDT(ETAT.derniere_synchro))} (échec)`:''}.`
-        : "L'historique automatique n'est pas encore disponible : les publications récentes sont lues directement auprès de Bluesky à chaque visite."}
-      Ajouter ou retirer un compte de la liste sur Bluesky suffit : la collecte suit au passage suivant. Chaque publication est vérifiée : elle doit avoir été publiée ou republiée par un membre de la liste.</p></div>
-    <div class="glass tblx" style="margin-top:10px"><table><thead><tr><th>Compte suivi</th><th>Bluesky</th><th>Rattachement</th><th>Statut dans la liste</th><th>Collecte</th><th class="num">Publications</th></tr></thead><tbody>${rows||'<tr><td colspan="6">Aucun membre.</td></tr>'}</tbody></table></div>
-    ${journal?`<h3 style="margin-top:18px">Journal des synchronisations</h3><div class="glass tblx"><table><thead><tr><th>Date</th><th>Résultat</th><th class="num">Nouvelles</th><th class="num">Supprimées</th><th class="num">Rejetées</th><th>Détails</th></tr></thead><tbody>${journal}</tbody></table></div>`:''}`;
-}
-
-// --- Fiche individuelle ---
+// Fiche individuelle : le tableau de diagnostic n'est pas publié.
 function ficheHTML(id){
   const P = BYID[id]; if(!P) return '';
   return `<div class="depcard big vfiche" data-vid="${esc(id)}">
     <div class="dep-top">${P.photo('dep-photo')}<div class="dep-id"><div class="dep-circ">${esc(P.role)} · ${esc(P.chamber)}</div><h4 id="ficheTitle">${personName(P)}</h4><div class="small">${esc(P.place)}</div></div></div>
     <dl class="dep-dl"><dt>Groupe politique</dt><dd><span class="sw" style="background:${esc(P.col)}"></span>${esc(P.groupe)}</dd></dl>
     <a class="dep-link" href="${esc(P.fiche)}" target="_blank" rel="noopener">${esc(P.ficheLabel)} ↗</a>
-    <div class="fiche-sec"><div class="restitle">Comptes publics vérifiés</div>${chipsHTML(P, true)}</div>
+    <div class="fiche-sec"><div class="restitle">Comptes publics vérifiés</div>${chipsHTML(P)}</div>
     <div id="vFicheBody">${ficheBody(P)}</div>
   </div>`;
 }
@@ -741,10 +657,9 @@ function socialBlock(id){
 
 // ---------- Bandeau d'en-tête ----------
 function hero(v){
-  const t = {veille:"Veille parlementaire", 'veille-comptes':"Parlementaires et comptes", 'veille-couv':"Couverture des sources"}[v];
+  const t = {veille:"Réseaux sociaux", 'veille-comptes':"Parlementaires et comptes"}[v];
   const p = {veille:"Dernières publications publiques des 11 députés et 12 sénateurs des Français établis hors de France, dans un fil commun. Seuls les réseaux accessibles gratuitement et légalement sont collectés : le fil n'est pas exhaustif.",
-    'veille-comptes':"Comptes publics des 23 parlementaires, relevés sur les fiches officielles de l'Assemblée nationale et du Sénat. Un compte non confirmé n'est pas affiché.",
-    'veille-couv':"État de la collecte : réseaux accessibles, comptes synchronisés, dernière synchronisation réussie et sources indisponibles."}[v];
+    'veille-comptes':"Comptes publics des 23 parlementaires, relevés sur les fiches officielles de l'Assemblée nationale et du Sénat. Un compte non confirmé n'est pas affiché."}[v];
   if(!REG) return {t, p, k:[]};
   const nAcc = PEOPLE.reduce((n,x)=>n+x.accounts.length,0);
   const nets = new Set(ACCS.map(a=>a.reseau)).size;
@@ -756,7 +671,6 @@ function refresh(){
   OBS.refreshHero && OBS.refreshHero();
   if(CUR_VIEW==='veille' && !$('v-veille').hidden) renderFeed();
   else if(CUR_VIEW==='veille-comptes' && !$('v-veille-comptes').hidden) renderDirectory();
-  else if(CUR_VIEW==='veille-couv' && !$('v-veille-couv').hidden) renderCoverage();
   paintStatus();
   const f = document.querySelector('.vfiche'); if(f && $('vFicheBody') && BYID[f.dataset.vid]) $('vFicheBody').innerHTML = ficheBody(BYID[f.dataset.vid]);
 }
@@ -781,9 +695,10 @@ window.VEILLE = {
   },
   async render(v){
     CUR_VIEW = v;
-    const target = {veille:'vFeed','veille-comptes':'vDir','veille-couv':'vCouv'}[v];
+    const target = {veille:'vFeed','veille-comptes':'vDir'}[v];
+    if(!target)return;
     try{ await READY; }catch(e){ $(target).innerHTML = '<div class="glass notes">Les fichiers data/veille/comptes.json et data/veille/themes.json sont introuvables.</div>'; return; }
-    if(v==='veille') renderFeed(); else if(v==='veille-comptes') renderDirectory(); else renderCoverage();
+    if(v==='veille') renderFeed(); else renderDirectory();
     OBS.refreshHero && OBS.refreshHero();
     if(!FETCHED_AT && !LOADING) syncAll(false);
     else if(FETCHED_AT && Date.now()-FETCHED_AT > CACHE_TTL) syncAll(true);
