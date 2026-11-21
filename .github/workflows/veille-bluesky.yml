@@ -1,0 +1,48 @@
+# Collecte automatique Bluesky de la Veille parlementaire.
+# Toutes les 30 minutes : lit la liste Bluesky de référence (data/veille/config.json),
+# collecte les publications de ses membres et enregistre l'historique dans
+# data/veille/bluesky/. Gratuit pour un dépôt public. Aucun secret nécessaire.
+name: Veille Bluesky
+
+on:
+  schedule:
+    - cron: '7,37 * * * *'      # toutes les 30 minutes (à :07 et :37, heures moins chargées)
+  workflow_dispatch:            # lancement manuel : onglet « Actions » → « Veille Bluesky » → « Run workflow »
+
+permissions:
+  contents: write               # nécessaire pour enregistrer les données collectées
+
+concurrency:
+  group: veille-bluesky         # jamais deux collectes en même temps
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Tests
+        run: node tests/veille.test.mjs && node tests/collecteur.test.mjs
+
+      - name: Collecte Bluesky
+        run: node collecteur/bluesky-liste.mjs
+
+      - name: Enregistrement de l'historique
+        if: always()            # l'état est enregistré même en cas d'échec, pour que le site l'affiche
+        run: |
+          git config user.name "veille-bluesky[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/veille/bluesky
+          if git diff --cached --quiet; then echo "Aucun changement."; exit 0; fi
+          git commit -q -m "Veille Bluesky : synchronisation du $(date -u +'%Y-%m-%d %H:%M') UTC"
+          for i in 1 2 3 4; do
+            if git pull -q --rebase && git push -q; then exit 0; fi
+            sleep $((i * 10))
+          done
+          echo "Impossible d'enregistrer les données après 4 tentatives." && exit 1
