@@ -1,0 +1,672 @@
+{
+ "maj": "2026-11-20",
+ "note": "Registre des comptes sociaux des parlementaires des Français de l'étranger. Clés : identifiant Assemblée nationale (PA…) pour les députés, identifiant Sénat pour les sénateurs. Un compte n'est affiché publiquement que si \"verification\" vaut \"verifie\" ; il n'est collecté automatiquement que si \"collecte\" vaut true et qu'un connecteur existe pour son réseau. Voir README.txt, section VEILLE PARLEMENTAIRE.",
+ "statuts": {
+  "verifie": "Compte confirmé par une source officielle (fiche Assemblée nationale ou Sénat, site officiel du parlementaire) ou par la certification de la plateforme.",
+  "a_verifier": "Information incomplète ou non confirmée : non affichée publiquement, non collectée."
+ },
+ "parlementaires": {
+  "PA721004": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "amelia_lkf",
+     "url": "https://x.com/amelia_lkf",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721004",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "",
+     "url": "",
+     "verification": "a_verifier",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721004",
+     "verifie_le": null,
+     "collecte": false,
+     "note": "La fiche officielle indique « Amal Amélia Lakrafi » sans adresse de page valide."
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "amelia_lakrafi",
+     "url": "https://www.instagram.com/amelia_lakrafi/",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721004",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "amelialkf",
+     "url": "https://www.linkedin.com/in/amelialkf",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721004",
+     "verifie_le": "2026-11-20",
+     "collecte": false,
+     "note": "Adresse corrigée : la fiche officielle contient une URL mal formée (« linkedin.com/in/fr.linkedin.com/in/amelialkf »)."
+    }
+   ]
+  },
+  "PA721024": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "AGenetet",
+     "url": "https://x.com/AGenetet",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721024",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "",
+     "url": "",
+     "verification": "a_verifier",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721024",
+     "verifie_le": null,
+     "collecte": false,
+     "note": "La fiche officielle indique « Anne Genetet - Députée » sans adresse de page valide."
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "Anne_Genetet",
+     "url": "https://www.instagram.com/Anne_Genetet/",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721024",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "anne-genetet-2364626",
+     "url": "https://www.linkedin.com/in/anne-genetet-2364626",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721024",
+     "verifie_le": "2026-11-20",
+     "collecte": false,
+     "note": "Adresse corrigée : la fiche officielle contient une URL mal formée (« linkedin.com/in/sg.linkedin.com/in/… »)."
+    },
+    {
+     "reseau": "bluesky",
+     "identifiant": "agenetet.bsky.social",
+     "url": "https://bsky.app/profile/agenetet.bsky.social",
+     "verification": "a_verifier",
+     "source": "Recherche Bluesky",
+     "source_url": "",
+     "verifie_le": null,
+     "collecte": false,
+     "did": "did:plc:z7ktudp4uqrdbj5yyw6vw4tn",
+     "note": "Profil se présentant comme « Députée des Français d'Asie, d'Océanie et d'Europe orientale » ; identifiant proche du compte X officiel (@AGenetet). Aucun lien depuis une source officielle ni certification Bluesky."
+    }
+   ]
+  },
+  "PA795402": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "nathcogg",
+     "url": "https://x.com/nathcogg",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795402",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "nathalie.coggia",
+     "url": "https://www.facebook.com/nathalie.coggia",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795402",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "nathcog",
+     "url": "https://www.instagram.com/nathcog/",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795402",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "nathaliecoggia",
+     "url": "https://www.linkedin.com/in/nathaliecoggia",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795402",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    }
+   ]
+  },
+  "PA795884": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "FerracciMarc",
+     "url": "https://x.com/FerracciMarc",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795884",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "marcferracci.1",
+     "url": "https://www.facebook.com/marcferracci.1",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795884",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "marcferracci",
+     "url": "https://www.instagram.com/marcferracci/",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795884",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "marc-ferracci-4597264",
+     "url": "https://www.linkedin.com/in/marc-ferracci-4597264",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795884",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    }
+   ]
+  },
+  "PA842311": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "vincent_caure",
+     "url": "https://x.com/vincent_caure",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA842311",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "",
+     "url": "https://www.facebook.com/share/15ssfLbwEP",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA842311",
+     "verifie_le": "2026-11-20",
+     "collecte": false,
+     "note": "Lien de partage Facebook tel que publié sur la fiche officielle."
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "vincent_caure",
+     "url": "https://www.instagram.com/vincent_caure/",
+     "verification": "verifie",
+     "source": "Fiche officielle de l'Assemblée nationale",
+     "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA842311",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "bluesky",
+     "identifiant": "vincentcaure.bsky.social",
+     "url": "https://bsky.app/profile/vincentcaure.bsky.social",
+     "verification": "a_verifier",
+     "source": "Recherche Bluesky",
+     "source_url": "",
+     "verifie_le": null,
+     "collecte": false,
+     "did": "did:plc:ij2zfnls7gz6rwailozlrcwd",
+     "note": "Profil se présentant comme « Député des Français d'Europe du Nord » ; identifiant proche du compte X officiel (@vincent_caure). Aucun lien depuis une source officielle ni certification Bluesky."
+    }
+   ]
+  },
+  "PA721158": {
+   "comptes": [
+    {
+     "reseau": "bluesky",
+     "identifiant": "paanglade.bsky.social",
+     "url": "https://bsky.app/profile/paanglade.bsky.social",
+     "verification": "a_verifier",
+     "source": "Recherche Bluesky",
+     "source_url": "",
+     "verifie_le": null,
+     "collecte": false,
+     "did": "did:plc:ybd5bxbpyfd3azgukjgvtivh",
+     "note": "Profil se présentant comme « Député des Français établis à l'étranger - Président de la Commission des affaires européennes ». La fiche officielle ne mentionne aucun réseau social."
+    }
+   ]
+  },
+  "PA721182": {
+   "comptes": [
+    {
+     "reseau": "bluesky",
+     "identifiant": "fpetit.bsky.social",
+     "url": "https://bsky.app/profile/fpetit.bsky.social",
+     "verification": "a_verifier",
+     "source": "Recherche Bluesky",
+     "source_url": "",
+     "verifie_le": null,
+     "collecte": false,
+     "did": "did:plc:qaotuy4vyfdgyc42mwuflv7y",
+     "note": "Profil se présentant comme « Député des Français établis en Allemagne, Europe centrale et dans les Balkans ». La fiche officielle ne mentionne aucun réseau social."
+    }
+   ]
+  },
+  "PA795454": {
+   "comptes": [
+    {
+     "reseau": "bluesky",
+     "identifiant": "kbencheikh.bsky.social",
+     "url": "https://bsky.app/profile/kbencheikh.bsky.social",
+     "verification": "a_verifier",
+     "source": "Recherche Bluesky",
+     "source_url": "",
+     "verifie_le": null,
+     "collecte": false,
+     "did": "did:plc:rajo2u37vabj7ydnpp6a3win",
+     "note": "Profil se présentant comme « Député de la 9e circonscription des Français établis hors de France ». La fiche officielle ne mentionne aucun réseau social."
+    }
+   ]
+  },
+  "PA795326": {
+   "comptes": []
+  },
+  "PA795334": {
+   "comptes": []
+  },
+  "PA795046": {
+   "comptes": []
+  },
+  "conway_mouret_helene11027h": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "hconwaymouret",
+     "url": "https://x.com/hconwaymouret",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/conway_mouret_helene11027h.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "100058083039806",
+     "url": "https://www.facebook.com/100058083039806",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/conway_mouret_helene11027h.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "hélène-conway-mouret-283703a3",
+     "url": "https://www.linkedin.com/in/h%C3%A9l%C3%A8ne-conway-mouret-283703a3/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/conway_mouret_helene11027h.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "bluesky",
+     "identifiant": "hconwaymouret.bsky.social",
+     "url": "https://bsky.app/profile/hconwaymouret.bsky.social",
+     "verification": "a_verifier",
+     "source": "Recherche Bluesky",
+     "source_url": "",
+     "verifie_le": null,
+     "collecte": false,
+     "did": "did:plc:6i767zpi4oviretinbdg2wb2",
+     "note": "Profil se présentant comme « Sénatrice PS des Français de l'étranger » ; identifiant identique au compte X officiel. Aucun lien depuis une source officielle ni certification Bluesky."
+    }
+   ]
+  },
+  "le_gleut_ronan19709b": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "ronan_legleut",
+     "url": "https://x.com/ronan_legleut",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/le_gleut_ronan19709b.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "717598083",
+     "url": "https://www.facebook.com/717598083",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/le_gleut_ronan19709b.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "ronanlegleut",
+     "url": "https://www.linkedin.com/in/ronanlegleut/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/le_gleut_ronan19709b.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    }
+   ]
+  },
+  "ollivier_mathilde21037d": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "Mat_OLLIVIER",
+     "url": "https://x.com/Mat_OLLIVIER",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/ollivier_mathilde21037d.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "Mathilde.Ollivier.Circo7",
+     "url": "https://www.facebook.com/Mathilde.Ollivier.Circo7",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/ollivier_mathilde21037d.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "mathilde_ollivier",
+     "url": "https://www.instagram.com/mathilde_ollivier/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/ollivier_mathilde21037d.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "bluesky",
+     "identifiant": "mathildeollivier.bsky.social",
+     "url": "https://bsky.app/profile/mathildeollivier.bsky.social",
+     "verification": "a_verifier",
+     "source": "Recherche Bluesky",
+     "source_url": "",
+     "verifie_le": null,
+     "collecte": false,
+     "did": "did:plc:aj7nw5dlhpmid2pe3o7jjw2z",
+     "note": "Profil se présentant comme « Sénatrice des Français•es établi•es hors de France », renvoyant vers mathilde-ollivier.fr. Ce site n'a pas pu être consulté pour confirmer le lien."
+    }
+   ]
+  },
+  "renaud_garabedian_evelyne19705w": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "e_renaud_G",
+     "url": "https://x.com/e_renaud_G",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/renaud_garabedian_evelyne19705w.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "100057984283482",
+     "url": "https://www.facebook.com/100057984283482",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/renaud_garabedian_evelyne19705w.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    }
+   ]
+  },
+  "richard_olivia21038e": {
+   "comptes": [
+    {
+     "reseau": "linkedin",
+     "identifiant": "olivia-richard-771653b5",
+     "url": "https://www.linkedin.com/in/olivia-richard-771653b5/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/richard_olivia21038e.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    }
+   ]
+  },
+  "ruelle_jean_luc21036c": {
+   "comptes": [
+    {
+     "reseau": "linkedin",
+     "identifiant": "jean-luc-ruelle-0b737229",
+     "url": "https://www.linkedin.com/in/jean-luc-ruelle-0b737229/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/ruelle_jean_luc21036c.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    }
+   ]
+  },
+  "briante_guillemont_sophie21404g": {
+   "comptes": [
+    {
+     "reseau": "facebook",
+     "identifiant": "sophie.briante.guillemont.2024",
+     "url": "https://www.facebook.com/sophie.briante.guillemont.2024",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/briante_guillemont_sophie21404g.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "sbg_senat",
+     "url": "https://www.instagram.com/sbg_senat/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/briante_guillemont_sophie21404g.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "sophie-briante-guillemont-b5b18a33",
+     "url": "https://www.linkedin.com/in/sophie-briante-guillemont-b5b18a33/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/briante_guillemont_sophie21404g.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "bluesky",
+     "identifiant": "sbg-senat.bsky.social",
+     "url": "https://bsky.app/profile/sbg-senat.bsky.social",
+     "verification": "a_verifier",
+     "source": "Recherche Bluesky",
+     "source_url": "",
+     "verifie_le": null,
+     "collecte": false,
+     "did": "did:plc:ezd6jgfviixxtmgps5f37a6i",
+     "note": "Profil se présentant comme « Sénatrice des Français établis hors de France » ; identifiant proche du compte Instagram officiel (sbg_senat). Aucun lien depuis une source officielle ni certification Bluesky."
+    }
+   ]
+  },
+  "cadic_olivier14255u": {
+   "comptes": [
+    {
+     "reseau": "facebook",
+     "identifiant": "727383815",
+     "url": "https://www.facebook.com/727383815",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/cadic_olivier14255u.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "olivier-cadic-6941562a",
+     "url": "https://www.linkedin.com/in/olivier-cadic-6941562a/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/cadic_olivier14255u.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    }
+   ]
+  },
+  "chantrel_yan20264j": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "YanChantrel",
+     "url": "https://x.com/YanChantrel",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/chantrel_yan20264j.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "100001635230244",
+     "url": "https://www.facebook.com/100001635230244",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/chantrel_yan20264j.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "yan-chantrel-80aa6267",
+     "url": "https://www.linkedin.com/in/yan-chantrel-80aa6267/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/chantrel_yan20264j.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "bluesky",
+     "identifiant": "yanchantrel.bsky.social",
+     "url": "https://bsky.app/profile/yanchantrel.bsky.social",
+     "verification": "a_verifier",
+     "source": "Recherche Bluesky",
+     "source_url": "",
+     "verifie_le": null,
+     "collecte": false,
+     "did": "did:plc:nexarmauewfouxx6q5i3zfow",
+     "note": "Profil se présentant comme « Sénateur des Français•es établi•es hors de France » ; identifiant identique au compte X officiel. Aucun lien depuis une source officielle ni certification Bluesky."
+    }
+   ]
+  },
+  "dupont_bertrand21672b": {
+   "comptes": []
+  },
+  "rousselot_marie_ange21436q": {
+   "comptes": [
+    {
+     "reseau": "facebook",
+     "identifiant": "marousselot",
+     "url": "https://www.facebook.com/marousselot/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/rousselot_marie_ange21436q.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "marie_ange_rousselot",
+     "url": "https://www.instagram.com/marie_ange_rousselot/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/rousselot_marie_ange21436q.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "linkedin",
+     "identifiant": "marie-ange-rousselot-ab1b744a",
+     "url": "https://www.linkedin.com/in/marie-ange-rousselot-ab1b744a/",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/rousselot_marie_ange21436q.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    }
+   ]
+  },
+  "vogel_melanie20266l": {
+   "comptes": [
+    {
+     "reseau": "x",
+     "identifiant": "Melanie_Vogel_",
+     "url": "https://x.com/Melanie_Vogel_",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/vogel_melanie20266l.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "facebook",
+     "identifiant": "100078760544031",
+     "url": "https://www.facebook.com/100078760544031",
+     "verification": "verifie",
+     "source": "Fiche officielle du Sénat",
+     "source_url": "https://www.senat.fr/senateur/vogel_melanie20266l.html",
+     "verifie_le": "2026-11-20",
+     "collecte": false
+    },
+    {
+     "reseau": "bluesky",
+     "identifiant": "melanievogel.bsky.social",
+     "url": "https://bsky.app/profile/melanievogel.bsky.social",
+     "verification": "verifie",
+     "source": "Certification Bluesky (compte vérifié par Bluesky Social)",
+     "source_url": "https://bsky.app/profile/melanievogel.bsky.social",
+     "verifie_le": "2026-11-20",
+     "collecte": true,
+     "did": "did:plc:2aqxwjb7sjjsrxvumkarj75k"
+    }
+   ]
+  }
+ }
+}

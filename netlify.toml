@@ -1,0 +1,31 @@
+[build]
+  publish = "."
+  # Si le site est relié à GitHub : pas de redéploiement quand seule la collecte
+  # Bluesky a modifié des fichiers (toutes les 30 minutes). Le site lit alors
+  # l'historique directement sur GitHub (voir data/veille/config.json).
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)data/veille/bluesky'"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+
+# Les tests et leurs données d'exemple ne sont pas publiés
+[[redirects]]
+  from = "/tests/*"
+  to = "/404"
+  status = 404
+  force = true
+
+# Le collecteur et la configuration GitHub ne sont pas publiés
+[[redirects]]
+  from = "/collecteur/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/.github/*"
+  to = "/404"
+  status = 404
+  force = true

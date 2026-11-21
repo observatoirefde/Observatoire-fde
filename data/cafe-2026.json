@@ -1,0 +1,1160 @@
+{
+ "maj": "2026-11-18",
+ "source": "Assemblée des Français de l'étranger — annuaire des conseillers (assemblee-afe.fr)",
+ "url_fiche": "https://www.assemblee-afe.fr/annuaire-des-conseillers/?annuaire_elu=",
+ "groupes": {
+  "DEFIA": "Défense des Français d'Ici et d'Ailleurs (DEFIA)",
+  "PES": "Progressistes, Ecologistes et Solidaires",
+  "IND": "Les Indépendants",
+  "SI": "Solidaires et Indépendants",
+  "NI": "Non-inscrit",
+  "ALICE": "Alliance des Libéraux, Indépendants et Centristes de l'Etranger (ALICE)"
+ },
+ "commissions": {
+  "SOC": "Commission des Affaires sociales, de la jeunesse, de la protection des personnes, de l'emploi et du monde combattant",
+  "LOI": "Commission des Lois, des règlements et des affaires consulaires",
+  "ENS": "Commission de l'Enseignement, de la formation et des affaires culturelles",
+  "SEC": "Commission de la Sécurité et des urgences écologiques",
+  "COM": "Commission du Commerce extérieur, des partenariats internationaux, de la francophonie et des médias",
+  "FIN": "Commission des Finances, du budget et de la fiscalité"
+ },
+ "circonscriptions": [
+  "Afrique centrale, australe et orientale",
+  "Afrique du Nord",
+  "Afrique occidentale",
+  "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+  "Amérique latine et Caraïbes",
+  "Asie centrale et Moyen-Orient",
+  "Asie et Océanie",
+  "Bénélux",
+  "Canada",
+  "Europe centrale et orientale (y compris Russie)",
+  "Europe du Nord",
+  "Europe du Sud",
+  "Israël et Territoires palestiniens",
+  "Péninsule ibérique",
+  "États-Unis d'Amérique"
+ ],
+ "conseillers": [
+  {
+   "id": 242,
+   "civ": "M.",
+   "prenom": "Claude",
+   "nom": "ALLOUCHE",
+   "circ_afe": "Israël et Territoires palestiniens",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 252,
+   "civ": "Mme",
+   "prenom": "Marie-Ange",
+   "nom": "AMICO",
+   "circ_afe": "Europe du Sud",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 312,
+   "civ": "Mme",
+   "prenom": "Mylène",
+   "nom": "AUDIRAC",
+   "circ_afe": "Amérique latine et Caraïbes",
+   "fonctions": [
+    "Vice-Présidente de la commission"
+   ],
+   "commission": "ENS",
+   "groupe": "IND",
+   "mandats": []
+  },
+  {
+   "id": 335,
+   "civ": "Mme",
+   "prenom": "Mayumi",
+   "nom": "AUDOYER",
+   "circ_afe": "Amérique latine et Caraïbes",
+   "fonctions": [],
+   "commission": "ENS",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 52,
+   "civ": "M.",
+   "prenom": "Raphaël",
+   "nom": "AVANZI",
+   "circ_afe": "Bénélux",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 266,
+   "civ": "M.",
+   "prenom": "Ghassan",
+   "nom": "AYOUB",
+   "circ_afe": "Asie centrale et Moyen-Orient",
+   "fonctions": [],
+   "commission": "ENS",
+   "groupe": "SI",
+   "mandats": [
+    "Conseil d'orientation stratégique de l'Institut Français"
+   ]
+  },
+  {
+   "id": 1,
+   "civ": "M.",
+   "prenom": "Alexandre",
+   "nom": "BARRIERE",
+   "circ_afe": "Afrique centrale, australe et orientale",
+   "fonctions": [
+    "Vice-Président du groupe"
+   ],
+   "commission": "LOI",
+   "groupe": "SI",
+   "mandats": [
+    "Commission permanente pour la protection sociale des Français de l'étranger"
+   ]
+  },
+  {
+   "id": 322,
+   "civ": "M.",
+   "prenom": "Thomas",
+   "nom": "BASSETTO",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "PES",
+   "mandats": [
+    "Bureau de vote électronique"
+   ]
+  },
+  {
+   "id": 283,
+   "civ": "Mme",
+   "prenom": "Valérie",
+   "nom": "BEILVERT",
+   "circ_afe": "Afrique occidentale",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 298,
+   "civ": "Mme",
+   "prenom": "Khadija",
+   "nom": "BELBACHIR-BELCAID",
+   "circ_afe": "Afrique du Nord",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "PES",
+   "mandats": [
+    "Commission nationale des bourses"
+   ]
+  },
+  {
+   "id": 238,
+   "civ": "M.",
+   "prenom": "Eric",
+   "nom": "BELLAÏCHE",
+   "circ_afe": "Israël et Territoires palestiniens",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "NI",
+   "mandats": []
+  },
+  {
+   "id": 417,
+   "civ": "Mme",
+   "prenom": "Madeleine",
+   "nom": "BERGER BEN NACEUR",
+   "circ_afe": "Afrique du Nord",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "IND",
+   "mandats": []
+  },
+  {
+   "id": 119,
+   "civ": "Mme",
+   "prenom": "Davina",
+   "nom": "BESSAT DAOUD",
+   "circ_afe": "Europe du Sud",
+   "fonctions": [
+    "Membre du Bureau de l'AFE"
+   ],
+   "commission": "ENS",
+   "groupe": "IND",
+   "mandats": []
+  },
+  {
+   "id": 426,
+   "civ": "M.",
+   "prenom": "Martin",
+   "nom": "BIURRUN",
+   "circ_afe": "Amérique latine et Caraïbes",
+   "fonctions": [
+    "Membre suppléant du Bureau de l'AFE"
+   ],
+   "commission": "SEC",
+   "groupe": "SI",
+   "mandats": [
+    "Bureau de vote électronique"
+   ]
+  },
+  {
+   "id": 78,
+   "civ": "M.",
+   "prenom": "Florian",
+   "nom": "BOHEME",
+   "circ_afe": "Asie et Océanie",
+   "fonctions": [
+    "Membre du Bureau de l'AFE",
+    "Vice-Président du groupe"
+   ],
+   "commission": "SOC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 156,
+   "civ": "M.",
+   "prenom": "Pascal",
+   "nom": "BOURBON",
+   "circ_afe": "Péninsule ibérique",
+   "fonctions": [],
+   "commission": "COM",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 217,
+   "civ": "M.",
+   "prenom": "Frédéric",
+   "nom": "BOUZIGUES",
+   "circ_afe": "Afrique occidentale",
+   "fonctions": [],
+   "commission": "COM",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 149,
+   "civ": "M.",
+   "prenom": "Geoffroy",
+   "nom": "BUNETEL",
+   "circ_afe": "Asie centrale et Moyen-Orient",
+   "fonctions": [],
+   "commission": "COM",
+   "groupe": "ALICE",
+   "mandats": [
+    "Conseil d'orientation stratégique de France Titres"
+   ]
+  },
+  {
+   "id": 291,
+   "civ": "M.",
+   "prenom": "Pascal",
+   "nom": "CAPDEVIELLE",
+   "circ_afe": "Afrique du Nord",
+   "fonctions": [
+    "Vice-Président du groupe"
+   ],
+   "commission": "SEC",
+   "groupe": "IND",
+   "mandats": []
+  },
+  {
+   "id": 399,
+   "civ": "Mme",
+   "prenom": "Lalla-Ilham",
+   "nom": "CHAHDI",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [
+    "Membre du Bureau de l'AFE"
+   ],
+   "commission": "COM",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 223,
+   "civ": "Mme",
+   "prenom": "Anju",
+   "nom": "CHAZOT",
+   "circ_afe": "Europe du Nord",
+   "fonctions": [
+    "Présidente du groupe"
+   ],
+   "commission": "ENS",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 400,
+   "civ": "Mme",
+   "prenom": "Linda",
+   "nom": "CHEVALIER",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [],
+   "commission": "COM",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 366,
+   "civ": "M.",
+   "prenom": "Mathieu",
+   "nom": "CHOLLET",
+   "circ_afe": "Europe du Nord",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 394,
+   "civ": "M.",
+   "prenom": "Alexandre",
+   "nom": "COL",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [],
+   "commission": "ENS",
+   "groupe": "ALICE",
+   "mandats": []
+  },
+  {
+   "id": 345,
+   "civ": "Mme",
+   "prenom": "Françoise",
+   "nom": "CONESTABILE",
+   "circ_afe": "Péninsule ibérique",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 369,
+   "civ": "Mme",
+   "prenom": "Patricia",
+   "nom": "CONNELL",
+   "circ_afe": "Europe du Nord",
+   "fonctions": [
+    "Membre du Bureau de l'AFE"
+   ],
+   "commission": "SEC",
+   "groupe": "ALICE",
+   "mandats": [
+    "Bureau de vote électronique"
+   ]
+  },
+  {
+   "id": 401,
+   "civ": "M.",
+   "prenom": "Remy",
+   "nom": "CREGUT",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [
+    "Membre suppléant du Bureau de l'AFE"
+   ],
+   "commission": "COM",
+   "groupe": "ALICE",
+   "mandats": []
+  },
+  {
+   "id": 86,
+   "civ": "M.",
+   "prenom": "Olivier",
+   "nom": "DELLAPINA",
+   "circ_afe": "Canada",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "NI",
+   "mandats": []
+  },
+  {
+   "id": 11,
+   "civ": "M.",
+   "prenom": "Karim",
+   "nom": "DENDÈNE",
+   "circ_afe": "Afrique du Nord",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 263,
+   "civ": "M.",
+   "prenom": "Jean-Baka",
+   "nom": "DOMELEVO ENTFELLNER",
+   "circ_afe": "Afrique centrale, australe et orientale",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "PES",
+   "mandats": [
+    "Conseil d'administration de France Médias Monde"
+   ]
+  },
+  {
+   "id": 202,
+   "civ": "M.",
+   "prenom": "Gérard",
+   "nom": "EPELBAUM",
+   "circ_afe": "États-Unis d'Amérique",
+   "fonctions": [
+    "Vice-Président de la commission"
+   ],
+   "commission": "FIN",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 377,
+   "civ": "M.",
+   "prenom": "Franck",
+   "nom": "FERRARI",
+   "circ_afe": "Europe centrale et orientale (y compris Russie)",
+   "fonctions": [],
+   "commission": "ENS",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 26,
+   "civ": "Mme",
+   "prenom": "Nadine",
+   "nom": "FOUQUES-WEISS",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [
+    "Membre du Bureau de l'AFE"
+   ],
+   "commission": "FIN",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 278,
+   "civ": "M.",
+   "prenom": "Jean-Hervé",
+   "nom": "FRASLIN",
+   "circ_afe": "Afrique centrale, australe et orientale",
+   "fonctions": [
+    "Vice-Président du groupe"
+   ],
+   "commission": "ENS",
+   "groupe": "ALICE",
+   "mandats": []
+  },
+  {
+   "id": 99,
+   "civ": "M.",
+   "prenom": "Thibault",
+   "nom": "FROEHLICH",
+   "circ_afe": "Canada",
+   "fonctions": [
+    "Vice-Président du groupe"
+   ],
+   "commission": "LOI",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 15,
+   "civ": "M.",
+   "prenom": "Maxime",
+   "nom": "GAUTIER",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [],
+   "commission": "COM",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 333,
+   "civ": "Mme",
+   "prenom": "Vanessa",
+   "nom": "GONDOUIN-HAUSTEIN",
+   "circ_afe": "Bénélux",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "PES",
+   "mandats": [
+    "Commission de soutien au tissu associatif des Français de l'étranger (STAFE)"
+   ]
+  },
+  {
+   "id": 44,
+   "civ": "M.",
+   "prenom": "Jean-Philippe",
+   "nom": "GRANGE",
+   "circ_afe": "Asie et Océanie",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 327,
+   "civ": "Mme",
+   "prenom": "Géraldine",
+   "nom": "GUILLEMOT-PEACOCK",
+   "circ_afe": "Asie et Océanie",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 38,
+   "civ": "M.",
+   "prenom": "Jérôme",
+   "nom": "GUILLOT",
+   "circ_afe": "Amérique latine et Caraïbes",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "PES",
+   "mandats": [
+    "Commission permanente pour la protection sociale des Français de l'étranger"
+   ]
+  },
+  {
+   "id": 48,
+   "civ": "Mme",
+   "prenom": "Armelle",
+   "nom": "HAMMOUMI MÜLLER",
+   "circ_afe": "Bénélux",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "PES",
+   "mandats": [
+    "Commission de soutien au tissu associatif des Français de l'étranger (STAFE)"
+   ]
+  },
+  {
+   "id": 8,
+   "civ": "M.",
+   "prenom": "Fwad",
+   "nom": "HASNAOUI",
+   "circ_afe": "Afrique du Nord",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 135,
+   "civ": "M.",
+   "prenom": "Baptiste",
+   "nom": "HEINTZ",
+   "circ_afe": "Afrique occidentale",
+   "fonctions": [
+    "Président de l'AFE"
+   ],
+   "commission": "FIN",
+   "groupe": "PES",
+   "mandats": [
+    "Bureau de vote électronique"
+   ]
+  },
+  {
+   "id": 16,
+   "civ": "Mme",
+   "prenom": "Marie-Julie",
+   "nom": "JACQUEMOT",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 192,
+   "civ": "M.",
+   "prenom": "Christophe",
+   "nom": "JOUIN",
+   "circ_afe": "États-Unis d'Amérique",
+   "fonctions": [
+    "Vice-Président du groupe"
+   ],
+   "commission": "LOI",
+   "groupe": "ALICE",
+   "mandats": []
+  },
+  {
+   "id": 21,
+   "civ": "M.",
+   "prenom": "Marc",
+   "nom": "KNÜLLE",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 270,
+   "civ": "M.",
+   "prenom": "Lucas",
+   "nom": "LAMAH",
+   "circ_afe": "Asie centrale et Moyen-Orient",
+   "fonctions": [
+    "Président de la commission",
+    "Membre suppléant du Bureau de l'AFE"
+   ],
+   "commission": "LOI",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 180,
+   "civ": "M.",
+   "prenom": "Oussama",
+   "nom": "LARAICHI",
+   "circ_afe": "États-Unis d'Amérique",
+   "fonctions": [],
+   "commission": "COM",
+   "groupe": "PES",
+   "mandats": [
+    "Conseil d'orientation stratégique de France Titres"
+   ]
+  },
+  {
+   "id": 197,
+   "civ": "Mme",
+   "prenom": "Sophie",
+   "nom": "LARTILLEUX SUBERVILLE",
+   "circ_afe": "États-Unis d'Amérique",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "ALICE",
+   "mandats": []
+  },
+  {
+   "id": 334,
+   "civ": "M.",
+   "prenom": "Pierre Yves",
+   "nom": "LAVÉANT",
+   "circ_afe": "Bénélux",
+   "fonctions": [
+    "Président de la commission"
+   ],
+   "commission": "SEC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 361,
+   "civ": "M.",
+   "prenom": "Vassili",
+   "nom": "LE MOIGNE",
+   "circ_afe": "Europe centrale et orientale (y compris Russie)",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "SI",
+   "mandats": [
+    "Conseil départemental de l'accès au droit de Paris"
+   ]
+  },
+  {
+   "id": 162,
+   "civ": "Mme",
+   "prenom": "Stéphanie",
+   "nom": "LE VAILLANT VIGNANCOUR",
+   "circ_afe": "Péninsule ibérique",
+   "fonctions": [
+    "Présidente du groupe"
+   ],
+   "commission": "FIN",
+   "groupe": "ALICE",
+   "mandats": []
+  },
+  {
+   "id": 163,
+   "civ": "Mme",
+   "prenom": "Gaëlle",
+   "nom": "LECOMTE",
+   "circ_afe": "Péninsule ibérique",
+   "fonctions": [
+    "Présidente de la commission"
+   ],
+   "commission": "SOC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 45,
+   "civ": "Mme",
+   "prenom": "Elise",
+   "nom": "LÉGER",
+   "circ_afe": "Asie et Océanie",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 339,
+   "civ": "M.",
+   "prenom": "Christophe",
+   "nom": "LEJEUNE",
+   "circ_afe": "Asie et Océanie",
+   "fonctions": [
+    "Vice-Président de l'AFE"
+   ],
+   "commission": "FIN",
+   "groupe": "DEFIA",
+   "mandats": [
+    "Bureau de vote électronique"
+   ]
+  },
+  {
+   "id": 300,
+   "civ": "M.",
+   "prenom": "Mathieu",
+   "nom": "LESCRAINIER",
+   "circ_afe": "Afrique du Nord",
+   "fonctions": [
+    "Vice-Président du groupe"
+   ],
+   "commission": "ENS",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 211,
+   "civ": "M.",
+   "prenom": "Didier",
+   "nom": "LESPINAS",
+   "circ_afe": "Afrique centrale, australe et orientale",
+   "fonctions": [
+    "Président de la commission"
+   ],
+   "commission": "COM",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 382,
+   "civ": "Mme",
+   "prenom": "Anne-Marie",
+   "nom": "LICCIONI",
+   "circ_afe": "Afrique occidentale",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 221,
+   "civ": "M.",
+   "prenom": "Vincent",
+   "nom": "LIÉGEY",
+   "circ_afe": "Europe centrale et orientale (y compris Russie)",
+   "fonctions": [
+    "Président de la commission"
+   ],
+   "commission": "ENS",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 273,
+   "civ": "Mme",
+   "prenom": "Corinne",
+   "nom": "LOZE",
+   "circ_afe": "Bénélux",
+   "fonctions": [],
+   "commission": "FIN",
+   "groupe": "IND",
+   "mandats": []
+  },
+  {
+   "id": 233,
+   "civ": "M.",
+   "prenom": "Benoit",
+   "nom": "MARIN-CUDRAZ",
+   "circ_afe": "Europe du Nord",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 185,
+   "civ": "Mme",
+   "prenom": "Aline",
+   "nom": "MARTIN-O'BRIEN",
+   "circ_afe": "États-Unis d'Amérique",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 122,
+   "civ": "Mme",
+   "prenom": "Frédérique",
+   "nom": "MARTIQUET",
+   "circ_afe": "Amérique latine et Caraïbes",
+   "fonctions": [
+    "Vice-Présidente de la commission"
+   ],
+   "commission": "COM",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 69,
+   "civ": "Mme",
+   "prenom": "Mélanie",
+   "nom": "MONTINARD",
+   "circ_afe": "Amérique latine et Caraïbes",
+   "fonctions": [
+    "Membre suppléant du Bureau de l'AFE"
+   ],
+   "commission": "ENS",
+   "groupe": "PES",
+   "mandats": [
+    "Conseil d'administration de l'AEFE"
+   ]
+  },
+  {
+   "id": 141,
+   "civ": "Mme",
+   "prenom": "Marie Emmanuelle",
+   "nom": "MOQUET",
+   "circ_afe": "Europe du Nord",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 234,
+   "civ": "M.",
+   "prenom": "Nicolas",
+   "nom": "NOUELLE-PARRAT",
+   "circ_afe": "Europe du Nord",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "IND",
+   "mandats": [
+    "Conseil national de l'aide juridique"
+   ]
+  },
+  {
+   "id": 111,
+   "civ": "Mme",
+   "prenom": "Françoise",
+   "nom": "ONILLON",
+   "circ_afe": "Asie centrale et Moyen-Orient",
+   "fonctions": [
+    "Vice-Présidente de la commission"
+   ],
+   "commission": "ENS",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 102,
+   "civ": "Mme",
+   "prenom": "Valérie",
+   "nom": "PATREAU",
+   "circ_afe": "Canada",
+   "fonctions": [
+    "Membre suppléant du Bureau de l'AFE"
+   ],
+   "commission": "FIN",
+   "groupe": "PES",
+   "mandats": [
+    "Conseil d'orientation stratégique de l'Institut Français"
+   ]
+  },
+  {
+   "id": 165,
+   "civ": "Mme",
+   "prenom": "Martha",
+   "nom": "PECIÑA",
+   "circ_afe": "Péninsule ibérique",
+   "fonctions": [
+    "Membre du Bureau de l'AFE"
+   ],
+   "commission": "SOC",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 319,
+   "civ": "M.",
+   "prenom": "Christophe",
+   "nom": "PISCIOTTA",
+   "circ_afe": "Europe du Sud",
+   "fonctions": [
+    "Membre suppléant du Bureau de l'AFE"
+   ],
+   "commission": "SEC",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 188,
+   "civ": "M.",
+   "prenom": "Olivier",
+   "nom": "PITON",
+   "circ_afe": "États-Unis d'Amérique",
+   "fonctions": [
+    "Président du groupe"
+   ],
+   "commission": "FIN",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 397,
+   "civ": "M.",
+   "prenom": "Louis",
+   "nom": "PORTAL",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [],
+   "commission": "SEC",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 247,
+   "civ": "Mme",
+   "prenom": "Daphna",
+   "nom": "POZNANSKI-BENHAMOU",
+   "circ_afe": "Israël et Territoires palestiniens",
+   "fonctions": [
+    "Présidente de la commission"
+   ],
+   "commission": "FIN",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 117,
+   "civ": "Mme",
+   "prenom": "Céline",
+   "nom": "POZZOBON",
+   "circ_afe": "Asie et Océanie",
+   "fonctions": [
+    "Présidente du groupe"
+   ],
+   "commission": "COM",
+   "groupe": "IND",
+   "mandats": []
+  },
+  {
+   "id": 13,
+   "civ": "Mme",
+   "prenom": "Tassadit Radya",
+   "nom": "RAHAL",
+   "circ_afe": "Afrique du Nord",
+   "fonctions": [
+    "Vice-Présidente de l'AFE"
+   ],
+   "commission": "LOI",
+   "groupe": "IND",
+   "mandats": [
+    "Commission permanente pour la protection sociale des Français de l'étranger"
+   ]
+  },
+  {
+   "id": 166,
+   "civ": "M.",
+   "prenom": "François",
+   "nom": "RALLE ANDREOLI",
+   "circ_afe": "Péninsule ibérique",
+   "fonctions": [],
+   "commission": "ENS",
+   "groupe": "PES",
+   "mandats": [
+    "Commission nationale des bourses"
+   ]
+  },
+  {
+   "id": 255,
+   "civ": "Mme",
+   "prenom": "Annie",
+   "nom": "REA",
+   "circ_afe": "Europe du Sud",
+   "fonctions": [
+    "Présidente du groupe"
+   ],
+   "commission": "FIN",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 18,
+   "civ": "Mme",
+   "prenom": "Asma",
+   "nom": "RHARMAOUI-CLAQUIN",
+   "circ_afe": "Allemagne, Autriche, Slovaquie, Slovénie, Suisse",
+   "fonctions": [
+    "Vice-Présidente de la commission"
+   ],
+   "commission": "COM",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 144,
+   "civ": "M.",
+   "prenom": "Vincent",
+   "nom": "SADEQUE",
+   "circ_afe": "Afrique centrale, australe et orientale",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 350,
+   "civ": "M.",
+   "prenom": "Guillaume",
+   "nom": "SALHA",
+   "circ_afe": "Asie centrale et Moyen-Orient",
+   "fonctions": [
+    "Vice-Président du groupe"
+   ],
+   "commission": "SEC",
+   "groupe": "DEFIA",
+   "mandats": []
+  },
+  {
+   "id": 227,
+   "civ": "Mme",
+   "prenom": "Chantal",
+   "nom": "SAMUEL-DAVID",
+   "circ_afe": "Asie et Océanie",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 274,
+   "civ": "M.",
+   "prenom": "Frédéric",
+   "nom": "SCHAULI",
+   "circ_afe": "Bénélux",
+   "fonctions": [
+    "Vice-Président de la commission"
+   ],
+   "commission": "LOI",
+   "groupe": "ALICE",
+   "mandats": [
+    "Conseil national de l'aide juridique"
+   ]
+  },
+  {
+   "id": 240,
+   "civ": "Mme",
+   "prenom": "Hélène",
+   "nom": "SEMHOUN",
+   "circ_afe": "Israël et Territoires palestiniens",
+   "fonctions": [],
+   "commission": "SOC",
+   "groupe": "SI",
+   "mandats": []
+  },
+  {
+   "id": 336,
+   "civ": "M.",
+   "prenom": "Vincent",
+   "nom": "SICET",
+   "circ_afe": "Amérique latine et Caraïbes",
+   "fonctions": [
+    "Vice-Président de la commission"
+   ],
+   "commission": "SEC",
+   "groupe": "IND",
+   "mandats": []
+  },
+  {
+   "id": 374,
+   "civ": "Mme",
+   "prenom": "Catherine",
+   "nom": "SMADJA-FROGUEL",
+   "circ_afe": "Europe du Nord",
+   "fonctions": [
+    "Membre suppléant du Bureau de l'AFE",
+    "Vice-Présidente de la commission"
+   ],
+   "commission": "FIN",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 199,
+   "civ": "Mme",
+   "prenom": "Warda",
+   "nom": "SOUIHI",
+   "circ_afe": "États-Unis d'Amérique",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "NI",
+   "mandats": []
+  },
+  {
+   "id": 251,
+   "civ": "M.",
+   "prenom": "Olivier",
+   "nom": "SPIESSER",
+   "circ_afe": "Europe du Sud",
+   "fonctions": [],
+   "commission": "ENS",
+   "groupe": "PES",
+   "mandats": []
+  },
+  {
+   "id": 80,
+   "civ": "M.",
+   "prenom": "Matthias",
+   "nom": "VAZQUEZ",
+   "circ_afe": "Asie et Océanie",
+   "fonctions": [
+    "Vice-Président de la commission",
+    "Secrétaire général du groupe"
+   ],
+   "commission": "SOC",
+   "groupe": "ALICE",
+   "mandats": []
+  },
+  {
+   "id": 376,
+   "civ": "Mme",
+   "prenom": "Anne",
+   "nom": "VIGOUROUX",
+   "circ_afe": "Europe du Nord",
+   "fonctions": [
+    "Secrétaire générale du groupe"
+   ],
+   "commission": "FIN",
+   "groupe": "IND",
+   "mandats": []
+  },
+  {
+   "id": 91,
+   "civ": "Mme",
+   "prenom": "Francine",
+   "nom": "WATKINS",
+   "circ_afe": "Canada",
+   "fonctions": [],
+   "commission": "LOI",
+   "groupe": "NI",
+   "mandats": []
+  }
+ ]
+}

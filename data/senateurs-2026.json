@@ -1,0 +1,197 @@
+{
+ "maj": "2026-11-18",
+ "source": "Sénat — liste des sénateurs par circonscription et fiches individuelles (senat.fr), page mise à jour le 18 novembre 2026",
+ "note": "Série 1 : élus en septembre 2023 (mandat jusqu'en 2029). Série 2 : élus ou réélus le 27 septembre 2026 (mandat jusqu'en 2032).",
+ "groupes": {
+  "SER": "Socialiste, Écologiste et Républicain",
+  "LR": "Les Républicains",
+  "GEST": "Écologiste - Solidarité et Territoires",
+  "UC": "Union Centriste et Indépendants",
+  "RDSE": "Rassemblement Démocratique et Social Européen",
+  "RDPI": "Rassemblement des démocrates, progressistes et indépendants"
+ },
+ "senateurs": [
+  {
+   "civ": "Mme",
+   "prenom": "Hélène",
+   "nom": "CONWAY-MOURET",
+   "slug": "conway_mouret_helene11027h",
+   "serie": 1,
+   "fin_mandat": 2029,
+   "groupe": "SER",
+   "lien_groupe": "Membre",
+   "commission": "Membre de la commission des affaires étrangères, de la défense et des forces armées",
+   "fonctions": [],
+   "mandat": "Élue le 25 septembre 2011 ; membre du Gouvernement du 21 juillet 2012 au 3 mai 2014 ; réélue en 2017 et le 24 septembre 2023",
+   "fiche": "https://www.senat.fr/senateur/conway_mouret_helene11027h.html"
+  },
+  {
+   "civ": "M.",
+   "prenom": "Ronan",
+   "nom": "LE GLEUT",
+   "slug": "le_gleut_ronan19709b",
+   "serie": 1,
+   "fin_mandat": 2029,
+   "groupe": "LR",
+   "lien_groupe": "Membre",
+   "commission": "Membre de la commission des affaires étrangères, de la défense et des forces armées",
+   "fonctions": [
+    "Président de la commission des affaires européennes"
+   ],
+   "mandat": "Élu le 24 septembre 2017 ; réélu le 24 septembre 2023",
+   "fiche": "https://www.senat.fr/senateur/le_gleut_ronan19709b.html"
+  },
+  {
+   "civ": "Mme",
+   "prenom": "Mathilde",
+   "nom": "OLLIVIER",
+   "slug": "ollivier_mathilde21037d",
+   "serie": 1,
+   "fin_mandat": 2029,
+   "groupe": "GEST",
+   "lien_groupe": "Membre",
+   "commission": "Membre de la commission de la culture, de l'éducation, de la communication et du sport",
+   "fonctions": [],
+   "mandat": "Élue le 24 septembre 2023",
+   "fiche": "https://www.senat.fr/senateur/ollivier_mathilde21037d.html"
+  },
+  {
+   "civ": "Mme",
+   "prenom": "Évelyne",
+   "nom": "RENAUD-GARABEDIAN",
+   "slug": "renaud_garabedian_evelyne19705w",
+   "serie": 1,
+   "fin_mandat": 2029,
+   "groupe": "LR",
+   "lien_groupe": "Rattachée",
+   "commission": "Membre de la commission des affaires économiques",
+   "fonctions": [],
+   "mandat": "Élue le 24 septembre 2017 ; réélue le 24 septembre 2023",
+   "fiche": "https://www.senat.fr/senateur/renaud_garabedian_evelyne19705w.html"
+  },
+  {
+   "civ": "Mme",
+   "prenom": "Olivia",
+   "nom": "RICHARD",
+   "slug": "richard_olivia21038e",
+   "serie": 1,
+   "fin_mandat": 2029,
+   "groupe": "UC",
+   "lien_groupe": "Membre",
+   "commission": "Secrétaire de la commission des lois constitutionnelles, de législation, du suffrage universel, du Règlement et d'administration générale",
+   "fonctions": [
+    "Vice-présidente de la délégation aux droits des femmes et à l'égalité des chances entre les hommes et les femmes"
+   ],
+   "mandat": "Élue le 24 septembre 2023",
+   "fiche": "https://www.senat.fr/senateur/richard_olivia21038e.html"
+  },
+  {
+   "civ": "M.",
+   "prenom": "Jean-Luc",
+   "nom": "RUELLE",
+   "slug": "ruelle_jean_luc21036c",
+   "serie": 1,
+   "fin_mandat": 2029,
+   "groupe": "LR",
+   "lien_groupe": "Rattaché",
+   "commission": "Secrétaire de la commission des affaires étrangères, de la défense et des forces armées",
+   "fonctions": [],
+   "mandat": "Élu le 24 septembre 2023",
+   "fiche": "https://www.senat.fr/senateur/ruelle_jean_luc21036c.html"
+  },
+  {
+   "civ": "Mme",
+   "prenom": "Sophie",
+   "nom": "BRIANTE GUILLEMONT",
+   "slug": "briante_guillemont_sophie21404g",
+   "serie": 2,
+   "fin_mandat": 2032,
+   "groupe": "RDSE",
+   "lien_groupe": "Membre",
+   "commission": "Membre de la commission des lois constitutionnelles, de législation, du suffrage universel, du Règlement et d'administration générale",
+   "fonctions": [
+    "Membre de la délégation aux droits des femmes et à l'égalité des chances entre les hommes et les femmes",
+    "Membre du comité de déontologie parlementaire du Sénat"
+   ],
+   "mandat": "Élue le 27 septembre 2026",
+   "fiche": "https://www.senat.fr/senateur/briante_guillemont_sophie21404g.html"
+  },
+  {
+   "civ": "M.",
+   "prenom": "Olivier",
+   "nom": "CADIC",
+   "slug": "cadic_olivier14255u",
+   "serie": 2,
+   "fin_mandat": 2032,
+   "groupe": "UC",
+   "lien_groupe": "Membre",
+   "commission": "Membre de la commission des affaires étrangères, de la défense et des forces armées",
+   "fonctions": [],
+   "mandat": "Élu le 28 septembre 2014 ; réélu le 26 septembre 2021 et le 27 septembre 2026",
+   "fiche": "https://www.senat.fr/senateur/cadic_olivier14255u.html"
+  },
+  {
+   "civ": "M.",
+   "prenom": "Yan",
+   "nom": "CHANTREL",
+   "slug": "chantrel_yan20264j",
+   "serie": 2,
+   "fin_mandat": 2032,
+   "groupe": "SER",
+   "lien_groupe": "Membre",
+   "commission": "Membre de la commission de la culture, de l'éducation, de la communication et du sport",
+   "fonctions": [],
+   "mandat": "Élu le 26 septembre 2021 ; réélu le 27 septembre 2026",
+   "fiche": "https://www.senat.fr/senateur/chantrel_yan20264j.html"
+  },
+  {
+   "civ": "M.",
+   "prenom": "Bertrand",
+   "nom": "DUPONT",
+   "slug": "dupont_bertrand21672b",
+   "serie": 2,
+   "fin_mandat": 2032,
+   "groupe": "LR",
+   "lien_groupe": "Membre",
+   "commission": "Membre de la commission des affaires sociales",
+   "fonctions": [
+    "Membre de la commission des affaires européennes",
+    "Membre de la délégation sénatoriale aux entreprises"
+   ],
+   "mandat": "Élu le 27 septembre 2026",
+   "fiche": "https://www.senat.fr/senateur/dupont_bertrand21672b.html"
+  },
+  {
+   "civ": "Mme",
+   "prenom": "Marie-Ange",
+   "nom": "ROUSSELOT",
+   "slug": "rousselot_marie_ange21436q",
+   "serie": 2,
+   "fin_mandat": 2032,
+   "groupe": "RDPI",
+   "lien_groupe": "Membre",
+   "commission": "Membre de la commission de la culture, de l'éducation, de la communication et du sport",
+   "fonctions": [
+    "Vice-présidente de la délégation aux droits des femmes et à l'égalité des chances entre les hommes et les femmes"
+   ],
+   "mandat": "Élue le 27 septembre 2026",
+   "fiche": "https://www.senat.fr/senateur/rousselot_marie_ange21436q.html"
+  },
+  {
+   "civ": "Mme",
+   "prenom": "Mélanie",
+   "nom": "VOGEL",
+   "slug": "vogel_melanie20266l",
+   "serie": 2,
+   "fin_mandat": 2032,
+   "groupe": "GEST",
+   "lien_groupe": "Présidente du groupe",
+   "commission": "Membre de la commission des affaires étrangères, de la défense et des forces armées",
+   "fonctions": [
+    "Secrétaire de la délégation sénatoriale à la prospective"
+   ],
+   "mandat": "Élue le 26 septembre 2021 ; réélue le 27 septembre 2026",
+   "fiche": "https://www.senat.fr/senateur/vogel_melanie20266l.html"
+  }
+ ]
+}

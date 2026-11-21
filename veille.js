@@ -1,0 +1,798 @@
+// =====================================================================
+// Veille parlementaire : publications publiques des 23 parlementaires
+// des Français établis hors de France.
+//
+// Bluesky : la source de référence est la liste Bluesky indiquée dans
+// data/veille/config.json. Trois modes, choisis automatiquement :
+//   « historique » : le site lit l'historique tenu à jour toutes les 30 minutes
+//                    par le collecteur (collecteur/bluesky-liste.mjs, GitHub Actions),
+//                    fichiers data/veille/bluesky/etat.json et AAAA-MM.json ;
+//   « direct »     : secours si l'historique est absent : le navigateur lit la
+//                    liste et les fils des membres via l'API publique ;
+//   « comptes »    : sans liste configurée, comptes « collecte: true » de comptes.json.
+// Autres réseaux : liens et sélection manuelle. Aucune publication n'est
+// inventée : si une source ne répond pas, l'interface l'indique.
+//
+// Ajouter un réseau = ajouter une entrée dans CONNECTORS (fonction fetchPage
+// qui renvoie des publications au format commun décrit plus bas).
+// =====================================================================
+(function(){
+'use strict';
+
+// ---------- Réseaux : état réel de l'accès (novembre 2026) ----------
+const PLATFORMS = {
+  bluesky:  {label:'Bluesky',   why:"API publique officielle de Bluesky, gratuite et sans clé. Les publications sont lues directement à chaque visite."},
+  x:        {label:'X',         why:"L'API de X est payante à l'usage depuis février 2026 (pas d'offre gratuite). Collecte non activée : lien vers le profil uniquement."},
+  facebook: {label:'Facebook',  why:"Lire les pages publiques d'autres personnes exige un agrément de Meta (« Page Public Content Access ») : lien vers le profil uniquement."},
+  instagram:{label:'Instagram', why:"La collecte automatique (API gratuite de Meta) exige un serveur qui garde une clé secrète, ce qu'un site déposé par glisser-déposer ne permet pas. Publications choisies par l'Observatoire (sélection manuelle), affichées via l'intégration officielle d'Instagram."},
+  linkedin: {label:'LinkedIn',  why:"Aucune API ne permet de lire les publications d'autres membres. Publications choisies par l'Observatoire (sélection manuelle), affichées via l'intégration officielle de LinkedIn."},
+  youtube:  {label:'YouTube',   why:"Aucune chaîne personnelle n'est mentionnée sur les fiches officielles. Les flux RSS de YouTube ne sont pas lisibles directement depuis un navigateur."}
+};
+const PORDER = ['bluesky','x','facebook','instagram','linkedin','youtube'];
+const TYPES = {original:'Publication', reply:'Réponse', repost:'Republication', quote:'Citation', manual:'Sélection manuelle'};
+
+// ---------- Utilitaires ----------
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const nrm = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/œ/g,'oe').replace(/æ/g,'ae').replace(/[’`]/g,"'").toLowerCase();
+const safeUrl = u => /^https:\/\//i.test(String(u||'')) ? String(u) : '';
+const $ = id => document.getElementById(id);
+const fmtDT = d => new Date(d).toLocaleString('fr-FR',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+const fmtD = d => new Date(d).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+const fmtT = d => new Date(d).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+const plural = (n,s,p) => n+' '+(n>1?(p||s+'s'):s);
+
+// Requête JSON avec délai maximal et nouvelles tentatives (429, 5xx, réseau)
+async function fetchJSON(url, tries=3, revalider=false){
+  let last;
+  for(let i=0;i<tries;i++){
+    const ctl = new AbortController(); const t = setTimeout(()=>ctl.abort(), 8000);
+    try{
+      const r = await fetch(url, Object.assign({signal:ctl.signal, headers:{'Accept':'application/json'}}, revalider?{cache:'no-cache'}:{}));
+      clearTimeout(t);
+      if(r.ok) return await r.json();
+      let body={}; try{ body = await r.json(); }catch(e){}
+      last = new Error(body.message || body.error || ('HTTP '+r.status)); last.status = r.status; last.code = body.error;
+      if(r.status!==429 && r.status<500) throw last;           // erreur définitive (compte supprimé, etc.)
+      const ra = +r.headers.get('Retry-After');
+      await sleep(Math.min(ra>0 ? ra*1000 : 800*2**i, 8000));
+    }catch(e){
+      clearTimeout(t);
+      if(e.status && e.status!==429 && e.status<500) throw e;
+      last = e.name==='AbortError' ? new Error('délai de réponse dépassé') : e;
+      if(e.name==='AbortError' && i>=1) break;   // pas plus de deux attentes de 8 s
+      if(i<tries-1) await sleep(800*2**i);
+    }
+  }
+  throw last;
+}
+
+// =====================================================================
+// Connecteurs. Chacun expose fetchPage(compte, curseur) → {posts, cursor}.
+// Format commun d'une publication :
+//   {id, platform, url, date (ISO), type: original|reply|repost|quote,
+//    text, facets, author (auteur d'origine si republication), replyTo,
+//    embed {images|video|link|quote}, labels}
+// =====================================================================
+const VB = window.VeilleBluesky;   // module partagé avec le collecteur (veille-bluesky.js)
+const CONNECTORS = {
+  bluesky: {
+    async fetchPage(acc, cursor){
+      const q = new URLSearchParams({actor: acc.did || acc.identifiant, limit:'30', filter:'posts_with_replies'});
+      if(cursor) q.set('cursor', cursor);
+      const j = await fetchJSON(VB.API+'app.bsky.feed.getAuthorFeed?'+q);
+      // seuls les éléments publiés ou republiés par ce compte sont retenus
+      return {posts:(j.feed||[]).filter(it=>!acc.did || VB.actorOf(it)===acc.did).map(it=>bskyPost(it, acc)).filter(Boolean), cursor:j.cursor||null};
+    }
+  }
+};
+function bskyPost(it, acc){
+  const p = VB.toPost(it, acc.did || (it.post&&it.post.author&&it.post.author.did));
+  if(p) p.acc = acc.key;
+  return p;
+}
+
+// Texte enrichi Bluesky : liens, mentions et mots-dièse (positions en octets UTF-8)
+function richText(text, facets){
+  if(!facets || !facets.length) return esc(text);
+  const enc = new TextEncoder(), dec = new TextDecoder(), b = enc.encode(text);
+  let out='', pos=0;
+  facets.slice().sort((x,y)=>x.index.byteStart-y.index.byteStart).forEach(f=>{
+    const s=f.index.byteStart, e=f.index.byteEnd;
+    if(s<pos || e>b.length || s>=e) return;
+    out += esc(dec.decode(b.slice(pos,s)));
+    const seg = dec.decode(b.slice(s,e)), ft = (f.features||[])[0]||{};
+    let href = '';
+    if(ft.$type==='app.bsky.richtext.facet#link') href = safeUrl(ft.uri);
+    else if(ft.$type==='app.bsky.richtext.facet#mention') href = 'https://bsky.app/profile/'+encodeURIComponent(ft.did);
+    else if(ft.$type==='app.bsky.richtext.facet#tag') href = 'https://bsky.app/hashtag/'+encodeURIComponent(ft.tag);
+    out += href ? `<a href="${esc(href)}" target="_blank" rel="noopener nofollow ugc">${esc(seg)}</a>` : esc(seg);
+    pos = e;
+  });
+  return out + esc(dec.decode(b.slice(pos)));
+}
+
+// =====================================================================
+// Sélection manuelle (data/veille/selection.json) : publications LinkedIn et
+// Instagram choisies par l'Observatoire, affichées via l'intégration officielle
+// du réseau. Aucune lecture automatique : seule l'adresse est fournie.
+// =====================================================================
+const MANUAL = {
+  linkedin: {
+    parse(raw){
+      const src = (/src=["']([^"']+)["']/i.exec(raw)||[])[1] || raw;   // adresse ou code d'intégration complet
+      let u; try{ u = new URL(src.trim()); }catch(e){ return {err:'adresse illisible'}; }
+      if(!/(^|\.)linkedin\.com$/.test(u.hostname) || u.protocol!=='https:') return {err:"l'adresse n'est pas sur linkedin.com"};
+      const m = /urn:li:(activity|share|ugcPost):(\d{15,22})/.exec(decodeURIComponent(u.pathname)) || /-(activity|share|ugcPost)-(\d{15,22})/.exec(u.pathname);
+      if(!m) return {err:"identifiant de publication introuvable dans l'adresse"};
+      const urn = `urn:li:${m[1]}:${m[2]}`;
+      const vanity = (/^\/posts\/([^_\/]+)_/.exec(u.pathname)||[])[1] || null;
+      let date = null; try{ date = new Date(Number(BigInt(m[2]) >> 22n)).toISOString(); }catch(e){}
+      return {key:urn, embed:`https://www.linkedin.com/embed/feed/update/${urn}`, url:/^\/posts\//.test(u.pathname) ? u.origin+u.pathname : `https://www.linkedin.com/feed/update/${urn}/`, date, vanity, h:560};
+    }
+  },
+  instagram: {
+    parse(raw){
+      let u; try{ u = new URL(String(raw).trim()); }catch(e){ return {err:'adresse illisible'}; }
+      if(!/(^|\.)instagram\.com$/.test(u.hostname) || u.protocol!=='https:') return {err:"l'adresse n'est pas sur instagram.com"};
+      const m = /^\/(?:[^\/]+\/)?(p|reel|tv)\/([A-Za-z0-9_-]{5,})/.exec(u.pathname);
+      if(!m) return {err:"ce n'est pas l'adresse d'une publication Instagram (…/p/… ou …/reel/…)"};
+      return {key:m[1]+'/'+m[2], embed:`https://www.instagram.com/${m[1]}/${m[2]}/embed/captioned/`, url:`https://www.instagram.com/${m[1]}/${m[2]}/`, date:null, h:640};
+    }
+  }
+};
+const MAN = [], SEL_ERR = [], SEL_WARN = [];
+function loadSelection(sel){
+  (sel && sel.publications || []).forEach((it,i)=>{
+    const where = `entrée ${i+1}${it.parlementaire?' ('+it.parlementaire+')':''}`;
+    const P = BYID[it.parlementaire], M = MANUAL[it.reseau];
+    if(!P) return SEL_ERR.push(where+' : parlementaire inconnu');
+    if(!M) return SEL_ERR.push(where+' : réseau non pris en charge (linkedin ou instagram)');
+    const acc = P.accounts.find(a=>a.reseau===it.reseau);
+    if(!acc) return SEL_ERR.push(where+` : aucun compte ${PLATFORMS[it.reseau].label} vérifié pour ce parlementaire`);
+    const r = M.parse(it.url||'');
+    if(r.err) return SEL_ERR.push(where+' : '+r.err);
+    const d = it.date ? new Date(it.date) : r.date ? new Date(r.date) : null;
+    if(!d || isNaN(d) || d < new Date('2010-01-01') || d > new Date(Date.now()+864e5)) return SEL_ERR.push(where+' : date absente ou invalide (format AAAA-MM-JJ)');
+    if(r.vanity && acc.identifiant && r.vanity.toLowerCase()!==acc.identifiant.toLowerCase()) return SEL_ERR.push(where+` : l'adresse provient du compte « ${r.vanity} » et non du compte vérifié « ${acc.identifiant} »`);
+    let mk = MAN.find(m=>m.pid===P.id && m.reseau===it.reseau);
+    if(!mk){ mk = {key:'man:'+P.id+':'+it.reseau, pid:P.id, reseau:it.reseau, manual:true, url:acc.url}; MAN.push(mk); }
+    const p = {id:'manual:'+it.reseau+':'+r.key, platform:it.reseau, acc:mk.key, pid:P.id, manual:true, url:r.url, date:d.toISOString(),
+      type:'manual', text:String(it.extrait||''), facets:[], embed:{frame:{src:r.embed, h:r.h}}, labels:[], ajoute:it.ajoute_le||null, dateOnly:!!(it.date && /^\d{4}-\d{2}-\d{2}$/.test(String(it.date).trim()))};
+    p.themes = p.text ? classify(p) : [];
+    POSTS.set(p.id, p);
+  });
+}
+const hasSource = P => isCollected(P) || MAN.some(m=>m.pid===P.id);
+
+// =====================================================================
+// Classement thématique par mots-clés (data/veille/themes.json)
+// =====================================================================
+let THEMES = [], THEME_OTHER = {id:'autres', label:'Autres sujets'}, THEME_VERSION = '';
+function compileThemes(T){
+  THEME_VERSION = T.version||''; if(T.autres) THEME_OTHER = T.autres;
+  // ordre important : tirets, apostrophes et espaces d'abord (repères), puis jokers, puis classes de caractères
+  const pat = m => nrm(m).trim().replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/-/g,'\u0001').replace(/'/g,'\u0002').replace(/\s+/g,'\u0003')
+    .replace(/\\\*/g,'[a-z0-9]*').replace(/\u0001/g,'[-\\s]?').replace(/\u0002/g,"['\\s]?").replace(/\u0003/g,'[-\\s]+');
+  THEMES = (T.themes||[]).map(t=>({id:t.id, label:t.label, re:new RegExp('(?:^|[^a-z0-9])(?:'+t.motifs.map(pat).join('|')+')(?![a-z0-9])')}));
+}
+function classify(p){
+  const e = p.embed||{};
+  const txt = nrm([p.text, e.link&&e.link.title, e.link&&e.link.desc, e.quote&&e.quote.text].filter(Boolean).join(' \n '));
+  const ids = THEMES.filter(t=>t.re.test(txt)).map(t=>t.id);
+  return ids.length ? ids : [THEME_OTHER.id];
+}
+const themeLabel = id => (THEMES.find(t=>t.id===id)||THEME_OTHER).label;
+
+// =====================================================================
+// État
+// =====================================================================
+let OBS = null, REG = null, READY = null, LOADING = null;
+const PEOPLE = [], BYID = {};
+const ACCS = [];                 // comptes collectés automatiquement
+const ST = {};                   // état de collecte par compte
+const POSTS = new Map();         // id → publication
+let LAST_SYNC = null, FETCHED_AT = 0, SHOWN = 30, CUR_VIEW = 'veille';
+// Liste Bluesky de référence
+let CFG = {}, MODE = 'comptes', ETAT = null, HBASE = null, MEMBERS = [], LIST_INFO = null, LIST_ERR = '';
+let MONTHS = []; const LOADED = new Set(), ACC_BY_DID = {};
+const F = {q:'', role:'', pid:'', grp:'', circ:'', net:'', per:'', theme:'', type:''};
+const CACHE_KEY = 'veille_cache_v1', CACHE_TTL = 10*60*1000, MAX_PAGES = 20;
+
+function buildPeople(){
+  const D = (OBS.DEP && OBS.DEP.deputes) || [], S = OBS.SEN || [];
+  D.forEach(d=>PEOPLE.push({id:d.pa, kind:'dep', civ:d.civ, prenom:d.prenom, nom:d.nom, g:d.g,
+    role:(d.civ==='Mme'?'Députée':'Député'), place:`${OBS.ORD(d.g)} circonscription · ${OBS.LEG[d.g]}`,
+    groupe:d.groupe, gkey:'AN:'+d.groupe, chamber:'Assemblée nationale', col:OBS.grpColor(d.groupe),
+    fiche:'https://www.assemblee-nationale.fr/dyn/deputes/'+d.pa, ficheLabel:"Fiche officielle à l'Assemblée nationale",
+    photo:cls=>OBS.photoHTML(d,cls), src:d}));
+  S.forEach(s=>PEOPLE.push({id:s.slug, kind:'sen', civ:s.civ, prenom:s.prenom, nom:s.nom, g:null,
+    role:(s.civ==='Mme'?'Sénatrice':'Sénateur'), place:'Français établis hors de France · série '+s.serie,
+    groupe:OBS.RSE.groupes[s.groupe], gkey:'SEN:'+s.groupe, chamber:'Sénat', col:OBS.SGRP_COL[s.groupe]||'#A3A8AF',
+    fiche:s.fiche, ficheLabel:'Fiche officielle au Sénat', photo:cls=>OBS.senPhoto(s,cls), src:s}));
+  PEOPLE.forEach(p=>{
+    BYID[p.id] = p;
+    const r = (REG.parlementaires[p.id]||{}).comptes || [];
+    p.accounts = r.filter(a=>a.verification==='verifie' && safeUrl(a.url));
+    p.pending = r.filter(a=>a.verification!=='verifie');
+    p.accounts.forEach(a=>{
+      a.key = p.id+':'+a.reseau+':'+(a.did||a.identifiant); a.pid = p.id;
+      if(a.collecte && CONNECTORS[a.reseau] && !(MODE!=='comptes' && a.reseau==='bluesky')){ ACCS.push(a); ST[a.key] = newState(); }
+    });
+  });
+  if(MODE!=='comptes') setupMembers(MEMBERS);
+}
+const newState = () => ({state:'attente', n:0, pages:0, cursor:null, done:false, oldest:null, at:null, err:''});
+
+// Membres de la liste → parlementaires de l'annuaire (par identifiant DID, sinon par nom exact)
+function setupMembers(members){
+  members.forEach(m=>{
+    let pid = null;
+    for(const [id,v] of Object.entries(REG.parlementaires)) if((v.comptes||[]).some(a=>a.reseau==='bluesky' && a.did===m.did)){ pid = id; break; }
+    if(!pid){ const n = nrm(m.nom); const P = n && PEOPLE.find(p=>nrm(p.prenom+' '+p.nom)===n); if(P){ pid = P.id; m.rattachement = 'nom'; } }
+    else m.rattachement = 'did';
+    let P = pid && BYID[pid];
+    if(!P){
+      P = {id:'bsky:'+m.did, kind:'autre', civ:'', prenom:m.nom||m.handle, nom:'', g:null, role:'Compte Bluesky de la liste', place:"Non rattaché à l'annuaire des parlementaires",
+        groupe:'Non rattaché', gkey:'NR', chamber:'Bluesky', col:'#A3A8AF', fiche:'https://bsky.app/profile/'+encodeURIComponent(m.handle||m.did), ficheLabel:'Profil Bluesky',
+        photo:cls=>`<figure class="portrait ${cls}"><img src="${esc(safeUrl(m.avatar)||'./assets/depute-neutre.svg')}" alt="Avatar Bluesky de ${esc(m.nom||m.handle)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='./assets/depute-neutre.svg'"></figure>`,
+        accounts:[], pending:[]};
+      m.rattachement = null; PEOPLE.push(P); BYID[P.id] = P;
+    }
+    let acc = P.accounts.find(a=>a.reseau==='bluesky' && a.did===m.did);
+    if(!acc){
+      const i = P.pending.findIndex(a=>a.reseau==='bluesky' && a.did===m.did);
+      acc = i>=0 ? P.pending.splice(i,1)[0] : {reseau:'bluesky', did:m.did};
+      P.accounts.push(acc);
+    }
+    Object.assign(acc, {identifiant:m.handle||acc.identifiant, url:'https://bsky.app/profile/'+encodeURIComponent(m.handle||m.did), key:P.id+':bluesky:'+m.did, pid:P.id, via:'liste', actif:m.actif!==false, membre:m});
+    if(acc.verification!=='verifie'){ acc.verification = 'liste'; acc.source = "Liste Bluesky de l'Observatoire"; acc.source_url = CFG.bluesky.liste; acc.verifie_le = null; }
+    ACCS.push(acc); ST[acc.key] = newState(); ACC_BY_DID[m.did] = acc;
+  });
+}
+
+// Choix du mode : historique collecté (distant puis local), sinon lecture directe de la liste
+async function prepareBluesky(){
+  const bc = CFG.bluesky||{};
+  if(!bc.liste){ MODE = 'comptes'; return; }
+  const bases = [bc.donnees_distantes, './data/veille/bluesky/'].filter(Boolean).map(b=>b.replace(/\/?$/,'/'));
+  let best = null;
+  for(const b of bases){
+    try{ const e = await fetchJSON(b+'etat.json', 2, true); if(e && Array.isArray(e.membres) && e.mois && (!best || String(e.derniere_synchro)>String(best.e.derniere_synchro))) best = {b, e}; }catch(e){}
+  }
+  if(best){ MODE = 'historique'; ETAT = best.e; HBASE = best.b; MEMBERS = ETAT.membres; LIST_INFO = ETAT.liste||null; return; }
+  try{
+    const L = VB.listUrlToUri(bc.liste); let uri = L.uri;
+    if(!uri){ const r = await fetchJSON(VB.API+'com.atproto.identity.resolveHandle?handle='+encodeURIComponent(L.repo)); uri = `at://${r.did}/app.bsky.graph.list/${L.rkey}`; }
+    const items = []; let cursor = null, n = 0, info = null;
+    do{ const r = await fetchJSON(VB.API+'app.bsky.graph.getList?'+new URLSearchParams(Object.assign({list:uri, limit:'100'}, cursor?{cursor}:{})));
+      info = r.list; items.push(...(r.items||[])); cursor = r.cursor||null; }while(cursor && ++n<20);
+    MEMBERS = items.map(it=>({did:it.subject.did, handle:it.subject.handle, nom:it.subject.displayName||it.subject.handle, avatar:it.subject.avatar||null, actif:true}));
+    LIST_INFO = {uri, url:bc.liste, nom:info.name, createur:info.creator&&info.creator.handle, nb_membres:items.length};
+    MODE = 'direct';
+  }catch(e){ MODE = 'comptes'; LIST_ERR = 'Liste Bluesky inaccessible : '+humanError(e); }
+}
+
+// Mode « historique » : un fichier par mois, chargé à la demande
+async function loadMonth(k){
+  if(LOADED.has(k)) return;
+  const f = await fetchJSON(HBASE+k+'.json', 3, k===MONTHS[0]);
+  (f.publications||[]).forEach(p=>{
+    const a = ACC_BY_DID[p.did]; if(!a) return;                 // provenance vérifiée : membre de la liste
+    p.acc = a.key; p.pid = a.pid; p.themes = classify(p); POSTS.set(p.id, p);
+  });
+  LOADED.add(k);
+}
+function paintHistoryState(){
+  const more = MONTHS.some(k=>!LOADED.has(k));
+  ACCS.forEach(a=>{ if(!a.membre) return; const m = a.membre, st = ST[a.key];
+    st.state = m.derniere_erreur ? 'erreur' : m.derniere_collecte ? 'ok' : 'attente'; st.err = m.derniere_erreur ? humanError({message:m.derniere_erreur}) : '';
+    st.at = m.derniere_collecte||null; st.done = !more; st.total = m.publications;
+    st.n = [...POSTS.values()].filter(p=>p.acc===a.key).length; });
+  LAST_SYNC = ETAT.derniere_synchro_reussie || null;
+}
+async function syncHistory(force){
+  if(force){
+    try{ const e = await fetchJSON(HBASE+'etat.json', 2, true); if(e && e.membres){
+      const nouveaux = e.membres.some(m=>!ACC_BY_DID[m.did]);
+      ETAT = e; e.membres.forEach(m=>{ const a = ACC_BY_DID[m.did]; if(a){ Object.assign(a.membre, m); a.actif = m.actif!==false; } });
+      if(nouveaux) LIST_ERR = 'La liste a changé : rechargez la page pour afficher les nouveaux membres.';
+    } }catch(e){}
+    if(ETAT.mois) LOADED.delete(Object.keys(ETAT.mois).sort().reverse()[0]);
+  }
+  MONTHS = Object.keys(ETAT.mois||{}).sort().reverse();
+  try{
+    for(const k of MONTHS){ await loadMonth(k); if(LOADED.size>=2 || POSTS.size>=60) break; }
+  }catch(e){ LIST_ERR = "Historique indisponible : "+humanError(e); }
+  paintHistoryState();
+}
+const hasMore = () => MODE==='historique' ? MONTHS.some(k=>!LOADED.has(k)) : ACCS.some(a=>accMatches(a) && !ST[a.key].done && ST[a.key].state==='ok');
+const personName = p => p.kind==='autre' ? esc(p.prenom) : `${esc(p.prenom)} ${esc(p.kind==='sen' ? p.nom.toLowerCase().replace(/(^|[ -])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase()) : p.nom)}`;
+const isCollected = p => ACCS.some(a=>a.pid===p.id);
+
+// ---------- Cache de session (évite de réinterroger les API à chaque onglet) ----------
+function saveCache(){
+  try{ sessionStorage.setItem(CACHE_KEY, JSON.stringify({at:Date.now(), sync:LAST_SYNC, st:ST, posts:[...POSTS.values()].filter(p=>!p.manual)})); }catch(e){}
+}
+function loadCache(){
+  try{
+    const c = JSON.parse(sessionStorage.getItem(CACHE_KEY)||'null');
+    if(!c || Date.now()-c.at > CACHE_TTL) return false;
+    if(!ACCS.every(a=>c.st[a.key])) return false;
+    ACCS.forEach(a=>Object.assign(ST[a.key], c.st[a.key]));
+    c.posts.forEach(p=>{ if(BYID[(ACCS.find(a=>a.key===p.acc)||{}).pid]) POSTS.set(p.id, p); });
+    LAST_SYNC = c.sync; return true;
+  }catch(e){ return false; }
+}
+
+// ---------- Collecte ----------
+function addPosts(acc, posts, firstPage){
+  const st = ST[acc.key];
+  if(firstPage && posts.length){
+    // publications supprimées : absentes de la première page alors qu'elles y figuraient
+    const lim = Math.min(...posts.map(p=>+new Date(p.date)));
+    const ids = new Set(posts.map(p=>p.id));
+    for(const [id,p] of POSTS) if(p.acc===acc.key && +new Date(p.date)>=lim && !ids.has(id)) POSTS.delete(id);
+  }
+  posts.forEach(p=>{ p.pid = acc.pid; p.themes = classify(p); p.tv = THEME_VERSION; POSTS.set(p.id, p); });
+  const mine = [...POSTS.values()].filter(p=>p.acc===acc.key);
+  st.n = mine.length;
+  st.oldest = mine.length ? Math.min(...mine.map(p=>+new Date(p.date))) : null;
+}
+async function fetchAccount(acc, older){
+  const st = ST[acc.key];
+  if(older && (st.done || !st.cursor || st.pages>=MAX_PAGES)) return;
+  st.state = 'en cours'; paintStatus();
+  try{
+    const r = await CONNECTORS[acc.reseau].fetchPage(acc, older ? st.cursor : null);
+    if(older){ st.cursor = r.cursor; st.pages++; if(!r.cursor || !r.posts.length) st.done = true; }
+    else if(!st.pages){ st.cursor = r.cursor; st.pages = 1; st.done = !r.cursor; }  // une actualisation conserve le curseur des pages anciennes
+    addPosts(acc, r.posts, !older);
+    st.state = 'ok'; st.err = ''; st.at = new Date().toISOString();
+  }catch(e){
+    st.state = 'erreur'; st.err = humanError(e); st.at = st.at || null;
+  }
+}
+function humanError(e){
+  const c = e.code||'';
+  if(/Deactivated/i.test(c)) return 'compte désactivé par son titulaire';
+  if(/Takedown|Suspended/i.test(c)) return 'compte suspendu par la plateforme';
+  if(/NotFound|not found/i.test(c+e.message)) return 'compte introuvable';
+  if(e.status===429) return 'trop de requêtes, réessayez dans quelques minutes';
+  return 'source injoignable ('+(e.message||'erreur inconnue')+')';
+}
+async function pool(list, fn, n=3){
+  const q = list.slice(); await Promise.all(Array.from({length:Math.min(n,q.length)}, async()=>{ while(q.length) await fn(q.shift()); }));
+}
+function syncAll(force){
+  if(LOADING) return LOADING;
+  if(MODE==='historique'){
+    LOADING = syncHistory(force).finally(()=>{ FETCHED_AT = Date.now(); LOADING = null; refresh(); });
+    return LOADING;
+  }
+  if(!force && loadCache()){ FETCHED_AT = Date.now(); refresh(); return Promise.resolve(); }
+  LOADING = (async()=>{
+    paintStatus();
+    await pool(ACCS, a=>fetchAccount(a,false));
+    if(ACCS.some(a=>ST[a.key].state==='ok')) LAST_SYNC = new Date().toISOString();
+    saveCache();
+  })().finally(()=>{ FETCHED_AT = Date.now(); LOADING = null; refresh(); });
+  return LOADING;
+}
+async function syncOne(pid){
+  if(MODE==='historique') return;
+  const list = ACCS.filter(a=>a.pid===pid && !ST[a.key].at && ST[a.key].state!=='en cours');
+  if(!list.length) return;
+  await pool(list, a=>fetchAccount(a,false)); saveCache();
+}
+
+// ---------- Fil : filtres ----------
+function accMatches(a){
+  const p = BYID[a.pid];
+  return (!F.pid || p.id===F.pid) && (!F.role || p.kind===F.role) && (!F.grp || p.gkey===F.grp) && (!F.circ || p.g===+F.circ) && (!F.net || a.reseau===F.net);
+}
+// Limite basse cohérente : en dessous, une partie des comptes n'a pas encore été chargée
+function horizon(){
+  if(MODE==='historique'){
+    if(!MONTHS.some(k=>!LOADED.has(k))) return -Infinity;
+    const plusAncien = MONTHS.filter(k=>LOADED.has(k)).pop();
+    return plusAncien ? Date.parse(plusAncien+'-01T00:00:00Z') : Infinity;
+  }
+  let h = -Infinity;
+  ACCS.filter(accMatches).forEach(a=>{ const s=ST[a.key]; if(s.state!=='erreur' && !s.done && s.oldest!=null) h = Math.max(h, s.oldest); });
+  return h;
+}
+function since(){
+  const d = {'1':1,'7':7,'30':30,'90':90,'365':365}[F.per];
+  return d ? Date.now()-d*864e5 : -Infinity;
+}
+function filtered(){
+  const h = horizon(), s = since(), q = nrm(F.q).trim(), words = q ? q.split(/\s+/) : [];
+  return [...POSTS.values()].filter(p=>{
+    const a = ACCS.find(x=>x.key===p.acc) || MAN.find(x=>x.key===p.acc); if(!a || !accMatches(a)) return false;
+    const t = +new Date(p.date);
+    if((!p.manual && t<h) || t<s) return false;
+    if(F.type && p.type!==F.type) return false;
+    if(F.theme && !p.themes.includes(F.theme)) return false;
+    if(words.length){
+      const e = p.embed||{}, hay = nrm([p.text, p.author&&p.author.name, e.link&&e.link.title, e.link&&e.link.desc, e.quote&&e.quote.text].join(' '));
+      if(!words.every(w=>hay.includes(w))) return false;
+    }
+    return true;
+  }).sort((a,b)=>new Date(b.date)-new Date(a.date));
+}
+async function loadOlder(){
+  const before = filtered().length;
+  if(MODE==='historique'){
+    for(const k of MONTHS){ if(LOADED.has(k)) continue; try{ await loadMonth(k); }catch(e){ LIST_ERR = 'Historique indisponible : '+humanError(e); break; } if(filtered().length >= before+10) break; }
+    paintHistoryState(); return;
+  }
+  for(let k=0;k<4;k++){
+    const cand = ACCS.filter(a=>accMatches(a) && !ST[a.key].done && ST[a.key].state!=='erreur' && ST[a.key].oldest!=null);
+    if(!cand.length) return;
+    const h = Math.max(...cand.map(a=>ST[a.key].oldest));
+    await pool(cand.filter(a=>ST[a.key].oldest>=h-36e5), a=>fetchAccount(a,true));   // comptes qui fixent la limite basse
+    saveCache();
+    if(filtered().length >= before+10) return;
+  }
+}
+
+// =====================================================================
+// Rendu
+// =====================================================================
+const SENSITIVE = /^(porn|sexual|nudity|graphic-media|gore|!hide|!warn)$/;
+function frameHTML(p){
+  const f = p.embed.frame, plat = PLATFORMS[p.platform].label;
+  return `<div class="vframe" data-src="${esc(f.src)}" data-h="${+f.h||560}" data-title="Publication ${esc(plat)} de ${esc(BYID[p.pid].prenom+' '+BYID[p.pid].nom)}">
+    <button type="button" class="lnk vload">Afficher la publication (contenu fourni par ${esc(plat)})</button>
+    <span class="small">Le chargement transmet votre adresse IP à ${esc(plat)}, qui peut déposer des cookies.</span></div>`;
+}
+function loadFrame(btn){
+  const box = btn.closest('.vframe'); if(!box || !/^https:\/\/www\.(linkedin|instagram)\.com\//.test(box.dataset.src)) return;
+  const f = document.createElement('iframe');
+  f.src = box.dataset.src; f.title = box.dataset.title; f.loading = 'lazy'; f.height = box.dataset.h; f.setAttribute('allowfullscreen','');
+  f.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox');
+  f.referrerPolicy = 'strict-origin-when-cross-origin';
+  box.replaceChildren(f); box.classList.add('on');
+}
+function mediaHTML(p, compact){
+  const e = p.embed||{}; let h = '';
+  if(e.frame) return compact ? '' : frameHTML(p);
+  const hide = (p.labels||[]).some(l=>SENSITIVE.test(l));
+  if(hide && (e.images||e.video)) h += `<div class="vmask">Média masqué : contenu signalé comme sensible par la plateforme. <a href="${esc(p.url)}" target="_blank" rel="noopener">Voir la publication d'origine ↗</a></div>`;
+  else if(e.images && e.images.length && !compact){
+    const im = e.images.slice(0,4).filter(i=>safeUrl(i.thumb));
+    h += `<div class="vimgs n${im.length}">`+im.map(i=>`<a href="${esc(p.url)}" target="_blank" rel="noopener" class="vimg"><img src="${esc(i.thumb)}" alt="${esc(i.alt||'Image sans description')}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${i.ar&&im.length===1?` style="aspect-ratio:${+i.ar.width||1}/${+i.ar.height||1}"`:''}></a>`).join('')+'</div>';
+  } else if(e.images && e.images.length) h += `<div class="small">${plural(e.images.length,'image')} · à voir sur la publication d'origine</div>`;
+  if(e.video && !hide){
+    h += compact || !safeUrl(e.video.thumb) ? `<div class="small">Vidéo · à voir sur la publication d'origine</div>`
+      : `<a class="vvideo" href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="Lire la vidéo sur Bluesky"><img src="${esc(e.video.thumb)}" alt="${esc(e.video.alt||'Vidéo')}" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span aria-hidden="true">▶</span></a>`;
+  }
+  if(e.link && safeUrl(e.link.uri)){
+    let dom=''; try{ dom = new URL(e.link.uri).hostname.replace(/^www\./,''); }catch(x){}
+    h += `<a class="vlink" href="${esc(e.link.uri)}" target="_blank" rel="noopener nofollow ugc">${!compact&&safeUrl(e.link.thumb)?`<img src="${esc(e.link.thumb)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:''}<span><small>${esc(dom)}</small><b>${esc(e.link.title||e.link.uri)}</b>${e.link.desc&&!compact?`<em>${esc(e.link.desc)}</em>`:''}</span></a>`;
+  }
+  if(e.quote){
+    h += e.quote.missing ? `<div class="vquote small">Publication citée indisponible (supprimée ou masquée).</div>`
+      : `<a class="vquote" href="${esc(e.quote.url)}" target="_blank" rel="noopener"><small>${esc(e.quote.name)} · @${esc(e.quote.handle)}${e.quote.date?' · '+fmtD(e.quote.date):''}</small><span>${esc(e.quote.text.length>400?e.quote.text.slice(0,400)+'…':e.quote.text)}</span></a>`;
+  }
+  return h;
+}
+function postHTML(p, compact){
+  const P = BYID[p.pid], plat = PLATFORMS[p.platform];
+  let ctx = '';
+  if(p.type==='repost') ctx = `<div class="vctx">↻ ${personName(P)} a republié <a href="${esc(p.author.url)}" target="_blank" rel="noopener">${esc(p.author.name)}</a> <span class="small">@${esc(p.author.handle)}</span></div>`;
+  else if(p.type==='reply') ctx = `<div class="vctx">↩ Réponse${p.replyTo&&p.replyTo.handle?` à ${esc(p.replyTo.name)} <span class="small">@${esc(p.replyTo.handle)}</span>`:''}</div>`;
+  const themes = p.themes.length ? p.themes.map(t=>`<button type="button" class="vtheme" data-theme="${esc(t)}" title="Filtrer sur ce thème (détection automatique par mots-clés)">${esc(themeLabel(t))}</button>`).join('')
+    : p.manual ? '<span class="small">Thème non déterminé : texte non disponible</span>' : '';
+  return `<article class="glass vpost t-${p.type}" aria-label="${esc(TYPES[p.type])} de ${esc(P.prenom+' '+P.nom)}, ${esc(fmtDT(p.date))}">
+    <header class="vhead">
+      <button type="button" class="vwho" data-k="veille" data-i="${esc(P.id)}" title="Ouvrir la fiche">${P.photo('hp-photo')}<span class="hp-txt"><b>${personName(P)}</b><span>${esc(P.role)} · <span class="sw" style="background:${esc(P.col)}"></span>${esc(P.groupe)}</span></span></button>
+      <div class="vmeta"><span class="vplat p-${esc(p.platform)}">${esc(plat.label)}</span><span class="vtype">${esc(TYPES[p.type])}</span><time datetime="${esc(p.dateOnly?p.date.slice(0,10):p.date)}">${esc(p.dateOnly?fmtD(p.date):fmtDT(p.date))}</time></div>
+    </header>
+    ${ctx}
+    ${p.manual&&p.text?'<div class="restitle">Extrait</div>':''}
+    ${p.text?`<div class="vtext">${richText(compact&&p.text.length>280?p.text.slice(0,280)+'…':p.text, compact&&p.text.length>280?[]:p.facets)}</div>`:''}
+    ${mediaHTML(p, compact)}
+    <footer class="vfoot"><div class="vthemes">${themes}</div><a class="dep-link" href="${esc(p.url)}" target="_blank" rel="noopener">Voir sur ${esc(plat.label)} ↗</a></footer>
+  </article>`;
+}
+function chipsHTML(P, withPending){
+  const a = PORDER.flatMap(r=>P.accounts.filter(x=>x.reseau===r)).map(x=>{
+    const coll = ACCS.includes(x) && x.actif!==false;
+    return `<a class="vchip p-${esc(x.reseau)}" href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc((coll?'Collecté automatiquement':x.via==='liste'?'Retiré de la liste : historique conservé':'Lien uniquement, non collecté')+' · source : '+x.source)}"><b>${esc(PLATFORMS[x.reseau].label)}</b>${x.identifiant?` <span>${esc(x.reseau==='bluesky'||x.reseau==='x'?'@'+x.identifiant:x.identifiant)}</span>`:''}${coll?' <i class="vok">collecté</i>':''}</a>`;
+  }).join('');
+  let h = a || '<span class="small">Aucun compte public mentionné sur la fiche officielle.</span>';
+  if(withPending && P.pending.length) h += `<span class="small vpend">À vérifier : ${P.pending.map(x=>esc(PLATFORMS[x.reseau].label)).join(', ')}</span>`;
+  return `<div class="vchips">${h}</div>`;
+}
+function coverageBanner(){
+  const nAcc = PEOPLE.reduce((n,p)=>n+p.accounts.length,0);
+  const err = ACCS.filter(a=>ST[a.key].state==='erreur');
+  const loading = ACCS.some(a=>ST[a.key].state==='en cours');
+  const nb = ACCS.length, np = new Set(ACCS.map(a=>a.pid)).size;
+  const nm = [...POSTS.values()].filter(p=>p.manual).length, mnets = [...new Set(MAN.map(m=>PLATFORMS[m.reseau].label))];
+  const manual = nm ? ` · Sélection manuelle : ${plural(nm,'publication')} ${esc(mnets.join(' et '))}` : '';
+  const actifs = ACCS.filter(a=>a.actif!==false), nact = actifs.length, nparl = new Set(actifs.filter(a=>BYID[a.pid].kind!=='autre').map(a=>a.pid)).size;
+  const liste = LIST_INFO ? `<a href="${esc(safeUrl(LIST_INFO.url)||'#')}" target="_blank" rel="noopener">« ${esc(String(LIST_INFO.nom||'').trim())} »</a>` : '';
+  const vieux = MODE==='historique' && LAST_SYNC && Date.now()-new Date(LAST_SYNC) > 3*36e5;
+  const titre = MODE==='historique' ? `Collecte automatique Bluesky : liste ${liste} (${plural(nact,'compte')}, ${plural(nparl,'parlementaire')})`
+    : MODE==='direct' ? `Bluesky : lecture directe de la liste ${liste} (${plural(nact,'compte')})`
+    : nb ? `Collecte automatique : ${plural(nb,'compte')} Bluesky (${plural(np,'parlementaire')} sur ${PEOPLE.length})` : 'Aucun compte collecté automatiquement';
+  const quand = loading ? 'Chargement…'
+    : MODE==='historique' ? (LAST_SYNC ? `Dernière synchronisation : ${esc(fmtDT(LAST_SYNC))} (collecte toutes les 30 minutes)` : 'Aucune synchronisation réussie pour l’instant')
+    : MODE==='direct' ? `Historique automatique pas encore disponible${LAST_SYNC?' · lu le '+esc(fmtDT(LAST_SYNC)):''}`
+    : LAST_SYNC ? `Dernière synchronisation réussie : ${esc(fmtDT(LAST_SYNC))}` : 'Aucune synchronisation réussie pour l’instant';
+  return `<div class="vcov-main">
+      <b>${titre}${manual}</b>
+      <span>${quand}${err.length?` · <span class="badv">${plural(err.length,'source indisponible','sources indisponibles')}</span>`:''}${vieux?' · <span class="badv">collecte automatique en retard</span>':''}${LIST_ERR?` · <span class="badv">${esc(LIST_ERR)}</span>`:''}</span>
+    </div>
+    <p class="small">Ce fil n'est <b>pas exhaustif</b>. Seul Bluesky est collecté automatiquement, pour les comptes de la liste de référence. Pour LinkedIn et Instagram, seules les publications choisies par l'Observatoire sont affichées ; X, Facebook et YouTube ne sont pas collectés (accès payant ou restreint) : leurs comptes sont seulement liés. Les comptes non confirmés par une source officielle ne sont ni affichés ni collectés. <button type="button" class="lnk vlinkbtn" data-go="veille-couv">Détail de la couverture</button></p>`;
+}
+function paintStatus(){
+  const b = $('vCov'); if(b && CUR_VIEW==='veille') b.innerHTML = coverageBanner();
+  const f = $('vFeed'); if(f) f.setAttribute('aria-busy', ACCS.some(a=>ST[a.key].state==='en cours') ? 'true':'false');
+}
+
+// --- Vue « Fil d'actualité » ---
+let filtersReady = false;
+function initFilters(){
+  if(filtersReady) return; filtersReady = true;
+  const opt = (v,l,sel) => `<option value="${esc(v)}"${sel?' selected':''}>${esc(l)}</option>`;
+  const dep = PEOPLE.filter(p=>p.kind==='dep'), sen = PEOPLE.filter(p=>p.kind==='sen').sort((a,b)=>a.nom.localeCompare(b.nom,'fr'));
+  const pname = p => p.prenom+' '+(p.kind==='sen'?p.nom.toLowerCase().replace(/(^|[ -])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase()):p.nom)+(hasSource(p)?'':' (non collecté)');
+  const aut = PEOPLE.filter(p=>p.kind==='autre');
+  $('vPers').innerHTML = opt('','Tous les parlementaires')+`<optgroup label="Députés">${dep.map(p=>opt(p.id,pname(p))).join('')}</optgroup><optgroup label="Sénateurs">${sen.map(p=>opt(p.id,pname(p))).join('')}</optgroup>`
+    + (aut.length ? `<optgroup label="Autres comptes de la liste">${aut.map(p=>opt(p.id,p.prenom)).join('')}</optgroup>` : '');
+  const g = k => [...new Map(PEOPLE.filter(p=>p.kind===k).map(p=>[p.gkey,p.groupe])).entries()].sort((a,b)=>a[1].localeCompare(b[1],'fr'));
+  $('vGrp').innerHTML = opt('','Tous les groupes')+`<optgroup label="Assemblée nationale">${g('dep').map(([k,l])=>opt(k,l)).join('')}</optgroup><optgroup label="Sénat">${g('sen').map(([k,l])=>opt(k,l)).join('')}</optgroup>`+(PEOPLE.some(p=>p.kind==='autre')?opt('NR','Non rattaché'):'');
+  $('vCirc').innerHTML = opt('','Toutes les circonscriptions')+Array.from({length:11},(_,i)=>opt(i+1, OBS.ORD(i+1)+' circ. · '+OBS.LEG[i+1])).join('');
+  const nets = PORDER.filter(r=>ACCS.some(a=>a.reseau===r) || MAN.some(m=>m.reseau===r));
+  $('vNet').innerHTML = opt('','Tous les réseaux collectés')+nets.map(r=>opt(r,PLATFORMS[r].label)).join('')+PORDER.filter(r=>!nets.includes(r)).map(r=>`<option disabled>${esc(PLATFORMS[r].label)} (non collecté)</option>`).join('');
+  $('vNet').options[0].textContent = 'Tous les réseaux disponibles';
+  $('vTheme').innerHTML = opt('','Tous les thèmes')+THEMES.map(t=>opt(t.id,t.label)).join('')+opt(THEME_OTHER.id,THEME_OTHER.label);
+  const map = {vQ:'q',vRole:'role',vPers:'pid',vGrp:'grp',vCirc:'circ',vNet:'net',vPer:'per',vTheme:'theme',vType:'type'};
+  Object.entries(map).forEach(([id,k])=>$(id).addEventListener(id==='vQ'?'input':'change',()=>{
+    F[k] = $(id).value;
+    SHOWN = 30; renderFeed();
+  }));
+  $('vReset').addEventListener('click',()=>{ Object.keys(F).forEach(k=>F[k]=''); Object.keys(map).forEach(id=>$(id).value=''); SHOWN=30; renderFeed(); });
+  $('vRefresh').addEventListener('click',()=>{ syncAll(true); });
+  $('vMore').addEventListener('click', async ()=>{
+    const all = filtered();
+    if(all.length > SHOWN){ SHOWN += 30; renderFeed(); return; }
+    $('vMore').disabled = true; $('vMore').textContent = 'Chargement…';
+    await loadOlder(); SHOWN += 30; renderFeed();
+  });
+  const v = $('v-veille');
+  v.addEventListener('click',e=>{
+    const l = e.target.closest('.vload'); if(l){ loadFrame(l); return; }
+    const t = e.target.closest('.vtheme'); if(t){ F.theme = t.dataset.theme; $('vTheme').value = F.theme; SHOWN=30; renderFeed(); $('vTools').scrollIntoView({behavior:'smooth',block:'start'}); return; }
+    const w = e.target.closest('[data-k="veille"]'); if(w){ OBS.openFiche('veille', w.dataset.i); return; }
+    const g = e.target.closest('[data-go]'); if(g) OBS.showTab(g.dataset.go);
+  });
+}
+function setFilters(o){ Object.assign(F, o); ['q','role','pid','grp','circ','net','per','theme','type'].forEach(k=>{ const id={q:'vQ',role:'vRole',pid:'vPers',grp:'vGrp',circ:'vCirc',net:'vNet',per:'vPer',theme:'vTheme',type:'vType'}[k]; if($(id)) $(id).value=F[k]; }); SHOWN=30; }
+function renderFeed(){
+  initFilters(); paintStatus();
+  const all = filtered(), list = all.slice(0, SHOWN), h = horizon();
+  const loading = ACCS.some(a=>ST[a.key].state==='en cours') && !POSTS.size;
+  const sel = F.pid && BYID[F.pid];
+  let note = '';
+  const noAcc = !ACCS.some(accMatches) && !MAN.some(accMatches);
+  if(sel && !hasSource(sel)) note = `<div class="glass notes">Aucun compte de ${personName(sel)} n'est collecté automatiquement. ${chipsHTML(sel)}</div>`;
+  else if(noAcc) note = `<div class="glass notes">Aucune source ne correspond à ces critères. Sources disponibles : ${ACCS.concat(MAN).map(a=>personName(BYID[a.pid])+' ('+esc(PLATFORMS[a.reseau].label)+(a.manual?', sélection manuelle':'')+')').join(', ')||'aucune'}. Les autres comptes sont consultables depuis l'onglet « Parlementaires et comptes ».</div>`;
+  else if(F.circ && F.role!=='dep' && !F.pid) note = `<div class="small vnote">Le filtre par circonscription ne retient que des députés : les sénateurs représentent l'ensemble des Français établis hors de France.</div>`;
+  $('vCount').textContent = loading ? 'Chargement des publications…' : `${plural(all.length,'publication')}${h>-Infinity?` depuis le ${fmtD(h)} (plus anciennes : « Charger plus »)`:''}`;
+  $('vFeed').innerHTML = note + (list.length ? list.map(p=>postHTML(p)).join('')
+    : loading ? '<div class="glass notes">Chargement des publications en cours…</div>'
+    : ((!sel || hasSource(sel)) && !noAcc) ? (!POSTS.size && ACCS.length && ACCS.every(a=>ST[a.key].state==='erreur')
+        ? '<div class="glass notes">Les sources sont momentanément indisponibles : aucune publication ne peut être affichée. Réessayez plus tard avec « Actualiser ».</div>'
+        : '<div class="glass notes">Aucune publication ne correspond à ces critères parmi les publications chargées.</div>') : '');
+  const more = all.length > SHOWN || hasMore();
+  const btn = $('vMore'); btn.hidden = !more || loading; btn.disabled = false; btn.textContent = all.length > SHOWN ? 'Afficher plus' : 'Charger des publications plus anciennes';
+}
+
+// --- Vue « Parlementaires et comptes » ---
+let dirReady = false;
+function renderDirectory(){
+  if(!dirReady){
+    dirReady = true;
+    ['vdQ','vdRole'].forEach(id=>$(id).addEventListener(id==='vdQ'?'input':'change', renderDirectory));
+    $('vDir').addEventListener('click',e=>{ if(e.target.closest('a')) return; const c=e.target.closest('[data-k]'); if(c) OBS.openFiche('veille', c.dataset.i); });
+    $('vDir').addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-k][role=button]')){ e.preventDefault(); OBS.openFiche('veille', e.target.dataset.i); } });
+  }
+  const q = nrm($('vdQ').value).trim(), r = $('vdRole').value;
+  const L = PEOPLE.filter(p=>(!r||p.kind===r) && (!q || q.split(/\s+/).every(w=>nrm([p.prenom,p.nom,p.groupe,p.place,p.role,p.accounts.map(a=>a.identifiant+' '+a.reseau).join(' ')].join(' ')).includes(w))));
+  $('vdCount').textContent = `${L.length} sur ${PEOPLE.length}`;
+  $('vDir').innerHTML = L.map(p=>{
+    const n = [...POSTS.values()].filter(x=>x.pid===p.id).length;
+    return `<div class="glass depcard vcard" role="button" tabindex="0" data-k="veille" data-i="${esc(p.id)}">
+      <div class="dep-top">${p.photo('dep-photo')}<div class="dep-id"><div class="dep-circ">${esc(p.role)} · ${esc(p.chamber)}</div><h4>${personName(p)}</h4><div class="small">${esc(p.place)}</div></div></div>
+      <div class="small"><span class="sw" style="background:${esc(p.col)}"></span>${esc(p.groupe)}</div>
+      ${chipsHTML(p, true)}
+      <div class="small dep-last">${isCollected(p) ? (n?`${plural(n,'publication chargée','publications chargées')}`:'Collecte Bluesky active') : n ? `${plural(n,'publication sélectionnée','publications sélectionnées')} manuellement` : 'Aucun compte collecté automatiquement'}</div>
+    </div>`;
+  }).join('') || '<div class="glass notes">Aucun parlementaire ne correspond à cette recherche.</div>';
+}
+
+// --- Vue « Couverture des sources » ---
+function renderCoverage(){
+  const rows = PORDER.map(r=>{
+    const ver = PEOPLE.reduce((n,p)=>n+p.accounts.filter(a=>a.reseau===r).length,0);
+    const pend = PEOPLE.reduce((n,p)=>n+p.pending.filter(a=>a.reseau===r).length,0);
+    const col = ACCS.filter(a=>a.reseau===r);
+    const ok = col.filter(a=>ST[a.key].state==='ok').length;
+    const nm = [...POSTS.values()].filter(p=>p.manual && p.platform===r).length;
+    const mode = col.length ? `<b class="okv">Oui</b> · ${ok}/${col.length} à jour`
+      : MANUAL[r] ? `<span class="small">Sélection manuelle : ${plural(nm,'publication')}</span>` : '<span class="small">Non : lien vers le profil</span>';
+    return `<tr><td><span class="vplat p-${r}">${esc(PLATFORMS[r].label)}</span></td><td class="num">${ver}</td><td class="num">${pend}</td>
+      <td>${mode}</td><td class="small">${esc(r==='bluesky'&&MODE==='historique' ? "API publique officielle de Bluesky (AT Protocol), gratuite et sans compte. Collecte automatique toutes les 30 minutes des membres de la liste de référence ; historique conservé." : PLATFORMS[r].why)}</td></tr>`;
+  }).join('');
+  const accRows = ACCS.map(a=>{ const s=ST[a.key], p=BYID[a.pid];
+    return `<tr><td>${personName(p)}</td><td><a href="${esc(a.url)}" target="_blank" rel="noopener">@${esc(a.identifiant)}</a></td>
+      <td>${s.state==='ok'?'<span class="okv">Synchronisé</span>':s.state==='erreur'?`<span class="badv">Indisponible</span><div class="small">${esc(s.err)}</div>`:s.state==='en cours'?'En cours…':'En attente'}</td>
+      <td>${s.at?esc(fmtDT(s.at)):'—'}</td><td class="num">${s.n}</td><td class="small">${esc(a.source)}${a.verifie_le?' · vérifié le '+esc(fmtD(a.verifie_le)):''}</td></tr>`; }).join('');
+  const pend = PEOPLE.filter(p=>p.pending.length);
+  const none = PEOPLE.filter(p=>!p.accounts.length);
+  $('vCouv').innerHTML = `
+    <div class="glass vcov">${coverageBanner().replace(/<button[^>]*data-go="veille-couv"[^>]*>.*?<\/button>/,'')}</div>
+    <section><h3>Par réseau</h3>
+      <div class="glass tblx"><table><thead><tr><th>Réseau</th><th class="num">Comptes vérifiés</th><th class="num">À vérifier</th><th>Collecte automatique</th><th>Pourquoi</th></tr></thead><tbody>${rows}</tbody></table></div></section>
+    ${MODE==='comptes' ? `<section><h3>Comptes collectés</h3>
+      ${LIST_ERR?`<div class="glass notes badv">${esc(LIST_ERR)}</div>`:''}
+      <div class="glass tblx"><table><thead><tr><th>Parlementaire</th><th>Compte</th><th>État</th><th>Dernière synchronisation</th><th class="num">Publications chargées</th><th>Vérification</th></tr></thead><tbody>${accRows||'<tr><td colspan="6">Aucun compte collecté.</td></tr>'}</tbody></table></div>` : listSection()}
+      ${SEL_ERR.length||SEL_WARN.length?`<div class="glass notes" style="margin-top:10px"><b>Sélection manuelle (data/veille/selection.json) :</b><ul>${SEL_ERR.map(x=>`<li class="badv">Entrée ignorée — ${esc(x)}</li>`).join('')}${SEL_WARN.map(x=>`<li>À contrôler — ${esc(x)}</li>`).join('')}</ul></div>`:''}
+      <div class="sec-tools" style="margin-top:10px"><button type="button" class="lnk" id="vSyncNow">${MODE==='historique'?'Recharger les données':'Relancer la synchronisation'}</button><span class="small">${MODE==='historique'?"Le site affiche l'historique enregistré par la collecte automatique. Pour lancer une collecte immédiate : dépôt GitHub, onglet « Actions », « Veille Bluesky », « Run workflow ».":"Les publications sont lues en direct depuis l'API publique de Bluesky à chaque visite (mise en cache 10 minutes dans votre navigateur)."}</span></div></section>
+    <section><h3>Informations en attente de vérification</h3>
+      <div class="glass notes"><p>Ces informations ne sont ni affichées ni collectées tant qu'elles ne sont pas confirmées par une source officielle ou par la certification de la plateforme.</p>
+      <ul>${pend.map(p=>`<li>${personName(p)} : ${p.pending.map(a=>esc(PLATFORMS[a.reseau].label)+(a.reseau==='bluesky'?' (profil repéré, non confirmé)':' (adresse absente ou invalide sur la fiche officielle)')).join(', ')}</li>`).join('')}</ul>
+      ${none.length?`<p>Aucun compte public n'est mentionné sur la fiche officielle de : ${none.map(personName).join(', ')}.</p>`:''}</div></section>
+    <section><h3>Méthode et limites</h3><div class="glass notes"><ul>
+      <li><b>Sources des comptes :</b> fiches officielles de l'Assemblée nationale et du Sénat, relevées le ${esc(fmtD(REG.maj))}, et certification des plateformes.${MODE!=='comptes'?" Les comptes Bluesky suivis sont ceux de la liste de référence de l'Observatoire ; chacun est rattaché à un parlementaire par son identifiant Bluesky enregistré dans l'annuaire, ou à défaut par son nom exact (rattachement alors signalé comme à confirmer).":''}</li>
+      <li><b>Sélection manuelle (LinkedIn, Instagram) :</b> publications choisies par l'Observatoire, dont seule l'adresse est enregistrée. Elles s'affichent via l'intégration officielle du réseau, uniquement si vous cliquez, et ne sont rattachées qu'à un compte vérifié du parlementaire. Ce n'est pas un relevé complet de son activité sur ces réseaux.</li>
+      <li><b>Publications :</b> seules les publications publiques renvoyées par les API officielles sont affichées, avec un lien vers l'original. Une publication supprimée par son auteur disparaît à la synchronisation suivante. Les images restent hébergées par la plateforme d'origine.</li>
+      <li><b>Thèmes :</b> détection automatique par mots-clés (${esc(THEME_VERSION)}). Un thème signale qu'un sujet est mentionné ; il ne traduit aucune position politique. Une publication peut relever de plusieurs thèmes.</li>
+      <li><b>Historique :</b> ${MODE==='historique'?"les publications Bluesky des membres de la liste sont conservées, mois par mois, depuis leur première collecte (au moins 90 jours en arrière pour un compte ajouté). Une publication supprimée par son auteur est retirée de l'historique lors de la synchronisation suivante, si elle figure parmi ses 100 publications les plus récentes ; une publication plus ancienne n'est pas vérifiée à nouveau.":"l'observatoire ne constitue pas d'archive pour les sources lues en direct : il affiche ce que les plateformes renvoient au moment de la consultation."}</li>
+      <li><b>Données personnelles :</b> l'affichage de cette rubrique fait contacter les serveurs de Bluesky (images sur cdn.bsky.app ; public.api.bsky.app en lecture directe) et, pour l'historique, GitHub (raw.githubusercontent.com) par votre navigateur, qui leur transmet votre adresse IP. Les publications LinkedIn et Instagram ne sont chargées depuis ces réseaux qu'après un clic. Aucune donnée de visiteur n'est conservée par l'Observatoire.</li>
+    </ul></div></section>`;
+  $('vSyncNow').addEventListener('click',()=>{ syncAll(true); renderCoverage(); });
+}
+
+// Liste Bluesky de référence : membres, rattachement et journal de la collecte
+function listSection(){
+  const info = LIST_INFO||{};
+  const rows = ACCS.filter(a=>a.via==='liste').sort((a,b)=>(b.actif!==false)-(a.actif!==false) || personName(BYID[a.pid]).localeCompare(personName(BYID[b.pid]),'fr')).map(a=>{
+    const m = a.membre, st = ST[a.key], P = BYID[a.pid];
+    const ratt = P.kind==='autre' ? '<span class="badv">Non rattaché à l’annuaire</span>' : m.rattachement==='nom' ? 'Par le nom (à confirmer dans comptes.json)' : 'Par identifiant Bluesky (DID)';
+    const statut = a.actif===false ? `Retiré de la liste${m.retire_le?' le '+esc(fmtD(m.retire_le)):''} · historique conservé` : `Membre${m.ajoute_le?' depuis le '+esc(fmtD(m.ajoute_le)):''}`;
+    const etat = MODE==='direct' ? (st.state==='ok'?'<span class="okv">Lu</span>':st.state==='erreur'?`<span class="badv">Indisponible</span><div class="small">${esc(st.err)}</div>`:'—')
+      : st.state==='erreur' ? `<span class="badv">Erreur</span><div class="small">${esc(st.err)}</div>` : st.at ? `<span class="okv">Collecté</span> le ${esc(fmtDT(st.at))}` : 'En attente';
+    return `<tr><td>${personName(P)}<div class="small">${esc(P.role)}</div></td><td><a href="${esc(a.url)}" target="_blank" rel="noopener">@${esc(a.identifiant)}</a></td><td class="small">${ratt}</td><td class="small">${statut}</td><td>${etat}</td><td class="num">${st.total!=null?st.total:st.n}</td></tr>`;
+  }).join('');
+  const journal = MODE==='historique' && ETAT && ETAT.journal ? ETAT.journal.slice(0,12).map(j=>`<tr><td>${esc(fmtDT(j.date))}</td><td>${j.ok?'<span class="okv">Réussie</span>':'<span class="badv">Échec</span>'}</td><td class="num">${j.nouvelles}</td><td class="num">${j.supprimees}</td><td class="num">${j.rejetees}</td><td class="small">${[j.ajouts&&j.ajouts.length?'Ajout : '+j.ajouts.map(h=>'@'+h).join(', '):'', j.retraits&&j.retraits.length?'Retrait : '+j.retraits.map(h=>'@'+h).join(', '):'', ...(j.erreurs||[])].filter(Boolean).map(esc).join('<br>')}</td></tr>`).join('') : '';
+  return `<section><h3>Liste Bluesky de référence</h3>
+    <div class="glass notes"><p style="margin:0">Liste <a href="${esc(safeUrl(info.url)||'#')}" target="_blank" rel="noopener">« ${esc(String(info.nom||'').trim())} »</a>${info.createur?' de @'+esc(info.createur):''} · ${plural(ACCS.filter(a=>a.actif!==false).length,'membre')}.
+      ${MODE==='historique' ? `Collecte automatique toutes les 30 minutes (GitHub Actions) : ${plural(ETAT.total||0,'publication')} en historique, ${plural(Object.keys(ETAT.mois||{}).length,'mois','mois')} couverts. Dernière synchronisation réussie : ${ETAT.derniere_synchro_reussie?esc(fmtDT(ETAT.derniere_synchro_reussie)):'aucune'}${ETAT.derniere_synchro && ETAT.derniere_synchro!==ETAT.derniere_synchro_reussie?` · dernière tentative : ${esc(fmtDT(ETAT.derniere_synchro))} (échec)`:''}.`
+        : "L'historique automatique n'est pas encore disponible : les publications récentes sont lues directement auprès de Bluesky à chaque visite."}
+      Ajouter ou retirer un compte de la liste sur Bluesky suffit : la collecte suit au passage suivant. Chaque publication est vérifiée : elle doit avoir été publiée ou republiée par un membre de la liste.</p></div>
+    <div class="glass tblx" style="margin-top:10px"><table><thead><tr><th>Compte suivi</th><th>Bluesky</th><th>Rattachement</th><th>Statut dans la liste</th><th>Collecte</th><th class="num">Publications</th></tr></thead><tbody>${rows||'<tr><td colspan="6">Aucun membre.</td></tr>'}</tbody></table></div>
+    ${journal?`<h3 style="margin-top:18px">Journal des synchronisations</h3><div class="glass tblx"><table><thead><tr><th>Date</th><th>Résultat</th><th class="num">Nouvelles</th><th class="num">Supprimées</th><th class="num">Rejetées</th><th>Détails</th></tr></thead><tbody>${journal}</tbody></table></div>`:''}`;
+}
+
+// --- Fiche individuelle ---
+function ficheHTML(id){
+  const P = BYID[id]; if(!P) return '';
+  return `<div class="depcard big vfiche" data-vid="${esc(id)}">
+    <div class="dep-top">${P.photo('dep-photo')}<div class="dep-id"><div class="dep-circ">${esc(P.role)} · ${esc(P.chamber)}</div><h4 id="ficheTitle">${personName(P)}</h4><div class="small">${esc(P.place)}</div></div></div>
+    <dl class="dep-dl"><dt>Groupe politique</dt><dd><span class="sw" style="background:${esc(P.col)}"></span>${esc(P.groupe)}</dd></dl>
+    <a class="dep-link" href="${esc(P.fiche)}" target="_blank" rel="noopener">${esc(P.ficheLabel)} ↗</a>
+    <div class="fiche-sec"><div class="restitle">Comptes publics vérifiés</div>${chipsHTML(P, true)}</div>
+    <div id="vFicheBody">${ficheBody(P)}</div>
+  </div>`;
+}
+function ficheBody(P){
+  if(!hasSource(P)) return `<div class="fiche-sec small">Aucun compte de ce parlementaire n'est collecté automatiquement. Les publications restent consultables via les liens ci-dessus.</div>`;
+  const st = ACCS.filter(a=>a.pid===P.id).map(a=>ST[a.key]);
+  const posts = [...POSTS.values()].filter(p=>p.pid===P.id).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(st.some(s=>s.state==='en cours'||s.state==='attente') && !posts.length) return '<div class="fiche-sec small">Chargement des publications…</div>';
+  if(!posts.length) return `<div class="fiche-sec small">${st.some(s=>s.state==='erreur')?'Source indisponible : '+esc(st.find(s=>s.err).err)+'.':'Aucune publication récupérée.'}</div>`;
+  const own = posts.filter(p=>p.type!=='repost' && p.themes.length);
+  const nRep = posts.filter(p=>p.type==='repost').length, nMan = posts.filter(p=>p.manual).length;
+  const cnt = {}; own.forEach(p=>p.themes.forEach(t=>cnt[t]=(cnt[t]||0)+1));
+  const th = Object.entries(cnt).sort((a,b)=>b[1]-a[1]); const max = th.length ? th[0][1] : 1;
+  // chronologie : publications par semaine sur les 12 dernières semaines
+  const wk = Array(12).fill(0), now = Date.now();
+  posts.forEach(p=>{ const i = Math.floor((now - new Date(p.date))/(7*864e5)); if(i>=0 && i<12) wk[11-i]++; });
+  const wmax = Math.max(1,...wk), first = new Date(posts[posts.length-1].date);
+  const parts = [nRep&&plural(nRep,'republication'), nMan&&`${nMan} en sélection manuelle`].filter(Boolean);
+  const span = `${plural(posts.length,'publication','publications')}${parts.length?' (dont '+parts.join(', ')+')':''}, du ${fmtD(first)} au ${fmtD(posts[0].date)}`;
+  return `<div class="fiche-sec"><div class="restitle">Thèmes principalement abordés</div>
+      ${own.length ? `<div class="small" style="margin-bottom:6px">Sur ${plural(own.length,'message personnel','messages personnels')} dont le texte est disponible · détection automatique par mots-clés, sans interprétation des positions.</div>
+      ${th.slice(0,8).map(([t,n])=>`<div class="vbar"><span>${esc(themeLabel(t))}</span><div class="resbar"><div style="width:${(n/max*100).toFixed(1)}%;background:#5f86ad"></div></div><b>${n}</b></div>`).join('')}`
+      : '<div class="small">Non déterminés : le texte des publications disponibles n\'est pas accessible.</div>'}</div>
+    <div class="fiche-sec"><div class="restitle">Chronologie · 12 dernières semaines</div>
+      <div class="vweeks" role="img" aria-label="Nombre de publications chargées par semaine sur les 12 dernières semaines : ${wk.join(', ')}">${wk.map((n,i)=>`<span title="${n} publication(s), semaine ${i-11===0?'en cours':'S'+(i-11)}"><i style="height:${(n/wmax*100).toFixed(0)}%"></i></span>`).join('')}</div>
+      <div class="small">${esc(span)}.${ACCS.some(a=>a.pid===P.id&&!ST[a.key].done)?' Seules les publications les plus récentes sont chargées.':''}</div></div>
+    <div class="fiche-sec"><div class="restitle">Dernières publications</div><div class="vmini">${posts.slice(0,6).map(p=>postHTML(p,true)).join('')}</div>
+      <button type="button" class="lnk" data-vfeed="${esc(P.id)}" style="margin-top:8px">Voir toutes ses publications dans le fil</button></div>`;
+}
+async function ficheMounted(id){
+  try{ history.replaceState(null,'','#veille/'+encodeURIComponent(id)); }catch(e){}
+  const body = document.getElementById('ficheBody');
+  if(body && !body.dataset.vbound){
+    body.dataset.vbound = '1';
+    body.addEventListener('click',e=>{
+      const l = e.target.closest('.vload'); if(l){ loadFrame(l); return; }
+      const b = e.target.closest('[data-vfeed]'); if(b){ OBS.closeFiche(); setFilters({q:'',role:'',grp:'',circ:'',net:'',per:'',theme:'',type:'',pid:b.dataset.vfeed}); OBS.showTab('veille'); return; }
+      const t = e.target.closest('.vtheme'); if(t){ const v=document.querySelector('.vfiche'); OBS.closeFiche(); setFilters({q:'',role:'',grp:'',circ:'',net:'',per:'',type:'',pid:v?v.dataset.vid:'',theme:t.dataset.theme}); OBS.showTab('veille'); }
+    });
+  }
+  const P = BYID[id]; if(!P || !isCollected(P)) return;
+  await READY; await syncOne(id);
+  const cur = document.querySelector('.vfiche'); if(cur && cur.dataset.vid===id && $('vFicheBody')) $('vFicheBody').innerHTML = ficheBody(P);
+}
+
+// --- Bloc « Réseaux sociaux » dans les fiches Députés / Sénateurs existantes ---
+function socialBlock(id){
+  const P = BYID[id]; if(!P) return '';
+  return `<div class="fiche-sec"><div class="restitle">Réseaux sociaux</div>${chipsHTML(P)}<button type="button" class="lnk" data-open="veille" data-id="${esc(id)}" style="margin-top:8px">Veille parlementaire : publications et thèmes</button></div>`;
+}
+
+// ---------- Bandeau d'en-tête ----------
+function hero(v){
+  const t = {veille:"Veille parlementaire", 'veille-comptes':"Parlementaires et comptes", 'veille-couv':"Couverture des sources"}[v];
+  const p = {veille:"Dernières publications publiques des 11 députés et 12 sénateurs des Français établis hors de France, dans un fil commun. Seuls les réseaux accessibles gratuitement et légalement sont collectés : le fil n'est pas exhaustif.",
+    'veille-comptes':"Comptes publics des 23 parlementaires, relevés sur les fiches officielles de l'Assemblée nationale et du Sénat. Un compte non confirmé n'est pas affiché.",
+    'veille-couv':"État de la collecte : réseaux accessibles, comptes synchronisés, dernière synchronisation réussie et sources indisponibles."}[v];
+  if(!REG) return {t, p, k:[]};
+  const nAcc = PEOPLE.reduce((n,x)=>n+x.accounts.length,0);
+  const nets = new Set(ACCS.map(a=>a.reseau)).size;
+  return {t, p, k:[[String(PEOPLE.length),"parlementaires suivis"],[String(nAcc),"comptes publics vérifiés"],[String(ACCS.length),"collecté(s) automatiquement"],[`${nets} / ${PORDER.length}`,"réseaux collectés"],[String(POSTS.size),"publications chargées"]]};
+}
+
+function refresh(){
+  if(!REG) return;
+  OBS.refreshHero && OBS.refreshHero();
+  if(CUR_VIEW==='veille' && !$('v-veille').hidden) renderFeed();
+  else if(CUR_VIEW==='veille-comptes' && !$('v-veille-comptes').hidden) renderDirectory();
+  else if(CUR_VIEW==='veille-couv' && !$('v-veille-couv').hidden) renderCoverage();
+  paintStatus();
+  const f = document.querySelector('.vfiche'); if(f && $('vFicheBody') && BYID[f.dataset.vid]) $('vFicheBody').innerHTML = ficheBody(BYID[f.dataset.vid]);
+}
+
+// =====================================================================
+// API publique du module (appelée par app.js)
+// =====================================================================
+window.VEILLE = {
+  init(obs){
+    OBS = obs;
+    READY = (async()=>{
+      const get = async u => { const r = await fetch(u); if(!r.ok) throw new Error(u+' introuvable'); return r.json(); };
+      const [reg, th] = await Promise.all([get('./data/veille/comptes.json'), get('./data/veille/themes.json')]);
+      try{ CFG = await get('./data/veille/config.json'); }catch(e){ CFG = {}; }      // facultatif
+      REG = reg; compileThemes(th);
+      await prepareBluesky(); buildPeople();
+      let sel = null; try{ sel = await get('./data/veille/selection.json'); }catch(e){}   // facultatif
+      loadSelection(sel);
+    })().catch(e=>{ console.error('Veille parlementaire :', e); REG = null; throw e; });
+    READY.catch(()=>{});
+    return READY;
+  },
+  async render(v){
+    CUR_VIEW = v;
+    const target = {veille:'vFeed','veille-comptes':'vDir','veille-couv':'vCouv'}[v];
+    try{ await READY; }catch(e){ $(target).innerHTML = '<div class="glass notes">Les fichiers data/veille/comptes.json et data/veille/themes.json sont introuvables.</div>'; return; }
+    if(v==='veille') renderFeed(); else if(v==='veille-comptes') renderDirectory(); else renderCoverage();
+    OBS.refreshHero && OBS.refreshHero();
+    if(!FETCHED_AT && !LOADING) syncAll(false);
+    else if(FETCHED_AT && Date.now()-FETCHED_AT > CACHE_TTL) syncAll(true);
+  },
+  hero, socialBlock,
+  fiche(id){ return REG ? ficheHTML(id) : ''; },
+  ficheMounted,
+  has(id){ return !!BYID[id]; },
+  // exposé pour les tests automatisés (aucune écriture possible vers une source)
+  _test:{classify, compileThemes, richText, bskyPost, nrm, MANUAL}
+};
+})();

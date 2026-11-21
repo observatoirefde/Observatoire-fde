@@ -1,0 +1,5546 @@
+{
+ "maj": "2026-11-18",
+ "source": "Ministère de l'Europe et des Affaires étrangères — tableau des élus (diplomatie.gouv.fr)",
+ "source_pres": "Présidences : communications publiques des conseils consulaires et de la presse locale ; non centralisées officiellement",
+ "circonscriptions": [
+  {
+   "id": 0,
+   "name": "Afrique du Sud, Mozambique, Namibie, Botswana",
+   "leg": 10,
+   "sieges": "Johannesburg",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Pour vous les français d'Afrique australe",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Unis pour agir",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 1,
+   "name": "Algérie - 1re circonscription",
+   "leg": 9,
+   "sieges": "Oran",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Votre voix pour une communauté unie et solidaire Défendre. Informer. Servir",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "FRANÇAIS DU MONDE TOUJOURS PROCHES DE VOUS !",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 2,
+   "name": "Algérie - 2e circonscription",
+   "leg": 9,
+   "sieges": "Annaba",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ALLIANCE SOLIDAIRE DES FRANÇAIS EN ALGÉRIE",
+     "b": "ASFE"
+    },
+    {
+     "n": 4,
+     "name": "FRANÇAIS DU MONDE, TOUJOURS PROCHES DE VOUS !",
+     "b": "GAU"
+    },
+    {
+     "n": 6,
+     "name": "ENSEMBLE POUR VOUS SERVIR, VOUS DEFENDRE, VOUS INFORMER",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 3,
+   "name": "Algérie - 3e circonscription",
+   "leg": 9,
+   "sieges": "Alger",
+   "listes": [
+    {
+     "n": 1,
+     "name": "VOTRE VOIX, NOTRE FORCE, NOTRE COMBAT Le changement dans la continuité : Défendre, Informer, Répondre",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "ALLIANCE SOLIDAIRE DES FRANÇAIS EN ALGERIE",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "FRANÇAIS DU MONDE TOUJOURS PROCHES DE VOUS",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 4,
+   "name": "Allemagne - 1re circonscription",
+   "leg": 7,
+   "sieges": "Berlin, Hambourg",
+   "listes": [
+    {
+     "n": 2,
+     "name": "LA LISTE ÉCOLOGISTE SOCIALE ET CITOYENNE SOUTENUE PAR LES ÉCOLOGISTES EELV, VOLT, BÜNDNIS 90/DIE GRÜNEN",
+     "b": "ECO"
+    },
+    {
+     "n": 3,
+     "name": "AGIR-ICI - Équipe citoyenne au service des Françaises et Français d’Allemagne du Nord et de l’Est",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "FAIRE MIEUX !",
+     "b": "LFI"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 5,
+   "name": "Allemagne - 2e circonscription",
+   "leg": 7,
+   "sieges": "Francfort, Düsseldorf, Sarrebruck",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Défendre et accompagner les Français d'Allemagne - ASFE",
+     "b": "ASFE"
+    },
+    {
+     "n": 2,
+     "name": "Volt Europa",
+     "b": "ENS"
+    },
+    {
+     "n": 3,
+     "name": "CITOYEN.NE.S ENGAGÉ.E.S – ECOLOGISTES ET SOLIDAIRES",
+     "b": "ECO"
+    },
+    {
+     "n": 5,
+     "name": "Français d'Allemagne au cœur de l'Europe",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 6,
+   "name": "Allemagne - 3e circonscription",
+   "leg": 7,
+   "sieges": "Munich, Stuttgart",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Docteur Nadine FOUQUES-WEISS POUR VOUS, AVEC VOUS ! Avec le soutien de l'ASFE",
+     "b": "ASFE"
+    },
+    {
+     "n": 2,
+     "name": "Union des Francais d'Allemagne du Sud - Alliance de la Droite, du centre et des Independants",
+     "b": "LR"
+    },
+    {
+     "n": 3,
+     "name": "Français en Allemagne du Sud",
+     "b": "IND"
+    },
+    {
+     "n": 6,
+     "name": "Engagement écologiste et citoyen en Allemagne du Sud – ECAS (Les Ecologistes EELV, Bündnis 90/Die Grünen)",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 7,
+   "name": "Andorre",
+   "leg": 5,
+   "sieges": "Andorre-la-Vieille",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Catherine METAYER",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 8,
+   "name": "Angola",
+   "leg": 10,
+   "sieges": "Luanda",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Julien ANTUNES",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 9,
+   "name": "Arabie saoudite - 1re circonscription (avec Yémen)",
+   "leg": 10,
+   "sieges": "Djeddah",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Jean-Louis UBEDA",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 10,
+   "name": "Arabie saoudite - 2e circonscription (avec Koweït)",
+   "leg": 10,
+   "sieges": "Riyad",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ASFE - Défendre et accompagner les Français d'Arabie Saoudite et du Koweït",
+     "b": "ASFE"
+    },
+    {
+     "n": 2,
+     "name": "AVEC ET POUR LES FRANÇAIS DE L'ETRANGER",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Ensemble pour les Français du Golfe !",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 11,
+   "name": "Argentine",
+   "leg": 2,
+   "sieges": "Buenos Aires",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Collectif SOLIDAIRES : citoyen.ne.s de gauche, écologistes et féministes",
+     "b": "GAU"
+    },
+    {
+     "n": 2,
+     "name": "REPUBLICAINS ET SOLIDAIRES",
+     "b": "LR"
+    },
+    {
+     "n": 3,
+     "name": "Construire",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "ASFE - Défendre et accompagner les Français d'Argentine",
+     "b": "ASFE"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 12,
+   "name": "Arménie, Géorgie",
+   "leg": 11,
+   "sieges": "Erevan",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Lusine BARDON - HAMBARDZUMYAN",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 13,
+   "name": "Australie, Fidji, Papouasie-Nouvelle-Guinée",
+   "leg": 11,
+   "sieges": "Sydney, Canberra",
+   "listes": [
+    {
+     "n": 1,
+     "name": "PROXIMITÉ, SOLIDARITÉ, ACTIONS - Liste indépendante",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "ÉLAN CITOYEN Solidaires. Indépendants. À votre écoute. Engagés.",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "Ensemble, Citoyens et Solidaires ! Liste soutenue par Français du Monde et Les Ecologistes - EELV",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 14,
+   "name": "Autriche, Slovaquie, Slovénie",
+   "leg": 7,
+   "sieges": "Vienne",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Défendre, soutenir et accompagner les Français d'Autriche, de Slovaquie et de Slovénie - ASFE",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "Union de gauche écologique et solidaire",
+     "b": "GAU"
+    },
+    {
+     "n": 5,
+     "name": "Pour une proximité écologique et solidaire",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 15,
+   "name": "Belgique",
+   "leg": 4,
+   "sieges": "Bruxelles",
+   "listes": [
+    {
+     "n": 3,
+     "name": "AVEC VOUS, pour l'Union des Français de Belgique",
+     "b": "LR"
+    },
+    {
+     "n": 4,
+     "name": "La Belgique en commun",
+     "b": "IND"
+    },
+    {
+     "n": 5,
+     "name": "PLUS FORTS ENSEMBLE ! LISTE SOUTENUE PAR RENAISSANCE, HORIZONS, DES INDÉPENDANT(E)S ET DES PERSONNES ENGAGÉES",
+     "b": "ENS"
+    },
+    {
+     "n": 7,
+     "name": "Écologistes, solidaires et féministes au cœur de l'Europe",
+     "b": "ECO"
+    },
+    {
+     "n": 9,
+     "name": "Unis à gauche pour les Françaises et les Français de Belgique",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 16,
+   "name": "Bénin",
+   "leg": 10,
+   "sieges": "Cotonou",
+   "listes": [
+    {
+     "n": 1,
+     "name": "CITOYENS DANS LA DIVERSITE",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "UNION SOLIDAIRE DES FRANÇAIS DU BENIN",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 17,
+   "name": "Bolivie",
+   "leg": 2,
+   "sieges": "La Paz",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Maurice MANÇO-QUIROGA",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 18,
+   "name": "Brésil - 1re circonscription (avec Suriname)",
+   "leg": 2,
+   "sieges": "Brasilia, Recife",
+   "listes": [
+    {
+     "n": 1,
+     "name": "TOUS UNIS - ÉCOLOGIE ET SOLIDARITÉ",
+     "b": "ECO"
+    },
+    {
+     "n": 2,
+     "name": "Défendre et accompagner les Français de Brasilia, Récife et du Nordeste du Brésil. ASFE",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "LA FRANCE AU CŒUR BRASILIA - RECIFE - PARAMARIBO LA DROITE RÉPUBLICAINE",
+     "b": "LR"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 19,
+   "name": "Brésil - 2e circonscription",
+   "leg": 2,
+   "sieges": "Rio de Janeiro",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Traits-d’Union : pour un mandat collectif d’actions citoyennes, écologiste et solidaire.",
+     "b": "ECO"
+    },
+    {
+     "n": 2,
+     "name": "POUR TOUS LES FRANÇAIS",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 20,
+   "name": "Brésil - 3e circonscription",
+   "leg": 2,
+   "sieges": "São Paulo",
+   "listes": [
+    {
+     "n": 1,
+     "name": "La France au Cœur – Liste menée par Bertrand Dupont",
+     "b": "LR"
+    },
+    {
+     "n": 2,
+     "name": "UNE VOIX DE GAUCHE POUR LES FRANÇAIS DE SÃO PAULO ET DU SUD DU BRÉSIL (soutenue par FRANÇAIS du MONDE-ADFE)",
+     "b": "GAU"
+    },
+    {
+     "n": 4,
+     "name": "L.I.BRES : LIBRES ET INDEPENDANTS BRESIL",
+     "b": "ASFE"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 21,
+   "name": "Bulgarie, Bosnie-Herzégovine, Macédoine, Albanie, Kosovo, Monténégro",
+   "leg": 7,
+   "sieges": "Sofia",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Gauche solidaire et écologiste",
+     "b": "GAU"
+    },
+    {
+     "n": 2,
+     "name": "Pour les Français et Françaises des Balkans",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "Défendre et accompagner les Français des Balkans",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 22,
+   "name": "Burkina Faso",
+   "leg": 9,
+   "sieges": "Ouagadougou",
+   "listes": [
+    {
+     "n": 3,
+     "name": "Ousmane OUÉDRAOGO",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 23,
+   "name": "Cambodge",
+   "leg": 11,
+   "sieges": "Phnom Penh",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Le Relais citoyen des Français du Cambodge",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Français au Cambodge – Plus Forts Ensemble !",
+     "b": "ENS"
+    }
+   ],
+   "pres_src": [
+    "francaisaucambodge.org, 24/06/2026"
+   ]
+  },
+  {
+   "id": 24,
+   "name": "Cameroun, Guinée équatoriale",
+   "leg": 10,
+   "sieges": "Yaoundé, Douala",
+   "listes": [
+    {
+     "n": 1,
+     "name": "CITOYENNES, CITOYENS UNIS DANS LA DIVERSITE",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "Défense des intérêts des français de l'étranger",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "UNION DES FRANCAIS DU CAMEROUN ET DE GUINEE EQUATORIALE",
+     "b": "LR"
+    }
+   ],
+   "pres_src": [
+    "Consulat général Douala, 11/06/2026"
+   ]
+  },
+  {
+   "id": 25,
+   "name": "Canada - 1re circonscription",
+   "leg": 1,
+   "sieges": "Vancouver",
+   "listes": [
+    {
+     "n": 1,
+     "name": "VOTRE AVENIR DURABLE DANS L’OUEST DU CANADA",
+     "b": "IND"
+    },
+    {
+     "n": 6,
+     "name": "Notre priorité, c’est vous ! (équipe de conseillers sortante)",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 26,
+   "name": "Canada - 2e circonscription",
+   "leg": 1,
+   "sieges": "Toronto",
+   "listes": [
+    {
+     "n": 1,
+     "name": "LIFE LIBRES ET INDÉPENDANTS POUR LES FRANÇAIS DE L'ÉTRANGER",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "ENSEMBLE POUR LES FRANÇAIS DE L'ONTARIO ET DU MANITOBA",
+     "b": "IND"
+    },
+    {
+     "n": 6,
+     "name": "Français de l'Ontario et du Manitoba - Écologistes, solidaires et engagés",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 27,
+   "name": "Canada - 3e circonscription",
+   "leg": 1,
+   "sieges": "Québec",
+   "listes": [
+    {
+     "n": 1,
+     "name": "La Gauche Solidaire et Écologiste de l’Est du Québec",
+     "b": "GAU"
+    },
+    {
+     "n": 2,
+     "name": "ASFE - Défendre et accompagner les Françaises et les Français du Québec",
+     "b": "ASFE"
+    },
+    {
+     "n": 7,
+     "name": "Rassemblement des patriotes Circonscription de Québec",
+     "b": "ED"
+    }
+   ],
+   "pres_src": [
+    "PV CG Québec, 12/06/2026"
+   ]
+  },
+  {
+   "id": 28,
+   "name": "Canada - 4e circonscription",
+   "leg": 1,
+   "sieges": "Montréal, Moncton, Halifax",
+   "listes": [
+    {
+     "n": 2,
+     "name": "La Gauche Solidaire et Écologiste",
+     "b": "GAU"
+    },
+    {
+     "n": 5,
+     "name": "UNION POPULAIRE SOLIDAIRE ET ECOLOGISTE – soutenue par la France Insoumise et Les Verts Populaires",
+     "b": "LFI"
+    },
+    {
+     "n": 8,
+     "name": "Liste officielle Renaissance",
+     "b": "ENS"
+    },
+    {
+     "n": 9,
+     "name": "MAISON FRANCE-MONTRÉAL : liste indépendante, transpartisane, locale et solidaire",
+     "b": "IND"
+    }
+   ],
+   "pres_src": [
+    "Le Petit Journal Montréal, 11/06/2026"
+   ]
+  },
+  {
+   "id": 29,
+   "name": "Chili",
+   "leg": 2,
+   "sieges": "Santiago",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Écologie et Solidarité pour Notre Avenir Commun",
+     "b": "ECO"
+    },
+    {
+     "n": 3,
+     "name": "NOTRE EXPÉRIENCE ET NOTRE ENGAGEMENT À VOTRE ÉCOUTE – AVEC MARIE CHRISTINE HARITÇALDE, JOËL BEROUD",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 30,
+   "name": "Chine - 1re circonscription",
+   "leg": 11,
+   "sieges": "Canton, Chengdu, Wuhan",
+   "listes": [
+    {
+     "n": 3,
+     "name": "Sevag BAROUDJIAN",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 31,
+   "name": "Chine - 2e circonscription (avec Mongolie et Corée du Nord)",
+   "leg": 11,
+   "sieges": "Pékin, Shenyang",
+   "listes": [
+    {
+     "n": 1,
+     "name": "PROXIMITÉ Une équipe pragmatique, engagée et déterminée",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "ASFE - Agir et Servir Chine du Nord - Mongolie - Corée du Nord",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "Liste social - écologie Unis et solidaires",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 32,
+   "name": "Chine - 3e circonscription",
+   "leg": 11,
+   "sieges": "Hong Kong, Macao",
+   "listes": [
+    {
+     "n": 1,
+     "name": "LA GAUCHE UNIE pour Hong Kong et Macao",
+     "b": "GAU"
+    },
+    {
+     "n": 2,
+     "name": "Une équipe engagée et à l'écoute de tous",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "RENOUVEAU PATRIOTE",
+     "b": "ED"
+    },
+    {
+     "n": 5,
+     "name": "ASFE - Défendre et accompagner les Français de Hong Kong et Macao",
+     "b": "ASFE"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 33,
+   "name": "Chine - 4e circonscription",
+   "leg": 11,
+   "sieges": "Shanghai",
+   "listes": [
+    {
+     "n": 2,
+     "name": "L'Essentiel pour les Français de Chine de l'Est",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Vos conseillers - relais, écoute, disponibilité",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 34,
+   "name": "Chypre",
+   "leg": 8,
+   "sieges": "Nicosie",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Davina BESSAT DAOUD",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 35,
+   "name": "Colombie",
+   "leg": 2,
+   "sieges": "Bogota",
+   "listes": [
+    {
+     "n": 1,
+     "name": "La France au Cœur",
+     "b": "LR"
+    },
+    {
+     "n": 6,
+     "name": "Solidarité Citoyenne à Gauche",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 36,
+   "name": "Comores",
+   "leg": 10,
+   "sieges": "Moroni",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Johnson ABOUDOU",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 37,
+   "name": "Congo",
+   "leg": 10,
+   "sieges": "Brazzaville, Pointe-Noire",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ASFE Défendre et accompagner les Français du Congo",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "Ensemble et solidaires au Congo",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "Une équipe apolitique et expérimentée, fortement imprégnée des réalités locales",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 38,
+   "name": "Corée du Sud, Taïwan",
+   "leg": 11,
+   "sieges": "Séoul, Taipei",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Français de Corée et de Taïwan, Citoyens Éco-Solidaires",
+     "b": "ECO"
+    },
+    {
+     "n": 3,
+     "name": "Action France Corée du Sud et Taïwan (AFCT)",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 39,
+   "name": "Costa Rica, Honduras, Nicaragua",
+   "leg": 2,
+   "sieges": "San José",
+   "listes": [
+    {
+     "n": 2,
+     "name": "ALLIANCE SOLIDAIRE DES FRANÇAIS AU COSTA RICA - NICARAGUA - HONDURAS",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "AGIR ENSEMBLE POUR LA SOLIDARITÉ, LA PROXIMITÉ ET L'ENVIRONNEMENT",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 40,
+   "name": "Côte d'Ivoire",
+   "leg": 9,
+   "sieges": "Abidjan",
+   "listes": [
+    {
+     "n": 2,
+     "name": "EFCI, Ensemble Français de Côte d'Ivoire",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Libres et Indépendants : On est Ensemble !",
+     "b": "ASFE"
+    },
+    {
+     "n": 4,
+     "name": "ASFE : Assurer une cohésion forte et défendre les intérêts de la Communauté française en Côte d'Ivoire",
+     "b": "ASFE"
+    },
+    {
+     "n": 5,
+     "name": "Les citoyens unis",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 41,
+   "name": "Croatie",
+   "leg": 7,
+   "sieges": "Zagreb",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Julien GELTZENLICHTER",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 42,
+   "name": "Danemark",
+   "leg": 3,
+   "sieges": "Copenhague",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Les Français du Danemark ÉCOUTER COMPRENDRE AGIR",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "Le Cœur à Gauche : justice sociale, écologie et bien-vivre ensemble",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 43,
+   "name": "Djibouti",
+   "leg": 10,
+   "sieges": "Djibouti",
+   "listes": [
+    {
+     "n": 1,
+     "name": "AGIR POUR LES FRANÇAIS DE DJIBOUTI",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "DÉFENDRE ET ACCOMPAGNER LES FRANÇAIS DE DJIBOUTI",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 44,
+   "name": "Egypte",
+   "leg": 10,
+   "sieges": "Le Caire, Alexandrie",
+   "listes": [
+    {
+     "n": 2,
+     "name": "ASFE Défendre et accompagner les Français d’Égypte.",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "Français solidaires en Égypte Faire vivre l'entraide, l'égalité et la diversité",
+     "b": "IND"
+    }
+   ],
+   "pres_src": [
+    "Ambassade au Caire, 03/06/2026"
+   ]
+  },
+  {
+   "id": 45,
+   "name": "Emirats arabes unis, Oman",
+   "leg": 10,
+   "sieges": "Dubaï, Abou Dhabi",
+   "listes": [
+    {
+     "n": 2,
+     "name": "LA COMMUNAUTÉ AU COEUR",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "L'UNION POUR LES FRANÇAIS DES ÉMIRATS ARABES UNIS ET OMAN",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "ENGAGÉS POUR CHAQUE FRANÇAIS DES ÉMIRATS ARABES UNIS ET OMAN",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 46,
+   "name": "Equateur",
+   "leg": 2,
+   "sieges": "Quito",
+   "listes": [
+    {
+     "n": 2,
+     "name": "ÉLAN CITOYEN",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Là pour vous!",
+     "b": "IND"
+    },
+    {
+     "n": 5,
+     "name": "La Voix des Français de l'Équateur",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 47,
+   "name": "Espagne - 1re circonscription",
+   "leg": 5,
+   "sieges": "Barcelone (Catalogne, Aragon, Baléares)",
+   "listes": [
+    {
+     "n": 1,
+     "name": "LIFE : LISTE INDÉPENDANTE DES FRANÇAIS DE L’ÉTRANGER",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "Agissons ensemble pour les Françaises et Français d’Espagne, pour l’écologie et la solidarité",
+     "b": "ECO"
+    },
+    {
+     "n": 4,
+     "name": "S’ENGAGER ENSEMBLE : ARAGON, BALÉARES, CATALOGNE",
+     "b": "IND"
+    },
+    {
+     "n": 5,
+     "name": "Pour une gauche de rupture, sociale, citoyenne, écologiste et solidaire",
+     "b": "LFI"
+    }
+   ],
+   "pres_src": [
+    "Ambassade en Espagne"
+   ]
+  },
+  {
+   "id": 48,
+   "name": "Espagne - 2e circonscription",
+   "leg": 5,
+   "sieges": "Madrid, Séville, Bilbao",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Pour une gauche de rupture, sociale, citoyenne, écologiste et solidaire",
+     "b": "LFI"
+    },
+    {
+     "n": 2,
+     "name": "LES REPUBLICAINS MADRID",
+     "b": "LR"
+    },
+    {
+     "n": 4,
+     "name": "ÉCOUTE, VISION, ENGAGEMENT : LA VOIX DES FRANÇAIS D’ESPAGNE",
+     "b": "IND"
+    },
+    {
+     "n": 5,
+     "name": "Agissons ensemble pour les Françaises et Français d’Espagne, pour l’écologie et la solidarité",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": [
+    "Ambassade en Espagne"
+   ]
+  },
+  {
+   "id": 49,
+   "name": "Etats-Unis - 1re circonscription",
+   "leg": 1,
+   "sieges": "Atlanta (Sud-Est)",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Servir les Françaises et les Français du Sud-Est des USA Liste Les Républicains conduite par Vladimir Molinié",
+     "b": "LR"
+    },
+    {
+     "n": 3,
+     "name": "Defendre et accompagner les français du southeast des Etats unis_ASFE",
+     "b": "ASFE"
+    },
+    {
+     "n": 4,
+     "name": "LISTE CITOYENNE ET INDEPENDANTE POUR LA COMMUNAUTE FRANÇAISE DU SUD-EST",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 50,
+   "name": "Etats-Unis - 2e circonscription",
+   "leg": 1,
+   "sieges": "Boston (Nouvelle-Angleterre)",
+   "listes": [
+    {
+     "n": 1,
+     "name": "La gauche écologiste de la Nouvelle-Angleterre",
+     "b": "GAU"
+    },
+    {
+     "n": 3,
+     "name": "ENSEMBLE AVEC LES FRANÇAIS DE NOUVELLE ANGLETERRE",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "Défendre et accompagner les Français(es) de la Nouvelle-Angleterre des Etats-Unis - ASFE",
+     "b": "ASFE"
+    },
+    {
+     "n": 5,
+     "name": "UNION DE LA DROITE, DU CENTRE ET DES INDEPENDANTS",
+     "b": "LR"
+    }
+   ],
+   "pres_src": [
+    "CG Boston, 17/06/2026"
+   ]
+  },
+  {
+   "id": 51,
+   "name": "Etats-Unis - 3e circonscription",
+   "leg": 1,
+   "sieges": "Houston, La Nouvelle-Orléans",
+   "listes": [
+    {
+     "n": 1,
+     "name": "LA VOIX DES FRANCAIS D’AMERIQUE Liste de la droite et du centre soutenue par Les Républicains",
+     "b": "LR"
+    },
+    {
+     "n": 2,
+     "name": "Gauche solidaire et écologiste",
+     "b": "GAU"
+    },
+    {
+     "n": 3,
+     "name": "Français du Texas et du Sud Ouest",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 52,
+   "name": "Etats-Unis - 4e circonscription",
+   "leg": 1,
+   "sieges": "Chicago (Midwest)",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Les Écologistes du Midwest et du Kentucky",
+     "b": "ECO"
+    },
+    {
+     "n": 2,
+     "name": "Défendre et accompagner les français du Midwest et du Kentucky – ASFE",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "FRANÇAIS D’AMERIQUE ENSEMBLE – LISTE CONDUITE PAR PATRICK BOURBON ET ALINE DELPIERRE",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 53,
+   "name": "Etats-Unis - 5e circonscription",
+   "leg": 1,
+   "sieges": "Miami (Floride, Caraïbes Nord)",
+   "listes": [
+    {
+     "n": 1,
+     "name": "LA FRANCE AU COEUR",
+     "b": "LR"
+    },
+    {
+     "n": 2,
+     "name": "Alliance solidaire des Français de Floride, des Bahamas, de Porto-Rico et des îles Caraïbes Nord.",
+     "b": "ASFE"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 54,
+   "name": "Etats-Unis - 6e circonscription",
+   "leg": 1,
+   "sieges": "Washington",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Grande alliance du centre pour les Françaises et Français d’Amérique du Nord",
+     "b": "ENS"
+    },
+    {
+     "n": 2,
+     "name": "Union pour un engagement social et écologiste",
+     "b": "GAU"
+    },
+    {
+     "n": 4,
+     "name": "UNION DES FRANÇAIS D’AMÉRIQUE LISTE CONDUITE PAR OLIVIER PITON",
+     "b": "LR"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 55,
+   "name": "Etats-Unis - 7e circonscription",
+   "leg": 1,
+   "sieges": "Los Angeles",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Impact Ouest – 100% Libres de tout parti et dédiés aux Français de l’Ouest Américain",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "La gauche solidaire et écologiste",
+     "b": "GAU"
+    },
+    {
+     "n": 4,
+     "name": "Ensemble, Centristes et Indépendants",
+     "b": "ENS"
+    },
+    {
+     "n": 8,
+     "name": "Votez pour VOUS",
+     "b": "IND"
+    }
+   ],
+   "pres_src": [
+    "Le Petit Journal Los Angeles, 12/06/2026"
+   ]
+  },
+  {
+   "id": 56,
+   "name": "Etats-Unis - 8e circonscription",
+   "leg": 1,
+   "sieges": "San Francisco (Nord-Ouest)",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Agir dans le Pacific Northwest avec Warda Souihi",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Ensemble avec les Français du Nord-Ouest",
+     "b": "IND"
+    }
+   ],
+   "pres_src": [
+    "Le Petit Journal San Francisco"
+   ]
+  },
+  {
+   "id": 57,
+   "name": "Etats-Unis - 9e circonscription",
+   "leg": 1,
+   "sieges": "New York",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Agissons Ensemble avec Pascale Richard – NY, NJ, CT, Bermudes",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "LA GAUCHE UNIE des socialistes, écologistes et démocrates au service des Français·es",
+     "b": "GAU"
+    },
+    {
+     "n": 5,
+     "name": "UNION DES FRANÇAIS D’AMÉRIQUE - Liste conduite par le Docteur Gérard EPELBAUM",
+     "b": "LR"
+    },
+    {
+     "n": 6,
+     "name": "Union de la Gauche Écologiste – Soutenue par la France insoumise, Génération·s, les Verts Populaires",
+     "b": "LFI"
+    }
+   ],
+   "pres_src": [
+    "CG New York, 19/06/2026"
+   ]
+  },
+  {
+   "id": 58,
+   "name": "Ethiopie, Soudan, Soudan du Sud",
+   "leg": 10,
+   "sieges": "Addis-Abeba",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Michel GLEYZE",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 59,
+   "name": "Finlande, Lituanie, Lettonie, Estonie",
+   "leg": 3,
+   "sieges": "Helsinki",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Pragmatisme et Réalisme, la liste qui agit (sans affiliation)",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "L’ÉCOLOGIE EN ACTE",
+     "b": "ECO"
+    },
+    {
+     "n": 3,
+     "name": "Alliance de Gauche Responsable et Solidaire",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 60,
+   "name": "Gabon",
+   "leg": 10,
+   "sieges": "Libreville",
+   "listes": [
+    {
+     "n": 1,
+     "name": "FRANÇAIS DU GABON TOUS ENSEMBLE",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "ASFE - Défendre et accompagner les Français du Gabon et de Sao Tomé",
+     "b": "ASFE"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 61,
+   "name": "Grèce",
+   "leg": 8,
+   "sieges": "Athènes",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Liste d’union et de proximité pour les Français de Grèce, conduite par Lena SPENGOS",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "FRANÇAIS SOLIDAIRES EN GRÈCE",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 62,
+   "name": "Guatemala, Salvador",
+   "leg": 2,
+   "sieges": "Guatemala",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Alain KAHN",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 63,
+   "name": "Guinée",
+   "leg": 9,
+   "sieges": "Conakry",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Frédéric BOUZIGUES",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 64,
+   "name": "Haïti",
+   "leg": 2,
+   "sieges": "Port-au-Prince",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Martin MOLERE",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 65,
+   "name": "Hongrie",
+   "leg": 7,
+   "sieges": "Budapest",
+   "listes": [
+    {
+     "n": 1,
+     "name": "La Force de l'Engagement. Liste indépendante menée par Jeanne Dubard-Kajtar",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "Liste Citoyenne Hongrie",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 66,
+   "name": "Inde - 1re circonscription (avec Bangladesh, Népal, Sri Lanka)",
+   "leg": 11,
+   "sieges": "New Delhi, Bombay, Bangalore",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Écologie Solidaire",
+     "b": "ECO"
+    },
+    {
+     "n": 4,
+     "name": "Continuons Ensemble ! Liste indépendante non partisane",
+     "b": "IND"
+    }
+   ],
+   "pres_src": [
+    "PV Ambassade New Delhi, 25/06/2026"
+   ]
+  },
+  {
+   "id": 67,
+   "name": "Inde - 2e circonscription",
+   "leg": 11,
+   "sieges": "Pondichéry",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ENSEMBLE POUR LE PROGRÈS",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "UNIS POUR LE CHANGEMENT",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 68,
+   "name": "Indonésie",
+   "leg": 11,
+   "sieges": "Jakarta, Bali",
+   "listes": [
+    {
+     "n": 1,
+     "name": "DEFENDRE ET SERVIR LES FRANÇAIS D’INDONESIE",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "Votre voix à Bali et en Indonésie",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "MIEUX VIVRE EN INDONESIE (liste non partisane)",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 69,
+   "name": "Iran, Pakistan, Afghanistan, Azerbaïdjan, Asie centrale",
+   "leg": 11,
+   "sieges": "Téhéran, Islamabad, Bakou",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Anne-Sophie FRANCAIS",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 70,
+   "name": "Irlande",
+   "leg": 3,
+   "sieges": "Dublin",
+   "listes": [
+    {
+     "n": 3,
+     "name": "UN MONDE DE PROJETS, liste libre et indépendante conduite par Laurence HELAILI et Nicolas NOUELLE",
+     "b": "ENS"
+    },
+    {
+     "n": 4,
+     "name": "Défi écologique et social, Français d'Irlande",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 71,
+   "name": "Israël et Territoires palestiniens - 1re circonscription",
+   "leg": 8,
+   "sieges": "Jérusalem",
+   "listes": [
+    {
+     "n": 2,
+     "name": "ASFE – Défendre et accompagner les Français d’Israël",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "Au cœur des Français",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "UNION DES FRANÇAIS DE JÉRUSALEM",
+     "b": "LR"
+    },
+    {
+     "n": 5,
+     "name": "Hélène SEMHOUN",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 72,
+   "name": "Israël et Territoires palestiniens - 2e circonscription",
+   "leg": 8,
+   "sieges": "Tel Aviv, Haïfa",
+   "listes": [
+    {
+     "n": 2,
+     "name": "ASFE - DEFENDRE ET ACCOMPAGNER LES FRANÇAIS D'ISRAEL",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "AGIR ENSEMBLE",
+     "b": "IND"
+    },
+    {
+     "n": 5,
+     "name": "RECONQUÊTE!",
+     "b": "ED"
+    },
+    {
+     "n": 6,
+     "name": "« AVEC LES PATRIOTES D’ISRAEL » Liste conduite par le Professeur Michael Ayache, indépendante des partis",
+     "b": "ED"
+    },
+    {
+     "n": 8,
+     "name": "RASSEMBLEMENT DES PATRIOTES DE TEL AVIV",
+     "b": "ED"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 73,
+   "name": "Italie - 1re circonscription (avec Malte et Etat de la Cité du Vatican)",
+   "leg": 8,
+   "sieges": "Rome, Naples",
+   "listes": [
+    {
+     "n": 2,
+     "name": "ASFE – Continuer à défendre, accompagner et agir concrètement pour les Français d’Italie et de Malte",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "Solidaires à vos côtés – Pour des élus de confiance et d’expérience",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "Les Écologistes – EELV",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 74,
+   "name": "Italie - 2e circonscription",
+   "leg": 8,
+   "sieges": "Milan",
+   "listes": [
+    {
+     "n": 3,
+     "name": "ASFE – DÉFENDRE ET ACCOMPAGNER LES FRANÇAIS D’ITALIE DU NORD",
+     "b": "ASFE"
+    },
+    {
+     "n": 5,
+     "name": "LISTE DE RASSEMBLEMENT DES PATRIOTES D’ITALIE DU NORD",
+     "b": "ED"
+    },
+    {
+     "n": 6,
+     "name": "Union Populaire Ecologiste et Solidaire",
+     "b": "LFI"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 75,
+   "name": "Japon",
+   "leg": 11,
+   "sieges": "Tokyo, Kyoto",
+   "listes": [
+    {
+     "n": 2,
+     "name": "ENGAGÉ.ES AU JAPON, avec François ROUSSEL, conseiller sortant",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "AU SERVICE DES FRANÇAIS DU JAPON",
+     "b": "IND"
+    },
+    {
+     "n": 5,
+     "name": "L’AVENIR EN COMMUN AU JAPON Union populaire écologiste et sociale",
+     "b": "LFI"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 76,
+   "name": "Jordanie, Irak",
+   "leg": 10,
+   "sieges": "Amman, Bagdad, Erbil",
+   "listes": [
+    {
+     "n": 1,
+     "name": "David VALCKE",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 77,
+   "name": "Kenya, Ouganda, Rwanda, Burundi, Tanzanie, Zambie, Zimbabwe",
+   "leg": 10,
+   "sieges": "Nairobi",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Alliance Solidaire des Français d’Afrique de l’est et australe – ASFE",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "Écologie, Solidarité et Équité — Français·es d'Afrique australe et orientale",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 78,
+   "name": "Laos",
+   "leg": 11,
+   "sieges": "Vientiane",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Olivier de PEYRELONGUE",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 79,
+   "name": "Liban, Syrie",
+   "leg": 10,
+   "sieges": "Beyrouth, Damas",
+   "listes": [
+    {
+     "n": 1,
+     "name": "La communauté française au coeur avec Lucas Lamah",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Ghassan AYOUB et son équipe : Solidarité et Indépendance, notre seul parti pris",
+     "b": "IND"
+    },
+    {
+     "n": 6,
+     "name": "A VOS CÔTÉS - POUR UN NOUVEL ÉLAN AU SERVICE DES FRANÇAIS AU LIBAN ET EN SYRIE",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 80,
+   "name": "Luxembourg",
+   "leg": 4,
+   "sieges": "Luxembourg",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Français du Luxembourg PROGRESSISTES EUROPÉENS ET SOLIDAIRES",
+     "b": "ENS"
+    },
+    {
+     "n": 2,
+     "name": "Ecologie, Citoyenneté et Solidarité. Liste soutenue par les Ecologistes, LFI, Debout !, L'Après et la CISE",
+     "b": "ECO"
+    },
+    {
+     "n": 3,
+     "name": "Une Nouvelle Énergie pour la Communauté française au Luxembourg, groupe politique de droite républicaine",
+     "b": "LR"
+    },
+    {
+     "n": 6,
+     "name": "Plus forts Ensemble ! Unis au centre pour les Françaises et les Français du Luxembourg",
+     "b": "ENS"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 81,
+   "name": "Madagascar",
+   "leg": 10,
+   "sieges": "Antananarivo",
+   "listes": [
+    {
+     "n": 2,
+     "name": "MIEUX VIVRE ENSEMBLE A MADAGASCAR",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Français du Monde Ecologie et Solidarité",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 82,
+   "name": "Malaisie, Brunei",
+   "leg": 11,
+   "sieges": "Kuala Lumpur",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ALLIANCE SOLIDAIRE DES FRANÇAIS DE MALAISIE ET DU BRUNEI",
+     "b": "ASFE"
+    },
+    {
+     "n": 2,
+     "name": "Entente progressiste et écologiste",
+     "b": "GAU"
+    },
+    {
+     "n": 3,
+     "name": "AIDER – AGIR – UNIR",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 83,
+   "name": "Mali",
+   "leg": 9,
+   "sieges": "Bamako",
+   "listes": [
+    {
+     "n": 1,
+     "name": "En action pour les français du Mali",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Français du Monde : engagement, proximité et solidarité",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 84,
+   "name": "Maroc - 1re circonscription",
+   "leg": 9,
+   "sieges": "Tanger",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Voix des Français-es de Tanger",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "ASFE - Défendre et accompagner les Français du Maroc",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "FRANÇAIS DU MONDE A TANGER Citoyens engagés et solidaires",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 85,
+   "name": "Maroc - 2e circonscription",
+   "leg": 9,
+   "sieges": "Fès, Meknès, Oujda",
+   "listes": [
+    {
+     "n": 1,
+     "name": "UNION POUR LES FRANÇAIS DE FÈS MEKNÈS ET DE L’ORIENTAL - LISTE INDÉPENDANTE",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "Libres et Indépendants au Service des Français Fès. Meknès. Oujda",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "FRANÇAIS DU MONDE CITOYENS UNIS ET SOLIDAIRES",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 86,
+   "name": "Maroc - 3e circonscription",
+   "leg": 9,
+   "sieges": "Agadir",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Français du Monde à Agadir citoyens engagés et solidaires",
+     "b": "GAU"
+    },
+    {
+     "n": 2,
+     "name": "Union des Français du GRAND SUD marocain",
+     "b": "LR"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 87,
+   "name": "Maroc - 4e circonscription",
+   "leg": 9,
+   "sieges": "Marrakech",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Français du monde à Marrakech, Essaouira et circonscription - Citoyens engagés et solidaires",
+     "b": "GAU"
+    },
+    {
+     "n": 2,
+     "name": "LISTE INDEPENDANTE DE MARRAKECH ET REGION",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 88,
+   "name": "Maroc - 5e circonscription",
+   "leg": 9,
+   "sieges": "Rabat",
+   "listes": [
+    {
+     "n": 3,
+     "name": "LIBRES ET INDEPENDANTS AU SERVICE DES FRANÇAIS DE RABAT – SALE – KENITRA",
+     "b": "ASFE"
+    },
+    {
+     "n": 4,
+     "name": "FRANÇAIS DU MONDE A RABAT CITOYENS ENGAGÉS ET SOLIDAIRES",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 89,
+   "name": "Maroc - 6e circonscription",
+   "leg": 9,
+   "sieges": "Casablanca",
+   "listes": [
+    {
+     "n": 1,
+     "name": "FRANÇAIS DU MONDE A CASABLANCA CITOYENNETÉ ENGAGÉE - AVENIR SOLIDAIRE",
+     "b": "GAU"
+    },
+    {
+     "n": 3,
+     "name": "Les Français de la circonscription consulaire de Casablanca",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "Faire mieux ensemble - Français du Maroc",
+     "b": "IND"
+    },
+    {
+     "n": 5,
+     "name": "Français du Maroc Solidaires",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 90,
+   "name": "Maurice, Seychelles",
+   "leg": 10,
+   "sieges": "Port-Louis",
+   "listes": [
+    {
+     "n": 3,
+     "name": "FRANÇAIS UNIS DES ÎLES – OCÉAN INDIEN",
+     "b": "IND"
+    },
+    {
+     "n": 5,
+     "name": "Près de vous - Français de Maurice, Rodrigues et Seychelles",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 91,
+   "name": "Mauritanie",
+   "leg": 9,
+   "sieges": "Nouakchott",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Boubou SYLLA",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 92,
+   "name": "Mexique",
+   "leg": 2,
+   "sieges": "Mexico",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ASFE – Défendre et Accompagner les Français du Mexique",
+     "b": "ASFE"
+    },
+    {
+     "n": 4,
+     "name": "Nouvelle Gauche Populaire et Écologiste – La Voix Humaniste des Français·es du Mexique",
+     "b": "GAU"
+    },
+    {
+     "n": 5,
+     "name": "L’UNION",
+     "b": "IND"
+    },
+    {
+     "n": 6,
+     "name": "GAUCHE DEMOCRATIQUE, ECOLOGIQUE ET SOLIDAIRE",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 93,
+   "name": "Monaco",
+   "leg": 5,
+   "sieges": "Monaco",
+   "listes": [
+    {
+     "n": 1,
+     "name": "TRAIT D’UNION : Pour défendre votre droit de vivre à Monaco",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "UNIS POUR ÊTRE UTILES",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 94,
+   "name": "Niger",
+   "leg": 9,
+   "sieges": "Niamey",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Stéphane, Romain JULLIEN",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 95,
+   "name": "Nigeria",
+   "leg": 10,
+   "sieges": "Lagos, Abuja",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Yann GILBERT",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 96,
+   "name": "Norvège, Islande",
+   "leg": 3,
+   "sieges": "Oslo",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Ensemble, Français Écologistes et Solidaires",
+     "b": "ECO"
+    },
+    {
+     "n": 4,
+     "name": "Agir pour votre quotidien, au service des communautés françaises en Norvège et en Islande",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 97,
+   "name": "Nouvelle-Zélande",
+   "leg": 11,
+   "sieges": "Wellington",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Français de Nouvelle-Zélande en action",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Ecologie et solidarité",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 98,
+   "name": "Panamá, Cuba, Jamaïque",
+   "leg": 2,
+   "sieges": "Panamá",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Marion GIRALDOU",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 99,
+   "name": "Paraguay",
+   "leg": 2,
+   "sieges": "Asunción",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Emmanuelle BOUCARDEAU",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 100,
+   "name": "Pays-Bas",
+   "leg": 4,
+   "sieges": "Amsterdam, La Haye",
+   "listes": [
+    {
+     "n": 3,
+     "name": "Volt France",
+     "b": "ENS"
+    },
+    {
+     "n": 7,
+     "name": "LES PIEDS SUR TERRE AUX PAYS-BAS - Liste indépendante et non partisane",
+     "b": "IND"
+    },
+    {
+     "n": 8,
+     "name": "La gauche écologiste et solidaire",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": [
+    "Ambassade aux Pays-Bas, 29/06/2026"
+   ]
+  },
+  {
+   "id": 101,
+   "name": "Pérou",
+   "leg": 2,
+   "sieges": "Lima",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ENTRAIDE, LES FRANÇAIS UNIS AU PÉROU - Une liste indépendante",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "ASFE - Défendre et accompagner les Français au Pérou",
+     "b": "ASFE"
+    },
+    {
+     "n": 4,
+     "name": "L.I.E.N.S (Liberté, Innovation, Écologie, Nature, Solidarité)",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 102,
+   "name": "Philippines",
+   "leg": 11,
+   "sieges": "Manille",
+   "listes": [
+    {
+     "n": 1,
+     "name": "UNION CITOYENNE DES FRANÇAIS AUX PHILIPPINES POUR LA DEMOCRATIE, LA SOLIDARITE ET L'ECOLOGIE",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "UNION POUR LES FRANÇAIS DES PHILIPPINES - LA FRANCE AU COEUR",
+     "b": "LR"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 103,
+   "name": "Pologne",
+   "leg": 7,
+   "sieges": "Varsovie, Cracovie",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Union des Patriotes pour les Français de Pologne",
+     "b": "ED"
+    },
+    {
+     "n": 3,
+     "name": "ASFE - Défendre et accompagner les Français de Pologne",
+     "b": "ASFE"
+    },
+    {
+     "n": 4,
+     "name": "Français de Pologne, Européens, citoyens, écologistes",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 104,
+   "name": "Portugal",
+   "leg": 5,
+   "sieges": "Lisbonne",
+   "listes": [
+    {
+     "n": 2,
+     "name": "RASSEMBLEMENT DES PATRIOTES",
+     "b": "ED"
+    },
+    {
+     "n": 3,
+     "name": "Pour une gauche de rupture sociale, citoyenne, écologiste et solidaire",
+     "b": "LFI"
+    },
+    {
+     "n": 4,
+     "name": "Français du Portugal – Union de centre-droit",
+     "b": "LR"
+    },
+    {
+     "n": 5,
+     "name": "AGISSONS ENSEMBLE pour les Français du Portugal – PROXIMITÉ – SOLIDARITÉ - ÉCOLOGIE",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 105,
+   "name": "Qatar, Bahreïn",
+   "leg": 10,
+   "sieges": "Doha",
+   "listes": [
+    {
+     "n": 1,
+     "name": "GAUCHE RÉPUBLICAINE UNIE",
+     "b": "GAU"
+    },
+    {
+     "n": 2,
+     "name": "Proches et Engagés",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 106,
+   "name": "République centrafricaine",
+   "leg": 10,
+   "sieges": "Bangui",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Jean-Charles GILBERT",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 107,
+   "name": "République démocratique du Congo",
+   "leg": 10,
+   "sieges": "Kinshasa",
+   "listes": [
+    {
+     "n": 2,
+     "name": "UNION ET RASSEMBLEMENT DES FRANÇAIS EN RDC",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "À PART ENTIÈRE",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 108,
+   "name": "République dominicaine",
+   "leg": 2,
+   "sieges": "Saint-Domingue",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Défendre et accompagner les Français de République dominicaine - ASFE",
+     "b": "ASFE"
+    },
+    {
+     "n": 2,
+     "name": "Pour tous les Français de République dominicaine",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 109,
+   "name": "République tchèque",
+   "leg": 7,
+   "sieges": "Prague",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Gauche Écologique et Sociale",
+     "b": "GAU"
+    },
+    {
+     "n": 2,
+     "name": "Indépendants et Solidaires : Agir pour vous au quotidien en Tchéquie",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 110,
+   "name": "Roumanie, Moldavie",
+   "leg": 7,
+   "sieges": "Bucarest",
+   "listes": [
+    {
+     "n": 3,
+     "name": "ENSEMBLE ! L'Union au service des Français de Roumanie et de Moldavie",
+     "b": "ENS"
+    },
+    {
+     "n": 4,
+     "name": "Les indépendants au service des Français de Roumanie et de Moldavie",
+     "b": "IND"
+    },
+    {
+     "n": 6,
+     "name": "L'entraide des Français en Roumanie et Moldavie",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 111,
+   "name": "Royaume-Uni - 1re circonscription",
+   "leg": 3,
+   "sieges": "Édimbourg (Écosse)",
+   "listes": [
+    {
+     "n": 1,
+     "name": "AVEC VOUS EN ECOSSE, LISTE INDEPENDANTE DE TOUT PARTI",
+     "b": "IND"
+    },
+    {
+     "n": 2,
+     "name": "Les Verts d’Écosse",
+     "b": "ECO"
+    },
+    {
+     "n": 3,
+     "name": "FRANÇAIS D’ÉCOSSE, CITOYENS ÉCOLOGISTES ET SOLIDAIRES",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 112,
+   "name": "Royaume-Uni - 2e circonscription",
+   "leg": 3,
+   "sieges": "Londres",
+   "listes": [
+    {
+     "n": 1,
+     "name": "JUSTICE ET SOLIDARITE",
+     "b": "GAU"
+    },
+    {
+     "n": 3,
+     "name": "Écologie et Solidarité",
+     "b": "ECO"
+    },
+    {
+     "n": 4,
+     "name": "ENSEMBLE ! POUR TOUS LES FRANCAIS DU ROYAUME-UNI",
+     "b": "ENS"
+    },
+    {
+     "n": 5,
+     "name": "Royaume-Uni populaire, écologique et social",
+     "b": "LFI"
+    },
+    {
+     "n": 6,
+     "name": "UN MONDE DE PROJETS: Liste libre et indépendante conduite par Anne VIGOUROUX avec Olivier CADIC",
+     "b": "ENS"
+    }
+   ],
+   "pres_src": [
+    "Le Petit Journal Londres, 26/06/2026"
+   ]
+  },
+  {
+   "id": 113,
+   "name": "Russie, Biélorussie",
+   "leg": 11,
+   "sieges": "Moscou, Saint-Pétersbourg",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Patriotes Français en Russie Biélorussie",
+     "b": "ED"
+    },
+    {
+     "n": 2,
+     "name": "Le Rassemblement des Français de Russie et de Biélorussie",
+     "b": "IND"
+    }
+   ],
+   "pres_src": [
+    "cfde-russiebielorussie.fr, 05/06/2026"
+   ]
+  },
+  {
+   "id": 114,
+   "name": "Sénégal, Guinée-Bissau, Cap-Vert",
+   "leg": 9,
+   "sieges": "Dakar",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ASFE - Défendre et accompagner les français du Sénégal, de la Gambie, du Cap-vert et de la Guinée Bissau",
+     "b": "ASFE"
+    },
+    {
+     "n": 3,
+     "name": "FRANCAIS UNIS ET SOLIDAIRES",
+     "b": "GAU"
+    },
+    {
+     "n": 4,
+     "name": "SERVIR LES FRANCAIS",
+     "b": "IND"
+    },
+    {
+     "n": 5,
+     "name": "Union de la gauche solidaire et écologiste",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 115,
+   "name": "Serbie",
+   "leg": 7,
+   "sieges": "Belgrade",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Eric GRASSER",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 116,
+   "name": "Singapour",
+   "leg": 11,
+   "sieges": "Singapour",
+   "listes": [
+    {
+     "n": 1,
+     "name": "CAP Singapour ! Unir • Aider • Agir",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "ENSEMBLE à SINGAPOUR",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "TRAIT D’UNION POUR LES FRANÇAIS DE SINGAPOUR",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 117,
+   "name": "Suède",
+   "leg": 3,
+   "sieges": "Stockholm",
+   "listes": [
+    {
+     "n": 2,
+     "name": "LES ÉCOLOGISTES-EELV en Suède",
+     "b": "ECO"
+    },
+    {
+     "n": 3,
+     "name": "CITOYEN.NE.S SOLIDAIRES ET ÉCOLOGISTES EN SUÈDE",
+     "b": "ECO"
+    },
+    {
+     "n": 4,
+     "name": "Unis avec les Français de Suède",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 118,
+   "name": "Suisse - 1re circonscription",
+   "leg": 6,
+   "sieges": "Zurich (Suisse alémanique, Tessin, Liechtenstein)",
+   "listes": [
+    {
+     "n": 1,
+     "name": "La Droite unie - Françaises et Français de Suisse alémanique et du Tessin",
+     "b": "LR"
+    },
+    {
+     "n": 2,
+     "name": "Les Ecologistes et Place Publique",
+     "b": "ECO"
+    },
+    {
+     "n": 3,
+     "name": "Ensemble pour la Suisse et le Liechtenstein",
+     "b": "ENS"
+    },
+    {
+     "n": 4,
+     "name": "Alliance Solidaire des Français de Suisse Alémanique et du Liechtenstein - Indépendants -",
+     "b": "ASFE"
+    }
+   ],
+   "pres_src": [
+    "Ambassade en Suisse (élu ASFE)"
+   ]
+  },
+  {
+   "id": 119,
+   "name": "Suisse - 2e circonscription",
+   "leg": 6,
+   "sieges": "Genève (Suisse romande)",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Unis! au service des Français de Suisse romande",
+     "b": "ENS"
+    },
+    {
+     "n": 3,
+     "name": "La France au Coeur - Liste conduite par Linda Chevalier",
+     "b": "LR"
+    },
+    {
+     "n": 4,
+     "name": "LA DROITE UNIE - Françaises et Français de Suisse",
+     "b": "LR"
+    },
+    {
+     "n": 6,
+     "name": "LIBRES ET INDÉPENDANTS: une équipe issue des réseaux économiques, culturels et associatifs",
+     "b": "ASFE"
+    },
+    {
+     "n": 7,
+     "name": "Romandie Insoumise",
+     "b": "LFI"
+    },
+    {
+     "n": 8,
+     "name": "Les Écologistes et Place publique",
+     "b": "ECO"
+    }
+   ],
+   "pres_src": [
+    "Ambassade en Suisse"
+   ]
+  },
+  {
+   "id": 120,
+   "name": "Tchad",
+   "leg": 10,
+   "sieges": "N'Djamena",
+   "listes": [
+    {
+     "n": 2,
+     "name": "Thierry MIALLIER",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 121,
+   "name": "Thaïlande, Birmanie",
+   "leg": 11,
+   "sieges": "Bangkok",
+   "listes": [
+    {
+     "n": 1,
+     "name": "AGIR ICI - LISTE CITOYENNE INDÉPENDANTE ET DE PROXIMITÉ POUR LES FRANÇAIS DE THAÏLANDE ET DU MYANMAR",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "RASSEMBLEMENT NATIONAL THAÏLANDE-BIRMANIE",
+     "b": "ED"
+    },
+    {
+     "n": 4,
+     "name": "AFI THAILANDE avec Jean-Michel PERROY",
+     "b": "IND"
+    },
+    {
+     "n": 6,
+     "name": "Représenter - Relayer - Accompagner",
+     "b": "IND"
+    }
+   ],
+   "pres_src": [
+    "Le Petit Journal Thaïlande, 19/06/2026 (élu avec la voix RN)"
+   ]
+  },
+  {
+   "id": 122,
+   "name": "Togo, Ghana",
+   "leg": 10,
+   "sieges": "Lomé, Accra",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ASFE - Défendre et accompagner les Français du Togo et du Ghana",
+     "b": "ASFE"
+    },
+    {
+     "n": 2,
+     "name": "Français du Togo et du Ghana, des conseillers pour défendre vos droits",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "L'Afrique au cœur liste d'Union des Français du Togo et du Ghana",
+     "b": "LR"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 123,
+   "name": "Tunisie, Libye",
+   "leg": 9,
+   "sieges": "Tunis",
+   "listes": [
+    {
+     "n": 1,
+     "name": "La France Insoumise - LFI Tunisie Libye",
+     "b": "LFI"
+    },
+    {
+     "n": 2,
+     "name": "Votre voix compte - Engagement, Expérience et Résultats",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "SERVIR les FRANÇAIS de TUNISIE et de LIBYE",
+     "b": "IND"
+    },
+    {
+     "n": 6,
+     "name": "FRANÇAIS-SES DU MONDE UNITE ET SOLIDARITE",
+     "b": "GAU"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 124,
+   "name": "Turquie",
+   "leg": 8,
+   "sieges": "Ankara, Istanbul",
+   "listes": [
+    {
+     "n": 2,
+     "name": "La Gauche Écologiste et Sociale",
+     "b": "GAU"
+    },
+    {
+     "n": 3,
+     "name": "ASFE – Défendre et accompagner les Français de Turquie",
+     "b": "ASFE"
+    },
+    {
+     "n": 4,
+     "name": "FLORENCE OGUTGEN : EXPERIENCE, SOLIDARITE et EFFICACITE.",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 125,
+   "name": "Ukraine",
+   "leg": 11,
+   "sieges": "Kyiv",
+   "listes": [
+    {
+     "n": 3,
+     "name": "Maud JOSEPH",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 126,
+   "name": "Uruguay",
+   "leg": 2,
+   "sieges": "Montevideo",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Martin BIURRUN",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 127,
+   "name": "Vanuatu",
+   "leg": 11,
+   "sieges": "Port-Vila",
+   "listes": [
+    {
+     "n": 1,
+     "name": "Georges CUMBO",
+     "b": "IND"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 128,
+   "name": "Venezuela, Sainte-Lucie, Trinité-et-Tobago",
+   "leg": 2,
+   "sieges": "Caracas",
+   "listes": [
+    {
+     "n": 1,
+     "name": "DEFENDRE ET ACCOMPAGNER LES FRANÇAIS DU VENEZUELA ET DES CARAIBES",
+     "b": "IND"
+    },
+    {
+     "n": 3,
+     "name": "Union des Français des Caraïbes et du Venezuela",
+     "b": "LR"
+    }
+   ],
+   "pres_src": null
+  },
+  {
+   "id": 129,
+   "name": "Vietnam",
+   "leg": 11,
+   "sieges": "Hanoï, Hô Chi Minh-Ville",
+   "listes": [
+    {
+     "n": 1,
+     "name": "ASFE - POUR UNE SOLIDARITÉ DE PROXIMITÉ",
+     "b": "ASFE"
+    },
+    {
+     "n": 2,
+     "name": "SOLIDAIRES EN ACTION ET À VOTRE ÉCOUTE",
+     "b": "IND"
+    },
+    {
+     "n": 4,
+     "name": "ENGAGÉS AU VIETNAM Pour les français.es du Vietnam - Proches - Utiles - Solidaires",
+     "b": "IND"
+    }
+   ],
+   "pres_src": [
+    "Ambassade au Vietnam, 11/06/2026",
+    "Ambassade au Vietnam, 11/06/2026"
+   ]
+  }
+ ],
+ "conseillers": [
+  {
+   "circ": 0,
+   "prenom": "Alain Jean-Marie Théodore",
+   "nom": "SAMY",
+   "liste": 1
+  },
+  {
+   "circ": 0,
+   "prenom": "Alexandre",
+   "nom": "BARRIERE",
+   "liste": 3,
+   "afe": 1
+  },
+  {
+   "circ": 0,
+   "prenom": "Christine",
+   "nom": "SERRE",
+   "liste": 3
+  },
+  {
+   "circ": 1,
+   "prenom": "Ahmed",
+   "nom": "HENNI",
+   "liste": 1
+  },
+  {
+   "circ": 1,
+   "prenom": "Yolande",
+   "nom": "MATEO",
+   "liste": 1
+  },
+  {
+   "circ": 1,
+   "prenom": "Bounouare",
+   "nom": "ADEL",
+   "liste": 3
+  },
+  {
+   "circ": 2,
+   "prenom": "Abdelghani",
+   "nom": "BOUTALEB",
+   "liste": 1
+  },
+  {
+   "circ": 2,
+   "prenom": "Fwad",
+   "nom": "HASNAOUI",
+   "liste": 4,
+   "afe": 8
+  },
+  {
+   "circ": 2,
+   "prenom": "Sabri",
+   "nom": "MÊLE",
+   "liste": 6
+  },
+  {
+   "circ": 3,
+   "prenom": "Tassadit Radya",
+   "nom": "RAHAL",
+   "liste": 1,
+   "afe": 13
+  },
+  {
+   "circ": 3,
+   "prenom": "Djamal",
+   "nom": "HAMMOUTENE",
+   "liste": 1
+  },
+  {
+   "circ": 3,
+   "prenom": "Karim",
+   "nom": "DENDÈNE",
+   "liste": 2,
+   "afe": 11
+  },
+  {
+   "circ": 3,
+   "prenom": "Schehrazade Leïla",
+   "nom": "ZERROUKHAT",
+   "liste": 2
+  },
+  {
+   "circ": 3,
+   "prenom": "Mohamed Moncef",
+   "nom": "BOUDERBA",
+   "liste": 3
+  },
+  {
+   "circ": 4,
+   "prenom": "Stéphan",
+   "nom": "MAIGNÉ",
+   "liste": 2
+  },
+  {
+   "circ": 4,
+   "prenom": "Marie-Julie",
+   "nom": "JACQUEMOT",
+   "liste": 2,
+   "afe": 16
+  },
+  {
+   "circ": 4,
+   "prenom": "Henri",
+   "nom": "ZELLER",
+   "liste": 3
+  },
+  {
+   "circ": 4,
+   "prenom": "Asma",
+   "nom": "RHARMAOUI-CLAQUIN",
+   "liste": 4,
+   "afe": 18
+  },
+  {
+   "circ": 4,
+   "prenom": "Maxime",
+   "nom": "GAUTIER",
+   "liste": 4,
+   "afe": 15
+  },
+  {
+   "circ": 5,
+   "prenom": "Anoucheh",
+   "nom": "BELLEFLEUR",
+   "liste": 1
+  },
+  {
+   "circ": 5,
+   "prenom": "Charlotte Adèle",
+   "nom": "ZIEGLER",
+   "liste": 2
+  },
+  {
+   "circ": 5,
+   "prenom": "Saliha",
+   "nom": "OUAMMAR",
+   "liste": 3
+  },
+  {
+   "circ": 5,
+   "prenom": "Marc",
+   "nom": "KNÜLLE",
+   "liste": 3,
+   "afe": 21
+  },
+  {
+   "circ": 5,
+   "prenom": "Nathalie",
+   "nom": "MAIER-BRIDOU",
+   "liste": 5
+  },
+  {
+   "circ": 6,
+   "prenom": "Nadine",
+   "nom": "DOCTEUR FOUQUES-WEISS",
+   "liste": 1,
+   "afe": 26
+  },
+  {
+   "circ": 6,
+   "prenom": "Alain de",
+   "nom": "SCHLICHTING-PAUCHON",
+   "liste": 1
+  },
+  {
+   "circ": 6,
+   "prenom": "Thomas",
+   "nom": "GRENOT",
+   "liste": 2
+  },
+  {
+   "circ": 6,
+   "prenom": "Shéhérazade",
+   "nom": "PREUSS",
+   "liste": 3
+  },
+  {
+   "circ": 6,
+   "prenom": "Audrey",
+   "nom": "LECLERC",
+   "liste": 6
+  },
+  {
+   "circ": 6,
+   "prenom": "Laurent",
+   "nom": "PERRAUT",
+   "liste": 6
+  },
+  {
+   "circ": 7,
+   "prenom": "Catherine",
+   "nom": "METAYER",
+   "liste": 1
+  },
+  {
+   "circ": 8,
+   "prenom": "Julien",
+   "nom": "ANTUNES",
+   "liste": 1
+  },
+  {
+   "circ": 9,
+   "prenom": "Jean-Louis",
+   "nom": "UBEDA",
+   "liste": 1
+  },
+  {
+   "circ": 10,
+   "prenom": "Mira",
+   "nom": "ABI RAMIA HAKME",
+   "liste": 1
+  },
+  {
+   "circ": 10,
+   "prenom": "Zaïda Marie",
+   "nom": "SLAIMAN",
+   "liste": 2
+  },
+  {
+   "circ": 10,
+   "prenom": "Hugues",
+   "nom": "LETANCHE",
+   "liste": 3
+  },
+  {
+   "circ": 11,
+   "prenom": "Pauline",
+   "nom": "MAYNIER",
+   "liste": 1
+  },
+  {
+   "circ": 11,
+   "prenom": "Laurent",
+   "nom": "WAKSMANN",
+   "liste": 2
+  },
+  {
+   "circ": 11,
+   "prenom": "Jérôme",
+   "nom": "GUILLOT",
+   "liste": 3,
+   "afe": 38
+  },
+  {
+   "circ": 11,
+   "prenom": "Christophe",
+   "nom": "DUBOIS",
+   "liste": 4
+  },
+  {
+   "circ": 12,
+   "prenom": "Lusine BARDON -",
+   "nom": "HAMBARDZUMYAN",
+   "liste": 2
+  },
+  {
+   "circ": 13,
+   "prenom": "Elise",
+   "nom": "LÉGER",
+   "liste": 1,
+   "afe": 45
+  },
+  {
+   "circ": 13,
+   "prenom": "Emmanuel",
+   "nom": "DESPROGES",
+   "liste": 1
+  },
+  {
+   "circ": 13,
+   "prenom": "Serge",
+   "nom": "THOMANN",
+   "liste": 3
+  },
+  {
+   "circ": 13,
+   "prenom": "Jean-Philippe",
+   "nom": "GRANGE",
+   "liste": 4,
+   "afe": 44
+  },
+  {
+   "circ": 13,
+   "prenom": "Caroline",
+   "nom": "BRUNEL",
+   "liste": 4
+  },
+  {
+   "circ": 14,
+   "prenom": "Claire",
+   "nom": "GUÉRIN",
+   "liste": 1
+  },
+  {
+   "circ": 14,
+   "prenom": "Armelle",
+   "nom": "HAMMOUMI MÜLLER",
+   "liste": 3,
+   "afe": 48
+  },
+  {
+   "circ": 14,
+   "prenom": "Etienne",
+   "nom": "LEROY",
+   "liste": 3
+  },
+  {
+   "circ": 14,
+   "prenom": "Vincent",
+   "nom": "ROUÉ",
+   "liste": 5
+  },
+  {
+   "circ": 15,
+   "prenom": "Anthony",
+   "nom": "BISCH",
+   "liste": 3
+  },
+  {
+   "circ": 15,
+   "prenom": "Raphaël",
+   "nom": "AVANZI",
+   "liste": 4,
+   "afe": 52
+  },
+  {
+   "circ": 15,
+   "prenom": "Laëtitia Marie",
+   "nom": "ALLIBERT",
+   "liste": 4
+  },
+  {
+   "circ": 15,
+   "prenom": "Maxime",
+   "nom": "LELIEVRE",
+   "liste": 5
+  },
+  {
+   "circ": 15,
+   "prenom": "Valérie",
+   "nom": "GOURGUES",
+   "liste": 5
+  },
+  {
+   "circ": 15,
+   "prenom": "Bertrand",
+   "nom": "WERT",
+   "liste": 7
+  },
+  {
+   "circ": 15,
+   "prenom": "Sarah",
+   "nom": "NDIAYE",
+   "liste": 7
+  },
+  {
+   "circ": 15,
+   "prenom": "Cécilia",
+   "nom": "GONDARD",
+   "liste": 9
+  },
+  {
+   "circ": 15,
+   "prenom": "Denis",
+   "nom": "JANQUIN",
+   "liste": 9
+  },
+  {
+   "circ": 16,
+   "prenom": "Josiane Annie",
+   "nom": "ADJOVI",
+   "liste": 1
+  },
+  {
+   "circ": 16,
+   "prenom": "Arsène",
+   "nom": "ATINDEHOU",
+   "liste": 1
+  },
+  {
+   "circ": 16,
+   "prenom": "Ahouéfa Nadine",
+   "nom": "DOSSOU",
+   "liste": 2
+  },
+  {
+   "circ": 17,
+   "prenom": "Maurice",
+   "nom": "MANÇO-QUIROGA",
+   "liste": 2
+  },
+  {
+   "circ": 18,
+   "prenom": "Julie",
+   "nom": "CAVIGNAC",
+   "liste": 1
+  },
+  {
+   "circ": 18,
+   "prenom": "Edouard",
+   "nom": "FERNANDEZ",
+   "liste": 2
+  },
+  {
+   "circ": 18,
+   "prenom": "Xavier",
+   "nom": "NOËL-BOUTON",
+   "liste": 3
+  },
+  {
+   "circ": 19,
+   "prenom": "Mélanie",
+   "nom": "MONTINARD",
+   "liste": 1,
+   "afe": 69
+  },
+  {
+   "circ": 19,
+   "prenom": "Tulio",
+   "nom": "MATENCIO",
+   "liste": 1
+  },
+  {
+   "circ": 19,
+   "prenom": "Marie",
+   "nom": "GODEFROY",
+   "liste": 2
+  },
+  {
+   "circ": 20,
+   "prenom": "Bertrand",
+   "nom": "DUPONT",
+   "liste": 1
+  },
+  {
+   "circ": 20,
+   "prenom": "Véronique",
+   "nom": "MASSEI",
+   "liste": 1
+  },
+  {
+   "circ": 20,
+   "prenom": "Edmond",
+   "nom": "APARICIO",
+   "liste": 2
+  },
+  {
+   "circ": 20,
+   "prenom": "Ana Fabia",
+   "nom": "FERRAZ MARTINS",
+   "liste": 4
+  },
+  {
+   "circ": 21,
+   "prenom": "Matthieu",
+   "nom": "SCHWEISGUTH",
+   "liste": 1
+  },
+  {
+   "circ": 21,
+   "prenom": "Amélie",
+   "nom": "LECLERCQ",
+   "liste": 2
+  },
+  {
+   "circ": 21,
+   "prenom": "Irina",
+   "nom": "GAPIKJ",
+   "liste": 4
+  },
+  {
+   "circ": 22,
+   "prenom": "Ousmane",
+   "nom": "OUÉDRAOGO",
+   "liste": 3
+  },
+  {
+   "circ": 23,
+   "prenom": "Matthias",
+   "nom": "VAZQUEZ",
+   "liste": 1,
+   "afe": 80
+  },
+  {
+   "circ": 23,
+   "prenom": "Florian",
+   "nom": "BOHEME",
+   "liste": 3,
+   "pres": true,
+   "afe": 78
+  },
+  {
+   "circ": 23,
+   "prenom": "Christine",
+   "nom": "GAUTHIER",
+   "liste": 3
+  },
+  {
+   "circ": 24,
+   "prenom": "Abel",
+   "nom": "EKOLO",
+   "liste": 1
+  },
+  {
+   "circ": 24,
+   "prenom": "Thierry",
+   "nom": "DUPLEIX",
+   "liste": 2,
+   "pres": true
+  },
+  {
+   "circ": 24,
+   "prenom": "Nicolas",
+   "nom": "NICOLAS",
+   "liste": 3
+  },
+  {
+   "circ": 25,
+   "prenom": "Benoît",
+   "nom": "LIÉGEY",
+   "liste": 1
+  },
+  {
+   "circ": 25,
+   "prenom": "Nathalie",
+   "nom": "ASTRUC",
+   "liste": 1
+  },
+  {
+   "circ": 25,
+   "prenom": "Olivier",
+   "nom": "DELLAPINA",
+   "liste": 6,
+   "afe": 86
+  },
+  {
+   "circ": 25,
+   "prenom": "Cindy",
+   "nom": "DELLAPINA",
+   "liste": 6
+  },
+  {
+   "circ": 26,
+   "prenom": "Francine",
+   "nom": "WATKINS",
+   "liste": 1,
+   "afe": 91
+  },
+  {
+   "circ": 26,
+   "prenom": "Ronan",
+   "nom": "LE GUERN",
+   "liste": 1
+  },
+  {
+   "circ": 26,
+   "prenom": "Séverine",
+   "nom": "BIDERMAN",
+   "liste": 3
+  },
+  {
+   "circ": 26,
+   "prenom": "Olivier",
+   "nom": "GIFFAUX",
+   "liste": 6
+  },
+  {
+   "circ": 27,
+   "prenom": "Florian",
+   "nom": "TABAKA",
+   "liste": 1
+  },
+  {
+   "circ": 27,
+   "prenom": "Yssia",
+   "nom": "TORMIN",
+   "liste": 1
+  },
+  {
+   "circ": 27,
+   "prenom": "Arthur",
+   "nom": "SILVE",
+   "liste": 2
+  },
+  {
+   "circ": 27,
+   "prenom": "Alice",
+   "nom": "BONARDI-IGOUT",
+   "liste": 2,
+   "pres": true
+  },
+  {
+   "circ": 27,
+   "prenom": "Geoffroy",
+   "nom": "GUILLON-LEMOINE",
+   "liste": 7
+  },
+  {
+   "circ": 28,
+   "prenom": "Valérie",
+   "nom": "PATREAU",
+   "liste": 2,
+   "afe": 102
+  },
+  {
+   "circ": 28,
+   "prenom": "Lambert",
+   "nom": "BARAUT-GUINET",
+   "liste": 2
+  },
+  {
+   "circ": 28,
+   "prenom": "Laurence",
+   "nom": "DECHASSEY",
+   "liste": 5
+  },
+  {
+   "circ": 28,
+   "prenom": "Thibault",
+   "nom": "FROEHLICH",
+   "liste": 5,
+   "afe": 99
+  },
+  {
+   "circ": 28,
+   "prenom": "Sarah Vakana",
+   "nom": "PATIER",
+   "liste": 5,
+   "pres": true
+  },
+  {
+   "circ": 28,
+   "prenom": "Florent",
+   "nom": "PIGEYRE",
+   "liste": 8
+  },
+  {
+   "circ": 28,
+   "prenom": "Yan",
+   "nom": "NIESING",
+   "liste": 9
+  },
+  {
+   "circ": 29,
+   "prenom": "Catherine",
+   "nom": "BLANCHE",
+   "liste": 2
+  },
+  {
+   "circ": 29,
+   "prenom": "Marie Christine",
+   "nom": "HARITÇALDE",
+   "liste": 3
+  },
+  {
+   "circ": 29,
+   "prenom": "Joël",
+   "nom": "BEROUD",
+   "liste": 3
+  },
+  {
+   "circ": 29,
+   "prenom": "Marie-Aude",
+   "nom": "DE SAINT CHARLES",
+   "liste": 3
+  },
+  {
+   "circ": 30,
+   "prenom": "Sevag",
+   "nom": "BAROUDJIAN",
+   "liste": 3
+  },
+  {
+   "circ": 31,
+   "prenom": "Pierre",
+   "nom": "MIROCHNIKOFF",
+   "liste": 1
+  },
+  {
+   "circ": 31,
+   "prenom": "Françoise",
+   "nom": "ONILLON",
+   "liste": 2,
+   "afe": 111
+  },
+  {
+   "circ": 31,
+   "prenom": "Lucile",
+   "nom": "MEZERAY",
+   "liste": 3
+  },
+  {
+   "circ": 32,
+   "prenom": "Pierre-Yves",
+   "nom": "DUPUIS",
+   "liste": 1
+  },
+  {
+   "circ": 32,
+   "prenom": "Charles",
+   "nom": "DE LA PORTBARRÉ",
+   "liste": 2
+  },
+  {
+   "circ": 32,
+   "prenom": "Marc",
+   "nom": "GUYON",
+   "liste": 4
+  },
+  {
+   "circ": 32,
+   "prenom": "Émilie TRAN -",
+   "nom": "SAUTEDÉ",
+   "liste": 5
+  },
+  {
+   "circ": 33,
+   "prenom": "Céline",
+   "nom": "POZZOBON",
+   "liste": 2,
+   "afe": 117
+  },
+  {
+   "circ": 33,
+   "prenom": "Igal",
+   "nom": "CHREKY",
+   "liste": 2
+  },
+  {
+   "circ": 33,
+   "prenom": "Romain",
+   "nom": "VUATTOUX",
+   "liste": 3
+  },
+  {
+   "circ": 34,
+   "prenom": "Davina",
+   "nom": "BESSAT DAOUD",
+   "liste": 2,
+   "afe": 119
+  },
+  {
+   "circ": 35,
+   "prenom": "Frédérique",
+   "nom": "MARTIQUET",
+   "liste": 1,
+   "afe": 122
+  },
+  {
+   "circ": 35,
+   "prenom": "Cécile",
+   "nom": "LAVERGNE",
+   "liste": 6
+  },
+  {
+   "circ": 35,
+   "prenom": "Colin",
+   "nom": "GAVIGNET",
+   "liste": 6
+  },
+  {
+   "circ": 36,
+   "prenom": "Johnson",
+   "nom": "ABOUDOU",
+   "liste": 2
+  },
+  {
+   "circ": 37,
+   "prenom": "Cyril",
+   "nom": "CHANGARNIER",
+   "liste": 1
+  },
+  {
+   "circ": 37,
+   "prenom": "René Pierre Raphaël",
+   "nom": "MARINI",
+   "liste": 3
+  },
+  {
+   "circ": 37,
+   "prenom": "Sylvain",
+   "nom": "CAILLEAU",
+   "liste": 4
+  },
+  {
+   "circ": 38,
+   "prenom": "Maxime",
+   "nom": "BEYER",
+   "liste": 1
+  },
+  {
+   "circ": 38,
+   "prenom": "Shu Shan",
+   "nom": "YANG",
+   "liste": 1
+  },
+  {
+   "circ": 38,
+   "prenom": "Catherine",
+   "nom": "CHINCHIROCA",
+   "liste": 3
+  },
+  {
+   "circ": 39,
+   "prenom": "Fanny",
+   "nom": "STERNER",
+   "liste": 2
+  },
+  {
+   "circ": 39,
+   "prenom": "Denis",
+   "nom": "GLOCK",
+   "liste": 3
+  },
+  {
+   "circ": 39,
+   "prenom": "Malika",
+   "nom": "RABIA",
+   "liste": 3
+  },
+  {
+   "circ": 40,
+   "prenom": "Jihad",
+   "nom": "BADREDDINE",
+   "liste": 2
+  },
+  {
+   "circ": 40,
+   "prenom": "Bruno",
+   "nom": "MARTINATO",
+   "liste": 3
+  },
+  {
+   "circ": 40,
+   "prenom": "Jean-Luc",
+   "nom": "RUELLE",
+   "liste": 4
+  },
+  {
+   "circ": 40,
+   "prenom": "Jacqueline",
+   "nom": "CHAPMAN",
+   "liste": 4
+  },
+  {
+   "circ": 40,
+   "prenom": "Baptiste",
+   "nom": "HEINTZ",
+   "liste": 5,
+   "afe": 135
+  },
+  {
+   "circ": 41,
+   "prenom": "Julien",
+   "nom": "GELTZENLICHTER",
+   "liste": 1
+  },
+  {
+   "circ": 42,
+   "prenom": "Pascal",
+   "nom": "BADACHE",
+   "liste": 1
+  },
+  {
+   "circ": 42,
+   "prenom": "Marie Emmanuelle",
+   "nom": "MOQUET",
+   "liste": 2,
+   "afe": 141
+  },
+  {
+   "circ": 42,
+   "prenom": "Rodolphe",
+   "nom": "MADER",
+   "liste": 2
+  },
+  {
+   "circ": 43,
+   "prenom": "Jean",
+   "nom": "MEUNIER",
+   "liste": 1
+  },
+  {
+   "circ": 43,
+   "prenom": "Vincent",
+   "nom": "SADEQUE",
+   "liste": 2,
+   "afe": 144
+  },
+  {
+   "circ": 43,
+   "prenom": "Eva",
+   "nom": "PARDINA",
+   "liste": 2
+  },
+  {
+   "circ": 44,
+   "prenom": "Catherine",
+   "nom": "PASCAL",
+   "liste": 2
+  },
+  {
+   "circ": 44,
+   "prenom": "Rafaël",
+   "nom": "PLEUTIN",
+   "liste": 3,
+   "pres": true
+  },
+  {
+   "circ": 44,
+   "prenom": "Marie-Delphine",
+   "nom": "MARTELLIÈRE",
+   "liste": 3
+  },
+  {
+   "circ": 45,
+   "prenom": "Valérie",
+   "nom": "ALLARD-LATOUR",
+   "liste": 2
+  },
+  {
+   "circ": 45,
+   "prenom": "Geoffroy",
+   "nom": "BUNETEL",
+   "liste": 3,
+   "afe": 149
+  },
+  {
+   "circ": 45,
+   "prenom": "Christine",
+   "nom": "RIZZATO",
+   "liste": 3
+  },
+  {
+   "circ": 45,
+   "prenom": "Frédéric",
+   "nom": "MARCHAND",
+   "liste": 3
+  },
+  {
+   "circ": 45,
+   "prenom": "Adeline",
+   "nom": "VERDIER-VELTEN",
+   "liste": 4
+  },
+  {
+   "circ": 46,
+   "prenom": "Tannya",
+   "nom": "BRICARD",
+   "liste": 2
+  },
+  {
+   "circ": 46,
+   "prenom": "William",
+   "nom": "WADOUX",
+   "liste": 3
+  },
+  {
+   "circ": 46,
+   "prenom": "Philippe",
+   "nom": "LADET",
+   "liste": 5
+  },
+  {
+   "circ": 47,
+   "prenom": "Pascal",
+   "nom": "BOURBON",
+   "liste": 1,
+   "afe": 156
+  },
+  {
+   "circ": 47,
+   "prenom": "Renaud",
+   "nom": "LE BERRE",
+   "liste": 3
+  },
+  {
+   "circ": 47,
+   "prenom": "Ana",
+   "nom": "SAINT-DIZIER",
+   "liste": 3,
+   "pres": true
+  },
+  {
+   "circ": 47,
+   "prenom": "Baudouin",
+   "nom": "DE MARCELLUS",
+   "liste": 4
+  },
+  {
+   "circ": 47,
+   "prenom": "Youssef",
+   "nom": "HANAYEN",
+   "liste": 5
+  },
+  {
+   "circ": 48,
+   "prenom": "Martha",
+   "nom": "PECIÑA",
+   "liste": 1,
+   "afe": 165
+  },
+  {
+   "circ": 48,
+   "prenom": "Arnaud",
+   "nom": "LORENZI",
+   "liste": 2
+  },
+  {
+   "circ": 48,
+   "prenom": "Stéphanie",
+   "nom": "LE VAILLANT VIGNANCOUR",
+   "liste": 4,
+   "afe": 162
+  },
+  {
+   "circ": 48,
+   "prenom": "Jean Michel",
+   "nom": "BERANGER",
+   "liste": 4,
+   "pres": true
+  },
+  {
+   "circ": 48,
+   "prenom": "François",
+   "nom": "RALLE ANDREOLI",
+   "liste": 5,
+   "afe": 166
+  },
+  {
+   "circ": 48,
+   "prenom": "Gaëlle",
+   "nom": "LECOMTE",
+   "liste": 5,
+   "afe": 163
+  },
+  {
+   "circ": 49,
+   "prenom": "Vladimir",
+   "nom": "MOLINIÉ",
+   "liste": 2
+  },
+  {
+   "circ": 49,
+   "prenom": "Penda",
+   "nom": "NDIAYE",
+   "liste": 3
+  },
+  {
+   "circ": 49,
+   "prenom": "Elisabeth",
+   "nom": "(BABETH) MARCHAL",
+   "liste": 4
+  },
+  {
+   "circ": 50,
+   "prenom": "Odile",
+   "nom": "MATTIAUDA",
+   "liste": 1
+  },
+  {
+   "circ": 50,
+   "prenom": "Christophe",
+   "nom": "SEMANAZ",
+   "liste": 3,
+   "pres": true
+  },
+  {
+   "circ": 50,
+   "prenom": "Fabien",
+   "nom": "VIAL",
+   "liste": 4
+  },
+  {
+   "circ": 50,
+   "prenom": "Sandrine",
+   "nom": "HULOT",
+   "liste": 5
+  },
+  {
+   "circ": 51,
+   "prenom": "Pierre",
+   "nom": "GROSDIDIER",
+   "liste": 1
+  },
+  {
+   "circ": 51,
+   "prenom": "Brendan",
+   "nom": "LUGUERN",
+   "liste": 2
+  },
+  {
+   "circ": 51,
+   "prenom": "Jean-Francois",
+   "nom": "BONNETÉ",
+   "liste": 3
+  },
+  {
+   "circ": 51,
+   "prenom": "Maïté",
+   "nom": "MESEURE",
+   "liste": 3
+  },
+  {
+   "circ": 52,
+   "prenom": "Oussama",
+   "nom": "LARAICHI",
+   "liste": 1,
+   "afe": 180
+  },
+  {
+   "circ": 52,
+   "prenom": "Khadija",
+   "nom": "LAURENS",
+   "liste": 2
+  },
+  {
+   "circ": 52,
+   "prenom": "Patrick",
+   "nom": "BOURBON",
+   "liste": 3
+  },
+  {
+   "circ": 52,
+   "prenom": "Aline",
+   "nom": "DELPIERRE",
+   "liste": 3
+  },
+  {
+   "circ": 53,
+   "prenom": "Romain",
+   "nom": "CARTON",
+   "liste": 1
+  },
+  {
+   "circ": 53,
+   "prenom": "Franck",
+   "nom": "BONDRILLE",
+   "liste": 2
+  },
+  {
+   "circ": 53,
+   "prenom": "Aline",
+   "nom": "MARTIN-O'BRIEN",
+   "liste": 2,
+   "afe": 185
+  },
+  {
+   "circ": 53,
+   "prenom": "Xavier",
+   "nom": "CAPDEVIELLE",
+   "liste": 2
+  },
+  {
+   "circ": 54,
+   "prenom": "Béatrice",
+   "nom": "LEYDIER",
+   "liste": 1
+  },
+  {
+   "circ": 54,
+   "prenom": "Morgane",
+   "nom": "ROLLAND",
+   "liste": 2
+  },
+  {
+   "circ": 54,
+   "prenom": "Olivier",
+   "nom": "PITON",
+   "liste": 4,
+   "afe": 188
+  },
+  {
+   "circ": 54,
+   "prenom": "Blandine",
+   "nom": "CHANTEPIE",
+   "liste": 4
+  },
+  {
+   "circ": 55,
+   "prenom": "Sylvie",
+   "nom": "ALMERI",
+   "liste": 1,
+   "pres": true
+  },
+  {
+   "circ": 55,
+   "prenom": "Karim",
+   "nom": "SAHLI",
+   "liste": 3
+  },
+  {
+   "circ": 55,
+   "prenom": "Gwen",
+   "nom": "DEGLISE",
+   "liste": 3
+  },
+  {
+   "circ": 55,
+   "prenom": "Christophe",
+   "nom": "JOUIN",
+   "liste": 4,
+   "afe": 192
+  },
+  {
+   "circ": 55,
+   "prenom": "Mercedes",
+   "nom": "MIRA",
+   "liste": 8
+  },
+  {
+   "circ": 56,
+   "prenom": "Warda",
+   "nom": "SOUIHI",
+   "liste": 2,
+   "pres": true,
+   "afe": 199
+  },
+  {
+   "circ": 56,
+   "prenom": "Frédéric",
+   "nom": "JOSEPH",
+   "liste": 2
+  },
+  {
+   "circ": 56,
+   "prenom": "Mélanie",
+   "nom": "GIROD",
+   "liste": 2
+  },
+  {
+   "circ": 56,
+   "prenom": "Loïc",
+   "nom": "LE GLAND",
+   "liste": 3
+  },
+  {
+   "circ": 56,
+   "prenom": "Sophie",
+   "nom": "LARTILLEUX SUBERVILLE",
+   "liste": 3,
+   "afe": 197
+  },
+  {
+   "circ": 57,
+   "prenom": "Pascale",
+   "nom": "RICHARD",
+   "liste": 1
+  },
+  {
+   "circ": 57,
+   "prenom": "Yvan",
+   "nom": "BEDOUET",
+   "liste": 1
+  },
+  {
+   "circ": 57,
+   "prenom": "Jean-Philippe",
+   "nom": "BERTEAU",
+   "liste": 3
+  },
+  {
+   "circ": 57,
+   "prenom": "Annie",
+   "nom": "MICHEL",
+   "liste": 3,
+   "pres": true
+  },
+  {
+   "circ": 57,
+   "prenom": "Gérard",
+   "nom": "EPELBAUM",
+   "liste": 5,
+   "afe": 202
+  },
+  {
+   "circ": 57,
+   "prenom": "Matthieu",
+   "nom": "HUMEAU",
+   "liste": 6
+  },
+  {
+   "circ": 58,
+   "prenom": "Michel",
+   "nom": "GLEYZE",
+   "liste": 1
+  },
+  {
+   "circ": 59,
+   "prenom": "Nathalie",
+   "nom": "ALT",
+   "liste": 1
+  },
+  {
+   "circ": 59,
+   "prenom": "Antoine",
+   "nom": "SCHERER",
+   "liste": 2
+  },
+  {
+   "circ": 59,
+   "prenom": "Chloé",
+   "nom": "BERNARD",
+   "liste": 3
+  },
+  {
+   "circ": 60,
+   "prenom": "Corine",
+   "nom": "RIBERT",
+   "liste": 1
+  },
+  {
+   "circ": 60,
+   "prenom": "Sandra",
+   "nom": "GORAYEB",
+   "liste": 2
+  },
+  {
+   "circ": 60,
+   "prenom": "Didier",
+   "nom": "LESPINAS",
+   "liste": 2,
+   "afe": 211
+  },
+  {
+   "circ": 61,
+   "prenom": "Lena",
+   "nom": "SPENGOS",
+   "liste": 1
+  },
+  {
+   "circ": 61,
+   "prenom": "Chantal",
+   "nom": "PICHARLES",
+   "liste": 4
+  },
+  {
+   "circ": 61,
+   "prenom": "Guy",
+   "nom": "BROCHARD",
+   "liste": 4
+  },
+  {
+   "circ": 62,
+   "prenom": "Alain",
+   "nom": "KAHN",
+   "liste": 1
+  },
+  {
+   "circ": 63,
+   "prenom": "Frédéric",
+   "nom": "BOUZIGUES",
+   "liste": 1,
+   "afe": 217
+  },
+  {
+   "circ": 64,
+   "prenom": "Martin",
+   "nom": "MOLERE",
+   "liste": 1
+  },
+  {
+   "circ": 65,
+   "prenom": "Jeanne",
+   "nom": "DUBARD-KAJTAR",
+   "liste": 1
+  },
+  {
+   "circ": 65,
+   "prenom": "Jean-Claude",
+   "nom": "FEDOU",
+   "liste": 1
+  },
+  {
+   "circ": 65,
+   "prenom": "Vincent",
+   "nom": "LIÉGEY",
+   "liste": 2,
+   "afe": 221
+  },
+  {
+   "circ": 66,
+   "prenom": "Anju",
+   "nom": "CHAZOT",
+   "liste": 1,
+   "afe": 223
+  },
+  {
+   "circ": 66,
+   "prenom": "Franck",
+   "nom": "BARTHELEMY",
+   "liste": 4,
+   "pres": true
+  },
+  {
+   "circ": 66,
+   "prenom": "Nadia",
+   "nom": "LEVESQUE",
+   "liste": 4
+  },
+  {
+   "circ": 67,
+   "prenom": "Patricia",
+   "nom": "AMBROSE",
+   "liste": 1
+  },
+  {
+   "circ": 67,
+   "prenom": "Christy",
+   "nom": "GNANADICOM",
+   "liste": 1
+  },
+  {
+   "circ": 67,
+   "prenom": "Chantal",
+   "nom": "SAMUEL-DAVID",
+   "liste": 4,
+   "afe": 227
+  },
+  {
+   "circ": 68,
+   "prenom": "Alain Pierre",
+   "nom": "MIGNON",
+   "liste": 1
+  },
+  {
+   "circ": 68,
+   "prenom": "Blaise",
+   "nom": "JAEGER",
+   "liste": 2
+  },
+  {
+   "circ": 68,
+   "prenom": "Jacques",
+   "nom": "LUÇON",
+   "liste": 3
+  },
+  {
+   "circ": 69,
+   "prenom": "Anne-Sophie",
+   "nom": "FRANCAIS",
+   "liste": 2
+  },
+  {
+   "circ": 70,
+   "prenom": "Laurence",
+   "nom": "HELAILI-CHAPUIS",
+   "liste": 3
+  },
+  {
+   "circ": 70,
+   "prenom": "Nicolas",
+   "nom": "NOUELLE-PARRAT",
+   "liste": 3,
+   "afe": 234
+  },
+  {
+   "circ": 70,
+   "prenom": "Benoit",
+   "nom": "MARIN-CUDRAZ",
+   "liste": 4,
+   "afe": 233
+  },
+  {
+   "circ": 70,
+   "prenom": "Laurence",
+   "nom": "RICARD",
+   "liste": 4
+  },
+  {
+   "circ": 71,
+   "prenom": "Paul",
+   "nom": "KAMOUN",
+   "liste": 2
+  },
+  {
+   "circ": 71,
+   "prenom": "Samantha",
+   "nom": "ASSULI",
+   "liste": 3
+  },
+  {
+   "circ": 71,
+   "prenom": "Eric",
+   "nom": "BELLAÏCHE",
+   "liste": 3,
+   "afe": 238
+  },
+  {
+   "circ": 71,
+   "prenom": "Winston",
+   "nom": "ASSOUS",
+   "liste": 4
+  },
+  {
+   "circ": 71,
+   "prenom": "Hélène",
+   "nom": "SEMHOUN",
+   "liste": 5,
+   "afe": 240
+  },
+  {
+   "circ": 72,
+   "prenom": "Pascale",
+   "nom": "MIMOUNI",
+   "liste": 2
+  },
+  {
+   "circ": 72,
+   "prenom": "Daphna",
+   "nom": "POZNANSKI-BENHAMOU",
+   "liste": 3,
+   "afe": 247
+  },
+  {
+   "circ": 72,
+   "prenom": "Claude",
+   "nom": "ALLOUCHE",
+   "liste": 3,
+   "afe": 242
+  },
+  {
+   "circ": 72,
+   "prenom": "Deborah",
+   "nom": "ELBAZ CADOCHE",
+   "liste": 3
+  },
+  {
+   "circ": 72,
+   "prenom": "Benjamin",
+   "nom": "CHALTIEL",
+   "liste": 5
+  },
+  {
+   "circ": 72,
+   "prenom": "Michael",
+   "nom": "AYACHE",
+   "liste": 6
+  },
+  {
+   "circ": 72,
+   "prenom": "Daniel",
+   "nom": "ABITBOL",
+   "liste": 8
+  },
+  {
+   "circ": 73,
+   "prenom": "Carole",
+   "nom": "DE BLESSON",
+   "liste": 2
+  },
+  {
+   "circ": 73,
+   "prenom": "Gaëlle",
+   "nom": "BARRÉ",
+   "liste": 3
+  },
+  {
+   "circ": 73,
+   "prenom": "Olivier",
+   "nom": "SPIESSER",
+   "liste": 3,
+   "afe": 251
+  },
+  {
+   "circ": 73,
+   "prenom": "Pierre",
+   "nom": "CHORAINE",
+   "liste": 4
+  },
+  {
+   "circ": 74,
+   "prenom": "Annie",
+   "nom": "REA",
+   "liste": 3,
+   "afe": 255
+  },
+  {
+   "circ": 74,
+   "prenom": "Adrien",
+   "nom": "NICASTRO",
+   "liste": 3
+  },
+  {
+   "circ": 74,
+   "prenom": "Marianna",
+   "nom": "ROCHER",
+   "liste": 5
+  },
+  {
+   "circ": 74,
+   "prenom": "Marie-Ange",
+   "nom": "AMICO",
+   "liste": 6,
+   "afe": 252
+  },
+  {
+   "circ": 74,
+   "prenom": "Francis",
+   "nom": "PEDUZZI",
+   "liste": 6
+  },
+  {
+   "circ": 75,
+   "prenom": "François",
+   "nom": "ROUSSEL",
+   "liste": 2
+  },
+  {
+   "circ": 75,
+   "prenom": "Lorène",
+   "nom": "LUCAS-SVAY",
+   "liste": 2
+  },
+  {
+   "circ": 75,
+   "prenom": "Jean-Marc",
+   "nom": "LISNER",
+   "liste": 3
+  },
+  {
+   "circ": 75,
+   "prenom": "Viviane",
+   "nom": "SUBLIME",
+   "liste": 5
+  },
+  {
+   "circ": 76,
+   "prenom": "David",
+   "nom": "VALCKE",
+   "liste": 1
+  },
+  {
+   "circ": 77,
+   "prenom": "Othmane",
+   "nom": "CHAOUI",
+   "liste": 2
+  },
+  {
+   "circ": 77,
+   "prenom": "Jean-Baka",
+   "nom": "DOMELEVO ENTFELLNER",
+   "liste": 3,
+   "afe": 263
+  },
+  {
+   "circ": 77,
+   "prenom": "Agathe",
+   "nom": "HUME VIRANI",
+   "liste": 3
+  },
+  {
+   "circ": 78,
+   "prenom": "Olivier de",
+   "nom": "PEYRELONGUE",
+   "liste": 1
+  },
+  {
+   "circ": 79,
+   "prenom": "Lucas",
+   "nom": "LAMAH",
+   "liste": 1,
+   "afe": 270
+  },
+  {
+   "circ": 79,
+   "prenom": "Désirée",
+   "nom": "KHALIFE JOSEPH",
+   "liste": 1
+  },
+  {
+   "circ": 79,
+   "prenom": "Philippe",
+   "nom": "CHALU",
+   "liste": 1
+  },
+  {
+   "circ": 79,
+   "prenom": "Ghassan",
+   "nom": "AYOUB",
+   "liste": 3,
+   "afe": 266
+  },
+  {
+   "circ": 79,
+   "prenom": "Nadia",
+   "nom": "EL-AZZI CHAAYA",
+   "liste": 6
+  },
+  {
+   "circ": 80,
+   "prenom": "Pascale",
+   "nom": "ZAOUROU",
+   "liste": 1
+  },
+  {
+   "circ": 80,
+   "prenom": "David",
+   "nom": "DUDAY",
+   "liste": 2
+  },
+  {
+   "circ": 80,
+   "prenom": "Christophe",
+   "nom": "BIRAUD",
+   "liste": 3
+  },
+  {
+   "circ": 80,
+   "prenom": "Frédéric",
+   "nom": "SCHAULI",
+   "liste": 6,
+   "afe": 274
+  },
+  {
+   "circ": 80,
+   "prenom": "Corinne",
+   "nom": "LOZE",
+   "liste": 6,
+   "afe": 273
+  },
+  {
+   "circ": 81,
+   "prenom": "Jean-Hervé",
+   "nom": "FRASLIN",
+   "liste": 2,
+   "afe": 278
+  },
+  {
+   "circ": 81,
+   "prenom": "Sourenah",
+   "nom": "KALFANE",
+   "liste": 2
+  },
+  {
+   "circ": 81,
+   "prenom": "Gaëtan",
+   "nom": "ETANCELIN",
+   "liste": 2
+  },
+  {
+   "circ": 81,
+   "prenom": "Marc",
+   "nom": "BOULNOIS",
+   "liste": 3
+  },
+  {
+   "circ": 82,
+   "prenom": "Jean-Yves",
+   "nom": "GICQUEL",
+   "liste": 1
+  },
+  {
+   "circ": 82,
+   "prenom": "Louis",
+   "nom": "AUGUSTIN-JEAN",
+   "liste": 2
+  },
+  {
+   "circ": 82,
+   "prenom": "Olivier",
+   "nom": "RIVES-GEORGES",
+   "liste": 3
+  },
+  {
+   "circ": 83,
+   "prenom": "Valérie",
+   "nom": "BEILVERT",
+   "liste": 1,
+   "afe": 283
+  },
+  {
+   "circ": 83,
+   "prenom": "Aly",
+   "nom": "SAYEGH",
+   "liste": 1
+  },
+  {
+   "circ": 83,
+   "prenom": "Anna Fatoumata",
+   "nom": "MAÏGA",
+   "liste": 3
+  },
+  {
+   "circ": 84,
+   "prenom": "Nadia",
+   "nom": "BELLOUTI",
+   "liste": 1
+  },
+  {
+   "circ": 84,
+   "prenom": "Paolo",
+   "nom": "ROSSI",
+   "liste": 2
+  },
+  {
+   "circ": 84,
+   "prenom": "Othmane",
+   "nom": "TOUZANI IDRISSI",
+   "liste": 3
+  },
+  {
+   "circ": 85,
+   "prenom": "Myriam Geneviève",
+   "nom": "BEN KERROUM DEVIDET",
+   "liste": 1
+  },
+  {
+   "circ": 85,
+   "prenom": "Pascal",
+   "nom": "CAPDEVIELLE",
+   "liste": 2,
+   "afe": 291
+  },
+  {
+   "circ": 85,
+   "prenom": "Jacky",
+   "nom": "AUBERT",
+   "liste": 3
+  },
+  {
+   "circ": 86,
+   "prenom": "Martine",
+   "nom": "REBECCHINI",
+   "liste": 1
+  },
+  {
+   "circ": 86,
+   "prenom": "Claude",
+   "nom": "FONTENOY",
+   "liste": 2
+  },
+  {
+   "circ": 86,
+   "prenom": "Nathalie",
+   "nom": "PAYRE",
+   "liste": 2
+  },
+  {
+   "circ": 87,
+   "prenom": "Ludovic",
+   "nom": "LEGRAND",
+   "liste": 1
+  },
+  {
+   "circ": 87,
+   "prenom": "Mireille",
+   "nom": "RINGOT",
+   "liste": 1
+  },
+  {
+   "circ": 87,
+   "prenom": "Max",
+   "nom": "GEORGANDELIS",
+   "liste": 2
+  },
+  {
+   "circ": 88,
+   "prenom": "Sara",
+   "nom": "STRI",
+   "liste": 3
+  },
+  {
+   "circ": 88,
+   "prenom": "Khadija",
+   "nom": "BELBACHIR-BELCAID",
+   "liste": 4,
+   "afe": 298
+  },
+  {
+   "circ": 88,
+   "prenom": "Mathieu",
+   "nom": "LESCRAINIER",
+   "liste": 4,
+   "afe": 300
+  },
+  {
+   "circ": 88,
+   "prenom": "Marion",
+   "nom": "BERTHOUD",
+   "liste": 4
+  },
+  {
+   "circ": 89,
+   "prenom": "Abdelghani",
+   "nom": "YOUMNI",
+   "liste": 1
+  },
+  {
+   "circ": 89,
+   "prenom": "Jean Michel",
+   "nom": "RAYNAUD",
+   "liste": 3
+  },
+  {
+   "circ": 89,
+   "prenom": "Fatima",
+   "nom": "EL OUAFI",
+   "liste": 3
+  },
+  {
+   "circ": 89,
+   "prenom": "Naoual",
+   "nom": "LAMRI",
+   "liste": 4
+  },
+  {
+   "circ": 89,
+   "prenom": "M'jid",
+   "nom": "EL GUERRAB",
+   "liste": 5
+  },
+  {
+   "circ": 90,
+   "prenom": "Charles",
+   "nom": "DE LOPPINOT",
+   "liste": 3
+  },
+  {
+   "circ": 90,
+   "prenom": "Yasmina",
+   "nom": "BELKHOUCHE",
+   "liste": 3
+  },
+  {
+   "circ": 90,
+   "prenom": "Xavier",
+   "nom": "DUBOURG DE LA TOUR",
+   "liste": 5
+  },
+  {
+   "circ": 90,
+   "prenom": "Parveen",
+   "nom": "MACTOOM",
+   "liste": 5
+  },
+  {
+   "circ": 91,
+   "prenom": "Boubou",
+   "nom": "SYLLA",
+   "liste": 1
+  },
+  {
+   "circ": 92,
+   "prenom": "Véronique",
+   "nom": "RAMON DECHELETTE",
+   "liste": 1
+  },
+  {
+   "circ": 92,
+   "prenom": "Rémy",
+   "nom": "CHARRIER",
+   "liste": 4
+  },
+  {
+   "circ": 92,
+   "prenom": "Mylène",
+   "nom": "AUDIRAC",
+   "liste": 5,
+   "afe": 312
+  },
+  {
+   "circ": 92,
+   "prenom": "Christian",
+   "nom": "VALDELIEVRE",
+   "liste": 5
+  },
+  {
+   "circ": 92,
+   "prenom": "Elsa",
+   "nom": "SANTANDER",
+   "liste": 6
+  },
+  {
+   "circ": 93,
+   "prenom": "Rémy",
+   "nom": "BERTOLA",
+   "liste": 1
+  },
+  {
+   "circ": 93,
+   "prenom": "Christophe",
+   "nom": "PISCIOTTA",
+   "liste": 2,
+   "afe": 319
+  },
+  {
+   "circ": 93,
+   "prenom": "Sophie",
+   "nom": "ARNAUD-DEROMEDI",
+   "liste": 2
+  },
+  {
+   "circ": 94,
+   "prenom": "Stéphane Romain",
+   "nom": "JULLIEN",
+   "liste": 1
+  },
+  {
+   "circ": 95,
+   "prenom": "Yann",
+   "nom": "GILBERT",
+   "liste": 1
+  },
+  {
+   "circ": 96,
+   "prenom": "Thomas",
+   "nom": "BASSETTO",
+   "liste": 2,
+   "afe": 322
+  },
+  {
+   "circ": 96,
+   "prenom": "Marion",
+   "nom": "HERRERA",
+   "liste": 2
+  },
+  {
+   "circ": 96,
+   "prenom": "Véronique",
+   "nom": "REVOY",
+   "liste": 4
+  },
+  {
+   "circ": 97,
+   "prenom": "Thibault",
+   "nom": "BEAUJOT",
+   "liste": 2
+  },
+  {
+   "circ": 97,
+   "prenom": "Géraldine",
+   "nom": "GUILLEMOT-PEACOCK",
+   "liste": 3,
+   "afe": 327
+  },
+  {
+   "circ": 97,
+   "prenom": "Renan",
+   "nom": "CATALIOTTI-VALDINA DEL GRANO",
+   "liste": 3
+  },
+  {
+   "circ": 98,
+   "prenom": "Marion",
+   "nom": "GIRALDOU",
+   "liste": 1
+  },
+  {
+   "circ": 99,
+   "prenom": "Emmanuelle",
+   "nom": "BOUCARDEAU",
+   "liste": 1
+  },
+  {
+   "circ": 100,
+   "prenom": "Sophie Ginette",
+   "nom": "DESCOLLAZ",
+   "liste": 3
+  },
+  {
+   "circ": 100,
+   "prenom": "Hélène",
+   "nom": "DEGRYSE",
+   "liste": 7
+  },
+  {
+   "circ": 100,
+   "prenom": "Claire",
+   "nom": "BOURQUARD",
+   "liste": 8,
+   "pres": true
+  },
+  {
+   "circ": 100,
+   "prenom": "Pierre Yves",
+   "nom": "LAVÉANT",
+   "liste": 8,
+   "afe": 334
+  },
+  {
+   "circ": 100,
+   "prenom": "Vanessa",
+   "nom": "GONDOUIN-HAUSTEIN",
+   "liste": 8,
+   "afe": 333
+  },
+  {
+   "circ": 101,
+   "prenom": "Vincent",
+   "nom": "SICET",
+   "liste": 1,
+   "afe": 336
+  },
+  {
+   "circ": 101,
+   "prenom": "Mayumi",
+   "nom": "AUDOYER",
+   "liste": 3,
+   "afe": 335
+  },
+  {
+   "circ": 101,
+   "prenom": "Eugénie",
+   "nom": "TAZÉ",
+   "liste": 4
+  },
+  {
+   "circ": 102,
+   "prenom": "Julien",
+   "nom": "MELIS",
+   "liste": 1
+  },
+  {
+   "circ": 102,
+   "prenom": "Christophe",
+   "nom": "LEJEUNE",
+   "liste": 4,
+   "afe": 339
+  },
+  {
+   "circ": 102,
+   "prenom": "Claire Maité Bénédicte",
+   "nom": "BISSUEL",
+   "liste": 4
+  },
+  {
+   "circ": 103,
+   "prenom": "Nathaniel",
+   "nom": "GARSTECKA-BILLOTTE",
+   "liste": 1
+  },
+  {
+   "circ": 103,
+   "prenom": "Eric",
+   "nom": "SALVAT",
+   "liste": 3
+  },
+  {
+   "circ": 103,
+   "prenom": "Anaïs",
+   "nom": "MARIN",
+   "liste": 4
+  },
+  {
+   "circ": 104,
+   "prenom": "Nicolas",
+   "nom": "CHAMOUX",
+   "liste": 2
+  },
+  {
+   "circ": 104,
+   "prenom": "Inès",
+   "nom": "LOUKILI",
+   "liste": 3
+  },
+  {
+   "circ": 104,
+   "prenom": "Laurent",
+   "nom": "GOATER",
+   "liste": 4
+  },
+  {
+   "circ": 104,
+   "prenom": "Françoise",
+   "nom": "CONESTABILE",
+   "liste": 4,
+   "afe": 345
+  },
+  {
+   "circ": 104,
+   "prenom": "Stéphane",
+   "nom": "FANUCCHI",
+   "liste": 5
+  },
+  {
+   "circ": 105,
+   "prenom": "Christophe",
+   "nom": "BILLIOTTET",
+   "liste": 1
+  },
+  {
+   "circ": 105,
+   "prenom": "Guillaume",
+   "nom": "SALHA",
+   "liste": 2,
+   "afe": 350
+  },
+  {
+   "circ": 105,
+   "prenom": "Elena",
+   "nom": "TORRIJOS",
+   "liste": 2
+  },
+  {
+   "circ": 106,
+   "prenom": "Jean-Charles",
+   "nom": "GILBERT",
+   "liste": 1
+  },
+  {
+   "circ": 107,
+   "prenom": "Madeleine",
+   "nom": "KATENDE",
+   "liste": 2
+  },
+  {
+   "circ": 107,
+   "prenom": "Henry",
+   "nom": "WAZNE",
+   "liste": 4
+  },
+  {
+   "circ": 107,
+   "prenom": "Gerda",
+   "nom": "WAUTERS",
+   "liste": 4
+  },
+  {
+   "circ": 108,
+   "prenom": "Edwin",
+   "nom": "BOITON",
+   "liste": 1
+  },
+  {
+   "circ": 108,
+   "prenom": "Emmanuelle",
+   "nom": "JACOB",
+   "liste": 2
+  },
+  {
+   "circ": 108,
+   "prenom": "Nicolas",
+   "nom": "BREHM",
+   "liste": 2
+  },
+  {
+   "circ": 109,
+   "prenom": "Averil",
+   "nom": "HUCK",
+   "liste": 1
+  },
+  {
+   "circ": 109,
+   "prenom": "Vassili",
+   "nom": "LE MOIGNE",
+   "liste": 2,
+   "afe": 361
+  },
+  {
+   "circ": 109,
+   "prenom": "Aurore",
+   "nom": "DELPY",
+   "liste": 2
+  },
+  {
+   "circ": 110,
+   "prenom": "Christian",
+   "nom": "LEMAÎTRE",
+   "liste": 3
+  },
+  {
+   "circ": 110,
+   "prenom": "Dana",
+   "nom": "GRUIA DUFAUT",
+   "liste": 4
+  },
+  {
+   "circ": 110,
+   "prenom": "Florian",
+   "nom": "MILESI",
+   "liste": 6
+  },
+  {
+   "circ": 111,
+   "prenom": "Christian",
+   "nom": "ALBUISSON",
+   "liste": 1
+  },
+  {
+   "circ": 111,
+   "prenom": "Mathieu",
+   "nom": "CHOLLET",
+   "liste": 2,
+   "afe": 366
+  },
+  {
+   "circ": 111,
+   "prenom": "Jean",
+   "nom": "ROMAN-SAMAKÉ",
+   "liste": 3
+  },
+  {
+   "circ": 112,
+   "prenom": "Catherine",
+   "nom": "SMADJA-FROGUEL",
+   "liste": 1,
+   "afe": 374
+  },
+  {
+   "circ": 112,
+   "prenom": "Charlotte",
+   "nom": "MINVIELLE",
+   "liste": 3,
+   "pres": true
+  },
+  {
+   "circ": 112,
+   "prenom": "Rémi",
+   "nom": "VAZEILLE",
+   "liste": 3
+  },
+  {
+   "circ": 112,
+   "prenom": "Patricia",
+   "nom": "CONNELL",
+   "liste": 4,
+   "afe": 369
+  },
+  {
+   "circ": 112,
+   "prenom": "Christophe",
+   "nom": "NOBLET",
+   "liste": 4
+  },
+  {
+   "circ": 112,
+   "prenom": "Marlène",
+   "nom": "DBOUK",
+   "liste": 4
+  },
+  {
+   "circ": 112,
+   "prenom": "Nina Yasmine",
+   "nom": "SÉRON",
+   "liste": 5
+  },
+  {
+   "circ": 112,
+   "prenom": "Anne",
+   "nom": "VIGOUROUX",
+   "liste": 6,
+   "afe": 376
+  },
+  {
+   "circ": 112,
+   "prenom": "Alexandre",
+   "nom": "CASIN",
+   "liste": 6
+  },
+  {
+   "circ": 113,
+   "prenom": "Xavier",
+   "nom": "MOREAU",
+   "liste": 1,
+   "pres": true
+  },
+  {
+   "circ": 113,
+   "prenom": "Yulia",
+   "nom": "MOREAU",
+   "liste": 1
+  },
+  {
+   "circ": 113,
+   "prenom": "Franck",
+   "nom": "FERRARI",
+   "liste": 2,
+   "afe": 377
+  },
+  {
+   "circ": 114,
+   "prenom": "Andrée",
+   "nom": "DIOP-DEPRET",
+   "liste": 1
+  },
+  {
+   "circ": 114,
+   "prenom": "Anne-Marie",
+   "nom": "LICCIONI",
+   "liste": 3,
+   "afe": 382
+  },
+  {
+   "circ": 114,
+   "prenom": "Babacar",
+   "nom": "RACINE",
+   "liste": 3
+  },
+  {
+   "circ": 114,
+   "prenom": "Nicolas",
+   "nom": "SOYERE",
+   "liste": 4
+  },
+  {
+   "circ": 114,
+   "prenom": "Mariama Camara",
+   "nom": "DIALLO",
+   "liste": 5
+  },
+  {
+   "circ": 115,
+   "prenom": "Eric",
+   "nom": "GRASSER",
+   "liste": 1
+  },
+  {
+   "circ": 116,
+   "prenom": "Angeline",
+   "nom": "DOUANT",
+   "liste": 1
+  },
+  {
+   "circ": 116,
+   "prenom": "Remi",
+   "nom": "PROVENDIER",
+   "liste": 3
+  },
+  {
+   "circ": 116,
+   "prenom": "Yamina",
+   "nom": "NICHE",
+   "liste": 3
+  },
+  {
+   "circ": 116,
+   "prenom": "Thomas",
+   "nom": "LIPUT",
+   "liste": 4
+  },
+  {
+   "circ": 117,
+   "prenom": "Océane",
+   "nom": "LEGRAND",
+   "liste": 2
+  },
+  {
+   "circ": 117,
+   "prenom": "Simon",
+   "nom": "PERRIN",
+   "liste": 2
+  },
+  {
+   "circ": 117,
+   "prenom": "Nathalie",
+   "nom": "PARMEGIANI",
+   "liste": 3
+  },
+  {
+   "circ": 117,
+   "prenom": "Axelle",
+   "nom": "LEFEBVRE D'HERBOMEZ",
+   "liste": 4
+  },
+  {
+   "circ": 118,
+   "prenom": "Geoffroy",
+   "nom": "LAGNEL",
+   "liste": 1
+  },
+  {
+   "circ": 118,
+   "prenom": "Delphine",
+   "nom": "GOZILLON",
+   "liste": 2
+  },
+  {
+   "circ": 118,
+   "prenom": "Lionel",
+   "nom": "TRÉBUCHON",
+   "liste": 2
+  },
+  {
+   "circ": 118,
+   "prenom": "Alexandre",
+   "nom": "COL",
+   "liste": 3,
+   "pres": true,
+   "afe": 394
+  },
+  {
+   "circ": 118,
+   "prenom": "Louis",
+   "nom": "PORTAL",
+   "liste": 4,
+   "afe": 397
+  },
+  {
+   "circ": 119,
+   "prenom": "Marie Ange",
+   "nom": "ROUSSELOT",
+   "liste": 1
+  },
+  {
+   "circ": 119,
+   "prenom": "Remy",
+   "nom": "CREGUT",
+   "liste": 1,
+   "pres": true,
+   "afe": 401
+  },
+  {
+   "circ": 119,
+   "prenom": "Linda",
+   "nom": "CHEVALIER",
+   "liste": 3,
+   "afe": 400
+  },
+  {
+   "circ": 119,
+   "prenom": "Philippe",
+   "nom": "TISSOT",
+   "liste": 4
+  },
+  {
+   "circ": 119,
+   "prenom": "Josiane",
+   "nom": "TISTOUNET",
+   "liste": 6
+  },
+  {
+   "circ": 119,
+   "prenom": "Julie",
+   "nom": "SALUMU",
+   "liste": 7
+  },
+  {
+   "circ": 119,
+   "prenom": "Rémy",
+   "nom": "PAGANI",
+   "liste": 7
+  },
+  {
+   "circ": 119,
+   "prenom": "Lalla-Ilham",
+   "nom": "CHAHDI",
+   "liste": 8,
+   "afe": 399
+  },
+  {
+   "circ": 119,
+   "prenom": "Evan",
+   "nom": "O'CONNELL",
+   "liste": 8
+  },
+  {
+   "circ": 120,
+   "prenom": "Thierry",
+   "nom": "MIALLIER",
+   "liste": 2
+  },
+  {
+   "circ": 121,
+   "prenom": "Thibaut",
+   "nom": "GIRARD",
+   "liste": 1
+  },
+  {
+   "circ": 121,
+   "prenom": "Éric",
+   "nom": "MINÉ",
+   "liste": 3
+  },
+  {
+   "circ": 121,
+   "prenom": "Jean-Michel",
+   "nom": "PERROY",
+   "liste": 4,
+   "pres": true
+  },
+  {
+   "circ": 121,
+   "prenom": "Marc",
+   "nom": "LAVAL",
+   "liste": 6
+  },
+  {
+   "circ": 122,
+   "prenom": "Sylvain",
+   "nom": "MENSAH ATTOH",
+   "liste": 1
+  },
+  {
+   "circ": 122,
+   "prenom": "Vincent Bruno",
+   "nom": "CORSELIS",
+   "liste": 2
+  },
+  {
+   "circ": 122,
+   "prenom": "Jean-Philippe Pierre",
+   "nom": "MAIZOUE",
+   "liste": 3
+  },
+  {
+   "circ": 123,
+   "prenom": "Donia",
+   "nom": "BEN OSMAN",
+   "liste": 1
+  },
+  {
+   "circ": 123,
+   "prenom": "Laurent",
+   "nom": "CAIZERGUES",
+   "liste": 2
+  },
+  {
+   "circ": 123,
+   "prenom": "Madeleine",
+   "nom": "BERGER BEN NACEUR",
+   "liste": 4,
+   "afe": 417
+  },
+  {
+   "circ": 123,
+   "prenom": "Michel",
+   "nom": "ZUCCHERO",
+   "liste": 4
+  },
+  {
+   "circ": 123,
+   "prenom": "Martine",
+   "nom": "VAUTRIN DJEDIDI",
+   "liste": 6
+  },
+  {
+   "circ": 124,
+   "prenom": "Marie",
+   "nom": "YILMAZ",
+   "liste": 2
+  },
+  {
+   "circ": 124,
+   "prenom": "Belgin",
+   "nom": "OZDILMEN",
+   "liste": 3
+  },
+  {
+   "circ": 124,
+   "prenom": "Rémi Emrah",
+   "nom": "GOCMEN",
+   "liste": 3
+  },
+  {
+   "circ": 124,
+   "prenom": "Florence",
+   "nom": "OGUTGEN",
+   "liste": 4
+  },
+  {
+   "circ": 125,
+   "prenom": "Maud",
+   "nom": "JOSEPH",
+   "liste": 3
+  },
+  {
+   "circ": 126,
+   "prenom": "Martin",
+   "nom": "BIURRUN",
+   "liste": 1,
+   "afe": 426
+  },
+  {
+   "circ": 127,
+   "prenom": "Georges",
+   "nom": "CUMBO",
+   "liste": 1
+  },
+  {
+   "circ": 128,
+   "prenom": "Stéphane",
+   "nom": "FREYCHET",
+   "liste": 1
+  },
+  {
+   "circ": 128,
+   "prenom": "Catherine",
+   "nom": "FORTER CHEE-A-TOW",
+   "liste": 1
+  },
+  {
+   "circ": 128,
+   "prenom": "Liliane",
+   "nom": "CHOSSERIE",
+   "liste": 3
+  },
+  {
+   "circ": 129,
+   "prenom": "Vincent",
+   "nom": "LE CANNELIER",
+   "liste": 1
+  },
+  {
+   "circ": 129,
+   "prenom": "Laurent",
+   "nom": "FISCHER",
+   "liste": 2,
+   "pres": "Hanoï"
+  },
+  {
+   "circ": 129,
+   "prenom": "Jaime",
+   "nom": "PEYPOCH",
+   "liste": 4,
+   "pres": "Hô Chi Minh-Ville"
+  }
+ ]
+}

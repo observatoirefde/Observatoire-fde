@@ -1,0 +1,4 @@
+{
+ "note": "Sélection manuelle de publications LinkedIn et Instagram, affichées via l'intégration officielle du réseau. Ajoutez une entrée par publication : parlementaire (identifiant AN « PA… » ou Sénat, comme dans comptes.json), reseau (linkedin ou instagram), url (adresse de la publication ; pour LinkedIn, le code d'intégration complet est aussi accepté), date (AAAA-MM-JJ, obligatoire pour Instagram, calculée automatiquement pour LinkedIn), extrait (facultatif : texte copié mot pour mot, utilisé pour la recherche et les thèmes), ajoute_le (facultatif). Le parlementaire doit avoir un compte vérifié sur ce réseau dans comptes.json. Voir README.txt.",
+ "publications": []
+}

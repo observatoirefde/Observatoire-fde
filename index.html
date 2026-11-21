@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Observatoire électoral des Français de l'étranger</title>
+<meta name="description" content="Conseils consulaires 2026, législatives 2024 et scénarios 2027 dans les 11 circonscriptions des Français établis hors de France.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script defer src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span></div>
+
+<header class="topbar glass">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-txt"><b>Observatoire électoral</b><small>Français de l'étranger</small></span>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="Rubriques">
+    <button data-r="accueil" class="on">Accueil</button>
+    <button data-r="elections">Élections</button>
+    <button data-r="representants">Les représentants des Français de l'étranger</button>
+    <button data-r="veille">Veille parlementaire</button>
+  </nav>
+  <div class="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Pays, ville ou circonscription…" autocomplete="off" aria-label="Recherche rapide">
+    <div class="qres glass" id="qres" role="listbox" hidden></div>
+  </div>
+</header>
+<nav class="subtabs glass" id="subtabs" aria-label="Sous-rubriques"></nav>
+
+<section class="hero" aria-live="polite">
+  <div class="hero-band glass">
+    <div class="hero-txt">
+      <div class="hero-rub" id="heroRub">Élections</div>
+      <h1 id="heroTitle">Consulaires 2026</h1>
+      <p class="sub" id="heroSub">Résultats des élections des conseillers des Français de l'étranger de mai 2026, couleur politique des listes et rapports de force par circonscription législative.</p>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </div>
+</section>
+
+<main>
+<div id="v-home" class="view" hidden>
+  <section class="home">
+    <div class="home-geo" aria-hidden="true"></div>
+    <div class="home-head">
+      <div class="home-eyebrow">Observatoire électoral des Français de l'étranger</div>
+      <h1 class="home-title">Élections et représentants des Français établis hors de France</h1>
+      <p class="home-lead">Onze circonscriptions législatives, cent trente circonscriptions consulaires : résultats officiels, élus et simulations réunis sur une même carte.</p>
+      <div class="home-entries">
+        <button type="button" data-go="leg24">Élections <small>Législatives 2022 et 2024, consulaires 2026</small></button>
+        <button type="button" data-go="rep-cfde">Les représentants <small>CFDE, AFE, députés, sénateurs</small></button>
+        <button type="button" data-go="sim">Simulateur 2027 <small>11 sièges, vos hypothèses</small></button>
+        <button type="button" data-go="veille">Veille parlementaire <small>Publications des 23 parlementaires</small></button>
+      </div>
+    </div>
+    <div class="home-grid">
+      <aside class="glass home-people" aria-label="Parlementaires des Français de l'étranger">
+        <div class="seg" id="homePeopleTab"><button type="button" data-v="dep" class="on">Députés</button><button type="button" data-v="sen">Sénateurs</button></div>
+        <div class="home-plist" id="homePeople"></div>
+      </aside>
+      <div class="home-map">
+        <div class="hm-controls">
+          <span class="hm-caption">Les 11 circonscriptions</span>
+          <div class="hm-switch" role="group" aria-label="Projection de la carte">
+            <button type="button" data-mode="2d" aria-pressed="true" class="on">2D</button>
+            <button type="button" data-mode="3d" aria-pressed="false">3D</button>
+          </div>
+        </div>
+        <div class="hm-stage">
+          <div class="hm-shadow" aria-hidden="true"></div>
+          <div class="hm-lift"><div class="hm-float"><div class="hm-tilt">
+            <div id="maphome" role="img" aria-label="Carte des 11 circonscriptions des Français de l'étranger"></div>
+          </div></div></div>
+          <div id="homeGlobe" hidden>
+            <svg id="homeGlobeSvg" viewBox="0 0 640 560" role="img" aria-label="Globe des onze circonscriptions, utilisez les flèches pour tourner" tabindex="0"></svg>
+            <div class="hg-tools" aria-label="Contrôles du globe">
+              <button type="button" data-globe="in" aria-label="Zoom avant">+</button>
+              <button type="button" data-globe="out" aria-label="Zoom arrière">−</button>
+              <button type="button" data-globe="reset" aria-label="Recentrer">⌖</button>
+            </div>
+          </div>
+        </div>
+        <div class="hm-legend" id="homeMapLegend" aria-label="Légende des circonscriptions"></div>
+        <div class="home-maphint" id="homeMapHint">Cliquez sur un territoire · faites glisser pour déplacer, molette pour zoomer</div>
+      </div>
+      <aside class="glass home-panel" id="homePanel" aria-live="polite"></aside>
+    </div>
+  </section>
+</div>
+<div id="v-cfde" class="view" hidden>
+  <div class="glass seatsbar" id="seatsbar"></div>
+
+  <div class="toolbar glass">
+    <div class="seg" id="mode">
+      <button data-v="seats" class="on">Bloc majoritaire</button>
+      <button data-v="votes">En tête (voix)</button>
+      <button data-v="pres">Président</button>
+    </div>
+    <div class="seg" id="zoom">
+      <button data-v="world" class="on">Monde</button>
+      <button data-v="eu">Europe</button>
+      <button data-v="am">Amériques</button>
+      <button data-v="af">Afrique / M.-O.</button>
+      <button data-v="as">Asie / Océanie</button>
+    </div>
+    <label class="ctl"><span>Circonscription législative</span>
+      <select id="legf"><option value="0">Toutes</option></select>
+    </label>
+  </div>
+
+  <div class="grid">
+    <div class="glass mapcard">
+      <div id="map"></div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <aside class="glass" id="panel"></aside>
+  </div>
+
+  <section>
+    <div class="sec-head"><h3>Toutes les circonscriptions consulaires</h3>
+      <div class="sec-tools"><label class="ctl"><span>Trier par</span> <select id="sortBy"><option value="name">nom</option><option value="seats">sièges</option><option value="votes">votants</option><option value="leg">circ. législative</option></select></label>
+      <button class="lnk" id="copyOv">Copier mes reclassements (JSON)</button><span class="small" id="ovInfo"></span></div>
+    </div>
+    <div class="glass tbl-wrap"><table id="tbl"></table></div>
+  </section>
+</div>
+
+<div id="v-leg22" class="view" hidden>
+  <section class="first">
+    <div class="sec-head"><div><h3>Législatives 2022</h3>
+      <p class="hint"><span class="histtag">Résultats officiels</span> Ministère de l'Intérieur, résultats définitifs (1er tour les 4 et 5 juin, 2nd tour les 18 et 19 juin 2022 pour les Français de l'étranger). Couleur : bloc du candidat en tête au tour choisi. Les candidats NUPES sont classés dans le bloc « gauche » ; « Divers centre » avec le bloc central, UDI et « Divers droite » avec la droite, souverainistes et extrême droite avec le RN. Cliquez sur un pays ou une fiche pour le détail des voix.</p></div>
+      <div class="seg" id="tour22"><button data-v="1" class="on">1er tour</button><button data-v="2">2nd tour : élu(e)</button></div>
+    </div>
+    <div class="glass mapcard"><div id="map22"></div><div class="legend" id="legend22"></div></div>
+  </section>
+  <section>
+    <h3>Résultats par circonscription</h3>
+    <div class="l24grid" id="l22"></div>
+  </section>
+  <section>
+    <h3>Comparaison 2022 → 2024</h3>
+    <div class="glass seatsbar" id="seats2224"></div>
+    <p class="hint" style="margin:12px 0 10px">Part de chaque bloc au 1er tour (suffrages exprimés), participation et député élu, en 2022 puis en 2024. En 2022, la gauche était rassemblée dans la NUPES ; en 2024, dans le Nouveau Front populaire. Les contextes (élections ordinaires en 2022, anticipées en 2024) diffèrent.</p>
+    <div class="glass tblx"><table id="cmp2224"></table></div>
+  </section>
+</div>
+
+<div id="v-leg24" class="view" hidden>
+  <section class="first">
+    <div class="sec-head"><div><h3>Législatives anticipées 2024</h3>
+      <p class="hint">Couleur = bloc du candidat en tête au tour choisi. « Divers centre » et Volt sont rangés dans le bloc central, « Divers droite » avec la droite, les souverainistes et l'extrême droite avec le RN. Cliquez sur un pays ou une fiche.</p></div>
+      <div class="seg" id="tour24"><button data-v="1" class="on">1er tour (30 juin)</button><button data-v="2">2nd tour : élu(e)</button></div>
+    </div>
+    <div class="glass mapcard"><div id="map24"></div><div class="legend" id="legend24"></div></div>
+  </section>
+  <section>
+    <h3>Résultats par circonscription</h3>
+    <div class="l24grid" id="l24"></div>
+  </section>
+  <section>
+    <h3>2024 → 2026 : législatives (1er tour) et voix CFDE, par bloc</h3>
+    <p class="hint">Écart en points entre la part du bloc au 1er tour des législatives 2024 et sa part des voix CFDE 2026 (listes classées uniquement, ASFE rattachée au bloc central). Un écart positif signale un bloc plus fort aux consulaires qu'aux législatives.</p>
+    <div class="glass tblx"><table id="cmp24"></table></div>
+  </section>
+</div>
+
+<div id="v-scen" class="view" hidden>
+  <section class="first">
+    <div class="sec-head"><div><h3>Scénarios 2027 par circonscription législative</h3>
+      <p class="hint">Voix CFDE 2026 cumulées par bloc : un indicateur de premier tour, pas un sondage. Modifiez les hypothèses, la projection se recalcule. Cliquez sur une ligne pour filtrer la carte ci-dessus.</p></div>
+    </div>
+    <div class="toolbar glass">
+      <label class="ctl"><span>ASFE rattachée à</span>
+        <select id="asfeTo"><option value="sep">un bloc à part</option><option value="ENS" selected>bloc central</option><option value="LR">droite</option></select>
+      </label>
+      <label class="ctl"><span>Listes indépendantes</span>
+        <select id="indMode"><option value="excl" selected>exclues du calcul</option><option value="incl">comptées comme un bloc</option></select>
+      </label>
+      <label class="ctl"><span>Écologistes, PS et LFI</span>
+        <select id="leftMode"><option value="union" selected>union (type NFP)</option><option value="split">séparés</option></select>
+      </label>
+    </div>
+    <div class="glass proj" id="proj"></div>
+  </section>
+</div>
+
+
+<div id="v-dep" class="view" hidden>
+  <section class="first">
+    <div class="sec-head"><div><h3>Députés des Français de l'étranger</h3>
+      <p class="hint" id="depSrc">Député actuellement en fonction dans chacune des 11 circonscriptions, d'après les fiches officielles de l'Assemblée nationale. Cliquez sur la carte ou sur une fiche.</p></div>
+      <div class="seg" id="depView"><button data-v="both" class="on">Carte et fiches</button><button data-v="cards">Fiches seules</button></div>
+    </div>
+    <div class="grid" id="depMapGrid">
+      <div class="glass mapcard"><div id="mapdep"></div><div class="legend" id="legenddep"></div></div>
+      <aside class="glass" id="deppanel"></aside>
+    </div>
+  </section>
+  <section>
+    <div class="sec-head"><h3>Les 11 députés</h3><span class="small" id="depCount"></span></div>
+    <div class="glass rtools">
+      <label class="rsearch"><span class="sr">Rechercher un député</span><input id="depQ" type="search" placeholder="Nom, circonscription, pays…" autocomplete="off"></label>
+      <select id="depG" aria-label="Groupe parlementaire"></select>
+    </div>
+    <div class="depgrid" id="depgrid"></div>
+  </section>
+</div>
+
+<div id="v-sim" class="view" hidden>
+  <section class="first">
+    <div class="sec-head"><div><h3>Simulateur de sièges 2027</h3>
+      <p class="hint">Point de départ : résultats <b>historiques</b> du 1er tour 2024. Toute modification produit une <b>simulation</b> fondée sur vos hypothèses, et non une prévision.</p></div>
+      <div class="seg" id="simMode"><button data-v="simple" class="on">Mode simple</button><button data-v="adv">Mode avancé</button></div>
+    </div>
+    <div class="glass simbanner">Simulation : ces résultats découlent uniquement des hypothèses saisies (scores, participation, désistements, reports). Ils ne constituent en aucun cas une prévision.</div>
+
+    <div class="simtop">
+      <div class="glass simsum">
+        <div class="simsum-head"><b>Sièges simulés</b><span class="small">sur 11</span></div>
+        <div id="simSeats"></div>
+        <div class="simactions">
+          <button class="lnk" id="simReset">Réinitialiser (2024)</button>
+          <button class="lnk" id="simSave">Enregistrer un scénario</button>
+          <span class="small" id="simMsg"></span>
+        </div>
+      </div>
+      <div class="glass mapcard"><div id="mapsim"></div><div class="legend" id="legendsim"></div></div>
+    </div>
+
+    <div class="glass simcirc">
+      <div class="simcirc-head">
+        <label class="ctl"><span>Circonscription</span><select id="simCirc"></select></label>
+        <span class="tagbox" id="simTag"></span>
+      </div>
+      <div class="simcols">
+        <div>
+          <h4>1er tour : candidatures (pourcentage des exprimés et nombre de voix)</h4>
+          <div id="simInputs"></div>
+          <div class="simtotal" id="simTotal"></div>
+          <div class="simparams">
+            <label class="ctl"><span>Participation 1er tour</span><input type="range" id="simP1" min="5" max="80" step="0.5"><b id="simP1v"></b></label>
+            <label class="ctl"><span>Participation 2nd tour</span><input type="range" id="simP2" min="5" max="80" step="0.5"><b id="simP2v"></b></label>
+            <label class="ctl"><span>Blancs et nuls (% des votants)</span><input type="number" id="simBlank" min="0" max="20" step="0.1"></label>
+          </div>
+        </div>
+        <div>
+          <h4>Résultat simulé</h4>
+          <div id="simResult"></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="glass simhyp" id="simHyp">
+      <summary>Hypothèses de désistement et de report des voix</summary>
+      <p class="hint">Désistement : en cas de qualification à trois ou plus, un bloc coché se retire s'il n'est pas dans les deux premiers. Report : part des voix d'un bloc éliminé ou désisté qui se porte sur chaque finaliste ; le reste s'abstient. Si les finalistes présents totalisent plus de 100 %, les parts sont ramenées à 100 %.</p>
+      <div id="simDesist"></div>
+      <div class="tblx"><table id="simReports"></table></div>
+    </details>
+
+    <section>
+      <h3>Détail par circonscription</h3>
+      <div class="glass tblx"><table id="simTable"></table></div>
+    </section>
+
+    <section>
+      <h3>Comparer deux scénarios</h3>
+      <div class="toolbar glass">
+        <label class="ctl"><span>Scénario A</span><select id="cmpA"></select></label>
+        <label class="ctl"><span>Scénario B</span><select id="cmpB"></select></label>
+        <button class="lnk" id="cmpDel">Supprimer le scénario A</button>
+      </div>
+      <div class="glass tblx" id="cmpOut"></div>
+    </section>
+
+    <div class="glass notes simrules">
+      <b>Règles appliquées (code électoral, art. L. 126) :</b> élu dès le 1er tour le candidat qui obtient la majorité absolue des suffrages exprimés et au moins 25 % des inscrits. Sinon, se qualifient pour le 2nd tour les candidats ayant obtenu au moins 12,5 % des inscrits ; si moins de deux candidats atteignent ce seuil, les deux premiers se qualifient. Au 2nd tour, la majorité relative suffit. Les seuils sont calculés en voix, à partir des inscrits et des suffrages exprimés (votants moins blancs et nuls).<br><b>Calibrage :</b> avec les scores du 1er tour 2024 et les reports par défaut, le simulateur retrouve 10 des 11 résultats de 2024. Dans la 8e circonscription, il attribue le siège à la droite, alors que Caroline Yadan l'a emporté grâce à un report de voix plus favorable que l'hypothèse par défaut. Les reports sont modifiables en mode avancé.
+      <br><b>Limites des hypothèses :</b>
+      <ul>
+        <li>Plusieurs candidatures d'un même bloc sont possibles ; entre elles, le report au 2nd tour est fixé à 90 %. La ligne « Autres / non attribués » regroupe les voix non affectées et se reporte comme les candidats divers.</li>
+        <li>Les reports de voix et les désistements sont des paramètres fixés par l'utilisateur ; ils ne s'appuient sur aucune enquête et varient fortement d'une circonscription à l'autre.</li>
+        <li>La participation au 2nd tour s'applique au même corps électoral ; la composition de l'électorat (vote en ligne, à l'urne, nouveaux inscrits) n'est pas modélisée.</li>
+        <li>La notoriété des candidats, l'effet sortant et le contexte national, déterminants dans ces circonscriptions, ne sont pas pris en compte.</li>
+        <li>Les colonnes « Historique 2024 » et « Officiel 2024 » reprennent des résultats officiels (pourcentages du 1er tour 2024 ; les voix sont recalculées à partir des inscrits et de la participation du MEAE, d'où de légers écarts avec les voix publiées) ; tout le reste est une simulation, pas une prévision.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+<div id="v-rep-cfde" class="view" hidden>
+  <section class="first">
+    <div class="sec-head"><div><h3>Conseillers des Français de l'étranger</h3>
+      <p class="hint" id="cfSrc"></p></div><span class="small" id="cfCount"></span></div>
+    <div class="glass rtools">
+      <label class="rsearch"><span class="sr">Rechercher un conseiller</span><input id="cfQ" type="search" placeholder="Nom, pays, ville, liste…" autocomplete="off"></label>
+      <select id="cfLeg" aria-label="Circonscription législative"></select>
+      <select id="cfCirc" aria-label="Circonscription consulaire"></select>
+      <select id="cfBloc" aria-label="Couleur politique de la liste"></select>
+      <select id="cfRole" aria-label="Fonction"><option value="">Toutes les fonctions</option><option value="pres">Présidence du conseil consulaire</option><option value="afe">Également conseiller à l'AFE</option></select>
+      <select id="cfSort" aria-label="Tri"><option value="circ">Tri par circonscription</option><option value="nom">Tri par nom</option></select>
+    </div>
+    <div class="rgrid" id="cfGrid"></div>
+    <div class="more-row"><button type="button" class="lnk" id="cfMore" hidden></button></div>
+    <p class="hint">Couleur : classement politique de la liste d'élection établi par l'Observatoire (les listes consulaires n'ont pas de nuance officielle). Les reclassements faits dans la rubrique Consulaires 2026 s'appliquent ici.</p>
+  </section>
+</div>
+
+<div id="v-cafe" class="view" hidden>
+  <section class="first">
+    <div class="sec-head"><div><h3>Conseillers à l'Assemblée des Français de l'étranger</h3>
+      <p class="hint" id="afSrc"></p></div><span class="small" id="afCount"></span></div>
+    <div class="glass rtools">
+      <label class="rsearch"><span class="sr">Rechercher un conseiller à l'AFE</span><input id="afQ" type="search" placeholder="Nom, circonscription, pays…" autocomplete="off"></label>
+      <select id="afCirc" aria-label="Circonscription AFE"></select>
+      <select id="afComm" aria-label="Commission"></select>
+      <select id="afGrp" aria-label="Groupe"></select>
+      <select id="afRole" aria-label="Fonction"><option value="">Toutes les fonctions</option><option value="any">Avec une fonction</option><option value="bureau">Bureau de l'AFE</option><option value="comm">Bureau d'une commission</option><option value="grp">Responsable de groupe</option></select>
+    </div>
+    <div class="rgrid" id="afGrid"></div>
+    <div class="more-row"><button type="button" class="lnk" id="afMore" hidden></button></div>
+  </section>
+</div>
+
+<div id="v-sen" class="view" hidden>
+  <section class="first">
+    <div class="sec-head"><div><h3>Sénateurs représentant les Français établis hors de France</h3>
+      <p class="hint" id="seSrc"></p></div><span class="small" id="seCount"></span></div>
+    <div class="glass seatsbar" id="seBar"></div>
+    <div class="glass rtools">
+      <label class="rsearch"><span class="sr">Rechercher un sénateur</span><input id="seQ" type="search" placeholder="Nom, groupe, commission…" autocomplete="off"></label>
+      <select id="seGrp" aria-label="Groupe politique"></select>
+      <select id="seSerie" aria-label="Série"><option value="">Toutes les séries</option><option value="1">Série 1 · élus en 2023</option><option value="2">Série 2 · élus en 2026</option></select>
+      <select id="seComm" aria-label="Commission"></select>
+    </div>
+    <div class="depgrid" id="seGrid"></div>
+  </section>
+</div>
+<div id="v-veille" class="view" hidden>
+  <section class="first">
+    <div class="glass vcov" id="vCov" aria-live="polite"></div>
+    <div class="glass rtools vtools" id="vTools">
+      <label class="rsearch"><span class="sr">Rechercher dans les publications</span><input id="vQ" type="search" placeholder="Mot-clé dans les publications chargées…" autocomplete="off"></label>
+      <select id="vRole" aria-label="Fonction"><option value="">Députés et sénateurs</option><option value="dep">Députés</option><option value="sen">Sénateurs</option></select>
+      <select id="vPers" aria-label="Parlementaire"></select>
+      <select id="vGrp" aria-label="Groupe politique"></select>
+      <select id="vCirc" aria-label="Circonscription législative"></select>
+      <select id="vNet" aria-label="Réseau social"></select>
+      <select id="vPer" aria-label="Période"><option value="">Toute la période chargée</option><option value="1">Dernières 24 heures</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">3 derniers mois</option><option value="365">12 derniers mois</option></select>
+      <select id="vTheme" aria-label="Thématique"></select>
+      <select id="vType" aria-label="Type de publication"><option value="">Tous les types</option><option value="original">Publications</option><option value="reply">Réponses</option><option value="repost">Republications</option><option value="quote">Citations</option></select>
+      <button type="button" class="lnk" id="vReset">Réinitialiser</button>
+    </div>
+    <div class="sec-head"><span class="small" id="vCount" aria-live="polite"></span><button type="button" class="lnk" id="vRefresh">Actualiser</button></div>
+    <div class="vfeed" id="vFeed" role="feed" aria-busy="false"></div>
+    <div class="more-row"><button type="button" class="lnk" id="vMore" hidden></button></div>
+  </section>
+</div>
+
+<div id="v-veille-comptes" class="view" hidden>
+  <section class="first">
+    <div class="sec-head"><div><h3>Parlementaires et comptes publics</h3>
+      <p class="hint">Comptes relevés sur les fiches officielles de l'Assemblée nationale et du Sénat, ou certifiés par la plateforme. « Collecté » signale les comptes dont les publications sont récupérées automatiquement ; les autres sont de simples liens. Cliquez sur une fiche pour voir les publications, les thèmes et la chronologie.</p></div><span class="small" id="vdCount"></span></div>
+    <div class="glass rtools">
+      <label class="rsearch"><span class="sr">Rechercher un parlementaire</span><input id="vdQ" type="search" placeholder="Nom, groupe, circonscription, compte…" autocomplete="off"></label>
+      <select id="vdRole" aria-label="Fonction"><option value="">Députés et sénateurs</option><option value="dep">Députés</option><option value="sen">Sénateurs</option></select>
+    </div>
+    <div class="depgrid" id="vDir"></div>
+  </section>
+</div>
+
+<div id="v-veille-couv" class="view" hidden>
+  <section class="first"><div id="vCouv"></div></section>
+</div>
+
+<div id="v-soon" class="view" hidden>
+  <section class="first">
+    <div class="glass soon">
+      <span class="soon-badge">Contenu à venir</span>
+      <div class="small" id="soonRub"></div>
+      <h3 id="soonTitle"></h3>
+      <p class="hint">Cette rubrique est en préparation. Elle sera enrichie dans une prochaine version de l'Observatoire.</p>
+    </div>
+  </section>
+</div>
+
+  <section id="methode">
+    <h3>Méthode et limites</h3>
+    <div class="glass notes">
+      <ul>
+        <li><b>Résultats :</b> PDF officiel du ministère de l'Europe et des Affaires étrangères « Résultats et élus » (1er juin 2026), extrait automatiquement puis contrôlé : 130 circonscriptions, 542 listes ou candidats, 433 CFDE et 77 délégués consulaires. Les totaux de voix par circonscription correspondent au document source.</li>
+        <li><b>Couleur politique :</b> les listes consulaires ne portent pas de nuance officielle. Le classement est déduit du nom de la liste, des soutiens affichés et de la presse locale. Chaque classement porte un indice de confiance (●●● sûr, ●● probable, ● à vérifier) et peut être modifié dans le panneau de détail. Les modifications sont gardées dans votre navigateur et se copient en JSON.</li>
+        <li><b>Indépendants :</b> environ 45 % des sièges vont à des listes locales sans étiquette nationale. C'est la principale incertitude de toute projection.</li>
+        <li><b>ASFE :</b> l'Alliance solidaire des Français de l'étranger se dit transpartisane. Les listes LIFE / « Libres et indépendants » y sont rattachées, en tant que centre-droit indépendant.</li>
+        <li><b>Présidents :</b> chaque conseil consulaire élit son président pour 3 ans. Il n'existe pas de liste consolidée : seuls les présidents trouvés dans les sources publiques (sites des ambassades et consulats, presse locale) sont renseignés.</li>
+        <li><b>Législatives 2022 :</b> voix des candidats aux deux tours, nuances, inscrits, votants et exprimés issus des résultats définitifs du ministère de l'Intérieur (archives des résultats électoraux) ; les totaux de voix correspondent aux suffrages exprimés publiés. Les élections des 2e, 8e et 9e circonscriptions ont été annulées par le Conseil constitutionnel ; les partielles d'avril 2023 (résultats du MEAE et de la presse) sont signalées sur les fiches. Les participations 2024 proviennent du MEAE : la comparaison de participation entre les deux scrutins est indicative.</li>
+        <li><b>Législatives 2024 :</b> voix des candidats aux deux tours et étiquettes issues des résultats officiels du ministère de l'Intérieur (repris par Wikipédia) ; inscrits et participation au 1er tour issus du ministère de l'Europe et des Affaires étrangères. Dans la 5e circonscription, une législative partielle a eu lieu en octobre 2025.</li>
+        <li><b>Projection :</b> la participation aux consulaires est d'environ 14 %, contre près de 37 % au 2nd tour des législatives 2024 en Amérique du Nord, par exemple. L'électorat est différent et le vote consulaire est très personnalisé : la projection indique un rapport de force, pas un résultat.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer class="foot">Observatoire électoral des Français de l'étranger · données MEAE et ministère de l'Intérieur</footer>
+<div class="tt" id="tt"></div>
+<div class="modal" id="fiche" hidden role="dialog" aria-modal="true" aria-labelledby="ficheTitle">
+  <div class="glass modal-card"><button type="button" class="modal-x" id="ficheClose" aria-label="Fermer la fiche">×</button><div class="modal-body" id="ficheBody"></div></div>
+</div>
+<script defer src="./veille-bluesky.js"></script>
+<script defer src="./veille.js"></script>
+<script defer src="./app.js"></script>
+
+</body>
+</html>
