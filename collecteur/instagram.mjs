@@ -8,7 +8,7 @@
 // PROFESSIONNELS (Business ou Créateur). Les comptes personnels et les
 // Stories ne sont pas accessibles.
 //
-// Comptes suivis : comptes Instagram « verifie » de data/veille/comptes.json.
+// Comptes suivis : comptes Instagram indiqués dans data/veille/comptes.json (vérifiés ou non).
 // Historique : data/veille/instagram/AAAA-MM.json (un fichier par mois, sans
 // doublon) et data/veille/instagram/etat.json (état, journal).
 // Récapitulatif : fichier Markdown (variable RECAP_FILE) publié par GitHub
@@ -40,6 +40,12 @@ export function toPost(m, compte){
 
 // Erreurs de l'API Graph → message compréhensible et gravité
 export function analyserErreur(e){
+  const a = analyserErreurBrute(e), g = e.graph||{};
+  // message exact de Meta conservé dans le journal pour le diagnostic
+  if(g.code!=null || g.message) a.message += ` [Meta : code ${g.code??'?'}${g.error_subcode?'/'+g.error_subcode:''} — ${String(g.message||e.message||'').slice(0,200)}]`;
+  return a;
+}
+function analyserErreurBrute(e){
   const g = e.graph||{}, c = g.code, s = g.error_subcode;
   if(c===190) return {global:true, message:"Jeton Instagram invalide ou expiré : générez un nouveau jeton de page et mettez à jour le secret IG_TOKEN."};
   if([4,17,32,613].includes(c)) return {global:true, message:'Limite de requêtes de Meta atteinte : la collecte reprendra au passage suivant.'};
@@ -73,7 +79,7 @@ export async function synchroniser({comptes, config, get, lire, ecrire, supprime
 
   for(const c of comptes){
     const u = c.username.toLowerCase();
-    const e = etat.comptes[u] = Object.assign(etat.comptes[u]||{ajoute_le:nowIso, historique_fait:false}, {username:c.username, pid:c.pid, nom:c.nom, actif:true});
+    const e = etat.comptes[u] = Object.assign(etat.comptes[u]||{ajoute_le:nowIso, historique_fait:false}, {username:c.username, pid:c.pid, nom:c.nom, actif:true, verifie:c.verifie!==false});
     if(arret){ continue; }
     const initial = !e.historique_fait, seuil = now - C.historique_initial_jours*J;
     try{
@@ -102,7 +108,7 @@ export async function synchroniser({comptes, config, get, lire, ecrire, supprime
         absents[id] = (absents[id]||0)+1;
         if(absents[id]>=2){ hist.delete(id); delete absents[id]; run.supprimees++; }
       }
-      if(initial) run.nouveaux_comptes.push({username:c.username, nom:c.nom, nom_instagram:e.nom_instagram, publications:[...hist.values()].filter(p=>p.compte===u).length});
+      if(initial) run.nouveaux_comptes.push({username:c.username, nom:c.nom, verifie:c.verifie!==false, nom_instagram:e.nom_instagram, publications:[...hist.values()].filter(p=>p.compte===u).length});
       Object.assign(e, {statut:'ok', erreur:null, derniere_collecte:nowIso, historique_fait:true});
       run.comptes_lus++;
     }catch(err){
@@ -170,7 +176,7 @@ export function recapitulatif({run, etat, nouvelles, nouveauxComptes = [], compt
   }
   if(nouveauxComptes.length){
     s += `\n**Comptes collectés pour la première fois : vérifiez qu'il s'agit bien du parlementaire**\n`;
-    for(const n of nouveauxComptes) s += `- @${md(n.username)} → ${md(n.nom)} · nom affiché par Instagram : « ${md(n.nom_instagram||'non renseigné')} » · ${n.publications} publication${n.publications>1?'s':''} récupérée${n.publications>1?'s':''} (historique, non listées ci-dessus)\n`;
+    for(const n of nouveauxComptes) s += `- @${md(n.username)} → ${md(n.nom)}${n.verifie===false?' (compte non vérifié dans comptes.json)':''} · nom affiché par Instagram : « ${md(n.nom_instagram||'non renseigné')} » · ${n.publications} publication${n.publications>1?'s':''} récupérée${n.publications>1?'s':''} (historique, non listées ci-dessus)\n`;
   }
   const pb = Object.values(etat.comptes).filter(e=>e.actif!==false && e.statut && e.statut!=='ok');
   if(pb.length){ s += `\n**Comptes non lus**\n`; for(const e of pb) s += `- @${md(e.username)} (${md(e.nom||'')}) : ${md(e.erreur||e.statut)}\n`; }
@@ -188,7 +194,8 @@ export function clientGraph({token, igUserId, version = DEFAUTS.version_api, ess
   let dernier = 0;
   return async function get(username, {limit, after}){
     const media = `media${after?`.after(${after})`:''}.limit(${limit}){${CHAMPS}}`;
-    const url = `https://graph.facebook.com/${version}/${encodeURIComponent(igUserId)}?fields=${encodeURIComponent(`business_discovery.username(${username}){username,name,media_count,${media}}`)}`;
+    // les identifiants Instagram sont en minuscules : « Anne_Genetet » → « anne_genetet »
+    const url = `https://graph.facebook.com/${version}/${encodeURIComponent(igUserId)}?fields=${encodeURIComponent(`business_discovery.username(${String(username).toLowerCase()}){username,name,media_count,${media}}`)}`;
     let err;
     for(let i=0;i<essais;i++){
       const attente = dernier + pause - Date.now(); if(attente>0) await new Promise(r=>setTimeout(r, attente));
@@ -209,15 +216,16 @@ export function clientGraph({token, igUserId, version = DEFAUTS.version_api, ess
   };
 }
 
-// Comptes suivis : comptes Instagram vérifiés du registre de l'Observatoire
+// Comptes suivis : tous les comptes Instagram indiqués dans le registre de l'Observatoire,
+// vérifiés ou non (« verifie » = false pour les seconds), sauf « collecte »: false
 export function comptesSuivis(reg, deputes, senateurs){
   const noms = {};
   (deputes||[]).forEach(d=>noms[d.pa] = `${d.prenom} ${d.nom}`);
   (senateurs||[]).forEach(s=>noms[s.slug] = `${s.prenom} ${s.nom.toLowerCase().replace(/(^|[ -])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase())}`);
   const out = [];
   for(const [pid, v] of Object.entries(reg.parlementaires||{}))
-    for(const a of v.comptes||[]) if(a.reseau==='instagram' && a.verification==='verifie' && a.identifiant && a.collecte!==false)
-      out.push({pid, nom:noms[pid]||pid, username:a.identifiant.replace(/^@/,'')});
+    for(const a of v.comptes||[]) if(a.reseau==='instagram' && a.identifiant && a.collecte!==false)
+      out.push({pid, nom:noms[pid]||pid, username:a.identifiant.replace(/^@/,''), verifie:a.verification==='verifie'});
   return out;
 }
 
