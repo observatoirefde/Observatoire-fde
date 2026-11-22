@@ -1,5 +1,5 @@
 {
- "note": "Textes de présentation affichés en haut de chaque section de la rubrique « Élections ». Pour modifier un texte, éditez ce fichier (aucun code à changer). Clés : leg22, leg24, cfde, sim. Champs : titre, chapeau (paragraphe d'introduction facultatif), texte, faits (liste de [intitulé, valeur, précision facultative]), sources.",
+ "note": "Textes de présentation affichés en haut de chaque section de la rubrique « Élections ». Pour modifier un texte, éditez ce fichier (aucun code à changer). Clés : leg22, leg24, cfde, sim, contentieux. Champs : titre, chapeau (paragraphe d'introduction facultatif), texte, faits (liste de [intitulé, valeur, précision facultative]), sources.",
  "leg22": {
   "titre": "Les élections législatives de 2022",
   "texte": "Les élections législatives désignent les 577 députés de l'Assemblée nationale, dont 11 élus par les Français établis hors de France dans des circonscriptions qui leur sont propres depuis 2012. Les députés votent la loi, contrôlent l'action du Gouvernement et évaluent les politiques publiques. Le scrutin de juin 2022 était un renouvellement ordinaire de l'Assemblée ; le Conseil constitutionnel ayant annulé l'élection dans les 2e, 8e et 9e circonscriptions, des élections partielles y ont eu lieu en avril 2023.",
@@ -108,5 +108,32 @@
    ]
   ],
   "sources": "Sources : Constitution (articles 12 et 24) ; code électoral (articles L. 123 à L. 126 et L.O. 121)."
+ },
+ "contentieux": {
+  "titre": "Le contentieux des élections de 2026",
+  "texte": "Les résultats des élections des conseillers des Français de l'étranger et des conseillers à l'Assemblée des Français de l'étranger peuvent être contestés devant le juge administratif par une protestation. Le Conseil d'État statue sur ces recours : il peut rejeter la protestation, rectifier les résultats ou annuler l'élection. Cette section recense les recours dont l'existence est établie par une source officielle et suit chaque jour la publication des décisions du Conseil d'État.",
+  "faits": [
+   [
+    "Juge de l'élection",
+    "Conseil d'État",
+    "une protestation déposée au tribunal administratif de Paris lui est transmise (CE, 4 novembre 2026, n° 516536)"
+   ],
+   [
+    "Scrutins suivis",
+    "CFDE et conseillers à l'AFE",
+    "élections de 2026"
+   ],
+   [
+    "Suivi des décisions",
+    "Quotidien",
+    "archives open data des décisions du Conseil d'État depuis mai 2026"
+   ],
+   [
+    "Recours affichés",
+    "Vérifiés sur le texte officiel",
+    "le recensement des recours en cours n'est pas exhaustif"
+   ]
+  ],
+  "sources": "Sources : décisions du Conseil d'État (ArianeWeb ; open data de la justice administrative, opendata.justice-administrative.fr) ; code électoral."
  }
 }
