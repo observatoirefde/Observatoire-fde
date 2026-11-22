@@ -1,5 +1,5 @@
- Collecte automatique Instagram de la Veille parlementaire.
-# Deux passages par jour, à 9 h et 17 h (heure de Paris) : publications et Reels
+# Collecte automatique Instagram de la Veille parlementaire.
+# Deux passages par jour, à 8 h et 19 h (heure de Paris) : publications et Reels
 # des comptes Instagram vérifiés de data/veille/comptes.json, via l'API officielle
 # Business Discovery de Meta (16 requêtes par passage, soit 32 par jour : rythme
 # volontairement modéré pour ne pas déclencher les contrôles de Meta).
@@ -83,96 +83,6 @@ jobs:
           if [ "$(gh api "repos/$GITHUB_REPOSITORY" --jq .has_issues)" != "true" ]; then
             echo "::error::Les issues sont désactivées dans ce dépôt : Settings → General → Features → cochez « Issues ». Le récapitulatif reste visible dans le résumé de ce passage."
             exit 1
-          fi
-          gh label create veille-instagram --color C13584 --description "Récapitulatifs automatiques Instagram" 2>/dev/null || true
-          N=$(gh issue list --label veille-instagram --state open --limit 1 --json number --jq '.[0].number')
-          if [ -z "$N" ]; then
-            BODY="Chaque passage de la collecte Instagram (deux fois par jour) ajoute ici un commentaire : nouvelles publications et Reels, auteurs, dates et liens. Vous recevez chaque commentaire par e-mail tant que vous êtes abonné à cette issue. Ne la fermez pas ; si elle est fermée, une nouvelle sera créée."
-            gh issue create --title "Veille Instagram : récapitulatifs" --label veille-instagram --assignee "$GITHUB_REPOSITORY_OWNER" --body "$BODY" \
-              || gh issue create --title "Veille Instagram : récapitulatifs" --label veille-instagram --body "$BODY"
-            N=$(gh issue list --label veille-instagram --state open --limit 1 --json number --jq '.[0].number')
-          fi
-          gh issue comment "$N" --body-file "$RECAP_FILE"
-# Collecte automatique Instagram de la Veille parlementaire.
-# Collecte toutes les heures de 6 h à 23 h (heure de Paris) : publications et
-# Reels des comptes Instagram vérifiés de data/veille/comptes.json, via l'API
-# officielle Business Discovery de Meta (16 requêtes par passage, limite Meta :
-# 200 par heure). Historique enregistré dans data/veille/instagram/.
-# Récapitulatif à 8 h et 19 h (et à chaque lancement manuel) : toutes les
-# publications détectées depuis le récapitulatif précédent, publié en
-# commentaire de l'issue « Veille Instagram » (GitHub vous l'envoie par e-mail).
-# Secret nécessaire : IG_TOKEN (jeton de page de l'Observatoire, sans expiration).
-name: Veille Instagram
-
-on:
-  schedule:
-    - cron: '23 4-22 * * *'     # toutes les heures à :23 (UTC) ; le filtre ci-dessous ne garde que 6 h – 23 h à Paris
-  workflow_dispatch:            # lancement manuel : onglet « Actions » → « Veille Instagram » → « Run workflow »
-
-permissions:
-  contents: write               # enregistrer l'historique
-  issues: write                 # publier le récapitulatif
-
-concurrency:
-  group: veille-instagram
-  cancel-in-progress: false
-
-jobs:
-  collecte:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Créneau (heure de Paris)
-        id: creneau
-        run: |
-          H=$(TZ=Europe/Paris date +%H)
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then echo "collecte=1" >> $GITHUB_OUTPUT; echo "recap=1" >> $GITHUB_OUTPUT; exit 0; fi
-          if [ "$H" -ge 6 ] && [ "$H" -le 23 ]; then echo "collecte=1" >> $GITHUB_OUTPUT; else echo "collecte=0" >> $GITHUB_OUTPUT; fi
-          if [ "$H" = "08" ] || [ "$H" = "19" ]; then echo "recap=1" >> $GITHUB_OUTPUT; else echo "recap=0" >> $GITHUB_OUTPUT; fi
-          echo "Heure de Paris : $H h"
-
-      - name: Tests
-        if: steps.creneau.outputs.collecte == '1'
-        run: node tests/instagram.test.mjs
-
-      - name: Collecte Instagram
-        if: steps.creneau.outputs.collecte == '1'
-        env:
-          IG_TOKEN: ${{ secrets.IG_TOKEN }}
-          RECAP: ${{ steps.creneau.outputs.recap }}
-          RECAP_FILE: ${{ runner.temp }}/recap.md
-        run: node collecteur/instagram.mjs
-
-      - name: Enregistrement de l'historique
-        if: always() && steps.creneau.outputs.collecte == '1'
-        run: |
-          git config user.name "veille-instagram[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/veille/instagram
-          if git diff --cached --quiet; then echo "Aucun changement."; exit 0; fi
-          git commit -q -m "Veille Instagram : synchronisation du $(date -u +'%Y-%m-%d %H:%M') UTC"
-          for i in 1 2 3 4; do
-            if git pull -q --rebase && git push -q; then exit 0; fi
-            sleep $((i * 10))
-          done
-          echo "Impossible d'enregistrer les données après 4 tentatives." && exit 1
-
-      - name: Récapitulatif (commentaire de l'issue « Veille Instagram »)
-        if: always() && steps.creneau.outputs.recap == '1'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          RECAP_FILE: ${{ runner.temp }}/recap.md
-        run: |
-          if [ ! -s "$RECAP_FILE" ]; then
-            echo "### Récapitulatif Instagram du $(TZ=Europe/Paris date +'%d/%m/%Y %H:%M')" > "$RECAP_FILE"
-            echo "" >> "$RECAP_FILE"
-            echo "> ⚠️ La collecte a échoué avant de produire un récapitulatif. Détails : $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> "$RECAP_FILE"
           fi
           gh label create veille-instagram --color C13584 --description "Récapitulatifs automatiques Instagram" 2>/dev/null || true
           N=$(gh issue list --label veille-instagram --state open --limit 1 --json number --jq '.[0].number')
