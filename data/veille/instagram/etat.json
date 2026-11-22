@@ -10,23 +10,28 @@
    "actif": true,
    "media_count": 1062,
    "nom_instagram": "Amélia Lakrafi 🇫🇷",
-   "statut": "non lu",
-   "erreur": "Permission manquante pour Business Discovery (instagram_basic, instagram_manage_insights, pages_read_engagement, ads_read) : régénérez le jeton.",
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
    "publications": 25,
-   "derniere_erreur_le": "2026-11-22T16:02:14.362Z"
+   "derniere_erreur_le": "2026-11-22T16:02:14.362Z",
+   "verifie": true
   },
   "anne_genetet": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
-   "historique_fait": false,
+   "historique_fait": true,
    "username": "Anne_Genetet",
    "pid": "PA721024",
    "nom": "Anne Genetet",
    "actif": true,
-   "statut": "introuvable",
-   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
+   "statut": "ok",
+   "erreur": null,
    "derniere_erreur_le": "2026-11-22T13:20:11.156Z",
-   "publications": 0
+   "publications": 50,
+   "verifie": true,
+   "media_count": 815,
+   "nom_instagram": "Anne Genetet",
+   "derniere_collecte": "2026-11-22T17:23:43.528Z"
   },
   "nathcog": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -36,9 +41,10 @@
    "nom": "Nathalie Coggia",
    "actif": true,
    "statut": "introuvable",
-   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
-   "derniere_erreur_le": "2026-11-22T13:20:11.156Z",
-   "publications": 0
+   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
+   "derniere_erreur_le": "2026-11-22T17:23:43.528Z",
+   "publications": 0,
+   "verifie": true
   },
   "marcferracci": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -51,8 +57,9 @@
    "nom_instagram": "Marc Ferracci",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 101
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 101,
+   "verifie": true
   },
   "vincent_caure": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -65,8 +72,9 @@
    "nom_instagram": "Vincent Caure",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 50
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 50,
+   "verifie": true
   },
   "paanglade": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -79,8 +87,9 @@
    "nom_instagram": "Pieyre-Alexandre Anglade",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 25
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 25,
+   "verifie": true
   },
   "fredericpetitan": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -90,9 +99,10 @@
    "nom": "Frédéric Petit",
    "actif": true,
    "statut": "introuvable",
-   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
-   "derniere_erreur_le": "2026-11-22T13:20:11.156Z",
-   "publications": 0
+   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
+   "derniere_erreur_le": "2026-11-22T17:23:43.528Z",
+   "publications": 0,
+   "verifie": true
   },
   "cjweissberg": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -105,8 +115,9 @@
    "nom_instagram": "Christopher Weissberg",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 50
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 50,
+   "verifie": true
   },
   "carolineyadan": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -119,8 +130,9 @@
    "nom_instagram": "Caroline Yadan",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 50
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 50,
+   "verifie": true
   },
   "hconwaymouret": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -133,8 +145,9 @@
    "nom_instagram": "Hélène Conway-Mouret",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 50
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 50,
+   "verifie": true
   },
   "mathilde_ollivier": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -147,8 +160,9 @@
    "nom_instagram": "Mathilde Ollivier",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 75
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 75,
+   "verifie": true
   },
   "sbg_senat": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -158,9 +172,10 @@
    "nom": "Sophie Briante Guillemont",
    "actif": true,
    "statut": "introuvable",
-   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
-   "derniere_erreur_le": "2026-11-22T13:20:11.156Z",
-   "publications": 0
+   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
+   "derniere_erreur_le": "2026-11-22T17:23:43.528Z",
+   "publications": 0,
+   "verifie": true
   },
   "oliviercadic": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -173,8 +188,9 @@
    "nom_instagram": "Olivier Cadic",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 75
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 75,
+   "verifie": true
   },
   "yanchantrel_": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -187,8 +203,9 @@
    "nom_instagram": "Yan Chantrel",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 50
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 50,
+   "verifie": true
   },
   "marie_ange_rousselot": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -201,8 +218,9 @@
    "nom_instagram": "Marie-Ange Rousselot",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 25
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 25,
+   "verifie": true
   },
   "_melanie_vogel_": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -215,23 +233,48 @@
    "nom_instagram": "Mélanie Vogel",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-22T13:20:11.156Z",
-   "publications": 50
+   "derniere_collecte": "2026-11-22T17:23:43.528Z",
+   "publications": 50,
+   "verifie": true
   }
  },
  "mois": {
-  "2026-11": 138,
-  "2026-10": 185,
-  "2026-09": 115,
-  "2026-08": 24,
-  "2026-07": 110,
-  "2026-06": 31,
-  "2026-05": 15,
-  "2026-04": 1,
-  "2026-03": 5,
+  "2026-11": 149,
+  "2026-10": 191,
+  "2026-09": 121,
+  "2026-08": 26,
+  "2026-07": 120,
+  "2026-06": 36,
+  "2026-05": 18,
+  "2026-04": 3,
+  "2026-03": 10,
   "2026-02": 2
  },
  "journal": [
+  {
+   "date": "2026-11-22T17:23:43.528Z",
+   "ok": true,
+   "nouveaux_comptes": [
+    {
+     "username": "Anne_Genetet",
+     "nom": "Anne Genetet",
+     "verifie": true,
+     "nom_instagram": "Anne Genetet",
+     "publications": 50
+    }
+   ],
+   "nouvelles": 50,
+   "mises_a_jour": 0,
+   "supprimees": 0,
+   "comptes_lus": 13,
+   "comptes": 16,
+   "requetes": 17,
+   "erreurs": [
+    "@nathcog : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
+    "@fredericpetitan : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
+    "@sbg_senat : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]"
+   ]
+  },
   {
    "date": "2026-11-22T16:02:14.362Z",
    "ok": false,
@@ -472,10 +515,10 @@
  ],
  "a_recapituler": [],
  "comptes_a_signaler": [],
- "dernier_recap_precedent": "2026-11-22T05:40:26.810Z",
- "dernier_recap": "2026-11-22T07:34:18.435Z",
- "total": 626,
+ "dernier_recap_precedent": "2026-11-22T07:34:18.435Z",
+ "dernier_recap": "2026-11-22T17:23:43.528Z",
+ "total": 676,
  "absents": {},
- "derniere_synchro": "2026-11-22T16:02:14.362Z",
- "derniere_synchro_reussie": "2026-11-22T13:20:11.156Z"
+ "derniere_synchro": "2026-11-22T17:23:43.528Z",
+ "derniere_synchro_reussie": "2026-11-22T17:23:43.528Z"
 }
