@@ -741,3 +741,40 @@ body.is-veille #methode{display:none}
 .elec-src{font-size:11px;color:var(--muted)}
 @media (max-width:1180px){ .elec-facts{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:640px){ .elec-intro{padding:13px 14px} .elec-facts{grid-template-columns:1fr} }
+
+/* ---------- Représentants : hémicycle de l'AFE ---------- */
+.hc{padding:16px 20px;margin-bottom:14px;display:flex;flex-direction:column;gap:10px}
+.hc-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px}
+.hc-head h3{margin:2px 0 0;font-size:17px;font-weight:800;letter-spacing:-.01em}
+.hc .elec-intro-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#4a6a8c}
+.hc-body{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(250px,1fr);gap:18px;align-items:center}
+.hc-stage{position:relative}
+.hc-svg{display:block;width:100%;max-width:640px;height:auto;margin:0 auto;overflow:visible}
+.hc-seat{cursor:pointer;stroke:#fff;stroke-width:1.6;transform-box:fill-box;transform-origin:center;transition:opacity .25s var(--ease),transform .2s var(--ease);animation:hcIn .45s var(--ease) both;animation-delay:calc(var(--i) * 11ms)}
+.hc-seat:hover,.hc-seat:focus-visible{transform:scale(1.35);outline:none;stroke:var(--ink)}
+.hc.has-sel .hc-seat{opacity:.16}
+.hc.has-sel .hc-seat.on{opacity:1}
+@keyframes hcIn{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+.hc-total{font-family:Manrope,Inter,sans-serif;font-size:40px;font-weight:800;fill:var(--ink);letter-spacing:-.02em}
+.hc-total-sub{font-size:12px;font-weight:600;fill:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.hc-tip{position:absolute;z-index:5;transform:translate(-50%,calc(-100% - 12px));display:flex;gap:10px;align-items:center;min-width:220px;max-width:280px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.95);box-shadow:0 10px 30px rgba(40,62,92,.18);pointer-events:none;font-size:12px;line-height:1.35}
+.hc-tip[hidden]{display:none}
+.hc-tip>span:last-child{display:flex;flex-direction:column;gap:1px;min-width:0}
+.hc-tip b{font-size:13px}
+.hc-tip .avatar{width:44px;height:44px}
+.hc-tg{color:var(--ink2)}
+.hc-legend{display:flex;flex-direction:column;gap:5px}
+.hc-leg{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;font:inherit;color:inherit;padding:7px 10px;border-radius:12px;border:1px solid transparent;background:transparent;cursor:pointer;transition:background .2s var(--ease),border-color .2s var(--ease),opacity .2s var(--ease)}
+.hc-leg:hover,.hc-leg:focus-visible{background:rgba(255,255,255,.75);border-color:rgba(255,255,255,.95);outline:none}
+.hc-leg.on{background:#fff;border-color:rgba(255,255,255,.95);box-shadow:0 2px 10px rgba(40,62,92,.12)}
+.hc.has-sel .hc-leg:not(.on){opacity:.55}
+.hc-sw{width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(255,255,255,.9)}
+.hc-lname{display:flex;flex-direction:column;min-width:0}
+.hc-lname b{font-size:13px}
+.hc-lname small{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hc-lnum{display:flex;flex-direction:column;align-items:flex-end;font-variant-numeric:tabular-nums}
+.hc-lnum b{font-family:Manrope,Inter,sans-serif;font-size:15px}
+.hc-lnum small{font-size:11px;color:var(--muted)}
+.hc-note{margin:0;max-width:none}
+@media (max-width:900px){ .hc-body{grid-template-columns:1fr} .hc-legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:640px){ .hc{padding:13px 14px} .hc-legend{grid-template-columns:1fr} .hc-tip{min-width:190px} }

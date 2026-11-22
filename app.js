@@ -620,6 +620,7 @@ async function demarrerObservatoire() {
     }
     function renderCafe(){
       if(!RAF){ dirFail('afGrid','cafe-2026.json'); return; }
+      renderHemicycle();
       const q=document.getElementById('afQ').value, ci=document.getElementById('afCirc').value, k=document.getElementById('afComm').value, g=document.getElementById('afGrp').value, role=document.getElementById('afRole').value;
       const L = AF.filter(a=>(!ci||a.circ_afe===ci)&&(!k||a.commission===k)&&(!g||a.groupe===g)&&(!role||a.fonctions.some(ROLE_AFE[role]))&&matchAll(q, a.prenom+' '+a.nom+' '+a.circ_afe+' '+(cfdeByAfe[a.id]?cfdeByAfe[a.id].c.name+' '+cfdeByAfe[a.id].c.posts:'')));
       const n=DIRSTATE.cafe.n;
@@ -641,6 +642,69 @@ async function demarrerObservatoire() {
         </dl>
         <a class="dep-link" href="${RAF.url_fiche}${a.id}" target="_blank" rel="noopener">Fiche officielle sur le site de l'AFE ↗</a>
         <div class="small fiche-src">Source : ${esc(RAF.source)}, consulté le ${fmtDate(RAF.maj)}.</div>`;
+    }
+
+    // --- Hémicycle de l'Assemblée des Français de l'étranger (SVG, données de cafe-2026.json) ---
+    // Groupes et effectifs : annuaire officiel de l'AFE. Ordre gauche-droite : position moyenne, sur l'axe
+    // des blocs de l'Observatoire, des listes CFDE sur lesquelles les membres de chaque groupe ont été élus
+    // (listes non classées « indépendantes » exclues) ; les non-inscrits sont placés à droite par convention.
+    const AFE_COL = {PES:BLOCS.GAU.c, ALICE:BLOCS.ENS.c, IND:'#8C6BB1', SI:BLOCS.ASFE.c, DEFIA:BLOCS.LR.c, NI:BLOCS.IND.c};
+    const AFE_PAL = ['#5f86ad','#C8691C','#4F86C6','#2E9E5B','#B4233C','#7a8899'];
+    let HC_SEL = null, HC_DONE = false;
+    function afeGroupes(){
+      const pos = g => { const p = AF.filter(a=>a.groupe===g).map(a=>cfdeByAfe[a.id]).filter(r=>r && r.l && r.l.b && r.l.b!=='IND').map(r=>ORDER.indexOf(r.l.b)).filter(i=>i>=0);
+        return {moy: p.length ? p.reduce((x,y)=>x+y,0)/p.length : null, classes:p.length}; };
+      const gs = Object.keys(RAF.groupes).concat([...new Set(AF.map(a=>a.groupe))].filter(g=>!RAF.groupes[g])).filter((g,i,t)=>t.indexOf(g)===i && AF.some(a=>a.groupe===g));
+      const L = gs.map((g,i)=>Object.assign({g, nom:RAF.groupes[g]||g, n:AF.filter(a=>a.groupe===g).length, col:AFE_COL[g]||AFE_PAL[i%AFE_PAL.length]}, pos(g)));
+      const ni = L.filter(x=>x.g==='NI'), autres = L.filter(x=>x.g!=='NI').sort((a,b)=>(a.moy??99)-(b.moy??99) || b.n-a.n);
+      return autres.concat(ni);
+    }
+    // Sièges en rangées concentriques ; triés de gauche à droite (angle), puis de l'intérieur vers l'extérieur
+    function hemiSieges(n, cx, cy, R){
+      const rows = n<=30?3 : n<=60?4 : n<=120?6 : 8, r0 = .4, rad = Array.from({length:rows},(_,i)=>r0+i*(1-r0)/(rows-1));
+      const tot = rad.reduce((a,b)=>a+b,0); const per = rad.map(r=>Math.round(n*r/tot)); per[rows-1] += n-per.reduce((a,b)=>a+b,0);
+      const S = []; rad.forEach((r,i)=>{ for(let j=0;j<per[i];j++){ const t = per[i]>1 ? Math.PI*(1-j/(per[i]-1)) : Math.PI/2; S.push({t, r, x:cx+R*r*Math.cos(t), y:cy-R*r*Math.sin(t)}); } });
+      return {seats: S.sort((a,b)=>b.t-a.t || a.r-b.r), dot: Math.min(R*(1-r0)/(rows-1), Math.PI*R*r0/(per[0]-1||1))*.38};
+    }
+    function renderHemicycle(){
+      if(HC_DONE || !RAF || !AF.length) return; HC_DONE = true;
+      const G = afeGroupes(), N = AF.length, W = 440, cx = 220, cy = 228, R = 208;
+      const {seats, dot} = hemiSieges(N, cx, cy, R);
+      const ordre = []; G.forEach(gr=>AF.filter(a=>a.groupe===gr.g).sort((a,b)=>a.nom.localeCompare(b.nom,'fr')||a.prenom.localeCompare(b.prenom,'fr')).forEach(a=>ordre.push({a, gr})));
+      const nomG = g => (RAF.groupes[g]||g).replace(/\s*\([^)]*\)\s*$/,'');
+      const svg = `<svg class="hc-svg" viewBox="0 0 ${W} 246" role="group" aria-label="Hémicycle de l'Assemblée des Français de l'étranger : ${N} sièges">
+        ${ordre.map(({a,gr},i)=>{ const p=seats[i]; return `<circle class="hc-seat" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${dot.toFixed(1)}" fill="${gr.col}" data-id="${a.id}" data-g="${esc(gr.g)}" style="--i:${i}" tabindex="0" role="button" aria-label="${esc(a.prenom+' '+a.nom)}, ${esc(a.circ_afe)}, ${esc(nomG(gr.g))}"></circle>`; }).join('')}
+        <text class="hc-total" x="${cx}" y="${cy-26}" text-anchor="middle">${N}</text>
+        <text class="hc-total-sub" x="${cx}" y="${cy-4}" text-anchor="middle">sièges</text>
+      </svg>`;
+      const leg = G.map(gr=>`<button type="button" class="hc-leg" data-g="${esc(gr.g)}" aria-pressed="false">
+          <span class="hc-sw" style="background:${gr.col}"></span><span class="hc-lname"><b>${esc(gr.g==='NI'?'Non-inscrits':gr.g)}</b><small>${esc(gr.g==='NI'?'Conseillers non membres d\'un groupe':nomG(gr.g))}</small></span>
+          <span class="hc-lnum"><b>${gr.n}</b><small>${(gr.n/N*100).toLocaleString('fr-FR',{maximumFractionDigits:1})} %</small></span></button>`).join('');
+      const card = document.createElement('div');
+      card.className = 'glass hc'; card.id = 'afeHemicycle';
+      card.innerHTML = `<div class="hc-head"><div><div class="elec-intro-eyebrow">Composition de l'Assemblée</div><h3>Les ${N} conseillers à l'AFE par groupe</h3></div>
+          <button type="button" class="lnk hc-reset" hidden>Afficher tous les groupes</button></div>
+        <div class="hc-body"><div class="hc-stage">${svg}<div class="hc-tip" role="tooltip" hidden></div></div><div class="hc-legend" aria-label="Groupes de l'AFE">${leg}</div></div>
+        <p class="small hc-note">Survolez une pastille pour identifier l'élu ; cliquez pour ouvrir sa fiche, ou sur un groupe pour mettre ses élus en évidence. Groupes et effectifs : ${esc(RAF.source)}, consulté le ${fmtDate(RAF.maj)}. Ordre de gauche à droite : position moyenne des listes CFDE sur lesquelles les membres de chaque groupe ont été élus, selon le classement politique de l'Observatoire (listes indépendantes non prises en compte) ; les non-inscrits figurent à droite par convention. Ce classement est indicatif : les groupes de l'AFE n'ont pas d'étiquette partisane officielle.</p>`;
+      document.querySelector('#v-cafe .sec-head').insertAdjacentElement('afterend', card);
+      const tip = card.querySelector('.hc-tip'), stage = card.querySelector('.hc-stage');
+      const show = el => { const a = afeById[+el.dataset.id]; if(!a) return; const gr = G.find(x=>x.g===a.groupe)||{};
+        tip.innerHTML = `<span class="avatar" style="--a:${gr.col}">${ini(a.prenom,a.nom)}</span><span><b>${fullName(a)}</b><span>${esc(a.circ_afe)}</span><span class="hc-tg"><span class="sw" style="background:${gr.col}"></span>${esc(a.groupe==='NI'?'Non-inscrit':nomG(a.groupe))}</span></span>`;
+        tip.hidden = false; const b = el.getBoundingClientRect(), s = stage.getBoundingClientRect();
+        const x = Math.min(Math.max(b.left+b.width/2-s.left, 120), s.width-120); tip.style.left = x+'px'; tip.style.top = (b.top-s.top)+'px'; };
+      const hide = () => { tip.hidden = true; };
+      stage.addEventListener('mouseover', e=>{ const c=e.target.closest('.hc-seat'); if(c) show(c); });
+      stage.addEventListener('mouseout', e=>{ if(e.target.closest('.hc-seat')) hide(); });
+      stage.addEventListener('focusin', e=>{ const c=e.target.closest('.hc-seat'); if(c) show(c); });
+      stage.addEventListener('focusout', hide);
+      stage.addEventListener('click', e=>{ const c=e.target.closest('.hc-seat'); if(c){ hide(); openFiche('cafe', c.dataset.id); } });
+      stage.addEventListener('keydown', e=>{ const c=e.target.closest('.hc-seat'); if(c && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); hide(); openFiche('cafe', c.dataset.id); } });
+      const select = g => { HC_SEL = HC_SEL===g ? null : g; card.classList.toggle('has-sel', !!HC_SEL);
+        card.querySelectorAll('.hc-seat').forEach(c=>c.classList.toggle('on', c.dataset.g===HC_SEL));
+        card.querySelectorAll('.hc-leg').forEach(b=>{ const on = b.dataset.g===HC_SEL; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on?'true':'false'); });
+        card.querySelector('.hc-reset').hidden = !HC_SEL; };
+      card.querySelector('.hc-legend').addEventListener('click', e=>{ const b=e.target.closest('.hc-leg'); if(b) select(b.dataset.g); });
+      card.querySelector('.hc-reset').addEventListener('click', ()=>{ if(HC_SEL) select(HC_SEL); });
     }
 
     // --- Sénateurs ---
