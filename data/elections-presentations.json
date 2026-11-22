@@ -1,5 +1,5 @@
 {
- "note": "Textes de présentation affichés en haut de chaque section de la rubrique « Élections ». Pour modifier un texte, éditez ce fichier (aucun code à changer). Clés : leg22, leg24, cfde, sim. Champs : titre, texte, faits (liste de [intitulé, valeur, précision facultative]), sources.",
+ "note": "Textes de présentation affichés en haut de chaque section de la rubrique « Élections ». Pour modifier un texte, éditez ce fichier (aucun code à changer). Clés : leg22, leg24, cfde, sim. Champs : titre, chapeau (paragraphe d'introduction facultatif), texte, faits (liste de [intitulé, valeur, précision facultative]), sources.",
  "leg22": {
   "titre": "Les élections législatives de 2022",
   "texte": "Les élections législatives désignent les 577 députés de l'Assemblée nationale, dont 11 élus par les Français établis hors de France dans des circonscriptions qui leur sont propres depuis 2012. Les députés votent la loi, contrôlent l'action du Gouvernement et évaluent les politiques publiques. Le scrutin de juin 2022 était un renouvellement ordinaire de l'Assemblée ; le Conseil constitutionnel ayant annulé l'élection dans les 2e, 8e et 9e circonscriptions, des élections partielles y ont eu lieu en avril 2023.",
@@ -83,6 +83,7 @@
  },
  "sim": {
   "titre": "Les prochaines élections législatives : simulation",
+  "chapeau": "Si les prochaines élections législatives sont normalement prévues en 2029, l’Observatoire FDE anticipe l’hypothèse d’une dissolution de l’Assemblée nationale en 2027. Cette démarche prospective vise à centraliser les données électorales, à analyser l’évolution des rapports de force politiques dans les 11 circonscriptions des Français de l’étranger et à explorer différents scénarios électoraux, dans une approche indépendante et documentée.",
   "texte": "Le simulateur applique aux 11 circonscriptions des Français établis hors de France les règles des élections législatives, à partir des résultats du 1er tour de 2024. Le mandat des députés élus en juillet 2024 expire en principe en 2029 ; des élections anticipées peuvent toutefois avoir lieu en cas de dissolution de l'Assemblée nationale (article 12 de la Constitution). L'hypothèse d'un scrutin en 2027 retenue ici relève de la simulation, et non de la prévision.",
   "faits": [
    [
