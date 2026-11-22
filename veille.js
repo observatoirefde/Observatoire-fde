@@ -303,8 +303,14 @@ async function prepareInstagram(){
   if(!IG || !IG.comptes || !IG.mois){ IG = null; return; }
   for(const [u, c] of Object.entries(IG.comptes)){
     const P = BYID[c.pid]; if(!P) continue;
-    const acc = P.accounts.find(a=>a.reseau==='instagram' && String(a.identifiant||'').toLowerCase()===u);
-    if(!acc) continue;                                            // seuls les comptes vérifiés de l'annuaire
+    let acc = P.accounts.find(a=>a.reseau==='instagram' && String(a.identifiant||'').toLowerCase()===u);
+    if(!acc){                                                     // compte indiqué mais non vérifié : affiché avec mention
+      const i = P.pending.findIndex(a=>a.reseau==='instagram' && String(a.identifiant||'').replace(/^@/,'').toLowerCase()===u);
+      if(i<0) continue;
+      acc = P.pending.splice(i,1)[0];
+      acc.url = safeUrl(acc.url) || 'https://www.instagram.com/'+encodeURIComponent(u)+'/'; acc.nonVerifie = true;
+      P.accounts.push(acc);
+    }
     Object.assign(acc, {key:P.id+':instagram:'+u, pid:P.id, via:'instagram', actif:c.actif!==false, igc:c});
     if(!ACCS.includes(acc)){ ACCS.push(acc); ST[acc.key] = newState(); }
     IG_ACC[u] = acc;
@@ -537,7 +543,7 @@ function chipsHTML(P, withPending){
   const a = PORDER.flatMap(r=>P.accounts.filter(x=>x.reseau===r)).map(x=>{
     const illisible = x.igc && x.igc.statut && x.igc.statut!=='ok';
     const coll = ACCS.includes(x) && x.actif!==false && !illisible;
-    return `<a class="vchip p-${esc(x.reseau)}" href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc((coll?'Collecté automatiquement':x.via==='liste'?'Retiré de la liste : historique conservé':'Lien uniquement, non collecté')+' · source : '+x.source)}"><b>${esc(PLATFORMS[x.reseau].label)}</b>${x.identifiant?` <span>${esc(x.reseau==='bluesky'||x.reseau==='x'?'@'+x.identifiant:x.identifiant)}</span>`:''}${coll?' <i class="vok">collecté</i>':illisible?' <i class="vpend">non lisible</i>':''}</a>`;
+    return `<a class="vchip p-${esc(x.reseau)}" href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc((coll?'Collecté automatiquement':x.via==='liste'?'Retiré de la liste : historique conservé':'Lien uniquement, non collecté')+' · source : '+x.source)}"><b>${esc(PLATFORMS[x.reseau].label)}</b>${x.identifiant?` <span>${esc(x.reseau==='bluesky'||x.reseau==='x'?'@'+x.identifiant:x.identifiant)}</span>`:''}${coll?' <i class="vok">collecté</i>':illisible?' <i class="vpend">non lisible</i>':''}${x.nonVerifie?' <i class="vpend">non vérifié</i>':''}</a>`;
   }).join('');
   let h = a || '<span class="small">Aucun compte public mentionné sur la fiche officielle.</span>';
   if(withPending && P.pending.length) h += `<span class="small vpend">À vérifier : ${P.pending.map(x=>esc(PLATFORMS[x.reseau].label)).join(', ')}</span>`;
