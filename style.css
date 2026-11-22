@@ -778,3 +778,21 @@ body.is-veille #methode{display:none}
 .hc-note{margin:0;max-width:none}
 @media (max-width:900px){ .hc-body{grid-template-columns:1fr} .hc-legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:640px){ .hc{padding:13px 14px} .hc-legend{grid-template-columns:1fr} .hc-tip{min-width:190px} }
+
+/* ---------- Législatives 2027 : paragraphe d'introduction et scénario de référence ---------- */
+.elec-intro .elec-lead{font-size:14px;line-height:1.6;color:var(--ink);font-weight:500;padding-left:12px;border-left:3px solid rgba(74,106,140,.45)}
+.simscen{margin:2px 0 10px;line-height:1.5;color:var(--ink2)}
+.simscen .histtag,.simscen .simtag{margin-right:6px;vertical-align:1px}
+
+/* ---------- Alignement général : barre de navigation, sous-onglets et contenu sur les mêmes bords ---------- */
+/* le contenu (bandeau, rubriques, pied de page) occupe 1480 px moins 2 × 28 px de marge ; la navigation suit les mêmes bords */
+.topbar,.subtabs{max-width:1424px;width:calc(100% - 56px)}
+@media (max-width:1180px){ #subtabs .subtabs-row.subtabs-row{min-width:0;flex-shrink:1;flex-wrap:wrap} }
+@media (max-width:640px){ .topbar,.subtabs{width:calc(100% - 24px)} }
+/* simulateur : lignes de sièges (pastille, bloc, barre, nombre) sur une seule ligne */
+#simSeats .seatrow{grid-template-columns:12px minmax(0,1fr) 72px 22px;gap:8px;margin:2px 0}
+#simSeats .seatrow>span:nth-child(2){line-height:1.3}
+/* tablettes : les quatre onglets principaux se partagent la largeur sans déborder */
+@media (max-width:900px){ #tabs button[data-r="accueil"],#tabs button[data-r="elections"]{flex:0 0 auto} #tabs button[data-r]:not([data-r="accueil"]):not([data-r="elections"]){flex:1 1 0} #tabs button[data-r]{min-width:0;max-width:none;white-space:normal;line-height:1.2;padding:8px 10px} }
+@media (max-width:640px){ #tabs button[data-r]{padding:8px 6px;font-size:12px;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:anywhere} }
+@media (max-width:380px){ #tabs button[data-r]{padding:8px 4px;font-size:11px} }

@@ -409,6 +409,7 @@ async function demarrerObservatoire() {
       view.insertAdjacentHTML('afterbegin', `<section class="glass elec-intro" aria-labelledby="elecIntro-${e(v)}">
         <div class="elec-intro-eyebrow">Présentation du scrutin</div>
         <h3 id="elecIntro-${e(v)}">${e(d.titre)}</h3>
+        ${d.chapeau?`<p class="elec-lead">${e(d.chapeau)}</p>`:''}
         <p>${e(d.texte)}</p>
         <dl class="elec-facts">${(d.faits||[]).map(f=>`<div><dt>${e(f[0])}</dt><dd>${e(f[1])}${f[2]?`<small>${e(f[2])}</small>`:''}</dd></div>`).join('')}</dl>
         ${d.sources?`<div class="elec-src">${e(d.sources)}</div>`:''}
@@ -837,7 +838,24 @@ async function demarrerObservatoire() {
       return v;
     }
     function sumPc(st, exceptId){ return st.cands.reduce((a,c)=>a+(c.id===exceptId?0:c.pc),0); }
+    // circonscription non modifiée : reprise exacte des résultats officiels des deux tours de 2024
+    function officialCirc(g, state){
+      const st=state.circ[g], d=L24[g-1], mode=state.mode;
+      const src=d.cands.slice().sort((a,b)=>b.v1-a.v1);
+      const cands=src.map((c,i)=>({id:(st.cands[i]&&st.cands[i].n===c.n)?st.cands[i].id:'h'+g+'_'+i, n:c.n, b:c.b, eb:effB(c.b,mode), v1:c.v1, v2o:c.v2, e:c.e}));
+      const ins=d.ins, exp=cands.reduce((a,c)=>a+c.v1,0), vot=Math.round(exp/(1-st.blank/100));
+      const need1=Math.floor(exp/2)+1, need25=Math.ceil(ins*0.25), needQ=Math.ceil(ins*0.125);
+      const res={g, ins, vot, exp1:exp, other:0, cands, need1, need25, needQ, official:true};
+      const elu=cands.find(c=>c.e)||cands[0];
+      const fin=cands.filter(c=>c.v2o!=null);
+      if(!fin.length){ res.t1win=elu; res.winner=elu.eb; res.wcand=elu; return res; }
+      res.qualified=cands.filter(c=>c.v1>=needQ||fin.includes(c)).map(c=>c.id);
+      res.finalists=fin; res.withdrawn=cands.filter(c=>c.v1>=needQ&&!fin.includes(c));
+      res.v2={}; fin.forEach(f=>res.v2[f.id]=f.v2o); res.exp2=fin.reduce((a,f)=>a+f.v2o,0);
+      res.wcand=elu; res.winner=elu.eb; return res;
+    }
     function simulateCirc(g, state){
+      if(state.circ[g].hist) return officialCirc(g, state);
       const st=state.circ[g], mode=state.mode;
       const {ins, vot, exp} = voteBase(g, st);
       const vv=candVotes(st, exp);
@@ -877,6 +895,9 @@ async function demarrerObservatoire() {
     let SIM = defaultState();
     let SAVED = {}; try{ SAVED = JSON.parse(localStorage.getItem('obs_sim_scen')||'{}'); Object.values(SAVED).forEach(migrateState); }catch(e){}
     let chartSim=null;
+    (function(){ const h=document.querySelector('#v-sim .sec-head .hint'); if(h) h.innerHTML='Scénario de référence : résultats <b>officiels</b> des législatives de 2024 (1er et 2nd tours), soit 10 sièges pour le bloc central et 1 pour la gauche. Toute modification produit une <b>simulation</b> fondée sur vos hypothèses, et non une prévision.';
+      document.querySelectorAll('#v-sim .notes').forEach(n=>{ n.innerHTML=n.innerHTML.replace(/<b>Calibrage :<\/b>[^<]*/, '<b>Scénario de référence :</b> tant qu\'aucune hypothèse n\'est modifiée, chaque circonscription reprend les résultats officiels des deux tours de 2024 (10 sièges pour le bloc central, 1 pour la gauche dans la 9e circonscription ; dans la 8e, Caroline Yadan, Ensemble, l\'a emporté au 2nd tour face à Meyer Habib, LR). Dès qu\'une hypothèse est modifiée (scores, participation, blancs, désistements ou reports), le 2nd tour est recalculé selon les reports choisis. Les reports sont modifiables en mode avancé.'); });
+      const sh=document.querySelector('#v-sim .simsum-head'); if(sh&&!document.getElementById('simScen')) sh.insertAdjacentHTML('afterend','<div class="simscen small" id="simScen"></div>'); })();
     try{ const s=JSON.parse(localStorage.getItem('obs_sim_state')||'null'); if(s&&s.circ&&s.rep) SIM=migrateState(s); }catch(e){}
 
     function renderSim(){
@@ -894,7 +915,7 @@ async function demarrerObservatoire() {
       renderSimResults();
       renderHyp();
     }
-    function simTagUpdate(){ const st=SIM.circ[SIM.cur]; document.getElementById('simTag').innerHTML = st.hist ? '<span class="histtag">Historique · 1er tour 2024</span>' : '<span class="simtag">Simulation · hypothèses modifiées</span>'; }
+    function simTagUpdate(){ const st=SIM.circ[SIM.cur]; document.getElementById('simTag').innerHTML = st.hist ? '<span class="histtag">Historique · résultats officiels 2024</span>' : '<span class="simtag">Simulation · hypothèses modifiées</span>'; }
     const fmtPc = x => (Math.round(x*100)/100).toLocaleString('fr-FR',{maximumFractionDigits:2});
     // tableau des candidatures : % et voix modifiables et synchronisés
     function renderCandTable(){
@@ -939,6 +960,10 @@ async function demarrerObservatoire() {
       const invalid=[]; for(let g=1;g<=11;g++) if(!validCirc(g)) invalid.push(ORD(g));
       // résumé des sièges
       const dots = Object.values(all).map(r=>`<span class="seatdot" title="${ORD(r.g)} : ${SNAME[r.winner]}" style="background:${SCOL(r.winner)}"></span>`).join('');
+      const nMod=Object.values(SIM.circ).filter(c=>!c.hist).length;
+      document.getElementById('simScen').innerHTML = nMod===0
+        ? '<span class="histtag">Scénario de référence</span> Résultats officiels des législatives 2024 (1er tour du 30 juin, 2nd tour du 7 juillet) : aucune hypothèse modifiée.'
+        : `<span class="simtag">Scénario simulé</span> Hypothèses modifiées dans ${nMod} circonscription${nMod>1?'s':''} sur 11${nMod<11?' ; les autres reprennent les résultats officiels de 2024':' (désistements, reports ou scores)'}.`;
       document.getElementById('simSeats').innerHTML = `<div class="seatdots">${dots}</div>`+
         blocs.filter(b=>seats[b]).sort((a,b)=>seats[b]-seats[a]).map(b=>`<div class="seatrow"><span class="sw" style="background:${SCOL(b)}"></span><span>${SNAME[b]}</span><div class="seatbar"><div style="width:${seats[b]/11*100}%;background:${SCOL(b)}"></div></div><b>${seats[b]}</b></div>`).join('')+
         (invalid.length?`<div class="warn">Total supérieur à 100 % : ${invalid.join(', ')}.</div>`:'');
@@ -954,8 +979,10 @@ async function demarrerObservatoire() {
         h+=`<div class="resblock"><div class="restitle">2nd tour ${r.finalists.length>2?'(triangulaire)':'(duel)'}</div>`+
           (r.withdrawn.length?`<div class="small">Désistement : ${r.withdrawn.map(c=>esc(c.n)).join(', ')}</div>`:'')+
           r.finalists.slice().sort((a,b)=>r.v2[b.id]-r.v2[a.id]).map(c=>resLine(c,r.v2[c.id],r.exp2)).join('')+
-          `<div class="small">Participation au 2nd tour : ${st.p2.toLocaleString('fr-FR')} % ; voix des candidatures éliminées et du solde « autres » réparties selon les reports choisis (${SAME_BLOC_REPORT} % entre candidatures d'un même bloc), le reste s'abstient.</div></div>
-          <div class="winner" style="--c:${SCOL(r.winner)}">Siège attribué : <b>${esc(r.wcand.n)}</b> (${SNAME[r.winner]})</div>`;
+          (r.official?`<div class="small">Résultats officiels du 2nd tour du 7 juillet 2024 (participation : ${st.p2.toLocaleString('fr-FR')} %). Source : ministère de l'Intérieur.</div></div>
+          <div class="winner" style="--c:${SCOL(r.winner)}">Élu en 2024 : <b>${esc(r.wcand.n)}</b> (${SNAME[r.winner]})</div>`
+          :`<div class="small">Participation au 2nd tour : ${st.p2.toLocaleString('fr-FR')} % ; voix des candidatures éliminées et du solde « autres » réparties selon les reports choisis (${SAME_BLOC_REPORT} % entre candidatures d'un même bloc), le reste s'abstient.</div></div>
+          <div class="winner" style="--c:${SCOL(r.winner)}">Siège attribué : <b>${esc(r.wcand.n)}</b> (${SNAME[r.winner]})</div>`);
       }
       document.getElementById('simResult').innerHTML=h;
       // tableau détaillé
@@ -974,21 +1001,23 @@ async function demarrerObservatoire() {
       if(!chartSim){ chartSim=echarts.init(document.getElementById('mapsim')); chartSim.on('click',p=>{const g=COUNTRY_LEG[p.name]; if(g){SIM.cur=g; saveSim(); renderSim();}}); window.addEventListener('resize',()=>chartSim&&chartSim.resize()); }
       chartSim.setOption({
         tooltip:{trigger:'item', confine:true, backgroundColor:'rgba(24,33,45,.9)', borderWidth:0, padding:[8,11], extraCssText:'border-radius:10px;', textStyle:{color:'#fff',fontSize:12,fontFamily:'Inter'},
-          formatter:p=>{const g=COUNTRY_LEG[p.name]; if(!g) return p.name; const r=all[g]; return `<b>${ORD(g)} circonscription</b> · ${p.name}<br>Simulation : ${r.wcand?r.wcand.n+' – ':''}${SNAME[r.winner]}`;}},
+          formatter:p=>{const g=COUNTRY_LEG[p.name]; if(!g) return p.name; const r=all[g]; return `<b>${ORD(g)} circonscription</b> · ${p.name}<br>${r.official?'Résultat officiel 2024':'Simulation'} : ${r.wcand?r.wcand.n+' – ':''}${SNAME[r.winner]}`;}},
         geo:{map:'world', roam:true, center:[20,22], zoom:1.1, scaleLimit:{min:1,max:10}, itemStyle:{areaColor:'#f1f4f8', borderColor:'#ffffff', borderWidth:.5}, emphasis:{label:{show:false}}, label:{show:false},
           regions: legRegions(g=>({area:SCOL(all[g].winner), op: SIM.cur===g?0.98:0.6}))},
         series: legLayers({w:1.2})
       }, true);
       const used=[...new Set(Object.values(all).map(r=>r.winner))];
-      document.getElementById('legendsim').innerHTML = used.map(b=>`<span><span class="sq" style="background:${SCOL(b)}"></span>${SNAME[b]}</span>`).join('')+'<span class="hint">Siège simulé, et non résultat réel. Cliquez sur une circonscription pour la modifier.</span>';
+      document.getElementById('legendsim').innerHTML = used.map(b=>`<span><span class="sq" style="background:${SCOL(b)}"></span>${SNAME[b]}</span>`).join('')+`<span class="hint">${Object.values(all).every(r=>r.official)?'Résultats officiels 2024 (scénario de référence).':'Siège simulé, et non résultat réel.'} Cliquez sur une circonscription pour la modifier.</span>`;
     }
+    // désistements et reports s'appliquent à toutes les circonscriptions : elles passent en simulation
+    function simAllMod(){ Object.values(SIM.circ).forEach(c=>c.hist=false); }
     function renderHyp(){
       const blocs=['G',...SB].filter(b=> SIM.mode==='simple' ? SBS.includes(b) : b!=='G');
       document.getElementById('simDesist').innerHTML = '<div class="small" style="margin:8px 0 4px">Se désiste s\'il est 3e ou au-delà :</div><div class="chips">'+blocs.map(b=>`<label class="chip"><input type="checkbox" data-b="${b}" ${SIM.des[b]?'checked':''}> <span class="sw" style="background:${SCOL(b)}"></span>${SNAME[b].split(' (')[0]}</label>`).join('')+'</div>';
-      document.querySelectorAll('#simDesist input').forEach(i=>i.addEventListener('change',()=>{SIM.des[i.dataset.b]=i.checked; saveSim(); renderSimResults();}));
+      document.querySelectorAll('#simDesist input').forEach(i=>i.addEventListener('change',()=>{SIM.des[i.dataset.b]=i.checked; simAllMod(); saveSim(); renderSim();}));
       document.getElementById('simReports').innerHTML = `<thead><tr><th>Voix de ↓ vers →</th>${blocs.map(b=>`<th class="num"><span class="sw" style="background:${SCOL(b)}"></span>${SNAME[b].split(' (')[0]}</th>`).join('')}</tr></thead><tbody>`+
         blocs.map(f=>`<tr><td><span class="sw" style="background:${SCOL(f)}"></span>${SNAME[f].split(' (')[0]}</td>${blocs.map(t=>f===t?'<td class="num small">—</td>':`<td class="num"><input type="number" min="0" max="100" step="1" value="${SIM.rep[f][t]}" data-f="${f}" data-t="${t}" class="repin" ${SIM.mode==='simple'?'disabled':''}> %</td>`).join('')}</tr>`).join('')+'</tbody>';
-      document.querySelectorAll('#simReports input').forEach(i=>i.addEventListener('change',()=>{SIM.rep[i.dataset.f][i.dataset.t]=Math.max(0,Math.min(100,+i.value||0)); saveSim(); renderSimResults();}));
+      document.querySelectorAll('#simReports input').forEach(i=>i.addEventListener('change',()=>{SIM.rep[i.dataset.f][i.dataset.t]=Math.max(0,Math.min(100,+i.value||0)); simAllMod(); saveSim(); renderSim();}));
     }
     function renderCompare(){
       const names=Object.keys(SAVED);
@@ -1289,7 +1318,7 @@ async function demarrerObservatoire() {
         k: L22 ? legKpis(L22).slice(0,4).concat([[String(L22.filter(d=>d.partielle).length),"élections annulées puis rejouées"]]) : []}),
       leg24:()=>({t:"Législatives 2024", p:"Résultats officiels des législatives anticipées de juin-juillet 2024 : carte par tour, voix des candidats et comparaison avec le vote consulaire de 2026.", k:legKpis(L24)}),
       cfde:()=>({t:"Élections des conseillers des Français de l'étranger 2026", p:"Résultats des élections des conseillers des Français de l'étranger de mai 2026, couleur politique des listes et rapports de force par circonscription législative.", k:KPI_CFDE}),
-      sim:()=>({t:"Simulateur législatif 2027", p:"Simulation des 11 sièges à partir du 1er tour 2024 : modifiez scores, participation, désistements et reports. Les résultats sont des hypothèses, pas des prévisions.",
+      sim:()=>({t:"Simulateur législatif 2027", p:"Simulation des 11 sièges à partir des résultats officiels de 2024 : modifiez scores, participation, désistements et reports. Les résultats sont des hypothèses, pas des prévisions.",
         k:[["11","sièges à pourvoir"],["2024","1er tour, point de départ"],["12,5 %","des inscrits pour le 2nd tour"],["50 % + 25 %","exprimés et inscrits : élu au 1er tour"]]}),
       'rep-cfde':()=>({t:"Conseillers des Français de l'étranger", p:"Élus pour six ans au suffrage universel direct dans 130 circonscriptions consulaires, ils siègent aux conseils consulaires, élisent les conseillers à l'AFE et votent aux sénatoriales.",
         k: RCF ? [[fmt(CF.length),"conseillers élus en 2026"],["130","circonscriptions consulaires"],[String(CF.filter(r=>r.pres).length),"présidents de conseil identifiés"],[String(CF.filter(r=>r.afe).length),"également conseillers à l'AFE"]] : []}),
