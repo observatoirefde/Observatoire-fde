@@ -1,0 +1,69 @@
+# Observatoire FDE : consignes pour Claude
+
+Site public de veille électorale et parlementaire sur les Français établis hors de France.
+En ligne : https://observatoirefde.github.io/Observatoire-fde/ (GitHub Pages, branche `main`, racine du dépôt).
+
+## Règles impératives
+
+- **Ne rien inventer** : ni chiffre, ni élu, ni affiliation politique, ni compte de réseau social, ni publication, ni photo. Une information non vérifiable reste vide et est signalée « à vérifier ».
+- **Exactitude juridique et institutionnelle** : ton institutionnel, pédagogique et concis. Citer les sources (Constitution, code électoral, loi n° 2013-659 modifiée, MEAE, Assemblée nationale, Sénat, AFE).
+- **Ne pas casser l'existant** : modifier uniquement ce qui est demandé, conserver données, cartes, tableaux et fonctionnalités des autres rubriques.
+- **Coût nul** : aucun service payant, aucune clé dans le code public, aucune aspiration de pages (scraping). API officielles uniquement.
+- **Charte graphique** : thème « verre dépoli » (`.glass`), polices Manrope (titres) et Inter (texte), couleurs de blocs politiques en variables CSS (`--LFI`, `--GAU`, `--ECO`, `--ENS`, `--ASFE`, `--LR`, `--ED`, `--IND`), points de rupture 1180 px et 640 px, `prefers-reduced-motion` respecté.
+- **Langue** : interface, commentaires et messages en français.
+
+## Mise à jour du site par l'éditeur (important)
+
+L'éditeur n'utilise pas Git en ligne de commande. Il dépose les fichiers sur GitHub via **« Add file » → « Upload files »** (ou le crayon « Edit »). Cette session Claude n'a généralement **qu'un accès en lecture** au dépôt : ne pas tenter de pousser.
+
+Pour livrer une modification :
+1. Partir de la version en ligne (`git fetch origin main` puis travailler sur `FETCH_HEAD`), jamais d'une copie ancienne.
+2. Modifier le **moins de fichiers possible** ; préférer un fichier de données (JSON) au code quand un contenu doit rester éditable.
+3. Lancer les tests et vérifier dans un navigateur (Playwright, sur ordinateur et mobile).
+4. Livrer une **archive .zip sans dossier caché** (le Mac de l'éditeur n'affiche pas `.github`) : fichiers à la racine à glisser depuis la page d'accueil du dépôt ; fichiers de `.github/workflows/` à déposer après avoir ouvert `github.com/observatoirefde/Observatoire-fde/tree/main/.github/workflows`.
+5. Indiquer précisément où déposer chaque fichier, puis revérifier le dépôt en ligne après dépôt (`git fetch`, comparaison des fichiers, validation YAML des workflows).
+
+Ne pas modifier `index.html` à la main sans nécessité : il pèse 1,5 Mo (données intégrées). Préférer une insertion dynamique depuis `app.js`.
+
+## Architecture
+
+Site statique sans compilation : HTML, CSS et JavaScript, bibliothèques par CDN (ECharts 4.9, D3 7).
+
+| Fichier | Rôle |
+|---|---|
+| `index.html` | Structure des vues (`<div id="v-…" class="view">`) |
+| `app.js` | Application principale : navigation, cartes, tableaux, annuaires, simulateur, fiches, hémicycle AFE |
+| `style.css` | Présentation (sections commentées, ajouts en fin de fichier) |
+| `veille-bluesky.js` | Lecture des publications Bluesky, partagée entre le site et le collecteur |
+| `veille.js` | Rubrique « Activité des parlementaires » : sous-rubrique « Réseaux sociaux » (fil, filtres, fiches) |
+| `suivi-legislatif-fde.html`, `legislatif-data.json`, `scripts/refresh_legislatif.py` | Sous-rubrique « Activité législative » (voir `LISEZMOI-suivi-legislatif.md`) |
+| `collecteur/bluesky-liste.mjs`, `collecteur/instagram.mjs` | Collecteurs automatiques (Node 20, sans dépendance) |
+| `tests/*.test.mjs` | Tests : `node tests/veille.test.mjs && node tests/collecteur.test.mjs && node tests/instagram.test.mjs` |
+| `netlify.toml`, `README.txt`, `Dossier` | Héritages d'un ancien déploiement Netlify ; `Dossier` est un fichier JavaScript isolé, non chargé par le site |
+
+Navigation (`app.js`, objet `NAV`) : un onglet principal par rubrique, des sous-onglets par section ; route = `#clé` (`home`, `leg22`, `leg24`, `cfde`, `sim`, `rep-cfde`, `cafe`, `dep`, `sen`, `veille`, `legislatif`). `showTab(v)` affiche la vue et appelle son rendu ; `HERO` définit le bandeau d'en-tête ; `openFiche(type, id)` ouvre la fenêtre de fiche.
+
+Rubrique « Élections » : textes de présentation des scrutins dans `data/elections-presentations.json` (modifiables sans code).
+
+## Données (`data/`)
+
+- `consulaires-2026.json` : résultats CFDE 2026 (130 circonscriptions, listes, voix, sièges ; bloc politique `b` attribué par l'Observatoire, avec indice de confiance).
+- `cfde-2026.json` : 433 CFDE élus, liste d'élection, présidence, lien AFE (`afe`).
+- `cafe-2026.json` : 90 conseillers à l'AFE, groupes, commissions (annuaire officiel de l'AFE ; pas de photos).
+- `deputes-2026.json`, `senateurs-2026.json` : 11 députés et 12 sénateurs ; portraits dans `assets/deputes/` et `assets/senateurs/`.
+- `legislatives-2022.json`, `legislatives-2024.json` : résultats officiels.
+- Ordre gauche-droite des blocs : `LFI, GAU, ECO, ENS, ASFE, LR, ED, IND` (constante `ORDER` dans `app.js`). Les groupes de l'AFE n'ont pas d'étiquette partisane officielle : leur ordre est déduit des listes CFDE de leurs membres et présenté comme indicatif.
+
+## Veille des réseaux sociaux
+
+- Registre des comptes : `data/veille/comptes.json`, clé = identifiant AN (`PA…`) ou Sénat. Champs `verification` (`verifie` / `a_verifier`), `collecte`, `source`. Réglages : `data/veille/config.json`.
+- **Bluesky** : la liste de référence de l'éditeur (`config.json → bluesky.liste`) est la source. Workflow `.github/workflows/veille-bluesky.yml` toutes les 30 minutes ; `getList`, `getListFeed` puis `getAuthorFeed` par membre ; historique mensuel dans `data/veille/bluesky/`.
+- **Instagram** : API officielle Business Discovery de Meta (comptes professionnels uniquement). Workflow `.github/workflows/veille-instagram.yml`, **deux passages par jour seulement (8 h et 19 h, heure de Paris)** : un rythme horaire a déclenché un blocage de sécurité de Meta. Secret GitHub `IG_TOKEN` (jeton de page, sans expiration) ; `instagram.ig_user_id` dans `config.json`. Historique dans `data/veille/instagram/` ; récapitulatif en commentaire de l'issue « Veille Instagram : récapitulatifs ». Comptes personnels non lisibles (`nathcog`, `fredericpetitan`, `sbg_senat` au 22/11/2026).
+- **LinkedIn** : aucune API ; sélection manuelle dans `data/veille/selection.json`. **X** : API payante, non activée (liens seulement). **Facebook** : liens seulement.
+- Les fichiers `data/veille/bluesky/` et `data/veille/instagram/` sont réécrits par les workflows : ne jamais les livrer dans une archive.
+
+## Pièges connus
+
+- Les workflows YAML doivent être valides : un collage partiel (premier `#` perdu, ancien contenu restant) les désactive silencieusement (la tâche s'affiche alors sous son chemin de fichier dans l'onglet Actions).
+- Les tests Instagram sont lancés avant chaque collecte : `collecteur/instagram.mjs` et `tests/instagram.test.mjs` doivent être livrés ensemble quand l'un change.
+- Le fichier `LISEZMOI-suivi-legislatif.md` mentionne un workflow « Actualiser le suivi législatif FDE » qui n'est pas présent dans `.github/workflows/` (au 22/11/2026).
