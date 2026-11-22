@@ -14,14 +14,16 @@ En ligne : https://observatoirefde.github.io/Observatoire-fde/ (GitHub Pages, br
 
 ## Mise à jour du site par l'éditeur (important)
 
-L'éditeur n'utilise pas Git en ligne de commande. Il dépose les fichiers sur GitHub via **« Add file » → « Upload files »** (ou le crayon « Edit »). Cette session Claude n'a généralement **qu'un accès en lecture** au dépôt : ne pas tenter de pousser.
+L'éditeur n'utilise pas Git en ligne de commande. **Depuis le 22/11/2026, il souhaite seulement accepter les changements, sans rien déposer ni glisser lui-même** : livrer par **demande de fusion (pull request)**, et non plus par archive .zip.
 
 Pour livrer une modification :
-1. Partir de la version en ligne (`git fetch origin main` puis travailler sur `FETCH_HEAD`), jamais d'une copie ancienne.
+1. Partir de la version en ligne (`git fetch origin main`, puis créer ou recréer la branche de travail sur `FETCH_HEAD`), jamais d'une copie ancienne.
 2. Modifier le **moins de fichiers possible** ; préférer un fichier de données (JSON) au code quand un contenu doit rester éditable.
 3. Lancer les tests et vérifier dans un navigateur (Playwright, sur ordinateur et mobile).
-4. Livrer une **archive .zip sans dossier caché** (le Mac de l'éditeur n'affiche pas `.github`) : fichiers à la racine à glisser depuis la page d'accueil du dépôt ; fichiers de `.github/workflows/` à déposer après avoir ouvert `github.com/observatoirefde/Observatoire-fde/tree/main/.github/workflows`.
-5. Indiquer précisément où déposer chaque fichier, puis revérifier le dépôt en ligne après dépôt (`git fetch`, comparaison des fichiers, validation YAML des workflows).
+4. Valider (commit) sur la branche de travail `claude/…` de la session, la pousser, puis **ouvrir une demande de fusion vers `main`** avec un résumé clair en français : ce qui change, pourquoi, fichiers modifiés et vérifications faites. Ne jamais pousser directement sur `main` ni fusionner soi-même : l'éditeur relit et clique sur « Merge pull request ».
+5. Donner le lien de la demande de fusion à l'éditeur ; après fusion, revérifier le dépôt en ligne (`git fetch`, comparaison des fichiers, validation YAML des workflows).
+
+Ne jamais inclure dans une demande de fusion les fichiers réécrits par les workflows (`data/veille/bluesky/`, `data/veille/instagram/`).
 
 Ne pas modifier `index.html` à la main sans nécessité : il pèse 1,5 Mo (données intégrées). Préférer une insertion dynamique depuis `app.js`.
 
