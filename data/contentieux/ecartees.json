@@ -1,0 +1,4 @@
+{
+ "note": "Décisions repérées par la veille automatique puis écartées après examen (hors sujet ou hors périmètre). Elles ne sont plus proposées. Champs : numero, date, motif, le (date de l'examen).",
+ "ecartees": []
+}
