@@ -389,7 +389,7 @@ async function demarrerObservatoire() {
       elections:{label:'Élections', items:[
         {k:'leg22', l:'Législatives 2022'},
         {k:'leg24', l:'Législatives 2024'},
-        {k:'cfde',  l:'Consulaires 2026'},
+        {k:'cfde',  l:'Élections des conseillers des Français de l\'étranger 2026', short:'CFDE 2026'},
         {k:'sim',   l:'Simulateur 2027'}]},
       representants:{label:'Les représentants des Français de l\'étranger', items:[
         {k:'rep-cfde', l:'Conseillers des Français de l\'étranger (CFDE)', short:'CFDE'},
@@ -400,6 +400,21 @@ async function demarrerObservatoire() {
         {k:'veille', l:'Réseaux sociaux'},
         {k:'legislatif', l:'Activité législative'}]}
     };
+    // ---------- Élections : présentation de chaque scrutin (data/elections-presentations.json) ----------
+    let ELEC_INTRO = null;
+    function renderElecIntro(v){
+      const d = ELEC_INTRO && ELEC_INTRO[v], view = document.getElementById('v-'+v);
+      if(!d || !view || view.querySelector(':scope > .elec-intro')) return;
+      const e = s => String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      view.insertAdjacentHTML('afterbegin', `<section class="glass elec-intro" aria-labelledby="elecIntro-${e(v)}">
+        <div class="elec-intro-eyebrow">Présentation du scrutin</div>
+        <h3 id="elecIntro-${e(v)}">${e(d.titre)}</h3>
+        <p>${e(d.texte)}</p>
+        <dl class="elec-facts">${(d.faits||[]).map(f=>`<div><dt>${e(f[0])}</dt><dd>${e(f[1])}${f[2]?`<small>${e(f[2])}</small>`:''}</dd></div>`).join('')}</dl>
+        ${d.sources?`<div class="elec-src">${e(d.sources)}</div>`:''}
+      </section>`);
+    }
+    fetch('./data/elections-presentations.json').then(r=>r.ok?r.json():null).then(j=>{ ELEC_INTRO = j; if(j && j[CUR_ROUTE]) renderElecIntro(CUR_ROUTE); }).catch(()=>{});
     const ROUTE = {}; Object.entries(NAV).forEach(([r,o])=>o.items.forEach(it=>ROUTE[it.k]=Object.assign({r},it)));
     ROUTE['veille-comptes']={r:'veille',k:'veille-comptes',l:'Parlementaires et comptes'};
     const VIEWS_ALL = ['home','leg22','cfde','leg24','scen','dep','sim','rep-cfde','cafe','sen','veille','veille-comptes','legislatif','soon'];
@@ -422,6 +437,7 @@ async function demarrerObservatoire() {
       document.getElementById('v-soon').classList.remove('view'); void document.getElementById('v-soon').offsetWidth; document.getElementById('v-soon').classList.add('view');
       if(rt.soon){ document.getElementById('soonTitle').textContent = rt.l; document.getElementById('soonRub').textContent = NAV[rt.r].label; }
       try{ history.replaceState(null,'','#'+v); }catch(e){}
+      if(rt.r==='elections') renderElecIntro(v);
       if(v==='leg22'){ renderL22(); renderCmp2224(); setTimeout(()=>{renderMap22(); chart22&&chart22.resize();},0);}
       else if(v==='leg24'){ renderL24(); renderCmp24(); setTimeout(()=>{renderMap24(); chart24.resize();},0);}
       else if(v==='dep'){ setTimeout(()=>{ renderDep(); chartDep&&chartDep.resize(); },0); }
@@ -1208,7 +1224,7 @@ async function demarrerObservatoire() {
       leg22:()=>({t:"Législatives 2022", p:"Résultats officiels des deux tours de juin 2022 dans les 11 circonscriptions des Français de l'étranger : carte, voix par candidat et comparaison avec 2024.",
         k: L22 ? legKpis(L22).slice(0,4).concat([[String(L22.filter(d=>d.partielle).length),"élections annulées puis rejouées"]]) : []}),
       leg24:()=>({t:"Législatives 2024", p:"Résultats officiels des législatives anticipées de juin-juillet 2024 : carte par tour, voix des candidats et comparaison avec le vote consulaire de 2026.", k:legKpis(L24)}),
-      cfde:()=>({t:"Consulaires 2026", p:"Résultats des élections des conseillers des Français de l'étranger de mai 2026, couleur politique des listes et rapports de force par circonscription législative.", k:KPI_CFDE}),
+      cfde:()=>({t:"Élections des conseillers des Français de l'étranger 2026", p:"Résultats des élections des conseillers des Français de l'étranger de mai 2026, couleur politique des listes et rapports de force par circonscription législative.", k:KPI_CFDE}),
       sim:()=>({t:"Simulateur législatif 2027", p:"Simulation des 11 sièges à partir du 1er tour 2024 : modifiez scores, participation, désistements et reports. Les résultats sont des hypothèses, pas des prévisions.",
         k:[["11","sièges à pourvoir"],["2024","1er tour, point de départ"],["12,5 %","des inscrits pour le 2nd tour"],["50 % + 25 %","exprimés et inscrits : élu au 1er tour"]]}),
       'rep-cfde':()=>({t:"Conseillers des Français de l'étranger", p:"Élus pour six ans au suffrage universel direct dans 130 circonscriptions consulaires, ils siègent aux conseils consulaires, élisent les conseillers à l'AFE et votent aux sénatoriales.",

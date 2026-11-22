@@ -1,0 +1,111 @@
+{
+ "note": "Textes de présentation affichés en haut de chaque section de la rubrique « Élections ». Pour modifier un texte, éditez ce fichier (aucun code à changer). Clés : leg22, leg24, cfde, sim. Champs : titre, texte, faits (liste de [intitulé, valeur, précision facultative]), sources.",
+ "leg22": {
+  "titre": "Les élections législatives de 2022",
+  "texte": "Les élections législatives désignent les 577 députés de l'Assemblée nationale, dont 11 élus par les Français établis hors de France dans des circonscriptions qui leur sont propres depuis 2012. Les députés votent la loi, contrôlent l'action du Gouvernement et évaluent les politiques publiques. Le scrutin de juin 2022 était un renouvellement ordinaire de l'Assemblée ; le Conseil constitutionnel ayant annulé l'élection dans les 2e, 8e et 9e circonscriptions, des élections partielles y ont eu lieu en avril 2023.",
+  "faits": [
+   [
+    "Sièges à pourvoir",
+    "11 députés",
+    "sur les 577 membres de l'Assemblée nationale"
+   ],
+   [
+    "Durée du mandat",
+    "5 ans",
+    "sauf dissolution de l'Assemblée nationale"
+   ],
+   [
+    "Mode de scrutin",
+    "Uninominal majoritaire à deux tours",
+    "Élu au 1er tour : majorité absolue des suffrages exprimés et au moins 25 % des inscrits. Sinon, 2nd tour entre les candidats ayant obtenu au moins 12,5 % des inscrits (au minimum les deux premiers) ; la majorité relative suffit."
+   ],
+   [
+    "Modalités de vote",
+    "À l'urne, par correspondance, par internet ou par procuration",
+    ""
+   ]
+  ],
+  "sources": "Sources : Constitution (articles 12 et 24) ; code électoral (articles L. 123 à L. 126 et L.O. 121)."
+ },
+ "leg24": {
+  "titre": "Les élections législatives anticipées de 2024",
+  "texte": "Ces élections ont été organisées les 30 juin et 7 juillet 2024, à la suite de la dissolution de l'Assemblée nationale prononcée par le Président de la République le 9 juin 2024 (article 12 de la Constitution). Elles ont désigné les 577 députés, dont les 11 députés des Français établis hors de France, qui votent la loi, contrôlent l'action du Gouvernement et évaluent les politiques publiques. Une élection partielle a eu lieu en 2025 dans la 5e circonscription.",
+  "faits": [
+   [
+    "Sièges à pourvoir",
+    "11 députés",
+    "sur les 577 membres de l'Assemblée nationale"
+   ],
+   [
+    "Durée du mandat",
+    "5 ans",
+    "jusqu'en 2029 en principe, sauf nouvelle dissolution"
+   ],
+   [
+    "Mode de scrutin",
+    "Uninominal majoritaire à deux tours",
+    "Élu au 1er tour : majorité absolue des suffrages exprimés et au moins 25 % des inscrits. Sinon, 2nd tour entre les candidats ayant obtenu au moins 12,5 % des inscrits (au minimum les deux premiers) ; la majorité relative suffit."
+   ],
+   [
+    "Modalités de vote",
+    "À l'urne, par correspondance, par internet ou par procuration",
+    ""
+   ]
+  ],
+  "sources": "Sources : Constitution (articles 12 et 24) ; code électoral (articles L. 123 à L. 126 et L.O. 121)."
+ },
+ "cfde": {
+  "titre": "Les élections des conseillers des Français de l'étranger 2026",
+  "texte": "Organisées les 30 et 31 mai 2026 au suffrage universel direct, ces élections désignent les conseillers des Français de l'étranger (appelés conseillers consulaires avant la réforme de 2019) dans 130 circonscriptions consulaires. Élus de proximité, ils siègent au conseil consulaire, qu'ils président depuis 2021 et qui rend des avis sur les questions intéressant les Français de la circonscription, notamment la protection et l'action sociales, les bourses scolaires, l'enseignement, l'emploi et la sécurité. Ils élisent parmi eux les conseillers à l'Assemblée des Français de l'étranger et sont membres, avec les délégués consulaires, du collège électoral des sénateurs représentant les Français établis hors de France.",
+  "faits": [
+   [
+    "Sièges à pourvoir",
+    "433 conseillers",
+    "et 77 délégués consulaires, élus en même temps pour compléter le collège électoral sénatorial"
+   ],
+   [
+    "Durée du mandat",
+    "6 ans",
+    ""
+   ],
+   [
+    "Mode de scrutin",
+    "Majoritaire ou proportionnel, à un tour",
+    "Un siège à pourvoir : scrutin uninominal majoritaire. Deux sièges ou plus : scrutin de liste à la représentation proportionnelle."
+   ],
+   [
+    "Modalités de vote",
+    "À l'urne, par internet ou par procuration",
+    ""
+   ]
+  ],
+  "sources": "Sources : loi n° 2013-659 du 22 juillet 2013 relative à la représentation des Français établis hors de France, modifiée par la loi n° 2019-1461 du 27 décembre 2019 ; ministère de l'Europe et des Affaires étrangères."
+ },
+ "sim": {
+  "titre": "Les prochaines élections législatives : simulation",
+  "texte": "Le simulateur applique aux 11 circonscriptions des Français établis hors de France les règles des élections législatives, à partir des résultats du 1er tour de 2024. Le mandat des députés élus en juillet 2024 expire en principe en 2029 ; des élections anticipées peuvent toutefois avoir lieu en cas de dissolution de l'Assemblée nationale (article 12 de la Constitution). L'hypothèse d'un scrutin en 2027 retenue ici relève de la simulation, et non de la prévision.",
+  "faits": [
+   [
+    "Sièges à pourvoir",
+    "11 députés",
+    "sur les 577 membres de l'Assemblée nationale"
+   ],
+   [
+    "Durée du mandat",
+    "5 ans",
+    "sauf dissolution de l'Assemblée nationale"
+   ],
+   [
+    "Mode de scrutin",
+    "Uninominal majoritaire à deux tours",
+    "Élu au 1er tour : majorité absolue des suffrages exprimés et au moins 25 % des inscrits. Sinon, 2nd tour entre les candidats ayant obtenu au moins 12,5 % des inscrits (au minimum les deux premiers) ; la majorité relative suffit."
+   ],
+   [
+    "Modalités de vote",
+    "À l'urne, par correspondance, par internet ou par procuration",
+    ""
+   ]
+  ],
+  "sources": "Sources : Constitution (articles 12 et 24) ; code électoral (articles L. 123 à L. 126 et L.O. 121)."
+ }
+}
