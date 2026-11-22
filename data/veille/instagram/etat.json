@@ -1,0 +1,333 @@
+{
+ "version": 1,
+ "comptes": {
+  "amelia_lakrafi": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "amelia_lakrafi",
+   "pid": "PA721004",
+   "nom": "Amélia Lakrafi",
+   "actif": true,
+   "media_count": 1062,
+   "nom_instagram": "Amélia Lakrafi 🇫🇷",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 25
+  },
+  "anne_genetet": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": false,
+   "username": "Anne_Genetet",
+   "pid": "PA721024",
+   "nom": "Anne Genetet",
+   "actif": true,
+   "statut": "introuvable",
+   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
+   "derniere_erreur_le": "2026-11-22T05:40:26.810Z",
+   "publications": 0
+  },
+  "nathcog": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": false,
+   "username": "nathcog",
+   "pid": "PA795402",
+   "nom": "Nathalie Coggia",
+   "actif": true,
+   "statut": "introuvable",
+   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
+   "derniere_erreur_le": "2026-11-22T05:40:26.810Z",
+   "publications": 0
+  },
+  "marcferracci": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "marcferracci",
+   "pid": "PA795884",
+   "nom": "Marc Ferracci",
+   "actif": true,
+   "media_count": 1636,
+   "nom_instagram": "Marc Ferracci",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 100
+  },
+  "vincent_caure": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "vincent_caure",
+   "pid": "PA842311",
+   "nom": "Vincent Caure",
+   "actif": true,
+   "media_count": 170,
+   "nom_instagram": "Vincent Caure",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 50
+  },
+  "paanglade": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "paanglade",
+   "pid": "PA721158",
+   "nom": "Pieyre-Alexandre Anglade",
+   "actif": true,
+   "media_count": 655,
+   "nom_instagram": "Pieyre-Alexandre Anglade",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 25
+  },
+  "fredericpetitan": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": false,
+   "username": "fredericpetitan",
+   "pid": "PA721182",
+   "nom": "Frédéric Petit",
+   "actif": true,
+   "statut": "introuvable",
+   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
+   "derniere_erreur_le": "2026-11-22T05:40:26.810Z",
+   "publications": 0
+  },
+  "cjweissberg": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "cjweissberg",
+   "pid": "PA795326",
+   "nom": "Christopher Weissberg",
+   "actif": true,
+   "media_count": 235,
+   "nom_instagram": "Christopher Weissberg",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 50
+  },
+  "carolineyadan": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "carolineyadan",
+   "pid": "PA795046",
+   "nom": "Caroline Yadan",
+   "actif": true,
+   "media_count": 1323,
+   "nom_instagram": "Caroline Yadan",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 50
+  },
+  "hconwaymouret": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "hconwaymouret",
+   "pid": "conway_mouret_helene11027h",
+   "nom": "Hélène Conway-Mouret",
+   "actif": true,
+   "media_count": 578,
+   "nom_instagram": "Hélène Conway-Mouret",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 50
+  },
+  "mathilde_ollivier": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "mathilde_ollivier",
+   "pid": "ollivier_mathilde21037d",
+   "nom": "Mathilde Ollivier",
+   "actif": true,
+   "media_count": 546,
+   "nom_instagram": "Mathilde Ollivier",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 75
+  },
+  "sbg_senat": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": false,
+   "username": "sbg_senat",
+   "pid": "briante_guillemont_sophie21404g",
+   "nom": "Sophie Briante Guillemont",
+   "actif": true,
+   "statut": "introuvable",
+   "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
+   "derniere_erreur_le": "2026-11-22T05:40:26.810Z",
+   "publications": 0
+  },
+  "oliviercadic": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "oliviercadic",
+   "pid": "cadic_olivier14255u",
+   "nom": "Olivier Cadic",
+   "actif": true,
+   "media_count": 1767,
+   "nom_instagram": "Olivier Cadic",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 75
+  },
+  "yanchantrel_": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "yanchantrel_",
+   "pid": "chantrel_yan20264j",
+   "nom": "Yan Chantrel",
+   "actif": true,
+   "media_count": 533,
+   "nom_instagram": "Yan Chantrel",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 50
+  },
+  "marie_ange_rousselot": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "marie_ange_rousselot",
+   "pid": "rousselot_marie_ange21436q",
+   "nom": "Marie-Ange Rousselot",
+   "actif": true,
+   "media_count": 272,
+   "nom_instagram": "Marie-Ange Rousselot",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 25
+  },
+  "_melanie_vogel_": {
+   "ajoute_le": "2026-11-22T05:40:26.810Z",
+   "historique_fait": true,
+   "username": "_melanie_vogel_",
+   "pid": "vogel_melanie20266l",
+   "nom": "Mélanie Vogel",
+   "actif": true,
+   "media_count": 989,
+   "nom_instagram": "Mélanie Vogel",
+   "statut": "ok",
+   "erreur": null,
+   "derniere_collecte": "2026-11-22T05:40:26.810Z",
+   "publications": 50
+  }
+ },
+ "mois": {
+  "2026-11": 137,
+  "2026-10": 185,
+  "2026-09": 115,
+  "2026-08": 24,
+  "2026-07": 110,
+  "2026-06": 31,
+  "2026-05": 15,
+  "2026-04": 1,
+  "2026-03": 5,
+  "2026-02": 2
+ },
+ "journal": [
+  {
+   "date": "2026-11-22T05:40:26.810Z",
+   "ok": true,
+   "nouveaux_comptes": [
+    {
+     "username": "amelia_lakrafi",
+     "nom": "Amélia Lakrafi",
+     "nom_instagram": "Amélia Lakrafi 🇫🇷",
+     "publications": 25
+    },
+    {
+     "username": "marcferracci",
+     "nom": "Marc Ferracci",
+     "nom_instagram": "Marc Ferracci",
+     "publications": 100
+    },
+    {
+     "username": "vincent_caure",
+     "nom": "Vincent Caure",
+     "nom_instagram": "Vincent Caure",
+     "publications": 50
+    },
+    {
+     "username": "paanglade",
+     "nom": "Pieyre-Alexandre Anglade",
+     "nom_instagram": "Pieyre-Alexandre Anglade",
+     "publications": 25
+    },
+    {
+     "username": "cjweissberg",
+     "nom": "Christopher Weissberg",
+     "nom_instagram": "Christopher Weissberg",
+     "publications": 50
+    },
+    {
+     "username": "carolineyadan",
+     "nom": "Caroline Yadan",
+     "nom_instagram": "Caroline Yadan",
+     "publications": 50
+    },
+    {
+     "username": "hconwaymouret",
+     "nom": "Hélène Conway-Mouret",
+     "nom_instagram": "Hélène Conway-Mouret",
+     "publications": 50
+    },
+    {
+     "username": "mathilde_ollivier",
+     "nom": "Mathilde Ollivier",
+     "nom_instagram": "Mathilde Ollivier",
+     "publications": 75
+    },
+    {
+     "username": "oliviercadic",
+     "nom": "Olivier Cadic",
+     "nom_instagram": "Olivier Cadic",
+     "publications": 75
+    },
+    {
+     "username": "yanchantrel_",
+     "nom": "Yan Chantrel",
+     "nom_instagram": "Yan Chantrel",
+     "publications": 50
+    },
+    {
+     "username": "marie_ange_rousselot",
+     "nom": "Marie-Ange Rousselot",
+     "nom_instagram": "Marie-Ange Rousselot",
+     "publications": 25
+    },
+    {
+     "username": "_melanie_vogel_",
+     "nom": "Mélanie Vogel",
+     "nom_instagram": "Mélanie Vogel",
+     "publications": 50
+    }
+   ],
+   "nouvelles": 625,
+   "mises_a_jour": 0,
+   "supprimees": 0,
+   "comptes_lus": 12,
+   "comptes": 16,
+   "requetes": 29,
+   "erreurs": [
+    "@Anne_Genetet : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
+    "@nathcog : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
+    "@fredericpetitan : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur.",
+    "@sbg_senat : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur."
+   ]
+  }
+ ],
+ "a_recapituler": [],
+ "comptes_a_signaler": [],
+ "dernier_recap_precedent": null,
+ "dernier_recap": "2026-11-22T05:40:26.810Z",
+ "total": 625,
+ "absents": {},
+ "derniere_synchro": "2026-11-22T05:40:26.810Z",
+ "derniere_synchro_reussie": "2026-11-22T05:40:26.810Z"
+}
