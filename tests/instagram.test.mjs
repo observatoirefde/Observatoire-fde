@@ -31,9 +31,9 @@ await t('erreurs : jeton, compte personnel, limite', ()=>{
   assert.ok(analyserErreur(graphErr(4,'Application request limit reached')).global);
   assert.ok(/permission/i.test(analyserErreur(graphErr(10,'Application does not have permission')).message));
 });
-await t('registre : comptes Instagram vérifiés uniquement', ()=>{
-  const reg = {parlementaires:{PA1:{comptes:[{reseau:'instagram', identifiant:'a', verification:'verifie'}, {reseau:'x', identifiant:'b', verification:'verifie'}]}, PA2:{comptes:[{reseau:'instagram', identifiant:'c', verification:'a_verifier'}]}}};
-  assert.deepEqual(comptesSuivis(reg, [{pa:'PA1', prenom:'Jean', nom:'Dupont'}], []), [{pid:'PA1', nom:'Jean Dupont', username:'a'}]);
+await t('registre : comptes Instagram indiqués, vérifiés ou non, sauf collecte désactivée', ()=>{
+  const reg = {parlementaires:{PA1:{comptes:[{reseau:'instagram', identifiant:'a', verification:'verifie'}, {reseau:'x', identifiant:'b', verification:'verifie'}]}, PA2:{comptes:[{reseau:'instagram', identifiant:'@c', verification:'a_verifier'}]}, PA3:{comptes:[{reseau:'instagram', identifiant:'d', verification:'a_verifier', collecte:false}]}}};
+  assert.deepEqual(comptesSuivis(reg, [{pa:'PA1', prenom:'Jean', nom:'Dupont'}], []), [{pid:'PA1', nom:'Jean Dupont', username:'a', verifie:true}, {pid:'PA2', nom:'PA2', username:'c', verifie:false}]);
   const vrai = JSON.parse(fs.readFileSync(new URL('../data/veille/comptes.json', import.meta.url)));
   assert.equal(comptesSuivis(vrai, [], []).length, 16);
 });
