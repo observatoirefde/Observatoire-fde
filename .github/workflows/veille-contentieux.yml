@@ -1,0 +1,81 @@
+# Veille du contentieux électoral des Français de l'étranger (CFDE et conseillers AFE, 2026).
+# Un passage par jour : lit les archives open data des décisions du Conseil d'État
+# depuis mai 2026, repère les décisions relatives à ces élections et met à jour
+# data/contentieux/detections.json (seulement si quelque chose change).
+# Si une nouvelle décision est repérée, ou si la collecte échoue, un commentaire est
+# publié dans l'issue « Veille contentieux : décisions à examiner » (GitHub vous l'envoie par e-mail).
+# Gratuit pour un dépôt public. Aucun secret nécessaire.
+name: Veille contentieux
+
+on:
+  schedule:
+    - cron: '41 4 * * *'        # chaque jour à 4 h 41 UTC (5 h 41 ou 6 h 41 à Paris)
+  workflow_dispatch:            # lancement manuel : onglet « Actions » → « Veille contentieux » → « Run workflow »
+
+permissions:
+  contents: write               # enregistrer les détections
+  issues: write                 # publier l'alerte
+
+concurrency:
+  group: veille-contentieux
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Tests
+        run: node tests/contentieux.test.mjs
+
+      - name: Collecte des décisions du Conseil d'État
+        env:
+          RECAP_FILE: ${{ runner.temp }}/recap.md
+        run: node collecteur/contentieux.mjs
+
+      - name: Enregistrement des détections
+        run: |
+          git config user.name "veille-contentieux[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/contentieux/detections.json
+          if git diff --cached --quiet; then echo "Aucun changement."; exit 0; fi
+          git commit -q -m "Veille contentieux : vérification du $(date -u +'%Y-%m-%d')"
+          for i in 1 2 3 4; do
+            if git pull -q --rebase && git push -q; then exit 0; fi
+            sleep $((i * 10))
+          done
+          echo "Impossible d'enregistrer les données après 4 tentatives." && exit 1
+
+      - name: Alerte (commentaire de l'issue « Veille contentieux »)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RECAP_FILE: ${{ runner.temp }}/recap.md
+          ECHEC: ${{ job.status != 'success' }}
+        run: |
+          if [ "$ECHEC" = "true" ]; then
+            echo "### Veille contentieux du $(TZ=Europe/Paris date +'%d/%m/%Y')" > "$RECAP_FILE"
+            echo "" >> "$RECAP_FILE"
+            echo "> ⚠️ La collecte a échoué ; les données publiées n'ont pas été modifiées. Détails : $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> "$RECAP_FILE"
+          fi
+          if [ ! -s "$RECAP_FILE" ]; then echo "Aucune nouvelle décision : pas d'alerte."; exit 0; fi
+          cat "$RECAP_FILE" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$(gh api "repos/$GITHUB_REPOSITORY" --jq .has_issues)" != "true" ]; then
+            echo "::error::Les issues sont désactivées dans ce dépôt : Settings → General → Features → cochez « Issues »."
+            exit 1
+          fi
+          gh label create veille-contentieux --color 6B7A8F --description "Alertes de la veille du contentieux électoral" 2>/dev/null || true
+          N=$(gh issue list --label veille-contentieux --state open --limit 1 --json number --jq '.[0].number')
+          if [ -z "$N" ]; then
+            BODY="La veille quotidienne du contentieux électoral (CFDE et AFE 2026) ajoute ici un commentaire lorsqu'une nouvelle décision du Conseil d'État est repérée ou lorsque la collecte échoue. Vous recevez chaque commentaire par e-mail tant que vous êtes abonné à cette issue. Ne la fermez pas ; si elle est fermée, une nouvelle sera créée."
+            gh issue create --title "Veille contentieux : décisions à examiner" --label veille-contentieux --assignee "$GITHUB_REPOSITORY_OWNER" --body "$BODY" \
+              || gh issue create --title "Veille contentieux : décisions à examiner" --label veille-contentieux --body "$BODY"
+            N=$(gh issue list --label veille-contentieux --state open --limit 1 --json number --jq '.[0].number')
+          fi
+          gh issue comment "$N" --body-file "$RECAP_FILE"

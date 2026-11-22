@@ -1,0 +1,39 @@
+{
+ "note": "Fichier produit automatiquement par collecteur/contentieux.mjs (workflow « Veille contentieux »). Ne pas modifier à la main : les décisions confirmées vont dans recours.json, les décisions hors sujet dans ecartees.json.",
+ "source": "https://opendata.justice-administrative.fr/DCE/",
+ "derniere_verification": "2026-11-22T21:10:59.104Z",
+ "ecartees_masquees": 0,
+ "archives": {
+  "202605": 469,
+  "202606": 650,
+  "202607": 872,
+  "202608": 217,
+  "202609": 370,
+  "202610": 791,
+  "202611": 391
+ },
+ "avertissements": [],
+ "decisions": [
+  {
+   "numero": "516536",
+   "numeros": [
+    "516536"
+   ],
+   "date": "2026-11-04",
+   "type": "Décision",
+   "solution": "Rejet",
+   "formation": "3ème chambre jugeant seule",
+   "ecli": "ECLI:FR:CECHS:2026:516536.20261104",
+   "scrutin": "CFDE",
+   "circonscriptions": [
+    "Emirats arabes unis, Oman"
+   ],
+   "score": 6,
+   "extrait": "a demandé à ce tribunal de tirer les conséquences des dysfonctionnements qui auraient affecté le déroulement des opérations électorales qui se sont déroulées du 22 au 27 mai 2026 par Internet et le 31 mai à l’urne en vue de l’élection des conseillers des Français de l’étranger dans la circonscription électorale des …",
+   "recours": "cfde-2026-eau-oman",
+   "source": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2026-11-04/516536",
+   "archive": "202611",
+   "premiere_detection": "2026-11-22"
+  }
+ ]
+}

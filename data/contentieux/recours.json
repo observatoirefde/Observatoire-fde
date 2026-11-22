@@ -1,0 +1,29 @@
+{
+ "note": "Inventaire éditorial des recours contre les élections des conseillers des Français de l'étranger (CFDE) et des conseillers à l'Assemblée des Français de l'étranger (AFE) de 2026. Modifié uniquement après vérification sur une source officielle. statut : « En cours » (aucune décision connue à la date verifie_le), « Rejeté », « Annulation », « Réformation », « Désistement », « Non-lieu ». numeros_ce : tous les numéros de dossier du Conseil d'État (recours joints compris). La page n'affiche comme recours confirmés que les entrées de ce fichier.",
+ "inventaire": {
+  "arrete_au": null,
+  "methode": "Décisions publiées par le Conseil d'État (open data), demandes d'information au ministère de l'Europe et des affaires étrangères, annonces publiques des listes et des élus.",
+  "exhaustif": false
+ },
+ "recours": [
+  {
+   "id": "cfde-2026-eau-oman",
+   "scrutin": "CFDE",
+   "circonscription": "Emirats arabes unis, Oman",
+   "date_scrutin": "2026-05-22 au 2026-05-31",
+   "date_depot": "2026-06-04",
+   "juridiction_saisie": "Tribunal administratif de Paris (ordonnance n° 2617339 du 5 juin 2026 transmettant le dossier au Conseil d'État)",
+   "numeros_ce": ["516536"],
+   "ecli": ["ECLI:FR:CECHS:2026:516536.20261104"],
+   "statut": "Rejeté",
+   "date_decision": "2026-11-04",
+   "formation": "3e chambre jugeant seule",
+   "objet": "Protestation de la tête de liste « Agir de A à Z pour nous, Français du monde », regardée comme demandant l'annulation des opérations électorales.",
+   "griefs": ["Ordre de présentation des listes sur le portail de vote différent du tirage au sort (art. R. 28 du code électoral)", "Difficultés d'accès au vote par internet", "Composition des bureaux de vote", "Impossibilité alléguée d'établir des procurations pendant la fermeture des services consulaires"],
+   "consequence": "Protestation rejetée : résultats maintenus.",
+   "source": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2026-11-04/516536",
+   "verification": "verifie",
+   "verifie_le": "2026-11-22"
+  }
+ ]
+}

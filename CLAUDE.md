@@ -40,7 +40,8 @@ Site statique sans compilation : HTML, CSS et JavaScript, bibliothèques par CDN
 | `veille.js` | Rubrique « Activité des parlementaires » : sous-rubrique « Réseaux sociaux » (fil, filtres, fiches) |
 | `suivi-legislatif-fde.html`, `legislatif-data.json`, `scripts/refresh_legislatif.py` | Sous-rubrique « Activité législative » (voir `LISEZMOI-suivi-legislatif.md`) |
 | `collecteur/bluesky-liste.mjs`, `collecteur/instagram.mjs` | Collecteurs automatiques (Node 20, sans dépendance) |
-| `tests/*.test.mjs` | Tests : `node tests/veille.test.mjs && node tests/collecteur.test.mjs && node tests/instagram.test.mjs` |
+| `contentieux.html`, `collecteur/contentieux.mjs`, `data/contentieux/` | Contentieux électoral CFDE et AFE 2026 : **page de test autonome**, non reliée à la navigation (voir section dédiée) |
+| `tests/*.test.mjs` | Tests : `node tests/veille.test.mjs && node tests/collecteur.test.mjs && node tests/instagram.test.mjs && node tests/contentieux.test.mjs` |
 | `netlify.toml`, `README.txt`, `Dossier` | Héritages d'un ancien déploiement Netlify ; `Dossier` est un fichier JavaScript isolé, non chargé par le site |
 
 Navigation (`app.js`, objet `NAV`) : un onglet principal par rubrique, des sous-onglets par section ; route = `#clé` (`home`, `leg22`, `leg24`, `cfde`, `sim`, `rep-cfde`, `cafe`, `dep`, `sen`, `veille`, `legislatif`). `showTab(v)` affiche la vue et appelle son rendu ; `HERO` définit le bandeau d'en-tête ; `openFiche(type, id)` ouvre la fenêtre de fiche.
@@ -63,6 +64,15 @@ Rubrique « Élections » : textes de présentation des scrutins dans `data/elec
 - **Instagram** : API officielle Business Discovery de Meta (comptes professionnels uniquement). Workflow `.github/workflows/veille-instagram.yml`, **deux passages par jour seulement (8 h et 19 h, heure de Paris)** : un rythme horaire a déclenché un blocage de sécurité de Meta. Secret GitHub `IG_TOKEN` (jeton de page, sans expiration) ; `instagram.ig_user_id` dans `config.json`. Historique dans `data/veille/instagram/` ; récapitulatif en commentaire de l'issue « Veille Instagram : récapitulatifs ». Comptes personnels non lisibles (`nathcog`, `fredericpetitan`, `sbg_senat` au 22/11/2026).
 - **LinkedIn** : aucune API ; sélection manuelle dans `data/veille/selection.json`. **X** : API payante, non activée (liens seulement). **Facebook** : liens seulement.
 - Les fichiers `data/veille/bluesky/` et `data/veille/instagram/` sont réécrits par les workflows : ne jamais les livrer dans une archive.
+
+## Contentieux électoral (CFDE et AFE 2026)
+
+- Le Conseil d'État juge ces élections (une protestation déposée au tribunal administratif de Paris lui est transmise : CE, 4 novembre 2026, n° 516536).
+- Source : archives open data `https://opendata.justice-administrative.fr/DCE/AAAA/MM/CE_AAAAMM.zip` (environ 2 Mo par mois). Des décisions sont ajoutées après coup aux archives anciennes : relire toutes les archives depuis mai 2026.
+- Workflow `.github/workflows/veille-contentieux.yml`, **un passage par jour** : tests, collecte, réécriture de `data/contentieux/detections.json` seulement si une donnée change (au moins une fois par semaine), alerte en commentaire de l'issue « Veille contentieux : décisions à examiner ».
+- Fichiers éditoriaux (modifiés par demande de fusion, après vérification sur le texte officiel) : `data/contentieux/recours.json` (seuls recours comptés et affichés comme confirmés) et `data/contentieux/ecartees.json` (décisions hors sujet). `detections.json` est réécrit par le workflow : ne pas le modifier.
+- Détection testée sur les archives 2021-2022 (élections consulaires de 2021) : 17 décisions retrouvées, aucun faux positif.
+- En local, le `fetch` de Node passe par le proxy du conteneur seulement avec `NODE_USE_ENV_PROXY=1` ; `node collecteur/contentieux.mjs --archives dossier` lit des archives déjà téléchargées.
 
 ## Pièges connus
 
