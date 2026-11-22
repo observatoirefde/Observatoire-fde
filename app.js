@@ -390,7 +390,8 @@ async function demarrerObservatoire() {
         {k:'leg22', l:'Législatives 2022'},
         {k:'leg24', l:'Législatives 2024'},
         {k:'cfde',  l:'Élections des conseillers des Français de l\'étranger 2026', short:'CFDE 2026'},
-        {k:'sim',   l:'Simulateur 2027'}]},
+        {k:'sim',   l:'Simulateur 2027'},
+        {k:'contentieux', l:'Contentieux électoral', short:'Contentieux'}]},
       representants:{label:'Les représentants des Français de l\'étranger', items:[
         {k:'rep-cfde', l:'Conseillers des Français de l\'étranger (CFDE)', short:'CFDE'},
         {k:'cafe',     l:'Conseillers à l\'AFE (CAFE)', short:'CAFE'},
@@ -418,7 +419,16 @@ async function demarrerObservatoire() {
     fetch('./data/elections-presentations.json').then(r=>r.ok?r.json():null).then(j=>{ ELEC_INTRO = j; if(j && j[CUR_ROUTE]) renderElecIntro(CUR_ROUTE); }).catch(()=>{});
     const ROUTE = {}; Object.entries(NAV).forEach(([r,o])=>o.items.forEach(it=>ROUTE[it.k]=Object.assign({r},it)));
     ROUTE['veille-comptes']={r:'veille',k:'veille-comptes',l:'Parlementaires et comptes'};
-    const VIEWS_ALL = ['home','leg22','cfde','leg24','scen','dep','sim','rep-cfde','cafe','sen','veille','veille-comptes','legislatif','soon'];
+    // vue « Contentieux électoral » : créée ici pour ne pas alourdir index.html ; contenu rendu par contentieux.js (chargé à la demande)
+    document.getElementById('v-soon').insertAdjacentHTML('beforebegin','<div id="v-contentieux" class="view" hidden></div>');
+    let CT_LOAD=null;
+    function renderContentieux(){
+      const go=()=>window.CONTENTIEUX.render(document.getElementById('v-contentieux'), ()=>{ if(CUR_ROUTE==='contentieux') updateHero('contentieux'); });
+      if(window.CONTENTIEUX){ go(); return; }
+      CT_LOAD = CT_LOAD || new Promise((ok,ko)=>{ const sc=document.createElement('script'); sc.src='./contentieux.js'; sc.onload=ok; sc.onerror=ko; document.head.appendChild(sc); });
+      CT_LOAD.then(go).catch(()=>{ CT_LOAD=null; document.getElementById('v-contentieux').innerHTML='<section class="first"><div class="glass notes">La rubrique n\'a pas pu être chargée. Rechargez la page.</div></section>'; });
+    }
+    const VIEWS_ALL = ['home','leg22','cfde','leg24','scen','dep','sim','contentieux','rep-cfde','cafe','sen','veille','veille-comptes','legislatif','soon'];
     let CUR_ROUTE = 'cfde';
     function renderSubtabs(r){
       const el=document.getElementById('subtabs');
@@ -443,6 +453,7 @@ async function demarrerObservatoire() {
       else if(v==='leg24'){ renderL24(); renderCmp24(); setTimeout(()=>{renderMap24(); chart24.resize();},0);}
       else if(v==='dep'){ setTimeout(()=>{ renderDep(); chartDep&&chartDep.resize(); },0); }
       else if(v==='sim'){ setTimeout(()=>{ renderSim(); chartSim&&chartSim.resize(); },0); }
+      else if(v==='contentieux'){ renderContentieux(); }
       else if(v==='cfde'){ renderProj(); setTimeout(()=>{ if(MAP_DIRTY||!chart) renderMap(MAP_KEEP); chart&&chart.resize(); },0); }
       else if(v==='rep-cfde'||v==='cafe'||v==='sen'){ renderDir(v); }
       else if(v==='legislatif'){ const frame=document.getElementById('legislatifFrame'); if(!frame.getAttribute('src')) frame.src=frame.dataset.src; }
@@ -1320,6 +1331,8 @@ async function demarrerObservatoire() {
       cfde:()=>({t:"Élections des conseillers des Français de l'étranger 2026", p:"Résultats des élections des conseillers des Français de l'étranger de mai 2026, couleur politique des listes et rapports de force par circonscription législative.", k:KPI_CFDE}),
       sim:()=>({t:"Simulateur législatif 2027", p:"Simulation des 11 sièges à partir des résultats officiels de 2024 : modifiez scores, participation, désistements et reports. Les résultats sont des hypothèses, pas des prévisions.",
         k:[["11","sièges à pourvoir"],["2024","1er tour, point de départ"],["12,5 %","des inscrits pour le 2nd tour"],["50 % + 25 %","exprimés et inscrits : élu au 1er tour"]]}),
+      contentieux:()=>({t:"Contentieux électoral", p:"Recours contre les élections de 2026 des conseillers des Français de l'étranger et des conseillers à l'AFE, jugés par le Conseil d'État : recours vérifiés et suivi quotidien des décisions publiées.",
+        k: window.CONTENTIEUX ? CONTENTIEUX.kpis() : []}),
       'rep-cfde':()=>({t:"Conseillers des Français de l'étranger", p:"Élus pour six ans au suffrage universel direct dans 130 circonscriptions consulaires, ils siègent aux conseils consulaires, élisent les conseillers à l'AFE et votent aux sénatoriales.",
         k: RCF ? [[fmt(CF.length),"conseillers élus en 2026"],["130","circonscriptions consulaires"],[String(CF.filter(r=>r.pres).length),"présidents de conseil identifiés"],[String(CF.filter(r=>r.afe).length),"également conseillers à l'AFE"]] : []}),
       cafe:()=>({t:"Conseillers à l'Assemblée des Français de l'étranger", p:"Élus par et parmi les conseillers des Français de l'étranger, ils siègent à l'AFE, qui conseille le Gouvernement sur la situation des Français établis hors de France.",

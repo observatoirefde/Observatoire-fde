@@ -796,3 +796,35 @@ body.is-veille #methode{display:none}
 @media (max-width:900px){ #tabs button[data-r="accueil"],#tabs button[data-r="elections"]{flex:0 0 auto} #tabs button[data-r]:not([data-r="accueil"]):not([data-r="elections"]){flex:1 1 0} #tabs button[data-r]{min-width:0;max-width:none;white-space:normal;line-height:1.2;padding:8px 10px} }
 @media (max-width:640px){ #tabs button[data-r]{padding:8px 6px;font-size:12px;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:anywhere} }
 @media (max-width:380px){ #tabs button[data-r]{padding:8px 4px;font-size:11px} }
+
+/* ---------- Élections → Contentieux électoral (contentieux.js) ---------- */
+#v-contentieux section.ct + section.ct{margin-top:22px}
+.ct-avert{margin:0 0 12px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.55);border-left:3px solid rgba(74,106,140,.45);font-size:12.5px;color:var(--ink2)}
+.ct-list{display:flex;flex-direction:column;gap:10px}
+.ct-card{padding:14px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px}
+.ct-card h4{margin:0;font-size:15px}
+.ct-card p{margin:0;font-size:13px;color:var(--ink2);max-width:none}
+.ct-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#4a6a8c}
+.ct-full{grid-column:1/-1}
+.ct-meta{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;color:var(--ink2)}
+.ct-meta b{font-weight:600;color:var(--ink)}
+.ct-pill{display:inline-block;align-self:start;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.ct-ok{color:#33506f;background:rgba(214,227,241,.9)} .ct-warn{color:#7a4b12;background:rgba(250,236,210,.92)}
+.ct-bad{color:#9b2c3a;background:rgba(246,220,224,.92)} .ct-neu{color:#56606d;background:rgba(230,233,238,.95)}
+.ct-card details{font-size:12.5px;color:var(--ink2)}
+.ct-card summary{cursor:pointer;font-weight:600;color:var(--ink)}
+.ct-card details ul{margin:6px 0 0;padding-left:18px}
+.ct-flag{font-size:12px;font-weight:600;color:#7a4b12;background:rgba(250,236,210,.92);padding:6px 10px;border-radius:10px}
+.ct-det{border-style:dashed}
+.ct-extrait{border-left:3px solid var(--line2);padding-left:10px;font-style:italic}
+.ct-empty{padding:16px;text-align:center;color:var(--muted);font-size:13px;border-radius:14px;background:rgba(255,255,255,.45)}
+.ct-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.ct-box{padding:16px 20px}
+.ct-box h4{margin:0 0 6px;font-size:15px}
+.ct-box .ct-meta{margin:10px 0}
+.ct-tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.ct-tbl th,.ct-tbl td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+.ct-tbl th{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.ct-tbl .num{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:1180px){ .ct-cols{grid-template-columns:1fr} }
+@media (max-width:640px){ .ct-card{grid-template-columns:1fr;padding:12px 14px} .ct-pill{justify-self:start} .ct-box{padding:13px 14px} }
