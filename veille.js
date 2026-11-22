@@ -24,12 +24,12 @@ const PLATFORMS = {
   bluesky:  {label:'Bluesky',   why:"API publique officielle de Bluesky, gratuite et sans clé. Les publications sont lues directement à chaque visite."},
   x:        {label:'X',         why:"L'API de X est payante à l'usage depuis février 2026 (pas d'offre gratuite). Collecte non activée : lien vers le profil uniquement."},
   facebook: {label:'Facebook',  why:"Lire les pages publiques d'autres personnes exige un agrément de Meta (« Page Public Content Access ») : lien vers le profil uniquement."},
-  instagram:{label:'Instagram', why:"La collecte automatique (API gratuite de Meta) exige un serveur qui garde une clé secrète, ce qu'un site déposé par glisser-déposer ne permet pas. Publications choisies par l'Observatoire (sélection manuelle), affichées via l'intégration officielle d'Instagram."},
+  instagram:{label:'Instagram', why:"API officielle Business Discovery de Meta : collecte automatique deux fois par jour des comptes professionnels vérifiés (les comptes personnels et les Stories ne sont pas accessibles). Les publications s'affichent via l'intégration officielle d'Instagram, après un clic."},
   linkedin: {label:'LinkedIn',  why:"Aucune API ne permet de lire les publications d'autres membres. Publications choisies par l'Observatoire (sélection manuelle), affichées via l'intégration officielle de LinkedIn."},
   youtube:  {label:'YouTube',   why:"Aucune chaîne personnelle n'est mentionnée sur les fiches officielles. Les flux RSS de YouTube ne sont pas lisibles directement depuis un navigateur."}
 };
 const PORDER = ['bluesky','x','facebook','instagram','linkedin','youtube'];
-const TYPES = {original:'Publication', reply:'Réponse', repost:'Republication', quote:'Citation', manual:'Sélection manuelle'};
+const TYPES = {original:'Publication', reply:'Réponse', repost:'Republication', quote:'Citation', reel:'Reel', manual:'Sélection manuelle'};
 
 // ---------- Utilitaires ----------
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -196,6 +196,8 @@ let LAST_SYNC = null, FETCHED_AT = 0, SHOWN = 30, CUR_VIEW = 'veille';
 // Liste Bluesky de référence
 let CFG = {}, MODE = 'comptes', ETAT = null, HBASE = null, MEMBERS = [], LIST_INFO = null, LIST_ERR = '';
 let MONTHS = []; const LOADED = new Set(), ACC_BY_DID = {};
+// Historique Instagram (collecteur/instagram.mjs, GitHub Actions deux fois par jour)
+let IG = null; const IG_BASE = './data/veille/instagram/', IG_ACC = {};
 const F = {q:'', role:'', pid:'', grp:'', circ:'', net:'', per:'', theme:'', type:''};
 const CACHE_KEY = 'veille_cache_v1', CACHE_TTL = 10*60*1000, MAX_PAGES = 20;
 
@@ -276,21 +278,50 @@ async function prepareBluesky(){
 // Mode « historique » : un fichier par mois, chargé à la demande
 async function loadMonth(k){
   if(LOADED.has(k)) return;
-  const f = await fetchJSON(HBASE+k+'.json', 3, k===MONTHS[0]);
-  (f.publications||[]).forEach(p=>{
-    const a = ACC_BY_DID[p.did]; if(!a) return;                 // provenance vérifiée : membre de la liste
-    p.acc = a.key; p.pid = a.pid; p.themes = classify(p); POSTS.set(p.id, p);
-  });
+  const jobs = [];
+  if(HBASE && ETAT && ETAT.mois && ETAT.mois[k]) jobs.push(fetchJSON(HBASE+k+'.json', 3, k===MONTHS[0]).then(f=>{
+    (f.publications||[]).forEach(p=>{
+      const a = ACC_BY_DID[p.did]; if(!a) return;               // provenance vérifiée : membre de la liste
+      p.acc = a.key; p.pid = a.pid; p.themes = classify(p); POSTS.set(p.id, p);
+    }); }));
+  if(IG && IG.mois && IG.mois[k]) jobs.push(fetchJSON(IG_BASE+k+'.json', 3, k===MONTHS[0]).then(addInstagram));
+  await Promise.all(jobs);
   LOADED.add(k);
+}
+// Publications Instagram collectées : compte vérifié de l'annuaire, intégration officielle au clic
+function addInstagram(f){
+  (f.publications||[]).forEach(p=>{
+    const a = IG_ACC[String(p.compte||'').toLowerCase()]; if(!a || !/^https:\/\/www\.instagram\.com\//.test(p.url)) return;
+    p.acc = a.key; p.pid = a.pid; p.themes = classify(p);
+    p.embed = {frame:{src:p.url.replace(/\/?$/,'/')+'embed/captioned/', h:640}};
+    for(const [id,m] of POSTS) if(m.manual && m.platform==='instagram' && m.url.replace(/\/$/,'')===p.url.replace(/\/$/,'')) POSTS.delete(id);   // déjà en sélection manuelle
+    POSTS.set(p.id, p);
+  });
+}
+async function prepareInstagram(){
+  try{ IG = await fetchJSON(IG_BASE+'etat.json', 2, true); }catch(e){ IG = null; return; }
+  if(!IG || !IG.comptes || !IG.mois){ IG = null; return; }
+  for(const [u, c] of Object.entries(IG.comptes)){
+    const P = BYID[c.pid]; if(!P) continue;
+    const acc = P.accounts.find(a=>a.reseau==='instagram' && String(a.identifiant||'').toLowerCase()===u);
+    if(!acc) continue;                                            // seuls les comptes vérifiés de l'annuaire
+    Object.assign(acc, {key:P.id+':instagram:'+u, pid:P.id, via:'instagram', actif:c.actif!==false, igc:c});
+    if(!ACCS.includes(acc)){ ACCS.push(acc); ST[acc.key] = newState(); }
+    IG_ACC[u] = acc;
+  }
 }
 function paintHistoryState(){
   const more = MONTHS.some(k=>!LOADED.has(k));
-  ACCS.forEach(a=>{ if(!a.membre) return; const m = a.membre, st = ST[a.key];
+  ACCS.forEach(a=>{ if(a.igc){ const c = a.igc, st = ST[a.key];
+      st.state = c.statut==='ok' ? 'ok' : c.statut ? 'erreur' : 'attente'; st.err = c.erreur||''; st.at = c.derniere_collecte||null; st.done = !more; st.total = c.publications;
+      st.n = [...POSTS.values()].filter(p=>p.acc===a.key).length; return; }
+    if(!a.membre) return; const m = a.membre, st = ST[a.key];
     st.state = m.derniere_erreur ? 'erreur' : m.derniere_collecte ? 'ok' : 'attente'; st.err = m.derniere_erreur ? humanError({message:m.derniere_erreur}) : '';
     st.at = m.derniere_collecte||null; st.done = !more; st.total = m.publications;
     st.n = [...POSTS.values()].filter(p=>p.acc===a.key).length; });
-  LAST_SYNC = ETAT.derniere_synchro_reussie || null;
+  LAST_SYNC = (ETAT && ETAT.derniere_synchro_reussie) || null;
 }
+const unionMois = () => [...new Set([...Object.keys((ETAT&&ETAT.mois)||{}), ...Object.keys((IG&&IG.mois)||{})])].sort().reverse();
 async function syncHistory(force){
   if(force){
     try{ const e = await fetchJSON(HBASE+'etat.json', 2, true); if(e && e.membres){
@@ -298,9 +329,10 @@ async function syncHistory(force){
       ETAT = e; e.membres.forEach(m=>{ const a = ACC_BY_DID[m.did]; if(a){ Object.assign(a.membre, m); a.actif = m.actif!==false; } });
       if(nouveaux) LIST_ERR = 'La liste a changé : rechargez la page pour afficher les nouveaux membres.';
     } }catch(e){}
-    if(ETAT.mois) LOADED.delete(Object.keys(ETAT.mois).sort().reverse()[0]);
+    if(IG) try{ const g = await fetchJSON(IG_BASE+'etat.json', 2, true); if(g && g.comptes){ IG = g; ACCS.forEach(a=>{ if(a.igc){ const c = g.comptes[String(a.identifiant).toLowerCase()]; if(c){ a.igc = c; a.actif = c.actif!==false; } } }); } }catch(e){}
+    const recent = unionMois()[0]; if(recent) LOADED.delete(recent);
   }
-  MONTHS = Object.keys(ETAT.mois||{}).sort().reverse();
+  MONTHS = unionMois();
   try{
     for(const k of MONTHS){ await loadMonth(k); if(LOADED.size>=2 || POSTS.size>=60) break; }
   }catch(e){ LIST_ERR = "Historique indisponible : "+humanError(e); }
@@ -373,7 +405,11 @@ function syncAll(force){
   if(!force && loadCache()){ FETCHED_AT = Date.now(); refresh(); return Promise.resolve(); }
   LOADING = (async()=>{
     paintStatus();
-    await pool(ACCS, a=>fetchAccount(a,false));
+    await pool(ACCS.filter(a=>!a.igc), a=>fetchAccount(a,false));
+    if(IG){                                                        // historique Instagram : deux mois les plus récents
+      try{ for(const k of Object.keys(IG.mois).sort().reverse().slice(0,2)) addInstagram(await fetchJSON(IG_BASE+k+'.json', 3, true)); }catch(e){}
+      ACCS.filter(a=>a.igc).forEach(a=>Object.assign(ST[a.key], {state:a.igc.statut==='ok'?'ok':'erreur', err:a.igc.erreur||'', at:a.igc.derniere_collecte||null, done:true, n:[...POSTS.values()].filter(p=>p.acc===a.key).length}));
+    }
     if(ACCS.some(a=>ST[a.key].state==='ok')) LAST_SYNC = new Date().toISOString();
     saveCache();
   })().finally(()=>{ FETCHED_AT = Date.now(); LOADING = null; refresh(); });
@@ -499,8 +535,9 @@ function postHTML(p, compact){
 }
 function chipsHTML(P, withPending){
   const a = PORDER.flatMap(r=>P.accounts.filter(x=>x.reseau===r)).map(x=>{
-    const coll = ACCS.includes(x) && x.actif!==false;
-    return `<a class="vchip p-${esc(x.reseau)}" href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc((coll?'Collecté automatiquement':x.via==='liste'?'Retiré de la liste : historique conservé':'Lien uniquement, non collecté')+' · source : '+x.source)}"><b>${esc(PLATFORMS[x.reseau].label)}</b>${x.identifiant?` <span>${esc(x.reseau==='bluesky'||x.reseau==='x'?'@'+x.identifiant:x.identifiant)}</span>`:''}${coll?' <i class="vok">collecté</i>':''}</a>`;
+    const illisible = x.igc && x.igc.statut && x.igc.statut!=='ok';
+    const coll = ACCS.includes(x) && x.actif!==false && !illisible;
+    return `<a class="vchip p-${esc(x.reseau)}" href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc((coll?'Collecté automatiquement':x.via==='liste'?'Retiré de la liste : historique conservé':'Lien uniquement, non collecté')+' · source : '+x.source)}"><b>${esc(PLATFORMS[x.reseau].label)}</b>${x.identifiant?` <span>${esc(x.reseau==='bluesky'||x.reseau==='x'?'@'+x.identifiant:x.identifiant)}</span>`:''}${coll?' <i class="vok">collecté</i>':illisible?' <i class="vpend">non lisible</i>':''}</a>`;
   }).join('');
   let h = a || '<span class="small">Aucun compte public mentionné sur la fiche officielle.</span>';
   if(withPending && P.pending.length) h += `<span class="small vpend">À vérifier : ${P.pending.map(x=>esc(PLATFORMS[x.reseau].label)).join(', ')}</span>`;
@@ -591,7 +628,7 @@ function renderDirectory(){
       <div class="dep-top">${p.photo('dep-photo')}<div class="dep-id"><div class="dep-circ">${esc(p.role)} · ${esc(p.chamber)}</div><h4>${personName(p)}</h4><div class="small">${esc(p.place)}</div></div></div>
       <div class="small"><span class="sw" style="background:${esc(p.col)}"></span>${esc(p.groupe)}</div>
       ${chipsHTML(p)}
-      <div class="small dep-last">${isCollected(p) ? (n?`${plural(n,'publication chargée','publications chargées')}`:'Collecte Bluesky active') : n ? `${plural(n,'publication sélectionnée','publications sélectionnées')} manuellement` : 'Aucun compte collecté automatiquement'}</div>
+      <div class="small dep-last">${isCollected(p) ? (n?`${plural(n,'publication chargée','publications chargées')}`:'Collecte automatique active') : n ? `${plural(n,'publication sélectionnée','publications sélectionnées')} manuellement` : 'Aucun compte collecté automatiquement'}</div>
     </div>`;
   }).join('') || '<div class="glass notes">Aucun parlementaire ne correspond à cette recherche.</div>';
 }
@@ -686,7 +723,7 @@ window.VEILLE = {
       const [reg, th] = await Promise.all([get('./data/veille/comptes.json'), get('./data/veille/themes.json')]);
       try{ CFG = await get('./data/veille/config.json'); }catch(e){ CFG = {}; }      // facultatif
       REG = reg; compileThemes(th);
-      await prepareBluesky(); buildPeople();
+      await prepareBluesky(); buildPeople(); await prepareInstagram();
       let sel = null; try{ sel = await get('./data/veille/selection.json'); }catch(e){}   // facultatif
       loadSelection(sel);
     })().catch(e=>{ console.error('Veille parlementaire :', e); REG = null; throw e; });

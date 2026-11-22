@@ -125,3 +125,24 @@ Lancer et tester sur votre ordinateur (facultatif, Node.js 20 ou plus récent, h
    node collecteur/bluesky-liste.mjs --simulation      (interroge Bluesky, n'écrit rien)
    node collecteur/bluesky-liste.mjs                   (collecte réelle dans data/veille/bluesky/)
    python3 -m http.server 8000                         (puis http://localhost:8000/#veille)
+
+COLLECTE AUTOMATIQUE INSTAGRAM
+Principe. GitHub Actions (.github/workflows/veille-instagram.yml) lance collecteur/instagram.mjs toutes les heures de 6 h à 23 h (heure de Paris). Le collecteur utilise l'API officielle « Business Discovery » de Meta avec le jeton de la page de l'Observatoire : il lit les publications et Reels publics des comptes Instagram vérifiés de data/veille/comptes.json (16 requêtes par passage ; limite de Meta : 200 par heure). Historique : data/veille/instagram/AAAA-MM.json (un fichier par mois, sans doublon) et data/veille/instagram/etat.json. Le site les affiche dans le fil de veille (intégration officielle d'Instagram chargée au clic).
+Récapitulatif. À 8 h et 19 h (et à chaque lancement manuel), toutes les publications détectées depuis le récapitulatif précédent (auteur, date, Photo/Vidéo/Carrousel/Reel, lien, début de la légende) sont publiées en commentaire de l'issue « Veille Instagram : récapitulatifs » du dépôt. GitHub vous envoie chaque commentaire par e-mail (vous êtes assigné à cette issue ; ne la fermez pas). Le récapitulatif signale aussi les comptes non lisibles et les comptes collectés pour la première fois, avec le nom affiché par Instagram, pour contrôle.
+Limites. Seuls les comptes PROFESSIONNELS (Business ou Créateur) sont lisibles ; un compte personnel apparaît « non lisible » (à suivre par les notifications de l'application Instagram et la sélection manuelle). Les Stories ne sont pas accessibles. Les images ne sont pas copiées.
+
+Mise en service (une seule fois) :
+1. Secret : dépôt GitHub → Settings → Secrets and variables → Actions → New repository secret → nom IG_TOKEN, valeur : le jeton de PAGE de l'Observatoire (outil de débogage Meta : « Type : Page », « Expire : Jamais »). Ne le placez jamais dans un fichier du dépôt.
+2. Déposez les fichiers fournis (voir la liste dans le message d'accompagnement) en respectant leurs dossiers.
+3. Onglet « Actions » → « Veille Instagram » → « Run workflow ». Au bout d'une minute : coche verte, nouvel enregistrement « Veille Instagram : synchronisation… », et une issue « Veille Instagram : récapitulatifs » avec le premier récapitulatif (comptes collectés pour la première fois : vérifiez les noms affichés).
+4. Vérifiez que vous recevez les e-mails : github.com → Settings → Notifications → « Email » coché pour « Participating, @mentions and custom ».
+
+Réglages (data/veille/config.json → instagram) : ig_user_id (identifiant du compte Instagram professionnel de l'Observatoire, non secret), version_api (version de l'API Graph, à faire évoluer quand Meta l'annonce), historique_initial_jours (90), recap_vide (true : un récapitulatif est publié même sans nouvelle publication).
+Ajouter ou retirer un compte : dans data/veille/comptes.json, entrée « reseau": "instagram" du parlementaire, avec "verification": "verifie" et "collecte": true (ou false pour arrêter la collecte ; l'historique est conservé).
+Changer d'horaires : dans .github/workflows/veille-instagram.yml, étape « Créneau (heure de Paris) » (plage de collecte et heures du récapitulatif).
+
+En cas de problème (indiqué en tête du récapitulatif) :
+- « Jeton Instagram invalide ou expiré » : le jeton a été révoqué (changement de mot de passe Facebook, retrait de l'application, réglage de sécurité). Régénérez-le dans l'Explorateur de l'API Graph (permissions pages_show_list, pages_read_engagement, instagram_basic, instagram_manage_insights, ads_read, business_management ; cocher la page et le compte Instagram), étendez-le, obtenez le jeton de page (requête 1543772145476598?fields=access_token) et remplacez le secret IG_TOKEN.
+- « Permission manquante » : même procédure, en vérifiant les six permissions.
+- « Limite de requêtes de Meta atteinte » : rien à faire, la collecte reprend au passage suivant.
+Tests : node tests/instagram.test.mjs (API simulée, aucune requête réelle).

@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-20",
+ "maj": "2026-11-22",
  "note": "Registre des comptes sociaux des parlementaires des Français de l'étranger. Clés : identifiant Assemblée nationale (PA…) pour les députés, identifiant Sénat pour les sénateurs. Un compte n'est affiché publiquement que si \"verification\" vaut \"verifie\" ; il n'est collecté automatiquement que si \"collecte\" vaut true et qu'un connecteur existe pour son réseau. Voir README.txt, section VEILLE PARLEMENTAIRE.",
  "statuts": {
   "verifie": "Compte confirmé par une source officielle (fiche Assemblée nationale ou Sénat, site officiel du parlementaire) ou par la certification de la plateforme.",
@@ -37,7 +37,7 @@
      "source": "Fiche officielle de l'Assemblée nationale",
      "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721004",
      "verifie_le": "2026-11-20",
-     "collecte": false
+     "collecte": true
     },
     {
      "reseau": "linkedin",
@@ -83,7 +83,7 @@
      "source": "Fiche officielle de l'Assemblée nationale",
      "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA721024",
      "verifie_le": "2026-11-20",
-     "collecte": false
+     "collecte": true
     },
     {
      "reseau": "linkedin",
@@ -140,7 +140,7 @@
      "source": "Fiche officielle de l'Assemblée nationale",
      "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795402",
      "verifie_le": "2026-11-20",
-     "collecte": false
+     "collecte": true
     },
     {
      "reseau": "linkedin",
@@ -184,7 +184,7 @@
      "source": "Fiche officielle de l'Assemblée nationale",
      "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA795884",
      "verifie_le": "2026-11-20",
-     "collecte": false
+     "collecte": true
     },
     {
      "reseau": "linkedin",
@@ -229,7 +229,7 @@
      "source": "Fiche officielle de l'Assemblée nationale",
      "source_url": "https://www.assemblee-nationale.fr/dyn/deputes/PA842311",
      "verifie_le": "2026-11-20",
-     "collecte": false
+     "collecte": true
     },
     {
      "reseau": "bluesky",
@@ -258,6 +258,17 @@
      "collecte": false,
      "did": "did:plc:ybd5bxbpyfd3azgukjgvtivh",
      "note": "Profil se présentant comme « Député des Français établis à l'étranger - Président de la Commission des affaires européennes ». La fiche officielle ne mentionne aucun réseau social."
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "paanglade",
+     "url": "https://www.instagram.com/paanglade/",
+     "verification": "verifie",
+     "source": "Identifié par l'Observatoire",
+     "source_url": null,
+     "verifie_le": "2026-11-22",
+     "collecte": true,
+     "note": "Compte communiqué par l'éditeur de l'Observatoire ; le nom affiché par Instagram est contrôlé au premier passage du collecteur."
     }
    ]
   },
@@ -274,6 +285,17 @@
      "collecte": false,
      "did": "did:plc:qaotuy4vyfdgyc42mwuflv7y",
      "note": "Profil se présentant comme « Député des Français établis en Allemagne, Europe centrale et dans les Balkans ». La fiche officielle ne mentionne aucun réseau social."
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "fredericpetitan",
+     "url": "https://www.instagram.com/fredericpetitan/",
+     "verification": "verifie",
+     "source": "Identifié par l'Observatoire",
+     "source_url": null,
+     "verifie_le": "2026-11-22",
+     "collecte": true,
+     "note": "Compte communiqué par l'éditeur de l'Observatoire ; le nom affiché par Instagram est contrôlé au premier passage du collecteur."
     }
    ]
   },
@@ -294,13 +316,37 @@
    ]
   },
   "PA795326": {
-   "comptes": []
+   "comptes": [
+    {
+     "reseau": "instagram",
+     "identifiant": "cjweissberg",
+     "url": "https://www.instagram.com/cjweissberg/",
+     "verification": "verifie",
+     "source": "Identifié par l'Observatoire",
+     "source_url": null,
+     "verifie_le": "2026-11-22",
+     "collecte": true,
+     "note": "Compte communiqué par l'éditeur de l'Observatoire ; le nom affiché par Instagram est contrôlé au premier passage du collecteur."
+    }
+   ]
   },
   "PA795334": {
    "comptes": []
   },
   "PA795046": {
-   "comptes": []
+   "comptes": [
+    {
+     "reseau": "instagram",
+     "identifiant": "carolineyadan",
+     "url": "https://www.instagram.com/carolineyadan/",
+     "verification": "verifie",
+     "source": "Identifié par l'Observatoire",
+     "source_url": null,
+     "verifie_le": "2026-11-22",
+     "collecte": true,
+     "note": "Compte communiqué par l'éditeur de l'Observatoire ; le nom affiché par Instagram est contrôlé au premier passage du collecteur."
+    }
+   ]
   },
   "conway_mouret_helene11027h": {
    "comptes": [
@@ -345,6 +391,17 @@
      "collecte": false,
      "did": "did:plc:6i767zpi4oviretinbdg2wb2",
      "note": "Profil se présentant comme « Sénatrice PS des Français de l'étranger » ; identifiant identique au compte X officiel. Aucun lien depuis une source officielle ni certification Bluesky."
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "hconwaymouret",
+     "url": "https://www.instagram.com/hconwaymouret/",
+     "verification": "verifie",
+     "source": "Identifié par l'Observatoire",
+     "source_url": null,
+     "verifie_le": "2026-11-22",
+     "collecte": true,
+     "note": "Compte communiqué par l'éditeur de l'Observatoire ; le nom affiché par Instagram est contrôlé au premier passage du collecteur."
     }
    ]
   },
@@ -412,7 +469,7 @@
      "source": "Fiche officielle du Sénat",
      "source_url": "https://www.senat.fr/senateur/ollivier_mathilde21037d.html",
      "verifie_le": "2026-11-20",
-     "collecte": false
+     "collecte": true
     },
     {
      "reseau": "bluesky",
@@ -500,7 +557,7 @@
      "source": "Fiche officielle du Sénat",
      "source_url": "https://www.senat.fr/senateur/briante_guillemont_sophie21404g.html",
      "verifie_le": "2026-11-20",
-     "collecte": false
+     "collecte": true
     },
     {
      "reseau": "linkedin",
@@ -547,6 +604,17 @@
      "source_url": "https://www.senat.fr/senateur/cadic_olivier14255u.html",
      "verifie_le": "2026-11-20",
      "collecte": false
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "oliviercadic",
+     "url": "https://www.instagram.com/oliviercadic/",
+     "verification": "verifie",
+     "source": "Identifié par l'Observatoire",
+     "source_url": null,
+     "verifie_le": "2026-11-22",
+     "collecte": true,
+     "note": "Compte communiqué par l'éditeur de l'Observatoire ; le nom affiché par Instagram est contrôlé au premier passage du collecteur."
     }
    ]
   },
@@ -593,6 +661,17 @@
      "collecte": false,
      "did": "did:plc:nexarmauewfouxx6q5i3zfow",
      "note": "Profil se présentant comme « Sénateur des Français•es établi•es hors de France » ; identifiant identique au compte X officiel. Aucun lien depuis une source officielle ni certification Bluesky."
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "yanchantrel_",
+     "url": "https://www.instagram.com/yanchantrel_/",
+     "verification": "verifie",
+     "source": "Identifié par l'Observatoire",
+     "source_url": null,
+     "verifie_le": "2026-11-22",
+     "collecte": true,
+     "note": "Compte communiqué par l'éditeur de l'Observatoire ; le nom affiché par Instagram est contrôlé au premier passage du collecteur."
     }
    ]
   },
@@ -619,7 +698,7 @@
      "source": "Fiche officielle du Sénat",
      "source_url": "https://www.senat.fr/senateur/rousselot_marie_ange21436q.html",
      "verifie_le": "2026-11-20",
-     "collecte": false
+     "collecte": true
     },
     {
      "reseau": "linkedin",
@@ -665,6 +744,17 @@
      "verifie_le": "2026-11-20",
      "collecte": true,
      "did": "did:plc:2aqxwjb7sjjsrxvumkarj75k"
+    },
+    {
+     "reseau": "instagram",
+     "identifiant": "_melanie_vogel_",
+     "url": "https://www.instagram.com/_melanie_vogel_/",
+     "verification": "verifie",
+     "source": "Identifié par l'Observatoire",
+     "source_url": null,
+     "verifie_le": "2026-11-22",
+     "collecte": true,
+     "note": "Compte communiqué par l'éditeur de l'Observatoire ; le nom affiché par Instagram est contrôlé au premier passage du collecteur."
     }
    ]
   }

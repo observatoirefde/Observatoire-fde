@@ -1,8 +1,14 @@
 {
- "note": "Réglages de la collecte Bluesky. « liste » : lien de la liste Bluesky de référence (copié depuis bsky.app). « donnees_distantes » : adresse où le site lit l'historique tenu à jour par GitHub Actions, de la forme https://raw.githubusercontent.com/UTILISATEUR/DEPOT/main/data/veille/bluesky/ (laisser vide pour lire les fichiers déposés avec le site). Voir README.txt, section COLLECTE AUTOMATIQUE BLUESKY.",
+ "note": "Réglages de la collecte Bluesky. « liste » : lien de la liste Bluesky de référence (copié depuis bsky.app). « donnees_distantes » : adresse où le site lit l'historique tenu à jour par GitHub Actions, de la forme https://raw.githubusercontent.com/UTILISATEUR/DEPOT/main/data/veille/bluesky/ (laisser vide pour lire les fichiers déposés avec le site). Voir README.txt, section COLLECTE AUTOMATIQUE BLUESKY. « instagram » : identifiant du compte Instagram professionnel de l'Observatoire (non secret ; le jeton est dans le secret GitHub IG_TOKEN) et version de l'API Graph. Voir README.txt, section COLLECTE AUTOMATIQUE INSTAGRAM.",
  "bluesky": {
   "liste": "https://bsky.app/profile/did:plc:rvq2dxmonozuibiezjahmnsk/lists/3n2qx7zvf5q2t",
   "donnees_distantes": "",
   "historique_initial_jours": 90
+ },
+ "instagram": {
+  "ig_user_id": "17841479805156804",
+  "version_api": "v27.0",
+  "historique_initial_jours": 90,
+  "recap_vide": true
  }
 }
