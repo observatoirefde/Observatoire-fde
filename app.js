@@ -1130,7 +1130,7 @@ async function demarrerObservatoire() {
     function homeRegions(){
       // couleurs des circonscriptions ; le survol d'un pays est géré nativement par ECharts (aucun redessin complet)
       return legRegions(g=>({area: HOME_SEL===g ? ICE_SEL : HOME_HOVER===g ? ICE_HOV : ICE[g-1], op: HOME_SEL&&HOME_SEL!==g ? 0.55 : 1}))
-        .map(r=>{ r.itemStyle.borderColor='rgba(255,255,255,.9)'; r.emphasis={itemStyle:{areaColor: r.itemStyle.areaColor===ICE_SEL ? ICE_SEL : ICE_HOV}}; return r; });
+        .map(r=>{ r.itemStyle.borderColor='rgba(93,107,125,.55)'; r.emphasis={itemStyle:{areaColor: r.itemStyle.areaColor===ICE_SEL ? ICE_SEL : ICE_HOV}}; return r; });
     }
     // mise à jour légère : seules les couleurs changent, regroupées à la prochaine image
     function updateHomeMap(){
@@ -1147,12 +1147,13 @@ async function demarrerObservatoire() {
       chartHome=echarts.init(document.getElementById('maphome'));
       chartHome.on('click',p=>{ const g=COUNTRY_LEG[p.name]; if(g) selectHome(HOME_SEL===g?null:g); });
       let rt=0; window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(()=>chartHome&&chartHome.resize(),150); });
+      // fond de carte neutre : pays clairs et fines frontières grises, sous les couleurs des circonscriptions
       chartHome.setOption({
         animation:false,
         tooltip:{trigger:'item', confine:true, transitionDuration:0, backgroundColor:'rgba(24,33,45,.88)', borderWidth:0, padding:[7,10], extraCssText:'border-radius:10px;box-shadow:0 8px 24px rgba(20,30,45,.2);', textStyle:{color:'#fff',fontSize:12,fontFamily:'Inter'},
           formatter:p=>{ const g=COUNTRY_LEG[p.name]; return g ? `<b>${p.name}</b><br>${ORD(g)} circonscription · ${LEG[g]}` : p.name; }},
-        geo:{map:'world', roam: HOME_SMALL() ? false : true, center:[18,24], zoom:1.12, scaleLimit:{min:1,max:8}, itemStyle:{areaColor:'rgba(236,240,246,.92)', borderColor:'rgba(255,255,255,.95)', borderWidth:.5},
-          emphasis:{label:{show:false}, itemStyle:{areaColor:'rgba(236,240,246,.92)'}}, label:{show:false}, regions: homeRegions()},
+        geo:{map:'world', roam: HOME_SMALL() ? false : true, center:[18,24], zoom:1.12, scaleLimit:{min:1,max:8}, itemStyle:{areaColor:'rgba(255,255,255,.78)', borderColor:'rgba(120,140,165,.34)', borderWidth:.6},
+          emphasis:{label:{show:false}, itemStyle:{areaColor:'rgba(255,255,255,.78)'}}, label:{show:false}, regions: homeRegions()},
         series: legLayers({w:1}).map(x=>Object.assign({}, x, {zlevel:0}))
       }, true);
       homeAnimWatch();
