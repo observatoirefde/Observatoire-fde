@@ -79,4 +79,4 @@ Rubrique « Élections » : textes de présentation des scrutins dans `data/elec
 
 - Les workflows YAML doivent être valides : un collage partiel (premier `#` perdu, ancien contenu restant) les désactive silencieusement (la tâche s'affiche alors sous son chemin de fichier dans l'onglet Actions).
 - Les tests Instagram sont lancés avant chaque collecte : `collecteur/instagram.mjs` et `tests/instagram.test.mjs` doivent être livrés ensemble quand l'un change.
-- Le fichier `LISEZMOI-suivi-legislatif.md` mentionne un workflow « Actualiser le suivi législatif FDE » qui n'est pas présent dans `.github/workflows/` (au 22/11/2026).
+- « Activité législative » : workflow `.github/workflows/actualiser-legislatif.yml` (« Actualiser le suivi législatif FDE », chaque jour à 5 h 17 UTC), rétabli le 23/11/2026. `scripts/refresh_legislatif.py` n'utilise que des données ouvertes et `data/senateurs-2026.json` ; la lecture des pages des dossiers du Sénat (`--complement-senat`) est désactivée par défaut, les dates de vote déjà relevées sont conservées.

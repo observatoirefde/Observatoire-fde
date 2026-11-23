@@ -1,0 +1,46 @@
+# Actualisation quotidienne de la sous-rubrique « Activité législative » (suivi-legislatif-fde.html).
+# Lit uniquement des données ouvertes officielles (dossiers législatifs et députés de l'Assemblée
+# nationale, propositions de loi du Sénat) et la liste des sénateurs FDE du dépôt.
+# Met à jour legislatif-data.json et l'instantané intégré à suivi-legislatif-fde.html.
+# En cas de rupture d'une source, le script échoue sans rien réécrire.
+# Gratuit pour un dépôt public. Aucun secret nécessaire.
+name: Actualiser le suivi législatif FDE
+
+on:
+  schedule:
+    - cron: '17 5 * * *'        # chaque jour à 5 h 17 UTC (6 h 17 ou 7 h 17 à Paris)
+  workflow_dispatch:            # lancement manuel : onglet « Actions » → « Actualiser le suivi législatif FDE » → « Run workflow »
+
+permissions:
+  contents: write               # enregistrer les données actualisées
+
+concurrency:
+  group: actualiser-legislatif
+  cancel-in-progress: false
+
+jobs:
+  actualisation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Collecte des données ouvertes
+        run: python3 scripts/refresh_legislatif.py
+
+      - name: Enregistrement
+        run: |
+          git config user.name "suivi-legislatif[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add legislatif-data.json suivi-legislatif-fde.html
+          if git diff --cached --quiet; then echo "Aucun changement."; exit 0; fi
+          git commit -q -m "Suivi législatif : actualisation du $(date -u +'%Y-%m-%d')"
+          for i in 1 2 3 4; do
+            if git pull -q --rebase && git push -q; then exit 0; fi
+            sleep $((i * 10))
+          done
+          echo "Impossible d'enregistrer les données après 4 tentatives." && exit 1
