@@ -1,0 +1,81 @@
+# Veille institutionnelle (rubrique « Veille » → « Veille institutionnelle »).
+# Un passage par jour : Journal officiel (données ouvertes de la DILA) et bibliothèque documentaire
+# (rapports du Sénat, documents publiés par l'AFE). Chaque module est isolé : une source en panne
+# n'empêche pas l'actualisation des autres ; ses données précédentes restent publiées.
+# Le premier passage relit une fois l'export complet du Journal officiel (environ 1,6 Go, lu en flux)
+# pour retrouver les textes publiés depuis le 1er septembre 2026.
+# Les nouveautés et les erreurs sont publiées en commentaire de l'issue « Veille institutionnelle : nouveautés ».
+# Gratuit pour un dépôt public. Aucun secret nécessaire.
+name: Veille institutionnelle
+
+on:
+  schedule:
+    - cron: '53 5 * * *'        # chaque jour à 5 h 53 UTC (6 h 53 ou 7 h 53 à Paris), après la publication du JO du jour
+  workflow_dispatch:            # lancement manuel : onglet « Actions » → « Veille institutionnelle » → « Run workflow »
+
+permissions:
+  contents: write               # enregistrer les données
+  issues: write                 # publier le récapitulatif
+
+concurrency:
+  group: veille-institutionnelle
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45         # le premier passage (reprise de l'historique) est plus long
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Tests
+        run: node tests/institutionnel.test.mjs
+
+      - name: Collecte
+        env:
+          RECAP_FILE: ${{ runner.temp }}/recap.md
+        run: node collecteur/institutionnel.mjs
+
+      - name: Enregistrement
+        if: always()            # l'état (dont les erreurs) est enregistré pour être affiché sur le site
+        run: |
+          git config user.name "veille-institutionnelle[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/institutionnel/jo.json data/institutionnel/bibliotheque.json data/institutionnel/etat.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "Aucun changement."; exit 0; fi
+          git commit -q -m "Veille institutionnelle : actualisation du $(date -u +'%Y-%m-%d')"
+          for i in 1 2 3 4; do
+            if git pull -q --rebase && git push -q; then exit 0; fi
+            sleep $((i * 10))
+          done
+          echo "Impossible d'enregistrer les données après 4 tentatives." && exit 1
+
+      - name: Récapitulatif (commentaire de l'issue « Veille institutionnelle »)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RECAP_FILE: ${{ runner.temp }}/recap.md
+          ECHEC: ${{ job.status != 'success' }}
+        run: |
+          if [ "$ECHEC" = "true" ]; then
+            printf '\n> ⚠️ La collecte a échoué ; les données publiées n%s pas été modifiées. Détails : %s\n' "'ont" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> "$RECAP_FILE"
+          fi
+          if [ ! -s "$RECAP_FILE" ]; then echo "Aucune nouveauté : pas de commentaire."; exit 0; fi
+          cat "$RECAP_FILE" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$(gh api "repos/$GITHUB_REPOSITORY" --jq .has_issues)" != "true" ]; then
+            echo "::error::Les issues sont désactivées dans ce dépôt : Settings → General → Features → cochez « Issues »."
+            exit 1
+          fi
+          gh label create veille-institutionnelle --color 4A6A8C --description "Nouveautés de la veille institutionnelle" 2>/dev/null || true
+          N=$(gh issue list --label veille-institutionnelle --state open --limit 1 --json number --jq '.[0].number')
+          if [ -z "$N" ]; then
+            BODY="La veille institutionnelle quotidienne ajoute ici un commentaire lorsque de nouveaux textes du Journal officiel visant les Français de l'étranger ou de nouveaux documents sont repérés, ou lorsqu'une source est en panne. Vous recevez chaque commentaire par e-mail tant que vous êtes abonné à cette issue. Ne la fermez pas ; si elle est fermée, une nouvelle sera créée."
+            gh issue create --title "Veille institutionnelle : nouveautés" --label veille-institutionnelle --assignee "$GITHUB_REPOSITORY_OWNER" --body "$BODY" \
+              || gh issue create --title "Veille institutionnelle : nouveautés" --label veille-institutionnelle --body "$BODY"
+            N=$(gh issue list --label veille-institutionnelle --state open --limit 1 --json number --jq '.[0].number')
+          fi
+          gh issue comment "$N" --body-file "$RECAP_FILE"

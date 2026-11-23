@@ -1,0 +1,343 @@
+{
+ "note": "Produit par collecteur/institutionnel.mjs (workflow « Veille institutionnelle »). Ne pas modifier à la main : réglages dans config.json.",
+ "source": "https://echanges.dila.gouv.fr/OPENDATA/JORF/",
+ "debut": "2026-09-01",
+ "reprise": {
+  "fichier": "Freemium_jorf_global_20261108-140000.tar.gz",
+  "date": "2026-11-23",
+  "textes_lus": 1278325,
+  "retenus": 43
+ },
+ "dernier_fichier": "JORF_20261123-101912.tar.gz",
+ "derniere_verification": "2026-11-23",
+ "textes": [
+  {
+   "id": "JORFTEXT000055088972",
+   "nature": "ARRETE",
+   "nor": "EAEM2630173A",
+   "date_publication": "2026-11-15",
+   "date_texte": "2026-11-10",
+   "titre": "Arrêté du 10 novembre 2026 portant nomination au conseil d'administration de l'Agence pour l'enseignement français à l'étranger",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0267 du 15 novembre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055088972",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000055088783",
+   "nature": "DECISION",
+   "nor": "EAEF2629712S",
+   "date_publication": "2026-11-15",
+   "date_texte": "2026-11-12",
+   "titre": "Décision du 12 novembre 2026 portant délégation de signature (direction des Français à l'étranger et de l'administration consulaire)",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0267 du 15 novembre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Administration consulaire et état civil",
+    "Organisation de l'État"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055088783",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000055087543",
+   "nature": "ARRETE",
+   "nor": "EAEA2628517A",
+   "date_publication": "2026-11-14",
+   "date_texte": "2026-11-05",
+   "titre": "Arrêté du 5 novembre 2026 modifiant l'arrêté du 4 janvier 2002 fixant par pays et par groupe le montant de l'indemnité spécifique liée aux conditions de vie locale servie aux personnels résidents des établissements d'enseignement français à l'étranger",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0266 du 14 novembre 2026",
+   "pertinence": "forte",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055087543",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000055053563",
+   "nature": "DECRET",
+   "nor": "EAEJ2625478D",
+   "date_publication": "2026-11-04",
+   "date_texte": "2026-11-02",
+   "titre": "Décret n° 2026-1024 du 2 novembre 2026 portant publication de l'avenant à la convention entre le Gouvernement de la République française et le Gouvernement de la République argentine du 4 avril 1979, en vue d'éviter les doubles impositions et de prévenir l'évasion fiscale en matière d'impôts sur le revenu et sur la fortune (ensemble un protocole), signé à Buenos Aires le 6 décembre 2019 (1)",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0258 du 4 novembre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Fiscalité",
+    "Accords internationaux"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055053563",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000055024124",
+   "nature": "DECRET",
+   "nor": "EAEA2626678D",
+   "date_publication": "2026-10-29",
+   "date_texte": "2026-10-28",
+   "titre": "Décret du 28 octobre 2026 portant nomination du directeur des Français à l'étranger et de l'administration consulaire du ministère de l'Europe et des affaires étrangères - M. PENGUILLY (François)",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0253 du 29 octobre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Administration consulaire et état civil",
+    "Organisation de l'État"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055024124",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000055002784",
+   "nature": "ARRETE",
+   "nor": "EAEA2627377A",
+   "date_publication": "2026-10-21",
+   "date_texte": "2026-10-15",
+   "titre": "Arrêté du 15 octobre 2026 modifiant l'arrêté du 4 juin 2018 relatif à l'institution de régies auprès de missions diplomatiques, de postes consulaires et de représentations permanentes de la France auprès d'organismes communautaires et internationaux à l'étranger",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0246 du 21 octobre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Administration consulaire et état civil"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055002784",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054999122",
+   "nature": "LOI",
+   "nor": "EAEJ2507056L",
+   "date_publication": "2026-10-20",
+   "date_texte": "2026-10-19",
+   "titre": "LOI n° 2026-962 du 19 octobre 2026 autorisant l'approbation de la convention d'extradition entre le Gouvernement de la République française et le Gouvernement de la République de Colombie (1)",
+   "ministere": "",
+   "publication": "JORF n°0245 du 20 octobre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Accords internationaux"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054999122",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054988429",
+   "nature": "ARRETE",
+   "nor": "EAEA2620922A",
+   "date_publication": "2026-10-16",
+   "date_texte": "2026-10-13",
+   "titre": "Arrêté du 13 octobre 2026 modifiant l'arrêté du 5 février 2008 pris en application du décret n° 2002-22 du 4 janvier 2002 relatif à la situation administrative et financière des personnels des établissements d'enseignement français à l'étranger",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0242 du 16 octobre 2026",
+   "pertinence": "forte",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054988429",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054956497",
+   "nature": "DECRET",
+   "nor": "EAEJ2624104D",
+   "date_publication": "2026-10-07",
+   "date_texte": "2026-10-05",
+   "titre": "Décret n° 2026-930 du 5 octobre 2026 portant publication de l'avenant par échange de lettres à l'accord du 20 octobre 2008 entre le Gouvernement de la République française et le Gouvernement de la République de Corée relatif au programme « Vacances-Travail », signé à Séoul les 23 et 26 mars 2026 (1)",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0234 du 7 octobre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Accords internationaux"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054956497",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054938605",
+   "nature": "DECISION",
+   "nor": "EAEF2625610S",
+   "date_publication": "2026-10-02",
+   "date_texte": "2026-09-28",
+   "titre": "Décision du 28 septembre 2026 portant délégation de signature (direction des Français à l'étranger et de l'administration consulaire)",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0230 du 2 octobre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Administration consulaire et état civil",
+    "Organisation de l'État"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054938605",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054909510",
+   "nature": "DECRET",
+   "nor": "EAEM2624525D",
+   "date_publication": "2026-09-29",
+   "date_texte": "2026-09-28",
+   "titre": "Décret n° 2026-903 du 28 septembre 2026 modifiant le décret n° 2002-22 du 4 janvier 2002 relatif à la situation administrative et financière des personnels des établissements d'enseignement français à l'étranger",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0227 du 29 septembre 2026",
+   "pertinence": "forte",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054909510",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054904107",
+   "nature": "ARRETE",
+   "nor": "EAEF2625445A",
+   "date_publication": "2026-09-27",
+   "date_texte": "2026-09-25",
+   "titre": "Arrêté du 25 septembre 2026 pris pour l'application de l'article 7 du décret n° 2024-87 du 7 février 2024 relatif à la légalisation des actes publics établis par une autorité étrangère",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0226 du 27 septembre 2026",
+   "pertinence": "forte",
+   "themes": [
+    "Administration consulaire et état civil"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054904107",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054904133",
+   "nature": "ARRETE",
+   "nor": "EAEF2623168A",
+   "date_publication": "2026-09-27",
+   "date_texte": "2026-08-31",
+   "titre": "Arrêté du 31 août 2026 portant désignation d'agents habilités à délivrer des copies, des expéditions et des extraits des actes notariés à l'administration centrale du ministère de l'Europe et des affaires étrangères",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0226 du 27 septembre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Organisation de l'État"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054904133",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054894502",
+   "nature": "DECRET",
+   "nor": "EAEJ2620762D",
+   "date_publication": "2026-09-25",
+   "date_texte": "2026-09-23",
+   "titre": "Décret n° 2026-890 du 23 septembre 2026 portant publication de l'accord entre le Gouvernement de la République française et le Gouvernement de la République du Cap-Vert relatif à l'école à enseignement français « Les Alizés », signé à Nice le 8 juin 2025 (1)",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0224 du 25 septembre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Enseignement et jeunesse",
+    "Accords internationaux"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054894502",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054860451",
+   "nature": "DECRET",
+   "nor": "EAEX2623149D",
+   "date_publication": "2026-09-19",
+   "date_texte": "2026-09-17",
+   "titre": "Décret n° 2026-877 du 17 septembre 2026 pris en application de l'article 2-2 du décret n° 59-178 du 22 janvier 1959 relatif aux attributions des ministres",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0219 du 19 septembre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Organisation de l'État"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054860451",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054855689",
+   "nature": "ARRETE",
+   "nor": "EAEF2624645A",
+   "date_publication": "2026-09-18",
+   "date_texte": "2026-09-17",
+   "titre": "Arrêté du 17 septembre 2026 modifiant l'arrêté du 10 septembre 2026 établissant l'état des listes de candidats pour les élections sénatoriales du 27 septembre 2026",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0218 du 18 septembre 2026",
+   "pertinence": "forte",
+   "themes": [
+    "Élections et représentation"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054855689",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054838902",
+   "nature": "ARRETE",
+   "nor": "EAEC2623625A",
+   "date_publication": "2026-09-15",
+   "date_texte": "2026-09-09",
+   "titre": "Arrêté du 9 septembre 2026 portant nomination au cabinet de la ministre déléguée auprès du ministre de l'Europe et des affaires étrangères, chargée de la francophonie, des partenariats internationaux et des Français de l'étranger",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0215 du 15 septembre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054838902",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054834772",
+   "nature": "DECISION",
+   "nor": "EAEF2623670S",
+   "date_publication": "2026-09-13",
+   "date_texte": "2026-09-11",
+   "titre": "Décision du 11 septembre 2026 portant délégation de signature (direction des Français à l'étranger et de l'administration consulaire)",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0214 du 13 septembre 2026",
+   "pertinence": "moyenne",
+   "themes": [
+    "Administration consulaire et état civil",
+    "Organisation de l'État"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054834772",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054834190",
+   "nature": "ARRETE",
+   "nor": "EAEF2624129A",
+   "date_publication": "2026-09-12",
+   "date_texte": "2026-09-10",
+   "titre": "Arrêté du 10 septembre 2026 établissant l'état des listes de candidats pour les élections sénatoriales du 27 septembre 2026",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0213 du 12 septembre 2026",
+   "pertinence": "forte",
+   "themes": [
+    "Élections et représentation"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054834190",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "JORFTEXT000054804222",
+   "nature": "DECRET",
+   "nor": "EAEF2622976D",
+   "date_publication": "2026-09-08",
+   "date_texte": "2026-09-07",
+   "titre": "Décret n° 2026-845 du 7 septembre 2026 modifiant le décret n° 2016-1924 du 28 décembre 2016 relatif à la tenue de listes électorales consulaires et à l'organisation d'opérations de vote hors de France",
+   "ministere": "Ministère de l'Europe et des affaires étrangères",
+   "publication": "JORF n°0209 du 8 septembre 2026",
+   "pertinence": "forte",
+   "themes": [
+    "Élections et représentation",
+    "Administration consulaire et état civil",
+    "Organisation de l'État"
+   ],
+   "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054804222",
+   "collecte_le": "2026-11-23"
+  }
+ ]
+}

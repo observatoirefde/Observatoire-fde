@@ -1,0 +1,208 @@
+{
+ "note": "Réglages de la veille institutionnelle (collecteur/institutionnel.mjs). Les motifs sont des expressions régulières appliquées aux titres en minuscules, sans accents (é → e) et avec l'apostrophe droite (').",
+ "jo": {
+  "source": "https://echanges.dila.gouv.fr/OPENDATA/JORF/",
+  "debut": "2026-09-01",
+  "mots_cles_forts": [
+   "francais (etablis|residant|vivant) (hors de france|a l'etranger)",
+   "francais de l'etranger",
+   "assemblee des francais",
+   "conseill\\w* (des francais de l'etranger|consulaires?|a l'assemblee des francais)",
+   "conseils? consulaires?",
+   "listes? electorales? consulaires?",
+   "elections? (consulaires|des conseillers des francais)",
+   "registre des francais",
+   "enseignement francais a l'etranger",
+   "agence pour l'enseignement francais",
+   "\\baefe\\b",
+   "caisse des francais de l'etranger",
+   "bourses? scolaires?",
+   "non-?residents",
+   "affaires consulaires",
+   "administration consulaire",
+   "(reseau|postes?|services?) consulaires?",
+   "protection consulaire",
+   "etat civil.{0,40}(etranger|consulaire)"
+  ],
+  "exclusions": [
+   "portant nomination",
+   "nomination (et|dans|au|a la)",
+   "titularisation",
+   "admission a la retraite",
+   "tableau d'avancement",
+   "avancement",
+   "examen professionnel",
+   "\\bconcours\\b",
+   "vacance d'(un )?emploi",
+   "radiation",
+   "detachement",
+   "integration dans le corps",
+   "(agents|secretaires|conseillers) des affaires etrangeres",
+   "agents diplomatiques et consulaires",
+   "cessation de fonctions",
+   "delegation de signature",
+   "lettres? de creance",
+   "indemnite d'expatriation",
+   "\\bregisseur",
+   "\\bregies?\\b",
+   "signalements? d'alerte",
+   "emplois de direction",
+   "\\bcabinet d(u|e la) ministre",
+   "repartition des emplois",
+   "habilites? a delivrer",
+   "vote electronique (par internet )?(pour l'election des representants )?(du personnel|des personnels)",
+   "changement de residence"
+  ],
+  "prefixes_nor_meae": [
+   "EAE"
+  ],
+  "accords_pertinents": [
+   "securite sociale",
+   "double imposition",
+   "impots",
+   "fiscal",
+   "permis de conduire",
+   "vacances-travail",
+   "jeunes professionnels",
+   "mobilite",
+   "enseignement",
+   "etat civil",
+   "entraide",
+   "adoption",
+   "extradition",
+   "consulaire",
+   "pensions?"
+  ],
+  "prefixes_nor_dfae": [
+   "EAEF"
+  ],
+  "natures_exclues": [
+   "^REMISE",
+   "^INFORMATIONS",
+   "^ANNONCES",
+   "^RECTIFICATIF"
+  ]
+ },
+ "bibliotheque": {
+  "senat_flux": [
+   "https://www.senat.fr/rss/rapports.rss",
+   "https://www.senat.fr/themes/rss/therss4.rss"
+  ],
+  "senat_mots_cles": [
+   "francais (etablis|residant|vivant) (hors de france|a l'etranger)",
+   "francais de l'etranger",
+   "assemblee des francais",
+   "action exterieure de l'etat",
+   "enseignement francais a l'etranger",
+   "\\baefe\\b",
+   "consulaire",
+   "caisse des francais de l'etranger",
+   "diplomatie culturelle et d'influence"
+  ],
+  "afe_api": "https://www.assemblee-afe.fr/wp-json/wp/v2/media",
+  "afe_exclusions": [
+   "procuration",
+   "note logistique",
+   "tutoriel",
+   "registre_lec|registre lec",
+   "presentation",
+   "lettre d'info",
+   "guide des elus",
+   "charte des elus",
+   "instructions cnf",
+   "radioscopie",
+   "webinaire",
+   "tableau plf"
+  ]
+ },
+ "themes": {
+  "Élections et représentation": [
+   "election",
+   "electora",
+   "\\bvote\\b",
+   "scrutin",
+   "conseill\\w* des francais",
+   "conseils? consulaires?",
+   "listes? electorales?"
+  ],
+  "Administration consulaire et état civil": [
+   "consulaire",
+   "etat civil",
+   "passeport",
+   "carte nationale d'identite",
+   "registre des francais",
+   "nationalite",
+   "legalisation",
+   "procuration"
+  ],
+  "Enseignement et jeunesse": [
+   "enseignement",
+   "\\baefe\\b",
+   "scolaire",
+   "\\blycees?\\b",
+   "\\becoles?\\b",
+   "etudiant",
+   "jeunesse",
+   "francophonie",
+   "diplomatie culturelle"
+  ],
+  "Protection sociale et santé": [
+   "caisse des francais",
+   "\\bcfe\\b",
+   "securite sociale",
+   "protection sociale",
+   "retraite",
+   "pensions?",
+   "sante",
+   "aides? sociales?",
+   "handicap"
+  ],
+  "Fiscalité": [
+   "impot",
+   "fiscal",
+   "double imposition",
+   "non-?residents",
+   "\\bcsg\\b",
+   "prelevements sociaux"
+  ],
+  "Sécurité et crises": [
+   "securite des",
+   "crises?\\b",
+   "rapatriement",
+   "urgences?",
+   "terroris",
+   "evacuation"
+  ],
+  "Budget et finances publiques": [
+   "loi de finances",
+   "budget",
+   "credits",
+   "action exterieure de l'etat",
+   "programme 151"
+  ],
+  "Accords internationaux": [
+   "accord",
+   "convention",
+   "protocole",
+   "avenant",
+   "traite"
+  ],
+  "Organisation de l'État": [
+   "organisation",
+   "delegation de signature",
+   "attributions",
+   "direction des francais",
+   "ministere de l'europe"
+  ],
+  "Droits et vie quotidienne": [
+   "bancaire",
+   "banque",
+   "permis de conduire",
+   "logement",
+   "assurance",
+   "acces aux services",
+   "dematerialisation",
+   "identite numerique"
+  ]
+ }
+}

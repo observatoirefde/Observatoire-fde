@@ -1,0 +1,4 @@
+{
+ "note": "Documents ajoutés à la main dans la bibliothèque, après vérification sur le site officiel de l'institution (Cour des comptes, MEAE, AEFE, CFE, Assemblée nationale, Sénat…). Champs : id (unique, ex. « ccomptes:aefe-2025 »), titre, institution, type, date (AAAA-MM-JJ ou AAAA-MM), source (adresse officielle), resume (facultatif), themes (facultatif, sinon déduits du titre).",
+ "documents": []
+}
