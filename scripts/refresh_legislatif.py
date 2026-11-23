@@ -10,8 +10,9 @@ SOURCES = {
     'an.zip': AN+'loi/dossiers_legislatifs/Dossiers_Legislatifs.json.zip',
     'deputes.csv': AN+'amo/deputes_actifs_csv_opendata/liste_deputes_libre_office.csv',
     'ppl.csv': 'https://data.senat.fr/data/dosleg/ppl.csv',
-    'senateurs.html': 'https://www.senat.fr/senateurs/senateurs_representant_les_francais_etablis_hors_de_france.html',
 }
+# Sénateurs FDE : liste officielle tenue dans le dépôt (data/senateurs-2026.json), plutôt que la lecture d'une page web
+# (règle de l'Observatoire : données ouvertes et API officielles uniquement, aucune aspiration de pages).
 START = '2024-07-08'
 TODAY = dt.date.today().isoformat()
 ROOT = Path(__file__).resolve().parent.parent
@@ -43,6 +44,11 @@ def senate_names(raw):
             last,first=map(lambda p:' '.join(html.unescape(p).split()),parts)
             result.append(first+' '+last)
     if len(result)!=12: raise ValueError(f'Liste Sénat inattendue : {len(result)} noms')
+    return result
+def senate_names_local():
+    s=json.loads((ROOT/'data/senateurs-2026.json').read_text(encoding='utf-8'))['senateurs']
+    result=[x['prenom']+' '+x['nom'] for x in s]
+    if len(result)!=12: raise ValueError(f'Liste des sénateurs inattendue : {len(result)} noms')
     return result
 def events(d):
     out=[]
@@ -89,11 +95,11 @@ def supplement_senate(record):
     except Exception as e:print('Complément Sénat indisponible :',record['id'],type(e).__name__)
     return record
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--cache',type=Path,help='Optional offline source files');p.add_argument('--page',type=Path,default=ROOT/'suivi-legislatif-fde.html');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--cache',type=Path,help='Optional offline source files');p.add_argument('--page',type=Path,default=ROOT/'suivi-legislatif-fde.html');p.add_argument('--complement-senat',action='store_true',help='Lire aussi les pages des dossiers du Sénat (désactivé par défaut)');args=p.parse_args()
     with ThreadPoolExecutor(max_workers=4) as pool:
         data=dict(zip(SOURCES,pool.map(lambda n:download(n,args.cache),SOURCES)))
     deputies=rows(data['deputes.csv']); by_id={'PA'+r['identifiant']:r['Prénom']+' '+r['Nom'] for r in deputies}; fde={k for k,r in zip(by_id,deputies) if 'hors de France' in r['Département']}; assert len(fde)==11
-    senators=senate_names(data['senateurs.html']); sn_names={norm(n) for n in senators}
+    senators=senate_names_local(); sn_names={norm(n) for n in senators}
     result=[]; sn_events={}
     z=zipfile.ZipFile(io.BytesIO(data['an.zip']))
     for name in z.namelist():
@@ -122,8 +128,18 @@ def main():
         if prom and not any(e.get('type')=='Promulgation_Type' for e in past):past.append({'date':prom,'label':'Promulgation · loi n° '+row['Numéro de la loi']})
         result.append(dict(id='SN-'+row['Session']+'-'+row['Numéro de texte'],title=row['Titre'],author=author,chamber='Sénat',theme=row['Thèmes'] or 'Non classé',authors=authors,subject=subj,deposit=date,when=max(e['date'] for e in past),status=status,step=step,closed=closed,events=past,future=future,url=url,cosignataires=names[1:],source='Sénat – DOSLEG',limitations='État issu du fichier officiel DOSLEG. Les dates non publiées dans ce fichier ne sont pas déduites.'))
     if not result or not any(r['chamber']=='Sénat' for r in result) or not any(r['chamber']=='Assemblée nationale' for r in result):raise RuntimeError('Corpus incomplet, mise à jour annulée')
-    # Only dossiers whose terminal status is known but whose dates are incomplete require enrichment.
-    if not args.cache:
+    # Dates de vote déjà relevées lors des passages précédents : conservées (aucune donnée perdue).
+    try: previous={r['id']:r for r in json.loads((ROOT/'legislatif-data.json').read_text(encoding='utf-8'))['dossiers']}
+    except (OSError,ValueError,KeyError): previous={}
+    for r in result:
+        old=previous.get(r['id'])
+        if r['chamber']!='Sénat' or not old: continue
+        for e in old.get('events',[]):
+            if e.get('label','').startswith('Texte ') and e['date']<=TODAY and e not in r['events']: r['events'].append(e)
+        r['events'].sort(key=lambda e:e['date']); r['when']=max([r['when']]+[e['date'] for e in r['events']])
+    # Complément par lecture des pages des dossiers du Sénat : désactivé par défaut (aspiration de pages).
+    # Les données ouvertes donnent l'état officiel du dossier ; seule la date de certains votes peut manquer.
+    if args.complement_senat and not args.cache:
         with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(supplement_senate,[r for r in result if r['chamber']=='Sénat' and r['closed'] and r['status']!='Promulguée']))
     # Prevent HTML/script injection and preserve the page if validation fails.
     payload=json.dumps({'updated':TODAY,'start':START,'dossiers':result,'senators':senators,'deputies':[by_id[k] for k in sorted(fde)]},ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')

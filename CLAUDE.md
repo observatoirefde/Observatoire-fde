@@ -37,14 +37,15 @@ Site statique sans compilation : HTML, CSS et JavaScript, bibliothèques par CDN
 | `app.js` | Application principale : navigation, cartes, tableaux, annuaires, simulateur, fiches, hémicycle AFE |
 | `style.css` | Présentation (sections commentées, ajouts en fin de fichier) |
 | `veille-bluesky.js` | Lecture des publications Bluesky, partagée entre le site et le collecteur |
-| `veille.js` | Rubrique « Activité des parlementaires » : sous-rubrique « Réseaux sociaux » (fil, filtres, fiches) |
+| `veille.js` | Rubrique « Veille » (anciennement « Activité des parlementaires des Français de l'étranger ») : sous-rubrique « Réseaux sociaux » (fil, filtres, fiches) |
+| `institutionnel.js`, `collecteur/institutionnel.mjs`, `data/institutionnel/` | Sous-rubrique « Veille institutionnelle » (Veille, route `#institutionnel`) : chargée à la demande par `app.js`, qui crée la vue `v-institutionnel` (voir section dédiée) |
 | `suivi-legislatif-fde.html`, `legislatif-data.json`, `scripts/refresh_legislatif.py` | Sous-rubrique « Activité législative » (voir `LISEZMOI-suivi-legislatif.md`) |
 | `collecteur/bluesky-liste.mjs`, `collecteur/instagram.mjs` | Collecteurs automatiques (Node 20, sans dépendance) |
 | `contentieux.js`, `collecteur/contentieux.mjs`, `data/contentieux/` | Sous-rubrique « Contentieux électoral » (Élections, route `#contentieux`) : `contentieux.js` est chargé à la demande par `app.js`, qui crée la vue `v-contentieux` ; `contentieux.html` ne fait plus que rediriger vers `./#contentieux` |
-| `tests/*.test.mjs` | Tests : `node tests/veille.test.mjs && node tests/collecteur.test.mjs && node tests/instagram.test.mjs && node tests/contentieux.test.mjs` |
+| `tests/*.test.mjs` | Tests : `node tests/veille.test.mjs && node tests/collecteur.test.mjs && node tests/instagram.test.mjs && node tests/contentieux.test.mjs && node tests/institutionnel.test.mjs` |
 | `netlify.toml`, `README.txt`, `Dossier` | Héritages d'un ancien déploiement Netlify ; `Dossier` est un fichier JavaScript isolé, non chargé par le site |
 
-Navigation (`app.js`, objet `NAV`) : un onglet principal par rubrique, des sous-onglets par section ; route = `#clé` (`home`, `leg22`, `leg24`, `cfde`, `sim`, `contentieux`, `rep-cfde`, `cafe`, `dep`, `sen`, `veille`, `legislatif`). `showTab(v)` affiche la vue et appelle son rendu ; `HERO` définit le bandeau d'en-tête ; `openFiche(type, id)` ouvre la fenêtre de fiche.
+Navigation (`app.js`, objet `NAV`) : un onglet principal par rubrique, des sous-onglets par section ; route = `#clé` (`home`, `leg22`, `leg24`, `cfde`, `sim`, `contentieux`, `rep-cfde`, `cafe`, `dep`, `sen`, `veille`, `legislatif`, `institutionnel`). `showTab(v)` affiche la vue et appelle son rendu ; `HERO` définit le bandeau d'en-tête ; `openFiche(type, id)` ouvre la fenêtre de fiche.
 
 Rubrique « Élections » : textes de présentation des scrutins dans `data/elections-presentations.json` (modifiables sans code).
 
@@ -75,8 +76,16 @@ Rubrique « Élections » : textes de présentation des scrutins dans `data/elec
 - Détection testée sur les archives 2021-2022 (élections consulaires de 2021) : 17 décisions retrouvées, aucun faux positif.
 - En local, le `fetch` de Node passe par le proxy du conteneur seulement avec `NODE_USE_ENV_PROXY=1` ; `node collecteur/contentieux.mjs --archives dossier` lit des archives déjà téléchargées.
 
+## Veille institutionnelle
+
+- Étape 1 en place : **Journal officiel** et **bibliothèque documentaire**, avec recherche commune. Étapes suivantes prévues : agenda institutionnel (open data de l'agenda de l'Assemblée, export ICS), travaux de l'AFE (rapprochement résolutions et réponses, lecture des PDF avec `pdftotext`, accord de l'éditeur du 23/11/2026).
+- Workflow `.github/workflows/veille-institutionnelle.yml`, **un passage par jour** (5 h 53 UTC) ; chaque module est isolé (une source en panne garde ses données précédentes, l'erreur est notée dans `data/institutionnel/etat.json`) ; nouveautés et erreurs en commentaire de l'issue « Veille institutionnelle : nouveautés ».
+- **JO** : fichiers quotidiens de la DILA (`echanges.dila.gouv.fr/OPENDATA/JORF/`), lus après `dernier_fichier`. Le répertoire ne garde que les fichiers postérieurs au dernier export complet : la reprise depuis le 1er septembre 2026 a lu une fois `Freemium_jorf_global_….tar.gz` (1,6 Go, lu en flux). Les fichiers du jour contiennent aussi d'anciens textes republiés : filtre sur `DATE_PUBLI`. Pertinence « forte » : titre visant les Français de l'étranger ou NOR `EAEF` (direction des Français à l'étranger) ; « moyenne » : autre texte du MEAE hors mesures individuelles, accords internationaux utiles. Les réglages (`data/institutionnel/config.json`) se réappliquent à chaque passage aux textes déjà collectés.
+- **Bibliothèque** : rapports du Sénat (flux RSS, encodage ISO-8859-15 ; propositions de loi exclues, déjà dans « Activité législative »), documents PDF de l'AFE via l'API publique WordPress (`/wp-json/wp/v2/media`, délai de 10 s demandé par le site ; ne pas lire les pages HTML), entrées manuelles vérifiées dans `bibliotheque-editoriale.json`. Pour l'AFE, la date est celle de la mise en ligne (dossier `uploads/AAAA/MM`).
+- Fichiers réécrits par le workflow (`jo.json`, `bibliotheque.json`, `etat.json`) : ne pas les modifier à la main.
+
 ## Pièges connus
 
 - Les workflows YAML doivent être valides : un collage partiel (premier `#` perdu, ancien contenu restant) les désactive silencieusement (la tâche s'affiche alors sous son chemin de fichier dans l'onglet Actions).
 - Les tests Instagram sont lancés avant chaque collecte : `collecteur/instagram.mjs` et `tests/instagram.test.mjs` doivent être livrés ensemble quand l'un change.
-- Le fichier `LISEZMOI-suivi-legislatif.md` mentionne un workflow « Actualiser le suivi législatif FDE » qui n'est pas présent dans `.github/workflows/` (au 22/11/2026).
+- « Activité législative » : workflow `.github/workflows/actualiser-legislatif.yml` (« Actualiser le suivi législatif FDE », chaque jour à 5 h 17 UTC), rétabli le 23/11/2026. `scripts/refresh_legislatif.py` n'utilise que des données ouvertes et `data/senateurs-2026.json` ; la lecture des pages des dossiers du Sénat (`--complement-senat`) est désactivée par défaut, les dates de vote déjà relevées sont conservées.

@@ -397,9 +397,10 @@ async function demarrerObservatoire() {
         {k:'cafe',     l:'Conseillers à l\'AFE (CAFE)', short:'CAFE'},
         {k:'dep',      l:'Députés'},
         {k:'sen',      l:'Sénateurs'}]},
-      veille:{label:"Activité des parlementaires des Français de l'étranger", items:[
+      veille:{label:"Veille", items:[
         {k:'veille', l:'Réseaux sociaux'},
-        {k:'legislatif', l:'Activité législative'}]}
+        {k:'legislatif', l:'Activité législative'},
+        {k:'institutionnel', l:'Veille institutionnelle', short:'Institutionnel'}]}
     };
     // ---------- Élections : présentation de chaque scrutin (data/elections-presentations.json) ----------
     let ELEC_INTRO = null;
@@ -420,15 +421,22 @@ async function demarrerObservatoire() {
     const ROUTE = {}; Object.entries(NAV).forEach(([r,o])=>o.items.forEach(it=>ROUTE[it.k]=Object.assign({r},it)));
     ROUTE['veille-comptes']={r:'veille',k:'veille-comptes',l:'Parlementaires et comptes'};
     // vue « Contentieux électoral » : créée ici pour ne pas alourdir index.html ; contenu rendu par contentieux.js (chargé à la demande)
-    document.getElementById('v-soon').insertAdjacentHTML('beforebegin','<div id="v-contentieux" class="view" hidden></div>');
-    let CT_LOAD=null;
+    document.getElementById('v-soon').insertAdjacentHTML('beforebegin','<div id="v-contentieux" class="view" hidden></div><div id="v-institutionnel" class="view" hidden></div>');
+    let CT_LOAD=null, VI_LOAD=null;
+    // vue « Veille institutionnelle » : même principe, contenu rendu par institutionnel.js
+    function renderInstitutionnel(){
+      const go=()=>window.INSTITUTIONNEL.render(document.getElementById('v-institutionnel'), ()=>{ if(CUR_ROUTE==='institutionnel') updateHero('institutionnel'); });
+      if(window.INSTITUTIONNEL){ go(); return; }
+      VI_LOAD = VI_LOAD || new Promise((ok,ko)=>{ const sc=document.createElement('script'); sc.src='./institutionnel.js'; sc.onload=ok; sc.onerror=ko; document.head.appendChild(sc); });
+      VI_LOAD.then(go).catch(()=>{ VI_LOAD=null; document.getElementById('v-institutionnel').innerHTML='<section class="first"><div class="glass notes">La rubrique n\'a pas pu être chargée. Rechargez la page.</div></section>'; });
+    }
     function renderContentieux(){
       const go=()=>window.CONTENTIEUX.render(document.getElementById('v-contentieux'), ()=>{ if(CUR_ROUTE==='contentieux') updateHero('contentieux'); });
       if(window.CONTENTIEUX){ go(); return; }
       CT_LOAD = CT_LOAD || new Promise((ok,ko)=>{ const sc=document.createElement('script'); sc.src='./contentieux.js'; sc.onload=ok; sc.onerror=ko; document.head.appendChild(sc); });
       CT_LOAD.then(go).catch(()=>{ CT_LOAD=null; document.getElementById('v-contentieux').innerHTML='<section class="first"><div class="glass notes">La rubrique n\'a pas pu être chargée. Rechargez la page.</div></section>'; });
     }
-    const VIEWS_ALL = ['home','leg22','cfde','leg24','scen','dep','sim','contentieux','rep-cfde','cafe','sen','veille','veille-comptes','legislatif','soon'];
+    const VIEWS_ALL = ['home','leg22','cfde','leg24','scen','dep','sim','contentieux','rep-cfde','cafe','sen','veille','veille-comptes','legislatif','institutionnel','soon'];
     let CUR_ROUTE = 'cfde';
     function renderSubtabs(r){
       const el=document.getElementById('subtabs');
@@ -454,6 +462,7 @@ async function demarrerObservatoire() {
       else if(v==='dep'){ setTimeout(()=>{ renderDep(); chartDep&&chartDep.resize(); },0); }
       else if(v==='sim'){ setTimeout(()=>{ renderSim(); chartSim&&chartSim.resize(); },0); }
       else if(v==='contentieux'){ renderContentieux(); }
+      else if(v==='institutionnel'){ renderInstitutionnel(); }
       else if(v==='cfde'){ renderProj(); setTimeout(()=>{ if(MAP_DIRTY||!chart) renderMap(MAP_KEEP); chart&&chart.resize(); },0); }
       else if(v==='rep-cfde'||v==='cafe'||v==='sen'){ renderDir(v); }
       else if(v==='legislatif'){ const frame=document.getElementById('legislatifFrame'); if(!frame.getAttribute('src')) frame.src=frame.dataset.src; }
@@ -1331,6 +1340,8 @@ async function demarrerObservatoire() {
       cfde:()=>({t:"Élections des conseillers des Français de l'étranger 2026", p:"Résultats des élections des conseillers des Français de l'étranger de mai 2026, couleur politique des listes et rapports de force par circonscription législative.", k:KPI_CFDE}),
       sim:()=>({t:"Simulateur législatif 2027", p:"Simulation des 11 sièges à partir des résultats officiels de 2024 : modifiez scores, participation, désistements et reports. Les résultats sont des hypothèses, pas des prévisions.",
         k:[["11","sièges à pourvoir"],["2024","1er tour, point de départ"],["12,5 %","des inscrits pour le 2nd tour"],["50 % + 25 %","exprimés et inscrits : élu au 1er tour"]]}),
+      institutionnel:()=>({t:"Veille institutionnelle", p:"Textes du Journal officiel et documents publics (Sénat, Assemblée des Français de l'étranger, Gouvernement…) concernant les Français établis hors de France, collectés chaque jour depuis les sources officielles.",
+        k: window.INSTITUTIONNEL ? INSTITUTIONNEL.kpis() : []}),
       contentieux:()=>({t:"Contentieux électoral", p:"Recours contre les élections de 2026 des conseillers des Français de l'étranger et des conseillers à l'AFE, jugés par le Conseil d'État : recours vérifiés et suivi quotidien des décisions publiées.",
         k: window.CONTENTIEUX ? CONTENTIEUX.kpis() : []}),
       'rep-cfde':()=>({t:"Conseillers des Français de l'étranger", p:"Élus pour six ans au suffrage universel direct dans 130 circonscriptions consulaires, ils siègent aux conseils consulaires, élisent les conseillers à l'AFE et votent aux sénatoriales.",

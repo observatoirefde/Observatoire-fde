@@ -1,0 +1,1110 @@
+{
+ "note": "Produit par collecteur/institutionnel.mjs. Entrées manuelles : bibliotheque-editoriale.json.",
+ "derniere_verification": "2026-11-23",
+ "avertissements": [],
+ "documents": [
+  {
+   "id": "senat:/rap/a26-161-1/a26-161-1.html",
+   "titre": "Budget 2027 : Diplomatie culturelle et d'influence - avis n° 161 tome I",
+   "institution": "Sénat",
+   "type": "Avis budgétaire",
+   "date": "2026-11-19",
+   "annee": "2026",
+   "themes": [
+    "Enseignement et jeunesse",
+    "Budget et finances publiques"
+   ],
+   "resume": "Avis n° 161 tome I de Mme Mathilde OLLIVIER, fait au nom de la commission de la culture, de l'éducation, de la communication et du sport, sur le projet de loi de finances pour 2027 : Diplomatie culturelle et d'influence (19 novembre 2026)",
+   "source": "https://www.senat.fr/rap/a26-161-1/a26-161-1.html",
+   "origine": "Flux RSS du Sénat",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:261009 afe 45eme odj previsionnel public",
+   "titre": "261009 AFE 45eme ODJ prévisionnel public",
+   "institution": "AFE",
+   "type": "Ordre du jour",
+   "session": "45e session",
+   "commission": null,
+   "date": "2026-10",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/10/261009-AFE-45eme-ODJ-previsionnel-public.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:commission enseignement feuille de route 45eme session afe",
+   "titre": "Commission Enseignement – Feuille de route – 45eme session AFE",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "45e session",
+   "commission": "Commission de l'enseignement",
+   "date": "2026-10",
+   "annee": "2026",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/10/Commission-Enseignement-Feuille-de-route-45eme-session-AFE.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:cr 45eme session 21 octobre 2026 commission enseignement de lafe",
+   "titre": "CR 45eme Session 21 octobre 2026 – Commission Enseignement de l’AFE",
+   "institution": "AFE",
+   "type": "Compte rendu",
+   "session": "45e session",
+   "commission": "Commission de l'enseignement",
+   "date": "2026-10",
+   "annee": "2026",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/10/CR-45eme-Session-21-octobre-2026-Commission-Enseignement-de-lAFE.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:fae rapport gouvernement 2026",
+   "titre": "fae_rapport_gouvernement_2026",
+   "institution": "Gouvernement (MEAE)",
+   "type": "Rapport du Gouvernement",
+   "session": null,
+   "commission": null,
+   "date": "2026-08",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/08/fae_rapport_gouvernement_2026.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:resolutions afe 44",
+   "titre": "resolutions AFE 44 V1",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": "44e session",
+   "commission": null,
+   "date": "2026-07",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/07/resolutions-AFE-44-V1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:43e afe finances resolution",
+   "titre": "43e AFE – Finances – Résolution 1",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": "43e session",
+   "commission": "Commission des finances",
+   "date": "2026-05",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/05/43e-AFE-Finances-Resolution-1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:43e afe resolutions",
+   "titre": "43e AFE – résolutions_compressed",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": "43e session",
+   "commission": null,
+   "date": "2026-05",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/05/43e-AFE-resolutions_compressed.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport ens mars 2026 03",
+   "titre": "rapport ENS_mars_2026_03",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2026-05",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/05/rapport-ENS_mars_2026_03.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport final comm lois 44eafe 002",
+   "titre": "RAPPORT FINAL COMM LOIS 44eAFE (002)",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "44e session",
+   "commission": "Commission des lois",
+   "date": "2026-05",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/05/RAPPORT-FINAL-COMM-LOIS-44eAFE-002.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "senat:/rap/l25-581/l25-581.html",
+   "titre": "Accès au compte bancaire pour les Français établis hors de France - Rapport n° 581",
+   "institution": "Sénat",
+   "type": "Rapport",
+   "date": "2026-04-28",
+   "annee": "2026",
+   "themes": [
+    "Droits et vie quotidienne"
+   ],
+   "resume": "Rapport",
+   "source": "https://www.senat.fr/rap/l25-581/l25-581.html",
+   "origine": "Flux RSS du Sénat",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:bilan com fi",
+   "titre": "bilan com fi",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2026-04",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/04/bilan-com-fi-.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport 44 session",
+   "titre": "rapport _ 44 session",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2026-04",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/04/rapport-_-44-session.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:41eafe rapport de la commission de lenseignement des affaires culturelles de la francophonie et de laudiovisuel exterieur version sans les votes des resolu 002",
+   "titre": "41eAFE – Rapport de la Commission de l’enseignement des affaires culturelles de la Francophonie et de l’audiovisuel extérieur Version sans les votes des résolu (002)",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "41e session",
+   "commission": "Commission de l'enseignement",
+   "date": "2026-03",
+   "annee": "2026",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/03/41eAFE-Rapport-de-la-Commission-de-lenseignement-des-affaires-culturelles-de-la-Francophonie-et-de-laudiovisuel-exterieur-Version-sans-les-votes-des-resolu-002.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:44e afe role des qo complet",
+   "titre": "44e AFE _ Rôle des QO_complet",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": "44e session",
+   "commission": null,
+   "date": "2026-03",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/03/44e-AFE-_-Role-des-QO_complet.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:44e afe role des qo modifie",
+   "titre": "44e AFE_Rôle des QO_modifié",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": "44e session",
+   "commission": null,
+   "date": "2026-03",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/03/44e-AFE_Role-des-QO_modifie.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:44eafe rapport definitif com securite",
+   "titre": "44eAFE-Rapport Definitif Com Securité",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "44e session",
+   "commission": "Commission de la sécurité",
+   "date": "2026-03",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/03/44eAFE-Rapport-Definitif-Com-Securite.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:afe43 rapport de la commission enseignement culture francophonie audiovisuel octobre 2025",
+   "titre": "AFE43 – Rapport de la Commission Enseignement Culture Francophonie Audiovisuel octobre 2025",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "43e session",
+   "commission": "Commission de l'enseignement",
+   "date": "2026-03",
+   "annee": "2026",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/03/AFE43-Rapport-de-la-Commission-Enseignement-Culture-Francophonie-Audiovisuel-octobre-2025-1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport assises protection sociale mars 2026",
+   "titre": "Rapport Assises protection sociale – Mars 2026",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2026-03",
+   "annee": "2026",
+   "themes": [
+    "Protection sociale et santé"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/03/Rapport-Assises-protection-sociale-Mars-2026.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:06012026 synthese des arguments",
+   "titre": "06012026_Synthèse des arguments",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/06012026_Synthese-des-arguments.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:44e afe odj 02 03",
+   "titre": "44e AFE – ODJ 02 03",
+   "institution": "AFE",
+   "type": "Ordre du jour",
+   "session": "44e session",
+   "commission": null,
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/44e-AFE-ODJ-02-03.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:44e afe odj 27 02",
+   "titre": "44e AFE – ODJ 27 – 02",
+   "institution": "AFE",
+   "type": "Ordre du jour",
+   "session": "44e session",
+   "commission": null,
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/44e-AFE-ODJ-27-02.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:caseac auditions 28 02 2026",
+   "titre": "CASEAC auditions 28.02.2026",
+   "institution": "AFE",
+   "type": "Auditions",
+   "session": null,
+   "commission": "Commission des affaires sociales",
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/CASEAC-auditions-28.02.2026-1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:ddce auditions afe 44 28 02 2026",
+   "titre": "DDCE auditions AFE 44 28.02.2026",
+   "institution": "AFE",
+   "type": "Auditions",
+   "session": "44e session",
+   "commission": "Commission du commerce extérieur",
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/DDCE-auditions-AFE-44-28.02.2026-1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:ens auditions afe 44 28 02 2026",
+   "titre": "ENS auditions AFE 44 28.02.2026",
+   "institution": "AFE",
+   "type": "Auditions",
+   "session": "44e session",
+   "commission": "Commission de l'enseignement",
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/ENS-auditions-AFE-44-28.02.2026-1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:fin auditions afe 44 01 03 2026",
+   "titre": "FIN auditions AFE 44 01.03.2026",
+   "institution": "AFE",
+   "type": "Auditions",
+   "session": "44e session",
+   "commission": "Commission des finances",
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/FIN-auditions-AFE-44-01.03.2026.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:fin auditions afe 44 28 02 2026",
+   "titre": "FIN auditions AFE 44 28.02.2026",
+   "institution": "AFE",
+   "type": "Auditions",
+   "session": "44e session",
+   "commission": "Commission des finances",
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/FIN-auditions-AFE-44-28.02.2026-1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:lois auditions afe 44 28 02 2026",
+   "titre": "LOIS auditions AFE 44 28.02.2026",
+   "institution": "AFE",
+   "type": "Auditions",
+   "session": "44e session",
+   "commission": "Commission des lois",
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/LOIS-auditions-AFE-44-28.02.2026.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:secu auditions afe 44 28 02 2026",
+   "titre": "SECU auditions AFE 44 28.02.2026",
+   "institution": "AFE",
+   "type": "Auditions",
+   "session": "44e session",
+   "commission": "Commission de la sécurité",
+   "date": "2026-02",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/02/SECU-auditions-AFE-44-28.02.2026-1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:meae 43 session afe 13 17 octobre 2025 verbatim publie",
+   "titre": "MEAE_43 Session AFE – 13-17 octobre 2025_verbatim publié",
+   "institution": "Gouvernement (MEAE)",
+   "type": "Compte rendu",
+   "session": null,
+   "commission": null,
+   "date": "2026-01",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/01/MEAE_43-Session-AFE-13-17-octobre-2025_verbatim-publie.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport caseac afe 43",
+   "titre": "PDF Rapport CASEAC AFE 43",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "43e session",
+   "commission": "Commission des affaires sociales",
+   "date": "2026-01",
+   "annee": "2026",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2026/01/PDF-Rapport-CASEAC-AFE-43.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "senat:/rap/a25-144-1/a25-144-1.html",
+   "titre": "Budget 2026 : Diplomatie culturelle et d'influence - Avis n° 144 tome I",
+   "institution": "Sénat",
+   "type": "Avis budgétaire",
+   "date": "2025-12-01",
+   "annee": "2025",
+   "themes": [
+    "Enseignement et jeunesse",
+    "Budget et finances publiques"
+   ],
+   "resume": "Avis",
+   "source": "https://www.senat.fr/rap/a25-144-1/a25-144-1.html",
+   "origine": "Flux RSS du Sénat",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:43e afe rapport com securite",
+   "titre": "43e AFE – rapport Com Securite",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "43e session",
+   "commission": "Commission de la sécurité",
+   "date": "2025-12",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/12/43e-AFE-rapport-Com-Securite-1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:43e afe role des qo",
+   "titre": "43e AFE Rôle des QO",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": "43e session",
+   "commission": null,
+   "date": "2025-12",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/12/43e-AFE-Role-des-QO.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:43eafe rapport commission des finances",
+   "titre": "43eAFE – rapport commission des finances V2",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "43e session",
+   "commission": "Commission des finances",
+   "date": "2025-12",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/12/43eAFE-rapport-commission-des-finances-V2.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:eafe rapport dd ce 10 25",
+   "titre": "pdf 43eAFE – Rapport DD-CE 10_25 VF",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "43e session",
+   "commission": null,
+   "date": "2025-12",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/12/pdf-43eAFE-Rapport-DD-CE-10_25-VF-2.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport comm lois 43eafe octobre 2025",
+   "titre": "RAPPORT COMM LOIS 43eAFE – Octobre 2025",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "43e session",
+   "commission": "Commission des lois",
+   "date": "2025-12",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/12/RAPPORT-COMM-LOIS-43eAFE-Octobre-2025.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:42eafe rapport commission des finances mars 2025",
+   "titre": "42eAFE – Rapport Commission des finances mars 2025",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "42e session",
+   "commission": "Commission des finances",
+   "date": "2025-08",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/08/42eAFE-Rapport-Commission-des-finances-mars-2025.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:bourses scolaires et aesh dfae aefe reponse de laefe",
+   "titre": "Bourses scolaires et AESH (DFAE, AEFE) réponse de l’AEFE",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": null,
+   "commission": null,
+   "date": "2025-07",
+   "annee": "2025",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/07/Bourses-scolaires-et-AESH-DFAE-AEFE-reponse-de-lAEFE.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:bourses scolaires et aesh dfae aefe reponse de la dfae",
+   "titre": "Bourses scolaires et AESH (DFAE, AEFE) réponse de la DFAE 2",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": null,
+   "commission": null,
+   "date": "2025-07",
+   "annee": "2025",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/07/Bourses-scolaires-et-AESH-DFAE-AEFE-reponse-de-la-DFAE-2.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:cfe reponses aux questions",
+   "titre": "CFE – Réponses aux questions",
+   "institution": "CFE",
+   "type": "Réponses de l'administration",
+   "session": null,
+   "commission": null,
+   "date": "2025-07",
+   "annee": "2025",
+   "themes": [
+    "Protection sociale et santé"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/07/CFE-Reponses-aux-questions.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:note aux administrations aides sociales directes et indirectes reponse de la dfae",
+   "titre": "Note aux administrations – Aides sociales directes et indirectes – réponse de la DFAE",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": null,
+   "commission": null,
+   "date": "2025-07",
+   "annee": "2025",
+   "themes": [
+    "Protection sociale et santé"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/07/Note-aux-administrations-Aides-sociales-directes-et-indirectes-reponse-de-la-DFAE.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:note aux administrations aides sociales directes et indirectes reponse de la dfae1",
+   "titre": "Note aux administrations – Aides sociales directes et indirectes – réponse de la DFAE1",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": null,
+   "commission": null,
+   "date": "2025-07",
+   "annee": "2025",
+   "themes": [
+    "Protection sociale et santé"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/07/Note-aux-administrations-Aides-sociales-directes-et-indirectes-reponse-de-la-DFAE1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:note aux administrations fraude reponse de la dfae",
+   "titre": "Note aux administrations – Fraude – réponse de la DFAE",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": null,
+   "commission": null,
+   "date": "2025-07",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/07/Note-aux-administrations-Fraude-reponse-de-la-DFAE.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:afe42 rapport commission enseignement culture francophonie audiovisuel",
+   "titre": "AFE42 – Rapport Commission Enseignement Culture Francophonie Audiovisuel VF",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "42e session",
+   "commission": "Commission de l'enseignement",
+   "date": "2025-06",
+   "annee": "2025",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/06/AFE42-Rapport-Commission-Enseignement-Culture-Francophonie-Audiovisuel-VF.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:39eafe role des resolutions",
+   "titre": "39eAFE – Rôle des résolutions",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": "39e session",
+   "commission": null,
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/39eAFE-Role-des-resolutions.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:41eafe rapport final comm lois",
+   "titre": "41eAFE – RAPPORT FINAL COMM LOIS",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "41e session",
+   "commission": "Commission des lois",
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/41eAFE-RAPPORT-FINAL-COMM-LOIS-.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:42e 2025 rapport afe formulaires cerfa jf deluchey",
+   "titre": "42e-2025 RAPPORT AFE FORMULAIRES CERFA JF DELUCHEY",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/42e-2025-RAPPORT-AFE-FORMULAIRES-CERFA-JF-DELUCHEY.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:42eafe resolutions caseac 2 may",
+   "titre": "42eafe_-_resolutions-CASEAC-2 – May",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": "42e session",
+   "commission": "Commission des affaires sociales",
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/42eafe_-_resolutions-CASEAC-2-May.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:42eafe resolutions caseac 3 may",
+   "titre": "42eafe_-_resolutions-CASEAC-3 – May",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": "42e session",
+   "commission": "Commission des affaires sociales",
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/42eafe_-_resolutions-CASEAC-3-May.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:42eafe resolutions cour des comptes lay",
+   "titre": "42eafe_-_resolutions-Cour des comptes – Lay",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": "42e session",
+   "commission": null,
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/42eafe_-_resolutions-Cour-des-comptes-Lay.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:etude handicap et vie a l etranger afe mars 2018",
+   "titre": "etude_handicap_et_vie_a_l_etranger_afe_mars_2018",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Protection sociale et santé"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/etude_handicap_et_vie_a_l_etranger_afe_mars_2018.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport elections 2024 41e session comm lois",
+   "titre": "RAPPORT_Elections_2024 41e session COMM_LOIS",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "41e session",
+   "commission": null,
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Élections et représentation"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/RAPPORT_Elections_2024-41e-session-COMM_LOIS.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport cnf 41e session comm lois domelevo entfellner et sfeir",
+   "titre": "RAPPORT-CNF 41e session COMM LOIS DOMELEVO ENTFELLNER ET SFEIR",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "41e session",
+   "commission": "Commission des lois",
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/RAPPORT-CNF-41e-session-COMM-LOIS-DOMELEVO-ENTFELLNER-ET-SFEIR.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:resolutions",
+   "titre": "RESOLUTIONS",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": null,
+   "commission": null,
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/RESOLUTIONS.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rev2 rhm 42eafe comm lois rapport rev16042025",
+   "titre": "Rev2 RHM – 42eAFE_-_COMM_LOIS_RAPPORT_REV16042025",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "42e session",
+   "commission": null,
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/Rev2-RHM-42eAFE_-_COMM_LOIS_RAPPORT_REV16042025.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:roledesresolutions",
+   "titre": "roledesresolutions",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": null,
+   "commission": null,
+   "date": "2025-05",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/05/roledesresolutions.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:42eafe rapport dd ce 03 25 version finale",
+   "titre": "42eAFE – Rapport DD-CE 03_25 (version finale)",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "42e session",
+   "commission": null,
+   "date": "2025-04",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/04/42eAFE-Rapport-DD-CE-03_25-version-finale-1.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:fev 2025 lettre pdt afe reponse ministre",
+   "titre": "Fev 2025 – Lettre Pdt AFE réponse Ministre",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": null,
+   "commission": null,
+   "date": "2025-04",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/04/Fev-2025-Lettre-Pdt-AFE-reponse-Ministre-.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport definitif",
+   "titre": "Rapport définitif",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2025-04",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/04/Rapport-definitif.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:etude de droit compare systemes d aide juridique septembre 2017",
+   "titre": "etude_de_droit_compare_-_systemes_d_aide_juridique_septembre_2017",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2025-03",
+   "annee": "2025",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2025/03/etude_de_droit_compare_-_systemes_d_aide_juridique_septembre_2017.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:1 synthese questions orales session afe sept 2012",
+   "titre": "1_-_synthese_questions_orales_session_afe_sept._2012",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": null,
+   "date": "2024-10",
+   "annee": "2024",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2024/10/1_-_synthese_questions_orales_session_afe_sept._2012.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:11 resolutions40eafe role resolutions",
+   "titre": "11_Résolutions40eAFE – Rôle résolutions",
+   "institution": "AFE",
+   "type": "Résolutions",
+   "session": null,
+   "commission": null,
+   "date": "2024-10",
+   "annee": "2024",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2024/10/11_Resolutions40eAFE-Role-resolutions.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:39e afe role des reponses aux questions orales 261023",
+   "titre": "39e AFE – Rôle des réponses aux questions orales 261023",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": "39e session",
+   "commission": null,
+   "date": "2023-10",
+   "annee": "2023",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2023/10/39e-AFE-Role-des-reponses-aux-questions-orales-261023.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:37afe rapport commission enseignement",
+   "titre": "37AFE – Rapport Commission Enseignement",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "37e session",
+   "commission": "Commission de l'enseignement",
+   "date": "2022-10",
+   "annee": "2022",
+   "themes": [
+    "Enseignement et jeunesse"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2022/10/37AFE-Rapport-Commission-Enseignement.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:37afe rapport commission lois",
+   "titre": "37AFE – Rapport Commission Lois",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "37e session",
+   "commission": "Commission des lois",
+   "date": "2022-10",
+   "annee": "2022",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2022/10/37AFE-Rapport-Commission-Lois.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport commission des lois des reglements et des affaires consulaires 36eme afe",
+   "titre": "Rapport – Commission des lois, des réglements et des affaires consulaires 36ème AFE",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": "36e session",
+   "commission": "Commission des lois",
+   "date": "2022-04",
+   "annee": "2022",
+   "themes": [
+    "Administration consulaire et état civil"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2022/04/Rapport-Commission-des-lois-des-reglements-et-des-affaires-consulaires-36eme-AFE.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:rapport elections indirectes commission des lois 20220317",
+   "titre": "Rapport ELECTIONS INDIRECTES- commission des lois 20220317",
+   "institution": "AFE",
+   "type": "Rapport",
+   "session": null,
+   "commission": "Commission des lois",
+   "date": "2022-04",
+   "annee": "2022",
+   "themes": [
+    "Élections et représentation"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2022/04/Rapport-ELECTIONS-INDIRECTES-commission-des-lois-20220317.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  },
+  {
+   "id": "afe:questions reponses orales et dactualites 34eme sessions de lafe",
+   "titre": "Questions & Réponses Orales et d’Actualités 34ème sessions de l’AFE",
+   "institution": "AFE",
+   "type": "Réponses de l'administration",
+   "session": "34e session",
+   "commission": null,
+   "date": "2022-03",
+   "annee": "2022",
+   "themes": [
+    "Autres"
+   ],
+   "source": "https://www.assemblee-afe.fr/wp-content/uploads/2022/03/Questions-Reponses-Orales-et-dActualites-34eme-sessions-de-lAFE.pdf",
+   "origine": "Site de l'AFE (API publique)",
+   "collecte_le": "2026-11-23"
+  }
+ ]
+}
