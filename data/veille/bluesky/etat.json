@@ -10,7 +10,7 @@
    "nom": "Karim Ben Cheikh",
    "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:rajo2u37vabj7ydnpp6a3win/bafkreidweokecvpk62kynzrfkbybugams5cwfw23qyq5y5mwkjz3wzvgrm",
    "derniere_vue": "2026-11-23T20:40:15.242Z",
-   "derniere_collecte": "2026-11-26T21:56:57.081Z",
+   "derniere_collecte": "2026-11-26T22:58:50.198Z",
    "derniere_erreur": null,
    "publications": 81
   },
@@ -23,7 +23,7 @@
    "nom": "Melanie Vogel",
    "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2aqxwjb7sjjsrxvumkarj75k/bafkreicht3dao4lfwba4ks6pcqwkfjxnaptm4h2trpnqhnxpfqjv37tyfa",
    "derniere_vue": "2026-11-18T18:58:23.807Z",
-   "derniere_collecte": "2026-11-26T21:56:57.081Z",
+   "derniere_collecte": "2026-11-26T22:58:50.198Z",
    "derniere_erreur": null,
    "publications": 100
   },
@@ -36,7 +36,7 @@
    "nom": "Hélène Conway-Mouret",
    "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:6i767zpi4oviretinbdg2wb2/bafkreignfdii5rxtbv67nxhgyw7kblvmp54u7yscf2fap2a2kgt3dmw5ri",
    "derniere_vue": "2026-11-26T11:24:59.067Z",
-   "derniere_collecte": "2026-11-26T21:56:57.081Z",
+   "derniere_collecte": "2026-11-26T22:58:50.198Z",
    "derniere_erreur": null,
    "publications": 107
   },
@@ -49,7 +49,7 @@
    "nom": "Mathilde Ollivier",
    "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:aj7nw5dlhpmid2pe3o7jjw2z/bafkreiduberokltgir3uvja5ema4pvl4cqpsjxio6ddo43jggzmqle6due",
    "derniere_vue": "2026-11-17T10:34:44.146Z",
-   "derniere_collecte": "2026-11-26T21:56:57.081Z",
+   "derniere_collecte": "2026-11-26T22:58:50.198Z",
    "derniere_erreur": null,
    "publications": 100
   },
@@ -62,7 +62,7 @@
    "nom": "Pieyre-Alexandre Anglade",
    "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ybd5bxbpyfd3azgukjgvtivh/bafkreib222ikis6evdlfzashx2pmnqzbijblmtgyobcrxcaxgdevmwsvna",
    "derniere_vue": "2025-08-28T12:34:27.768Z",
-   "derniere_collecte": "2026-11-26T21:56:57.081Z",
+   "derniere_collecte": "2026-11-26T22:58:50.198Z",
    "derniere_erreur": null,
    "publications": 60
   },
@@ -75,7 +75,7 @@
    "nom": "Vincent Caure",
    "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ij2zfnls7gz6rwailozlrcwd/bafkreigt7as77gfvhrqhs4bxv6gim2hmknjq6agmdlmqcerxwb2zfh7uq4",
    "derniere_vue": "2025-07-01T15:42:31.756Z",
-   "derniere_collecte": "2026-11-26T21:56:57.081Z",
+   "derniere_collecte": "2026-11-26T22:58:50.198Z",
    "derniere_erreur": null,
    "publications": 54
   },
@@ -88,7 +88,7 @@
    "nom": "Anne Genetet",
    "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:z7ktudp4uqrdbj5yyw6vw4tn/bafkreid5xs42wibbmlc43z4gptvv6kanla6letpwugoqxk2ibem35fxulq",
    "derniere_vue": "2026-03-31T07:52:50.138Z",
-   "derniere_collecte": "2026-11-26T21:56:57.081Z",
+   "derniere_collecte": "2026-11-26T22:58:50.198Z",
    "derniere_erreur": null,
    "publications": 100
   },
@@ -101,7 +101,7 @@
    "nom": "Yan Chantrel",
    "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:nexarmauewfouxx6q5i3zfow/bafkreia3vbhhmjzuvcvxbbooiqxdholln7cu4mmac3yu3xim3woqlwypwe",
    "derniere_vue": "2026-11-20T17:21:28.111Z",
-   "derniere_collecte": "2026-11-26T21:56:57.081Z",
+   "derniere_collecte": "2026-11-26T22:58:50.198Z",
    "derniere_erreur": null,
    "publications": 101
   },
@@ -114,7 +114,7 @@
    "nom": "Sophie Briante Guillemont",
    "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ezd6jgfviixxtmgps5f37a6i/bafkreidwumtd726jz2tdrw6ccstqyp6q3kqaycfco3zn5xfxmtbdhvzf7q",
    "derniere_vue": "2026-04-20T16:22:07.754Z",
-   "derniere_collecte": "2026-11-26T21:56:57.081Z",
+   "derniere_collecte": "2026-11-26T22:58:50.198Z",
    "derniere_erreur": null,
    "publications": 24
   }
@@ -144,6 +144,18 @@
   "2025-01": 30
  },
  "journal": [
+  {
+   "date": "2026-11-26T22:58:50.198Z",
+   "ok": true,
+   "nouvelles": 0,
+   "mises_a_jour": 0,
+   "supprimees": 0,
+   "rejetees": 0,
+   "ajouts": [],
+   "retraits": [],
+   "erreurs": [],
+   "requetes": 11
+  },
   {
    "date": "2026-11-26T21:56:57.081Z",
    "ok": true,
@@ -1331,18 +1343,6 @@
    "retraits": [],
    "erreurs": [],
    "requetes": 11
-  },
-  {
-   "date": "2026-11-21T23:42:54.997Z",
-   "ok": true,
-   "nouvelles": 0,
-   "mises_a_jour": 0,
-   "supprimees": 0,
-   "rejetees": 0,
-   "ajouts": [],
-   "retraits": [],
-   "erreurs": [],
-   "requetes": 11
   }
  ],
  "liste": {
@@ -1352,10 +1352,10 @@
   "description": "Ce liste a pour objectif de recenser l'ensemble des publications Bluesky des 23 parlementaires (12 députés et  11 sénateurs) qui représentent les français de l'étranger.",
   "createur": "observatoirefde.bsky.social",
   "nb_membres": 9,
-  "lue_le": "2026-11-26T21:56:57.081Z"
+  "lue_le": "2026-11-26T22:58:50.198Z"
  },
  "total": 727,
- "derniere_synchro": "2026-11-26T21:56:57.081Z",
- "derniere_synchro_reussie": "2026-11-26T21:56:57.081Z",
+ "derniere_synchro": "2026-11-26T22:58:50.198Z",
+ "derniere_synchro_reussie": "2026-11-26T22:58:50.198Z",
  "collecteur": "collecteur/bluesky-liste.mjs"
 }
