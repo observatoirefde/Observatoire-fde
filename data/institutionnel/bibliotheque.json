@@ -1,8 +1,40 @@
 {
  "note": "Produit par collecteur/institutionnel.mjs. Entrées manuelles : bibliotheque-editoriale.json.",
- "derniere_verification": "2026-11-26",
+ "derniere_verification": "2026-11-27",
  "avertissements": [],
  "documents": [
+  {
+   "id": "senat:/rap/l26-156-31/l26-156-31.html",
+   "titre": "Budget 2027 : Action extérieure de l'État - rapport spécial n° 156 annexe 1 tome III",
+   "institution": "Sénat",
+   "type": "Rapport spécial (budget)",
+   "date": "2026-11-26",
+   "annee": "2026",
+   "themes": [
+    "Budget et finances publiques"
+   ],
+   "resume": "Rapport spécial n° 156 annexe 1 tome III de MM. Grégory BLANC et Rémi FÉRAUD, fait au nom de la commission des finances, sur le projet de loi de finances pour 2027 : Action extérieure de l'État (19 novembre 2026)",
+   "source": "https://www.senat.fr/rap/l26-156-31/l26-156-31.html",
+   "origine": "Flux RSS du Sénat",
+   "collecte_le": "2026-11-27"
+  },
+  {
+   "id": "senat:/rap/a26-158-2/a26-158-2.html",
+   "titre": "Budget 2027 : Action extérieure de l'État : Diplomatie culturelle et d'influence - Français à l'étranger et affaires consulaires - avis n° 158 tome II",
+   "institution": "Sénat",
+   "type": "Avis budgétaire",
+   "date": "2026-11-26",
+   "annee": "2026",
+   "themes": [
+    "Administration consulaire et état civil",
+    "Enseignement et jeunesse",
+    "Budget et finances publiques"
+   ],
+   "resume": "Avis n° 158 tome II de Mme Catherine DUMAS et M. Akli MELLOULI, fait au nom de la commission des affaires étrangères, de la défense et des forces armées, sur le projet de loi de finances pour 2027 : Action extérieure de l'État : Diplomatie culturelle et d'influence - Français à l'étranger et affaire",
+   "source": "https://www.senat.fr/rap/a26-158-2/a26-158-2.html",
+   "origine": "Flux RSS du Sénat",
+   "collecte_le": "2026-11-27"
+  },
   {
    "id": "senat:/rap/a26-161-1/a26-161-1.html",
    "titre": "Budget 2027 : Diplomatie culturelle et d'influence - avis n° 161 tome I",
