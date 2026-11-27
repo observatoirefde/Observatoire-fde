@@ -1,7 +1,7 @@
 {
  "note": "Fichier produit automatiquement par collecteur/contentieux.mjs (workflow « Veille contentieux »). Ne pas modifier à la main : les décisions confirmées vont dans recours.json, les décisions hors sujet dans ecartees.json.",
  "source": "https://opendata.justice-administrative.fr/DCE/",
- "derniere_verification": "2026-11-26T05:36:35.291Z",
+ "derniere_verification": "2026-11-27T05:37:44.746Z",
  "ecartees_masquees": 0,
  "archives": {
   "202605": 469,
@@ -10,7 +10,7 @@
   "202608": 217,
   "202609": 373,
   "202610": 792,
-  "202611": 477
+  "202611": 483
  },
  "avertissements": [],
  "decisions": [
