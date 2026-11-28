@@ -12,7 +12,7 @@
    "nom_instagram": "Amélia Lakrafi 🇫🇷",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 25,
    "derniere_erreur_le": "2026-11-22T16:02:14.362Z",
    "verifie": true
@@ -31,7 +31,7 @@
    "verifie": true,
    "media_count": 818,
    "nom_instagram": "Anne Genetet",
-   "derniere_collecte": "2026-11-28T07:39:24.133Z"
+   "derniere_collecte": "2026-11-28T18:02:05.188Z"
   },
   "nathcog": {
    "ajoute_le": "2026-11-22T05:40:26.810Z",
@@ -42,7 +42,7 @@
    "actif": true,
    "statut": "introuvable",
    "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
-   "derniere_erreur_le": "2026-11-28T07:39:24.133Z",
+   "derniere_erreur_le": "2026-11-28T18:02:05.188Z",
    "publications": 0,
    "verifie": true
   },
@@ -53,12 +53,12 @@
    "pid": "PA795884",
    "nom": "Marc Ferracci",
    "actif": true,
-   "media_count": 1643,
+   "media_count": 1644,
    "nom_instagram": "Marc Ferracci",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
-   "publications": 107,
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
+   "publications": 108,
    "verifie": true
   },
   "vincent_caure": {
@@ -72,7 +72,7 @@
    "nom_instagram": "Vincent Caure",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 51,
    "verifie": true
   },
@@ -87,7 +87,7 @@
    "nom_instagram": "Pieyre-Alexandre Anglade",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 25,
    "verifie": true
   },
@@ -100,7 +100,7 @@
    "actif": true,
    "statut": "introuvable",
    "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
-   "derniere_erreur_le": "2026-11-28T07:39:24.133Z",
+   "derniere_erreur_le": "2026-11-28T18:02:05.188Z",
    "publications": 0,
    "verifie": true
   },
@@ -115,7 +115,7 @@
    "nom_instagram": "Christopher Weissberg",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 52,
    "verifie": true
   },
@@ -130,7 +130,7 @@
    "nom_instagram": "Caroline Yadan",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 54,
    "verifie": true
   },
@@ -145,7 +145,7 @@
    "nom_instagram": "Hélène Conway-Mouret",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 53,
    "verifie": true
   },
@@ -160,7 +160,7 @@
    "nom_instagram": "Mathilde Ollivier",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 78,
    "verifie": true
   },
@@ -173,7 +173,7 @@
    "actif": true,
    "statut": "introuvable",
    "erreur": "Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
-   "derniere_erreur_le": "2026-11-28T07:39:24.133Z",
+   "derniere_erreur_le": "2026-11-28T18:02:05.188Z",
    "publications": 0,
    "verifie": true
   },
@@ -188,7 +188,7 @@
    "nom_instagram": "Olivier Cadic",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 85,
    "verifie": true
   },
@@ -203,7 +203,7 @@
    "nom_instagram": "Yan Chantrel",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 51,
    "verifie": true
   },
@@ -218,7 +218,7 @@
    "nom_instagram": "Marie-Ange Rousselot",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 25,
    "verifie": true
   },
@@ -233,13 +233,13 @@
    "nom_instagram": "Mélanie Vogel",
    "statut": "ok",
    "erreur": null,
-   "derniere_collecte": "2026-11-28T07:39:24.133Z",
+   "derniere_collecte": "2026-11-28T18:02:05.188Z",
    "publications": 52,
    "verifie": true
   }
  },
  "mois": {
-  "2026-11": 184,
+  "2026-11": 185,
   "2026-10": 191,
   "2026-09": 121,
   "2026-08": 26,
@@ -251,6 +251,22 @@
   "2026-02": 2
  },
  "journal": [
+  {
+   "date": "2026-11-28T18:02:05.188Z",
+   "ok": true,
+   "nouveaux_comptes": [],
+   "nouvelles": 1,
+   "mises_a_jour": 0,
+   "supprimees": 0,
+   "comptes_lus": 13,
+   "comptes": 16,
+   "requetes": 16,
+   "erreurs": [
+    "@nathcog : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
+    "@fredericpetitan : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]",
+    "@sbg_senat : Compte introuvable ou non professionnel : Business Discovery ne lit que les comptes Business ou Créateur. [Meta : code 110/2207013 — Invalid user id]"
+   ]
+  },
   {
    "date": "2026-11-28T07:39:24.133Z",
    "ok": true,
@@ -691,10 +707,10 @@
  ],
  "a_recapituler": [],
  "comptes_a_signaler": [],
- "dernier_recap_precedent": "2026-11-27T18:08:05.286Z",
- "dernier_recap": "2026-11-28T07:39:24.133Z",
- "total": 711,
+ "dernier_recap_precedent": "2026-11-28T07:39:24.133Z",
+ "dernier_recap": "2026-11-28T18:02:05.188Z",
+ "total": 712,
  "absents": {},
- "derniere_synchro": "2026-11-28T07:39:24.133Z",
- "derniere_synchro_reussie": "2026-11-28T07:39:24.133Z"
+ "derniere_synchro": "2026-11-28T18:02:05.188Z",
+ "derniere_synchro_reussie": "2026-11-28T18:02:05.188Z"
 }
