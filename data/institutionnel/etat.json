@@ -1,17 +1,17 @@
 {
  "modules": {
   "bibliotheque": {
-   "derniere_verification": "2026-11-27",
+   "derniere_verification": "2026-11-28",
    "statut": "ok",
-   "resume": "71 documents (2 nouveaux)",
+   "resume": "71 documents (0 nouveaux)",
    "total": 71
   },
   "jo": {
-   "derniere_verification": "2026-11-27",
+   "derniere_verification": "2026-11-28",
    "statut": "ok",
-   "resume": "2 fichier(s) lu(s), 440 textes examinés, 0 retenus, 0 nouveaux",
+   "resume": "2 fichier(s) lu(s), 504 textes examinés, 0 retenus, 0 nouveaux",
    "total": 20
   }
  },
- "derniere_execution": "2026-11-27"
+ "derniere_execution": "2026-11-28"
 }
